@@ -1,14 +1,14 @@
 # Software Standards
 
-## Introduction
+## (1) Introduction
 
 TODO
 
-## Project Management
+## (2) Project Management
 
 TODO
 
-## Packaging and Distribution
+## (3) Packaging and Distribution
 
 ### Cross platform
 
@@ -129,11 +129,11 @@ tasks may include; updating dependency versions, addressing code quality issues,
 refactoring, code restructuring, deploying new functionality that interacts with
 large portions of the code, etc.
 
-## Support and Documentation
+## (4) Support and Documentation
 
 TODO
 
-## Data Formats and Interoperability
+## (5) Data Formats and Interoperability
 
 It is important to consider users wishing to move their data between software
 packages (or write their own data treatment routines) and not make design
@@ -179,7 +179,7 @@ for example Process Lists in Savu which are stored as entries in a NeXus file.
 The advantage this gives is that the result dataset can be used as input
 defining a job.
 
-## Architecture
+## (6) Architecture
 
 A well designed software package would separate its functionality into a set of
 individual modules based on common feature areas, where a "module" may refer to
@@ -197,7 +197,7 @@ functionality of the module in question.
 
 TODO
 
-## Business as Usual
+## (7) Business as Usual
 
 This section aims to outline choices that impact the day to day work of
 developers working on your project. Most are choices that will be made at the
@@ -253,7 +253,7 @@ TODO
 
 TODO
 
-## Standard Tools
+## (8) Standard Tools
 
 This section lists a series of tasks and the standard tools that are commonly
 used to perform them. It is designed to aid as a guide when starting out a new
@@ -375,14 +375,14 @@ and documenting a lesser known scripting mechanism are lifted to a degree and
 your users as they have the ability to augment your software to suit any
 specific needs they data has.
 
-## SINE2020
+## (9) SINE2020
 
 TODO
 
-## Conclusion
+## (10) Conclusion
 
 TODO
 
-## Acknowledgements
+## (11) Acknowledgements
 
 TODO
