@@ -239,6 +239,12 @@ provides a full history of the state of your code base as the project evolves,
 allows multiple developers to work on the project simultaneously and provides
 means on reviewing changes to your software. 
 
+As with wiritng code, following a set of guidelines when working with your SCM
+will allow you to get the most out of it. As such guidelines apply to a much
+wider audience there is already ample documentation describing them, TODO: PUT
+LINKS HERE, therefore this section will only give an overview and highlight a
+few commonly overlooked points.
+
 TODO
 
 ### Issues and work planning
