@@ -216,7 +216,7 @@ those that depend on multiple additional components, especially when the
 dependencies contain functionality that do not directly influence the
 functionality of the module in question.
 
-A benefit gained form maling code modular is the ability to test each module in
+A benefit gained from making code modular is the ability to test each module in
 isolation using automated testing, for instance unit testing.
 
 ## (7) Business as Usual
