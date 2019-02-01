@@ -273,9 +273,10 @@ means on reviewing changes to your software.
 
 As with writing code, following a set of guidelines when working with your SCM
 will allow you to get the most out of it. As such guidelines apply to a much
-wider audience there is already ample documentation describing them, TODO: PUT
-LINKS HERE, therefore this section will only give an overview and highlight a
-few commonly overlooked points.
+wider audience there is already ample documentation describing them, some of
+which are listed at https://github.com/dictcp/awesome-git#workflow, therefore
+this section will only give an overview and highlight a few commonly overlooked
+points.
 
 You must adopt a workflow and enforce it. A workflow defines how developers
 interact with the SCM and the process of their changes to the code base being
