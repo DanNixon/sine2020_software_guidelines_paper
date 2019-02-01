@@ -219,6 +219,22 @@ functionality of the module in question.
 A benefit gained from making code modular is the ability to test each module in
 isolation using automated testing, for instance unit testing.
 
+The code base of your software should be managed using an appropriate build
+system, of course this depends on the language (or combination of languages)
+used.
+
+A good choice for C and C++ projects is CMake. This can handle setting up
+library paths and build tools automatically, allowing developers on any platform
+to develop your software with relative ease.
+
+For Python based projects Python's setuptools is typically sufficient, for
+specific cases (for example, when the software depends on tricky to package
+dependencies) Conda may be used as an alternative.
+
+C++ projects can also benefit from use of a dependency manager such as Conan.
+Most build systems for other languages combine a dependency manager into the
+build system, however this is not the case for CMake.
+
 ## (7) Business as Usual
 
 This section aims to outline choices that impact the day to day work of
