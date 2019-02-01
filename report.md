@@ -6,18 +6,18 @@ Traditionally within the research community people would create and develop thei
 
 The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is “a general rule, principle, or piece of advice”, for example “the organisation has issued guidelines for people working with prisoners”. We will use this definition throughout the remainder of this paper.
 
-The standards and guidelines presented in this paper will suggest the best practises for the current tools that are commonly available. It is possible for standards and guidelines to become out of data. For example the European report [ref] is three years old, yet the advice for about how to host code has been superseded but the fundamental ideas are still correct. Hence, when it is appropriate the idea of the guideline/standard will be abstracted so that a new tool can be chosen in the future.  
-In this paper we outline some guidelines and standards for open source software development. Following these should reduce the risk of wasted effort, the code base becoming unmaintainable and removing duplicated effort.  
+The standards and guidelines presented in this paper will suggest the best practises for the current tools that are commonly available. It is possible for standards and guidelines to become out of data. For example the European report [ref] is three years old, yet the advice for about how to host code has been superseded but the fundamental ideas are still correct. Hence, when it is appropriate the idea of the guideline/standard will be abstracted so that a new tool can be chosen in the future.
+In this paper we outline some guidelines and standards for open source software development. Following these should reduce the risk of wasted effort, the code base becoming unmaintainable and removing duplicated effort.
 
 ## (2) Project Management
 
-Large pieces of software will require some form of management, to ensure that the team are working effectively. This is sometimes referred to as a governance model. The scale of the governance model will depend on the size of the piece of software and could range from an advisory committee to a project management board. A governance model will provide a constructive mechanism for deciding the direction of the software and for ensuring it progresses. 
+Large pieces of software will require some form of management, to ensure that the team are working effectively. This is sometimes referred to as a governance model. The scale of the governance model will depend on the size of the piece of software and could range from an advisory committee to a project management board. A governance model will provide a constructive mechanism for deciding the direction of the software and for ensuring it progresses.
 
-All pieces of distributed software require a license. An open source license such as the GNU General Public License (GPL) is advisable from both a user and development perspective. The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of your software. The advantage of the GPL for software development is that it allows anyone to contribute to your software (you may impose some of your own checks on the code before it goes into the master branch), this radically improves the available pool of developers.  
+All pieces of distributed software require a license. An open source license such as the GNU General Public License (GPL) is advisable from both a user and development perspective. The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of your software. The advantage of the GPL for software development is that it allows anyone to contribute to your software (you may impose some of your own checks on the code before it goes into the master branch), this radically improves the available pool of developers.
 
 The software should follow the basic notion of a release cycle. A release is a version of the software that has been tested and the development team is confident that it is ready to be used as part of the neutron experiments. A release will occur a few times a year, this reassures users that the project is still supported. It is advisable to follow semantic versioning (major.minor.patch, e.g. 3.1.0) for the naming of the releases. Prior to a release there will be a code freeze, where no new code will be submitted to the master branch. Once all of the code has been merged into a release (will be based off of master at the start of the code freeze) branch then manual testing can begin. It is advisable for the developers to do the first round to catch obvious bugs, which are fixed and added to the master branch. The next stage is beta testing where a select group of the users are chosen and they test the master branch and report any bugs. Once these bugs are fixed it is then possible to release the software with some confidence that it is ready for use during experiments. It is advisable to then spend some time working maintenance tasks, these are improvements to the maintainability of the code.
 
-To ensure that your software is cited by the users it is possible to add a DOI to the release. Another method is to use a publication that provides the idea of the software. 
+To ensure that your software is cited by the users it is possible to add a DOI to the release. Another method is to use a publication that provides the idea of the software.
 
 
 ## (3) Packaging and Distribution
@@ -143,15 +143,15 @@ large portions of the code, etc.
 
 ## (4) Support and Documentation
 
-If a piece of software is intended to have a large user base then documentation becomes essential. Good documentation will prevent the developers having to spend time explaining how to use the software to users. The hallmarks of good documentation are it is concise, written in a way that is accessible to the target audience (users) and easily available. 
+If a piece of software is intended to have a large user base then documentation becomes essential. Good documentation will prevent the developers having to spend time explaining how to use the software to users. The hallmarks of good documentation are it is concise, written in a way that is accessible to the target audience (users) and easily available.
 The simplest and most common form is online documentation, for example a wiki page. This should have a clear structure and be easy to navigate. An easy way to achieve this is to have a contents page. The online documentation should version controlled so it is possible to revert changes and to follow its evolution.
 
-An increasingly popular method of documentation is the video tutorial. These are extremely useful to users as it allows them to easily see how to use the software, however they have a large time cost to create them. All documentation should be kept up to date, but video tutorials may require significant work if the software undergoes a large change. 
+An increasingly popular method of documentation is the video tutorial. These are extremely useful to users as it allows them to easily see how to use the software, however they have a large time cost to create them. All documentation should be kept up to date, but video tutorials may require significant work if the software undergoes a large change.
 
-Local??? 
+Local???
 
 The documentation discussed so far has focused on the users. It is also valuable to have developer documentation. This documentation could contain information on the standards used in the code, how to set up a development version and appropriate tutorials/information.
-A key activity for any piece of software is the user support. Unlike documentation this is more interactive between developers and users. As a minimum email support should be provided to the users in a location that is easy for them to find. The emails should be checked regularly and initial responses should be within a day or two. The initial response may be to ask for more details, to arrange to meet with them face to face or to say that it is being worked on. Providing effective user support will give users more confidence in the software. 
+A key activity for any piece of software is the user support. Unlike documentation this is more interactive between developers and users. As a minimum email support should be provided to the users in a location that is easy for them to find. The emails should be checked regularly and initial responses should be within a day or two. The initial response may be to ask for more details, to arrange to meet with them face to face or to say that it is being worked on. Providing effective user support will give users more confidence in the software.
 
 
 ## (5) Data Formats and Interoperability
@@ -269,7 +269,7 @@ elsewhere or find the correct person to talk to to understand a piece of code.
 Source control management (SCM) is an essential part of a software project. This
 provides a full history of the state of your code base as the project evolves,
 allows multiple developers to work on the project simultaneously and provides
-means on reviewing changes to your software. 
+means on reviewing changes to your software.
 
 As with writing code, following a set of guidelines when working with your SCM
 will allow you to get the most out of it. As such guidelines apply to a much
