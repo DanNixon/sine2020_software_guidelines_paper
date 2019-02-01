@@ -292,14 +292,14 @@ TODO
 Continuous Integration (CI) should be used, regardless of the projects size, to
 ensure that your software performs as you expect it to.
 
-CI is essentailly a service that detects when new changes have been made to the
-code base (via the SCM) nad runs a set of actions to determine of the code is of
+CI is essentially a service that detects when new changes have been made to the
+code base (via the SCM) and runs a set of actions to determine of the code is of
 good quality. It can also be used to perform the same checks on proposed changes
 before they become part of the main code base.
 
-Typically the actions performend include compiling/installing the software and
+Typically the actions performed include compiling/installing the software and
 running any automated test suites, however any number of additional tasks can be
-performed including; generating documentation, perorming static analysis,
+performed including; generating documentation, performing static analysis,
 deploying installer packages, checking for software vulnerabilities, etc.
 
 Given the availability of free to use CI services (see Standard Tools section)
@@ -307,7 +307,26 @@ there is no good reason to not have CI setup.
 
 ### Code review
 
-TODO
+Code review is the process of determining if a proposed change should be made to
+the code base, typically after a developer has finished working on a feature or
+bug fix.
+
+The depth of the review process depends a great deal on the size and purpose of
+the project. At minimum the developer proposing the changes should provide a
+description of that their change accomplishes and instructions on how the tester
+can demonstrate this, this step proves the changes worth.
+
+The tester then must ensure that the code is of good quality and coding styles,
+guidelines, etc. have been followed, commit history is sane and relevant
+documentation (including release notes) updated. CI tools can be used to perform
+some of these checks automatically.
+
+Larger or more critical projects may opt to have a second review stage, in which
+another tester (that has yet to be involved in the development or testing of this
+proposed change) will perform the same duties as the first tester. While this is
+duplicating work having multiple eyes on a change before it is accepted does
+significantly increase the chance of potential issues being found before they
+are released to users.
 
 ## (8) Standard Tools
 
@@ -321,7 +340,7 @@ the options at the time of writing.
 
 ### Source control management
 
-Git
+- Git
 
 Git is the most common and one of the most powerful source control management
 tool used in open source software today with a wide variety of training
