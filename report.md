@@ -289,7 +289,21 @@ TODO
 
 ### Continuous integration
 
-TODO
+Continuous Integration (CI) should be used, regardless of the projects size, to
+ensure that your software performs as you expect it to.
+
+CI is essentailly a service that detects when new changes have been made to the
+code base (via the SCM) nad runs a set of actions to determine of the code is of
+good quality. It can also be used to perform the same checks on proposed changes
+before they become part of the main code base.
+
+Typically the actions performend include compiling/installing the software and
+running any automated test suites, however any number of additional tasks can be
+performed including; generating documentation, perorming static analysis,
+deploying installer packages, checking for software vulnerabilities, etc.
+
+Given the availability of free to use CI services (see Standard Tools section)
+there is no good reason to not have CI setup.
 
 ### Code review
 
