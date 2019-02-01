@@ -266,7 +266,22 @@ wider audience there is already ample documentation describing them, TODO: PUT
 LINKS HERE, therefore this section will only give an overview and highlight a
 few commonly overlooked points.
 
-TODO
+You must adopt a workflow and enforce it. A workflow defines how developers
+interact with the SCM and the process of their chanes to the code base being
+accepted.
+
+A popular option, that is also one of the simplest, is the feature branch
+workflow (see
+https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
+In this workflow when a developer starts working on a new feature they do so on
+a new branch and that branch is then merged when the changes are to be accepted.
+
+Developers should also ensure that they produce a clear commit history. Given
+that this is likely the longest standing documentation descibing the history of
+your software it is important that commits are sensible, atomic and logically
+ordered and that commit messages are clear and describe the reasoning behind the
+changes made in the commit itself. A good guide for this can be found here:
+https://chris.beams.io/posts/git-commit/.
 
 ### Issues and work planning
 
