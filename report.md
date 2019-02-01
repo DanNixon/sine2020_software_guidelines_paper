@@ -249,9 +249,20 @@ them).
 
 ### Coding standards
 
-Code should be of a high standard, 
+Code should be of a high standard, the reason for this is two fold; good quality
+code that conforms to accepted standards is less likely to contain defects and
+well formatted, readable code makes it easier to maintain that code in the
+future.
 
-TODO
+Specific rules depend greatly on the language in question, as such it is better
+to select a set of standards based on the language your software is written in.
+A community curated list of standards organised by language is available here:
+https://github.com/Kristories/awesome-guidelines
+
+An important, language agnostic rule to follow is to be clear about what your
+code is doing. This may be by means of comments, verbose variable names, etc.
+Ideally a developer should not have to dig through documentation stored
+elsewhere or find the correct person to talk to to understand a piece of code.
 
 ### Source control management
 
@@ -260,14 +271,14 @@ provides a full history of the state of your code base as the project evolves,
 allows multiple developers to work on the project simultaneously and provides
 means on reviewing changes to your software. 
 
-As with wiritng code, following a set of guidelines when working with your SCM
+As with writing code, following a set of guidelines when working with your SCM
 will allow you to get the most out of it. As such guidelines apply to a much
 wider audience there is already ample documentation describing them, TODO: PUT
 LINKS HERE, therefore this section will only give an overview and highlight a
 few commonly overlooked points.
 
 You must adopt a workflow and enforce it. A workflow defines how developers
-interact with the SCM and the process of their chanes to the code base being
+interact with the SCM and the process of their changes to the code base being
 accepted.
 
 A popular option, that is also one of the simplest, is the feature branch
@@ -277,7 +288,7 @@ In this workflow when a developer starts working on a new feature they do so on
 a new branch and that branch is then merged when the changes are to be accepted.
 
 Developers should also ensure that they produce a clear commit history. Given
-that this is likely the longest standing documentation descibing the history of
+that this is likely the longest standing documentation describing the history of
 your software it is important that commits are sensible, atomic and logically
 ordered and that commit messages are clear and describe the reasoning behind the
 changes made in the commit itself. A good guide for this can be found here:
