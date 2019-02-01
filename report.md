@@ -281,6 +281,26 @@ code is doing. This may be by means of comments, verbose variable names, etc.
 Ideally a developer should not have to dig through documentation stored
 elsewhere or find the correct person to talk to to understand a piece of code.
 
+### Issues and work planning
+
+A means of tracking work to be done on a software project is essential. This is
+often implemented in two parts; low level tracking of implementation tasks and
+high level tracking of project goals.
+
+For low level task tracking simple tools such as GitHub Issues are likely
+sufficient, even for large projects. The essential functionality is providing a
+description of work to be undertaken and allowing it to be assigned to a
+developer. Additional features may include Kanban boards, task dependency and
+task hierarchy.
+
+High level tracking, typically at project management level, should track the
+projects medium to long term goals and keep track of their progress. This can be
+used to plan the use of developer time over the coming months and should be the
+point at which users of the software define what they would like to see.
+
+Ideally both levels of work tracking should be available to view freely so that
+users can remain informed about the development of the software.
+
 ### Source control management
 
 Source control management (SCM) is an essential part of a software project. This
@@ -311,26 +331,6 @@ your software it is important that commits are sensible, atomic and logically
 ordered and that commit messages are clear and describe the reasoning behind the
 changes made in the commit itself. A good guide for this can be found here:
 https://chris.beams.io/posts/git-commit/.
-
-### Issues and work planning
-
-A means of tracking work to be done on a software project is essential. This is
-often implemented in two parts; low level tracking of implementation tasks and
-high level tracking of project goals.
-
-For low level task tracking simple tools such as GitHub Issues are likely
-sufficient, even for large projects. The essential functionality is providing a
-description of work to be undertaken and allowing it to be assigned to a
-developer. Additional features may include Kanban boards, task dependency and
-task hierarchy.
-
-High level tracking, typically at project management level, should track the
-projects medium to long term goals and keep track of their progress. This can be
-used to plan the use of developer time over the coming months and should be the
-point at which users of the software define what they would like to see.
-
-Ideally both levels of work tracking should be available to view freely so that
-users can remain informed about the development of the software.
 
 ### Continuous integration
 
