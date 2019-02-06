@@ -191,7 +191,9 @@ choices that inhibit this.
 A key part of this is choosing an open, well documented format for storing data
 in. In the neutron science community this is the NeXus format which defines a
 schema on top of the HDF5 file format. NeXus aims to standardise the way similar
-data is represented by different facilities and software.
+data is represented by different facilities and software. Whilst the format has
+existed for roughly two decades it's widespread use as the standard data format
+has been a relatively recent effort between facilities and software projects.
 
 One point of note is that when committing to NeXus as your data format, you must
 ensure you truly implement the standard or publish the schema if the need to
