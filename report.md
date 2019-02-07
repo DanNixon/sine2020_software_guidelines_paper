@@ -65,6 +65,16 @@ code is doing. This may be by means of comments, verbose variable names, etc.
 Ideally a developer should not have to dig through documentation stored
 elsewhere or find the correct person to talk to to understand a piece of code.
 
+A general rule for code is to attempt to read the code as plain text, possibly
+also out loud, and if the function of the code is clear then it is sufficiently
+expressive or well commented. If not refactoring should be done to make the
+intended function of the code obvious.
+
+For ease of collaboration filenames, identifier names, comments and
+documentation should be published in English. Translation frameworks may be used
+to provide your software and documentation in other languages at compile/build
+time.
+
 ### Issues and work planning
 
 A means of tracking work to be done on a software project is essential. This is
