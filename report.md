@@ -38,6 +38,16 @@ The area this falls down is in long term planning, as agile methodologies do not
 focus on long term goals (or at least do not attempt to assign deadlines to
 them).
 
+The traditional alternative to agile is waterfall, in this methodology each task
+is planned in advance and carried out in a predetermined order. One key
+disadvantage to this is the lack of flexibility when issues in implementation
+cause a cascading change to how the project is to be implemented.
+
+Projects that are better suited to the waterfall methodology are those where
+delivering an intermediate product is not viable. For example, a library to
+perform Fourier transformations is not useful unless fully implemented whereas a
+graphical data processing toolkit may be.
+
 ### Coding standards
 
 Code should be of a high standard, the reason for this is two fold; good quality
