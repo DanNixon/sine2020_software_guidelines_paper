@@ -70,6 +70,16 @@ also out loud, and if the function of the code is clear then it is sufficiently
 expressive or well commented. If not refactoring should be done to make the
 intended function of the code obvious.
 
+As an example of this, compare
+```
+bad
+```
+
+against,
+```
+good
+```
+
 For ease of collaboration filenames, identifier names, comments and
 documentation should be published in English. Translation frameworks may be used
 to provide your software and documentation in other languages at compile/build
