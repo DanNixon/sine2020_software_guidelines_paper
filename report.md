@@ -90,7 +90,7 @@ float linear_approx_pair_potentials(std::vector<float> const& pair_potential)
   float lapp(0.0f);
   for (auto const& y : pair_potential)
   {
-    lapp += ((ema_potential(y) - y) * smooth_switch(y) + y;
+    lapp += ((ema_potential(y) - y) * smooth_switch(y)) + y;
   }
   return lapp;
 }
