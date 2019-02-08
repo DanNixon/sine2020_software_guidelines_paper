@@ -72,12 +72,28 @@ intended function of the code obvious.
 
 As an example of this, compare
 ```
-bad
+float calc_v(std::vector<float> y)
+{
+  float v = 0.0;
+  for (int i = 0; i < y.size(); i++)
+  {
+    v += (f(y[i]) - y[i]) * s(y[i]) + y[i];
+  }
+  return v;
+}
 ```
 
 against,
 ```
-good
+float linear_approx_pair_potentials(std::vector<float> const& pair_potential)
+{
+  float lapp(0.0f);
+  for (auto const& y : pair_potential)
+  {
+    lapp += ((ema_potential(y) - y) * smooth_switch(y) + y;
+  }
+  return lapp;
+}
 ```
 
 For ease of collaboration filenames, identifier names, comments and
