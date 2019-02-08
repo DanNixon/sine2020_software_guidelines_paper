@@ -416,7 +416,7 @@ The simplest and most common form is online documentation, for example a wiki pa
 
 An increasingly popular method of documentation is the video tutorial. These are extremely useful to users as it allows them to easily see how to use the software, however they have a large time cost to create them. All documentation should be kept up to date, but video tutorials may require significant work if the software undergoes a large change.
 
-Local???
+Face to Face communication is often the most efficient and effective way to understand a user’s question/comment. This allows for a conversation to occur with more probing questions to improve the developer’s understanding and to overcome any unfamiliar terminology. As a result it is important to have some local support, where developers are preferably in close proximity to their users. 
 
 The documentation discussed so far has focused on the users. It is also valuable to have developer documentation. This documentation could contain information on the standards used in the code, how to set up a development version and appropriate tutorials/information.
 A key activity for any piece of software is the user support. Unlike documentation this is more interactive between developers and users. As a minimum email support should be provided to the users in a location that is easy for them to find. The emails should be checked regularly and initial responses should be within a day or two. The initial response may be to ask for more details, to arrange to meet with them face to face or to say that it is being worked on. Providing effective user support will give users more confidence in the software.
