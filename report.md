@@ -96,6 +96,8 @@ float linear_approx_pair_potentials(std::vector<float> const& pair_potential)
 }
 ```
 
+TODO: LAPP function needs a citation, ask Anthony
+
 For ease of collaboration filenames, identifier names, comments and
 documentation should be published in English. Translation frameworks may be used
 to provide your software and documentation in other languages at compile/build
