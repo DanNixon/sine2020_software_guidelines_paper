@@ -284,64 +284,16 @@ Large pieces of software will require some form of management, to ensure that th
 
 All pieces of distributed software require a license. An open source license such as the GNU General Public License (GPL) is advisable from both a user and development perspective. The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of your software. The advantage of the GPL for software development is that it allows anyone to contribute to your software (you may impose some of your own checks on the code before it goes into the master branch), this radically improves the available pool of developers.
 
-The software should follow the basic notion of a release cycle. A release is a version of the software that has been tested and the development team is confident that it is ready to be used as part of the neutron experiments. A release will occur a few times a year, this reassures users that the project is still supported. It is advisable to follow semantic versioning (major.minor.patch, e.g. 3.1.0) for the naming of the releases. Prior to a release there will be a code freeze, where no new code will be submitted to the master branch. Once all of the code has been merged into a release (will be based off of master at the start of the code freeze) branch then manual testing can begin. It is advisable for the developers to do the first round to catch obvious bugs, which are fixed and added to the master branch. The next stage is beta testing where a select group of the users are chosen and they test the master branch and report any bugs. Once these bugs are fixed it is then possible to release the software with some confidence that it is ready for use during experiments. It is advisable to then spend some time working maintenance tasks, these are improvements to the maintainability of the code.
 
-To ensure that your software is cited by the users it is possible to add a DOI to the release. Another method is to use a publication that provides the idea of the software.
+For research/academic software it is also beneficial to generate a Digital
+Object Identifier (DOI) for each release. This allows your software to be easily
+cited in publications and makes it clear which version of your software was used
+to generate results in a given publication. Another method is to use a publication that provides the idea of the software.
+
+The software should follow the basic notion of a release cycle. A release is a version of the software that has been tested and the development team is confident that it is ready to be used as part of the neutron experiments. A release will occur a few times a year, this reassures users that the project is still supported. It is advisable to follow semantic versioning (major.minor.patch, e.g. 3.1.0) for the naming of the releases. Prior to a release there will be a code freeze, where no new code will be submitted to the master branch. Once all of the code has been merged into a release (will be based off of master at the start of the code freeze) branch then manual testing can begin. It is advisable for the developers to do the first round to catch obvious bugs, which are fixed and added to the master branch. The next stage is beta testing where a select group of the users are chosen and they test the master branch and report any bugs. Once these bugs are fixed it is then possible to release the software with some confidence that it is ready for use during experiments. It is advisable to then spend some time working maintenance tasks, these are improvements to the maintainability of the code.
 
 ## (6) Packaging and Distribution
 
-### Cross platform
-
-Unless your software specifically targets high performance computing systems
-such as clusters or distributed compute platforms then no assumption can
-realistically be made about how, and specifically on what platform, a user will
-expect to run your software.
-
-For this reason it is highly desirable (or even essential) that your software is
-designed to be run on or at least easily portable to multiple operating systems
-and architectures.
-
-Thanks to modern development tools, libraries and build systems this is not a
-complex task. Cross platform development tends to not add significant complexity
-or time cost to delivering a piece of software.
-
-It is possible to only officially support a single or narrow selection of
-systems, however the use of cross platform libraries and build systems should
-still be encouraged to allow easy deployment on additional platforms at a later
-stage if required and to allow collaborators and power users to build and modify
-your software on whatever computer they may use.
-
-If officially supporting multiple platforms then it is beneficial to encourage a
-spread of different platforms and operating systems across your development team
-(a good example of this is the Mantid project), this ensures that there are
-always multiple people capable of addressing platform specific issues when they
-arise.
-
-### Packaging
-
-In order to reduce friction for users when they want to setup your software an
-intuitive packaging method is essential. Exactly what this involves varies
-depending on the nature of your project, as such this section will not go into
-great detail about specific options but rather the requirements of an installer
-and method of choosing an appropriate installation method for your software.
-
-The goal of an installer to to give your users with a working copy of your
-software. They should not have to care about any implementation specifics or
-having to install additional dependencies to simply make your software run. This
-is the first requirement.
-
-Once installed your software should not conflict with any other software a user
-may have installed on their machine. A common example of this is when
-applications, at some level, depend on the same libraries. In which case the
-latest installed software package may remove or overwrite the third party
-library installed by the first software package.
-
-As the technology becomes more popular it is worth looking into cross platform
-container based means of distribution (for example, Docker and friends). This
-allows you to ship a software package in an already configured and working state
-being safe in the knowledge it will function in the same way on the user's
-computer. Different containerization systems have their own caveats and there is
-no "one size fits all" solution.
 
 ### Releases
 
@@ -396,11 +348,6 @@ release package and signing it with either a project or maintainers PGP key.
 This is not an essential step, but is good practice to allow verification of
 historic releases.
 
-For research/academic software it is also beneficial to generate a Digital
-Object Identifier (DOI) for each release. This allows your software to be easily
-cited in publications and makes it clear which version of your software was used
-to generate results in a given publication.
-
 ### Maintenance period
 
 After a release is the opportune time to perform invasive maintenance tasks that
@@ -408,6 +355,59 @@ would otherwise be too much of a risk to carry out closer to a release. Such
 tasks may include; updating dependency versions, addressing code quality issues,
 refactoring, code restructuring, deploying new functionality that interacts with
 large portions of the code, etc.
+
+### Packaging
+
+In order to reduce friction for users when they want to setup your software an
+intuitive packaging method is essential. Exactly what this involves varies
+depending on the nature of your project, as such this section will not go into
+great detail about specific options but rather the requirements of an installer
+and method of choosing an appropriate installation method for your software.
+
+The goal of an installer to to give your users with a working copy of your
+software. They should not have to care about any implementation specifics or
+having to install additional dependencies to simply make your software run. This
+is the first requirement.
+
+Once installed your software should not conflict with any other software a user
+may have installed on their machine. A common example of this is when
+applications, at some level, depend on the same libraries. In which case the
+latest installed software package may remove or overwrite the third party
+library installed by the first software package.
+
+As the technology becomes more popular it is worth looking into cross platform
+container based means of distribution (for example, Docker and friends). This
+allows you to ship a software package in an already configured and working state
+being safe in the knowledge it will function in the same way on the user's
+computer. Different containerization systems have their own caveats and there is
+no "one size fits all" solution.
+
+### Cross platform
+
+Unless your software specifically targets high performance computing systems
+such as clusters or distributed compute platforms then no assumption can
+realistically be made about how, and specifically on what platform, a user will
+expect to run your software.
+
+For this reason it is highly desirable (or even essential) that your software is
+designed to be run on or at least easily portable to multiple operating systems
+and architectures.
+
+Thanks to modern development tools, libraries and build systems this is not a
+complex task. Cross platform development tends to not add significant complexity
+or time cost to delivering a piece of software.
+
+It is possible to only officially support a single or narrow selection of
+systems, however the use of cross platform libraries and build systems should
+still be encouraged to allow easy deployment on additional platforms at a later
+stage if required and to allow collaborators and power users to build and modify
+your software on whatever computer they may use.
+
+If officially supporting multiple platforms then it is beneficial to encourage a
+spread of different platforms and operating systems across your development team
+(a good example of this is the Mantid project), this ensures that there are
+always multiple people capable of addressing platform specific issues when they
+arise.
 
 ## (7) Support and Documentation
 
