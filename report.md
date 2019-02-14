@@ -468,14 +468,6 @@ A key activity for any piece of software is the user support. Unlike documentati
 
 ## (8) Standard Tools
 
-This section lists a series of tasks and the standard tools that are commonly
-used to perform them. It is designed to aid as a guide when starting out a new
-software project.
-
-It is not designed to be a definitive list of what can and cannot be used, but
-rather a recommendation based on experience of software projects and analysis of
-the options at the time of writing.
-
 ### Code hosting
 
 - GitHub
