@@ -230,6 +230,16 @@ C++ projects can also benefit from use of a dependency manager such as Conan.
 Most build systems for other languages combine a dependency manager into the
 build system, however this is not the case for CMake.
 
+If you are making your software extensible by means of a scripting interface
+this should ideally be done in Python.
+
+Python is becoming the standard language for data science and as such has a wide
+range of libraries, documentation and resources available for it. This benefits
+both the developer of the software as the burden of implementing new features
+and documenting a lesser known scripting mechanism are lifted to a degree and
+your users as they have the ability to augment your software to suit any
+specific needs they data has.
+
 ## (4) Data Formats and Interoperability
 
 It is important to consider users wishing to move their data between software
@@ -528,20 +538,6 @@ static analysis tools.
 Qt is a commonly used application framework used by many open source and
 commercial software packages. It allows easy development of cross platform GUIs
 in a variety of languages.
-
-### Scripting/plugin interface
-
-- Python
-
-If you are making your software extensible by means of a scripting interface
-this should ideally be done in Python.
-
-Python is becoming the standard language for data science and as such has a wide
-range of libraries, documentation and resources available for it. This benefits
-both the developer of the software as the burden of implementing new features
-and documenting a lesser known scripting mechanism are lifted to a degree and
-your users as they have the ability to augment your software to suit any
-specific needs they data has.
 
 ## (9) SINE2020
 
