@@ -103,6 +103,21 @@ documentation should be published in English. Translation frameworks may be used
 to provide your software and documentation in other languages at compile/build
 time.
 
+To assist in maintaining code quality static analysis tools should be employed.
+There are a plethora of static analysis tools available for pretty much every
+language. Clang and Pylint are two of the most common for C++ and Python
+respectively.
+
+A lot of tools are available as standalone packages that you simply install, run
+and get back a report in whatever format that tool supports. Some tools are also
+available as a cloud service that is triggered by new code being pushed to your
+remote repository.
+
+For a wider selection of the available tools it is worth looking over the
+selection on Awesome Static Analysis
+(https://github.com/mre/awesome-static-analysis), a community curated list of
+static analysis tools.
+
 ### Issues and work planning
 
 A means of tracking work to be done on a software project is essential. This is
@@ -169,8 +184,19 @@ running any automated test suites, however any number of additional tasks can be
 performed including; generating documentation, performing static analysis,
 deploying installer packages, checking for software vulnerabilities, etc.
 
-Given the availability of free to use CI services (see Standard Tools section)
-there is no good reason to not have CI setup.
+For small scale projects that reside in a single repository continuous
+integration as a hosted service is most likely sufficient. One of the most
+common of such services is Travis CI who offer Linux, Mac OS and Windows build
+environments for a time limited window for you to run your builds and tests.
+
+Appveyor is an alternative service that focuses on Windows build environments.
+Windows support in Travis is relatively new at the time of writing so the common
+approach of using Travis and Appveyor to cover all operating systems is still
+common.
+
+Jenkins is a self hosted CI solution that runs on your own infrastructure. The
+key advantage this has is removing restrictions around build time, data
+availability and specific build environment setup.
 
 ### Code review
 
@@ -492,44 +518,6 @@ GitHub Pages is a free hosting service provided by GitHub, this allows you to
 commit your website content to a specific branch and have it served by GitHub.
 The large benefit here is avoiding the cost and time of maintaining the
 infrastructure required to host your projects website.
-
-### Continuous integration
-
-- Travis
-- Appveyor
-- Jenkins
-
-For small scale projects that reside in a single repository continuous
-integration as a hosted service is most likely sufficient. One of the most
-common of such services is Travis CI who offer Linux, Mac OS and Windows build
-environments for a time limited window for you to run your builds and tests.
-
-Appveyor is an alternative service that focuses on Windows build environments.
-Windows support in Travis is relatively new at the time of writing so the common
-approach of using Travis and Appveyor to cover all operating systems is still
-common.
-
-Jenkins is a self hosted CI solution that runs on your own infrastructure. The
-key advantage this has is removing restrictions around build time, data
-availability and specific build environment setup.
-
-### Code analysis
-
-- Clang (C++)
-- Pylint (Python)
-
-There are a plethora of static analysis tools available for pretty much every
-language. The two listed are two of the most common for C++ and Python.
-
-A lot of tools are available as standalone packages that you simply install, run
-and get back a report in whatever format that tool supports. Some tools are also
-available as a cloud service that is triggered by new code being pushed to your
-remote repository.
-
-For a wider selection of the available tools it is worth looking over the
-selection on Awesome Static Analysis
-(https://github.com/mre/awesome-static-analysis), a community curated list of
-static analysis tools.
 
 ### GUI framework/library
 
