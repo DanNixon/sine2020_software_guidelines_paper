@@ -169,6 +169,11 @@ ordered and that commit messages are clear and describe the reasoning behind the
 changes made in the commit itself. A good guide for this can be found here:
 https://chris.beams.io/posts/git-commit/.
 
+Git is the most common and one of the most powerful source control management
+tool used in open source software today with a wide variety of training
+resources available. It is suitable for a project of any size and will last the
+life of your project.
+
 ### Continuous integration
 
 Continuous Integration (CI) should be used, regardless of the projects size, to
@@ -470,15 +475,6 @@ software project.
 It is not designed to be a definitive list of what can and cannot be used, but
 rather a recommendation based on experience of software projects and analysis of
 the options at the time of writing.
-
-### Source control management
-
-- Git
-
-Git is the most common and one of the most powerful source control management
-tool used in open source software today with a wide variety of training
-resources available. It is suitable for a project of any size and will last the
-life of your project.
 
 ### Code hosting
 
