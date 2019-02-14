@@ -130,6 +130,14 @@ description of work to be undertaken and allowing it to be assigned to a
 developer. Additional features may include Kanban boards, task dependency and
 task hierarchy.
 
+Most cloud hosted Git services provide their own issue tracking tool which
+typically suit the needs of most software projects.
+
+If more complex task workflows are needed or if your project is split across
+multiple repositories where work on a single feature may span multiple
+repositories then it may be beneficial to look into issue tracking separate from
+your code repositories.
+
 High level tracking, typically at project management level, should track the
 projects medium to long term goals and keep track of their progress. This can be
 used to plan the use of developer time over the coming months and should be the
@@ -472,18 +480,6 @@ The documentation discussed so far has focused on the users. It is also valuable
 A key activity for any piece of software is the user support. Unlike documentation this is more interactive between developers and users. As a minimum email support should be provided to the users in a location that is easy for them to find. The emails should be checked regularly and initial responses should be within a day or two. The initial response may be to ask for more details, to arrange to meet with them face to face or to say that it is being worked on. Providing effective user support will give users more confidence in the software.
 
 ## (8) Standard Tools
-
-### Issue tracking
-
-- Git hosting providers in built tool
-
-Most cloud hosted Git services provide their own issue tracking tool which
-typically suit the needs of most software projects.
-
-If more complex task workflows are needed or if your project is split across
-multiple repositories where work on a single feature may span multiple
-repositories then it may be beneficial to look into issue tracking separate from
-your code repositories.
 
 ### Project website
 
