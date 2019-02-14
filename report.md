@@ -412,7 +412,7 @@ arise.
 ## (7) Support and Documentation
 
 If a piece of software is intended to have a large user base then documentation becomes essential. Good documentation will prevent the developers having to spend time explaining how to use the software to users. The hallmarks of good documentation are it is concise, written in a way that is accessible to the target audience (users) and easily available.
-The simplest and most common form is online documentation, for example Read the docs or a wiki page. This should have a clear structure and be easy to navigate. An easy way to achieve this is to have a contents page and to make the pages searchable so users can easily find the relevant information. An easy way to achieve this is to have tags that summerise the main themes of each page. The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
+The simplest and most common form is online documentation, for example Read the docs or a wiki page. This should have a clear structure and be easy to navigate. An easy way to achieve this is to have a contents page and to make the pages searchable so users can easily find the relevant information. An easy way to achieve this is to have tags that summarise the main themes of each page. The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
 
 An increasingly popular method of documentation is the video tutorial. These are extremely useful to users as it allows them to easily see how to use the software, however they have a large time cost to create them. All documentation should be kept up to date, but video tutorials may require significant work if the software undergoes a large change.
 
