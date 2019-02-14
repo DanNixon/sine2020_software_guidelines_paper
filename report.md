@@ -221,6 +221,10 @@ duplicating work having multiple eyes on a change before it is accepted does
 significantly increase the chance of potential issues being found before they
 are released to users.
 
+Tools for code review are often in built in hosted SMC services, an example of
+this is GitHub Pull Requests which allow code to be viewed and commented on in a
+forum like mechanism.
+
 ## (3) Architecture
 
 A well designed software package would separate its functionality into a set of
@@ -498,13 +502,6 @@ If more complex task workflows are needed or if your project is split across
 multiple repositories where work on a single feature may span multiple
 repositories then it may be beneficial to look into issue tracking separate from
 your code repositories.
-
-### Code review
-
-- Git hosting providers in built tool
-
-Similarly, most cloud hosted Git services also provide some means of code review
-which is often sufficient for most projects.
 
 ### Project website
 
