@@ -477,21 +477,23 @@ arise.
 
 ## (7) Support and Documentation
 
-If a piece of software is intended to have a large user base then documentation becomes essential. Good documentation will prevent the developers having to spend time explaining how to use the software to users. The hallmarks of good documentation are it is concise, written in a way that is accessible to the target audience (users) and easily available.
-The simplest and most common form is online documentation, for example Read the docs or a wiki page. This should have a clear structure and be easy to navigate. An easy way to achieve this is to have a contents page and to make the pages searchable so users can easily find the relevant information. An easy way to achieve this is to have tags that summarise the main themes of each page. The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
+If a piece of software is intended to have a large user base then documentation
+becomes essential. Good documentation will prevent the developers having to
+spend time explaining how to use the software to users. The hallmarks of good
+documentation are it is concise, written in a way that is accessible to the
+target audience (users) and easily available.
 
-An increasingly popular method of documentation is the video tutorial. These are extremely useful to users as it allows them to easily see how to use the software, however they have a large time cost to create them. All documentation should be kept up to date, but video tutorials may require significant work if the software undergoes a large change.
+The simplest and most common form is online documentation, for example Read the
+Docs or a wiki page. This should have a clear structure and be easy to navigate.
+An easy way to achieve this is to have a contents page and to make the pages
+searchable so users can easily find the relevant information. An easy way to
+achieve this is to have tags that summarise the main themes of each page. The
+online documentation should be version controlled so it is possible to revert
+changes and to follow its evolution.
 
-Face to Face communication is often the most efficient and effective way to understand a user’s question/comment. This allows for a conversation to occur with more probing questions to improve the developer’s understanding and to overcome any unfamiliar terminology. As a result it is important to have some local support, where developers are preferably in close proximity to their users. Face to Face contact also has the benefit of increasing the user experience and users are more likely to report problems/bugs to the development team if they can easily speak to them.
-
-The documentation discussed so far has focused on the users. It is also valuable to have developer documentation. This documentation could contain information on the standards used in the code, how to set up a development version and appropriate tutorials/information.
-A key activity for any piece of software is the user support. Unlike documentation this is more interactive between developers and users. As a minimum email support should be provided to the users in a location that is easy for them to find. The emails should be checked regularly and initial responses should be within a day or two. The initial response may be to ask for more details, to arrange to meet with them face to face or to say that it is being worked on. Providing effective user support will give users more confidence in the software.
-
-## (8) Standard Tools
-
-### Project website
-
-- Hugo & GitHub Pages
+Projects may benefit from having a landing page introducing the project and
+directing users to commonly used or important resources. Hugo and GitHub Pages
+are a common choice for this.
 
 Hugo is a powerful and fast static website generator. It can be used for very
 basic less than 10 page sites up to large blogs/news sites, supports themeing
@@ -502,14 +504,43 @@ commit your website content to a specific branch and have it served by GitHub.
 The large benefit here is avoiding the cost and time of maintaining the
 infrastructure required to host your projects website.
 
-## (9) SINE2020
+An increasingly popular method of documentation is the video tutorial. These are
+extremely useful to users as it allows them to easily see how to use the
+software, however they have a large time cost to create them. All documentation
+should be kept up to date, but video tutorials may require significant work if
+the software undergoes a large change.
+
+Face to Face communication is often the most efficient and effective way to
+understand a user's question/comment. This allows for a conversation to occur
+with more probing questions to improve the developer's understanding and to
+overcome any unfamiliar terminology. As a result it is important to have some
+local support, where developers are preferably in close proximity to their
+users. Face to Face contact also has the benefit of increasing the user
+experience and users are more likely to report problems/bugs to the development
+team if they can easily speak to them.
+
+The documentation discussed so far has focused on the users. It is also valuable
+to have developer documentation. This documentation could contain information on
+the standards used in the code, how to set up a development version and
+appropriate tutorials/information.
+
+A key activity for any piece of software is the user support. Unlike
+documentation this is more interactive between developers and users. As a
+minimum email support should be provided to the users in a location that is easy
+for them to find. The emails should be checked regularly and initial responses
+should be within a day or two. The initial response may be to ask for more
+details, to arrange to meet with them face to face or to say that it is being
+worked on. Providing effective user support will give users more confidence in
+the software.
+
+## (8) SINE2020
 
 TODO
 
-## (10) Conclusion
+## (9) Conclusion
 
 TODO
 
-## (11) Acknowledgements
+## (10) Acknowledgements
 
 TODO
