@@ -288,6 +288,14 @@ and documenting a lesser known scripting mechanism are lifted to a degree and
 your users as they have the ability to augment your software to suit any
 specific needs they data has.
 
+If the application requires a graphical user interface (GUI) then a good choice
+of library is Qt.  Qt is a commonly used application framework used by many open
+source and commercial software packages. It allows easy development of cross
+platform GUIs in a variety of languages.
+
+Another increasingly popular option is to provide your software as a web service
+that is accessed via a web page.
+
 ## (4) Data Formats and Interoperability
 
 It is important to consider users wishing to move their data between software
@@ -493,14 +501,6 @@ GitHub Pages is a free hosting service provided by GitHub, this allows you to
 commit your website content to a specific branch and have it served by GitHub.
 The large benefit here is avoiding the cost and time of maintaining the
 infrastructure required to host your projects website.
-
-### GUI framework/library
-
-- Qt/PyQt
-
-Qt is a commonly used application framework used by many open source and
-commercial software packages. It allows easy development of cross platform GUIs
-in a variety of languages.
 
 ## (9) SINE2020
 
