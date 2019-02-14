@@ -174,6 +174,11 @@ tool used in open source software today with a wide variety of training
 resources available. It is suitable for a project of any size and will last the
 life of your project.
 
+There are a wide range of cloud Git repository providers, all of which provide
+mostly similar features. If your team is distributed then it is recommended to
+use such a service (opposed to local hosting on site) to avoid network related
+bottlenecks.
+
 ### Continuous integration
 
 Continuous Integration (CI) should be used, regardless of the projects size, to
@@ -467,17 +472,6 @@ The documentation discussed so far has focused on the users. It is also valuable
 A key activity for any piece of software is the user support. Unlike documentation this is more interactive between developers and users. As a minimum email support should be provided to the users in a location that is easy for them to find. The emails should be checked regularly and initial responses should be within a day or two. The initial response may be to ask for more details, to arrange to meet with them face to face or to say that it is being worked on. Providing effective user support will give users more confidence in the software.
 
 ## (8) Standard Tools
-
-### Code hosting
-
-- GitHub
-- GitLab
-- Bitbucket
-
-There are a wide range of cloud Git repository providers, all of which provide
-mostly similar features. If your team is distributed then it is recommended to
-use such a service (opposed to local hosting on site) to avoid network related
-bottlenecks.
 
 ### Issue tracking
 
