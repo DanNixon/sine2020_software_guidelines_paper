@@ -336,7 +336,7 @@ Typically this means recording a history of each atomic action your software
 performs as well as any relevant version numbers (i.e. the version of your
 software, versions of plugins/dependencies, etc.).
 
-Good examples of such history reporting are algorithm Histories in Mantid and
+Good examples of such history reporting are algorithm histories in Mantid and
 Process Lists in Savu.
 
 One may also choose to use a common format for job configurations and history,
@@ -350,7 +350,6 @@ Large pieces of software will require some form of management, to ensure that th
 
 All pieces of distributed software require a license. An open source license such as the GNU General Public License (GPL) is advisable from both a user and development perspective. The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of your software. The advantage of the GPL for software development is that it allows anyone to contribute to your software (you may impose some of your own checks on the code before it goes into the master branch), this radically improves the available pool of developers.
 
-
 For research/academic software it is also beneficial to generate a Digital
 Object Identifier (DOI) for each release. This allows your software to be easily
 cited in publications and makes it clear which version of your software was used
@@ -359,7 +358,6 @@ to generate results in a given publication. Another method is to use a publicati
 The software should follow the basic notion of a release cycle. A release is a version of the software that has been tested and the development team is confident that it is ready to be used as part of the neutron experiments. A release will occur a few times a year, this reassures users that the project is still supported. It is advisable to follow semantic versioning (major.minor.patch, e.g. 3.1.0) for the naming of the releases. Prior to a release there will be a code freeze, where no new code will be submitted to the master branch. Once all of the code has been merged into a release (will be based off of master at the start of the code freeze) branch then manual testing can begin. It is advisable for the developers to do the first round to catch obvious bugs, which are fixed and added to the master branch. The next stage is beta testing where a select group of the users are chosen and they test the master branch and report any bugs. Once these bugs are fixed it is then possible to release the software with some confidence that it is ready for use during experiments. It is advisable to then spend some time working maintenance tasks, these are improvements to the maintainability of the code.
 
 ## (6) Packaging and Distribution
-
 
 ### Releases
 
