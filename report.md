@@ -407,7 +407,17 @@ to release the software with some confidence that it is ready for use during
 experiments. It is advisable to then spend some time working maintenance tasks,
 these are improvements to the maintainability of the code.
 
-TODO: technical debt mitigation: use qualified developers
+Care should be taken when selecting developers for tasks to ensure that they are
+in fact sufficiently skilled in the requisite areas to undertake said task; for
+example, if a piece of data analysis software requires a web interface it should
+not automatically be assumed that the developer that worked on the data analysis
+part of the software should also work on the web interface. Using unskilled
+developers when there is also a time constraint results in code that is likely
+of poor quality and difficult to maintain in the long term. It is definitely
+worth seeking new developers for roles that cannot be adequately filled by
+existing members of the team, the cost in hiring new developers or formally
+training existing developers is likely less than fixing the poor quality code
+created by unskilled developers.
 
 ## (6) Packaging and Distribution
 
