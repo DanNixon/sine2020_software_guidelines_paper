@@ -118,6 +118,9 @@ selection on Awesome Static Analysis
 (https://github.com/mre/awesome-static-analysis), a community curated list of
 static analysis tools.
 
+TODO: technical debt mitigation: write code as needed, preemptive optimisation
+and generalisation
+
 ### Issues and work planning
 
 A means of tracking work to be done on a software project is essential. This is
@@ -356,6 +359,8 @@ cited in publications and makes it clear which version of your software was used
 to generate results in a given publication. Another method is to use a publication that provides the idea of the software.
 
 The software should follow the basic notion of a release cycle. A release is a version of the software that has been tested and the development team is confident that it is ready to be used as part of the neutron experiments. A release will occur a few times a year, this reassures users that the project is still supported. It is advisable to follow semantic versioning (major.minor.patch, e.g. 3.1.0) for the naming of the releases. Prior to a release there will be a code freeze, where no new code will be submitted to the master branch. Once all of the code has been merged into a release (will be based off of master at the start of the code freeze) branch then manual testing can begin. It is advisable for the developers to do the first round to catch obvious bugs, which are fixed and added to the master branch. The next stage is beta testing where a select group of the users are chosen and they test the master branch and report any bugs. Once these bugs are fixed it is then possible to release the software with some confidence that it is ready for use during experiments. It is advisable to then spend some time working maintenance tasks, these are improvements to the maintainability of the code.
+
+TODO: technical debt mitigation: use qualified developers
 
 ## (6) Packaging and Distribution
 
