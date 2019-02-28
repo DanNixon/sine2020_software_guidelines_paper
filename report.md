@@ -542,10 +542,9 @@ TODO
 
 ## (9) Conclusion
 
-The implementation of software standards to a computational project has numerous benefits. It fundamentally allows for the software to be developed and maintained easily by a distributed team, while providing support to users. There is an initial cost in deciding what those standards should be and the specific recommendations from this paper may not be the best choice in ten years’ time, but choosing a standard will still benefit the project.  To make sure the smooth running of the project a governance model should also be implemented. Once the development work starts it is important to follow the standards and process that have been set out and these may need updating for long life projects. To ensure users have a positive experience it is important to provide support and to have a release cycle. 
+The implementation of software standards to a computational project has numerous benefits. It fundamentally allows for the software to be developed and maintained easily by a distributed team, while providing support to users. There is an initial cost in deciding what those standards should be and the specific recommendations from this paper may not be the best choice in ten years’ time, but choosing a standard will still benefit the project.  To make sure the smooth running of the project a governance model should also be implemented. Once the development work starts it is important to follow the standards and process that have been set out and these may need updating for long life projects. To ensure users have a positive experience it is important to provide support and to have a release cycle.
 
-Ultimately the main benefit of software that follows standards is that it allows development to continue even if the developers change. This is because the standards ensue a uniform code quality. With the superior code quality will come a more stable and maintainable piece of software. This can allow the user base to grow and flourish.  
-
+Ultimately the main benefit of software that follows standards is that it allows development to continue even if the developers change. This is because the standards ensue a uniform code quality. With the superior code quality will come a more stable and maintainable piece of software. This can allow the user base to grow and flourish.
 
 ## (10) Acknowledgements
 
