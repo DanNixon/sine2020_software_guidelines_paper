@@ -118,8 +118,16 @@ selection on Awesome Static Analysis
 (https://github.com/mre/awesome-static-analysis), a community curated list of
 static analysis tools.
 
-TODO: technical debt mitigation: write code as needed, preemptive optimisation
-and generalisation
+Another general rule to bear in mind when writing new code is to avoid the
+pitfalls of pre-emptive optimisation; attempting to reduce execution cost
+without determining if it is a problem to begin with, and pre-emptive
+generalisation; attempting to make the code less problem specific in the hope it
+can be reused without determining if this affects code quality or if there is
+even a case it would have to be reused.
+
+Of course neither pre-emptive optimisation or generalisation have a concrete
+definition so it is up to the developer and code reviewers to make informed
+decisions based on the nature of the work and the code base.
 
 ### Issues and work planning
 
@@ -166,6 +174,17 @@ points.
 You must adopt a workflow and enforce it. A workflow defines how developers
 interact with the SCM and the process of their changes to the code base being
 accepted.
+
+When working with developers who may be using SCM for the first time it is
+common to see unused code (be it commented out code, functions that are never
+called, files that are not included, etc.) left in the code base. This stems
+from the desire for past work to remain relevant and the fear that if said code
+was needed in the future it would not be easily accessible.
+
+For the sake of keeping the code base clean it is important to remove such dead
+code, it's presence in the code base only leads to increased difficulty in
+reading and understanding the code that is actually used and given that history
+is recorded in the SCM, deleting it comes with no danger.
 
 A popular option, that is also one of the simplest, is the feature branch
 workflow (see
