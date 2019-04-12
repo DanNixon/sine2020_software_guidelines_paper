@@ -176,96 +176,83 @@ Tools for code review are often in built in hosted SCM services, an example of t
 
 ## (3) Architecture
 
-A well designed software package would separate its functionality into a set of individual modules based on common feature areas, where a "module" may refer to a package, library or software plugin.
+A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas, where a module may refer to a package, library or software plugin.
 
-Care should be taken when designating these modules;
-modules should contain only functionality relevant to the goal of the module, where the goal itself is a very specific task (e.g. optimization).
+Care should be taken when designating these modules, these should contain only functionality relevant to the goal of the module, where the goal itself is a very specific task (e.g. optimization).
 
-Another aspect of this is not introducing unnecessary dependence into modules.
-Avoiding this allows individual modules to be reused with less restrictions than those that depend on multiple additional components, especially when the dependencies contain functionality that do not directly influence the functionality of the module in question.
+Code within a module should be closely related to each other, this reduces importing unnecessary functionality and keeps modules specific to a given purpose.
+A benefit gained from making code modular is the ability to test each module in isolation using automated testing (i.e. unit testing).
 
-A benefit gained from making code modular is the ability to test each module in isolation using automated testing, for instance unit testing.
-
-The code base of your software should be managed using an appropriate build system, of course this depends on the language (or combination of languages) used.
-
+The code base of your software should be managed using an appropriate build system, this depends on the language (or combination of languages) used.
 A good choice for C and C++ projects is CMake.
 This can handle setting up library paths and build tools automatically, allowing developers on any platform to develop your software with relative ease.
-
-For Python based projects Python's setuptools is typically sufficient, for specific cases (for example, when the software depends on tricky to package dependencies) Conda may be used as an alternative.
-
 C++ projects can also benefit from use of a dependency manager such as Conan.
 Most build systems for other languages combine a dependency manager into the build system, however this is not the case for CMake.
+For Python based projects Python's setuptools is typically sufficient, for specific cases (for example, when the software depends on tricky to package dependencies) Conda may be used as an alternative.
 
 If you are making your software extensible by means of a scripting interface this should ideally be done in Python.
-
 Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
-This benefits both the developer of the software as the burden of implementing new features and documenting a lesser known scripting mechanism are lifted to a degree and your users as they have the ability to augment your software to suit any specific needs they data has.
 
-If the application requires a graphical user interface (GUI) then a good choice of library is Qt.  Qt is a commonly used application framework used by many open source and commercial software packages.
+If the application requires a graphical user interface (GUI) then a good choice of library is Qt.
+Qt is an application framework commonly used by many open source and commercial software packages.
 It allows easy development of cross platform GUIs in a variety of languages.
-
 Another increasingly popular option is to provide your software as a web service that is accessed via a web page.
 
 ## (4) Data Formats and Interoperability
 
-It is important to consider users wishing to move their data between software packages (or write their own data treatment routines) and not make design choices that inhibit this.
-
-A key part of this is choosing an open, well documented format for storing data in.
-In the neutron science community this is the NeXus format which defines a schema on top of the HDF5 file format.
+It is important for your software to use a standardised data format, which features open source definitions and documentation.
+In the neutron science community this is the NeXus format, which defines a structure on top of the HDF5 file format.
 NeXus aims to standardise the way similar data is represented by different facilities and software.
 Whilst the format has existed for roughly two decades it's widespread use as the standard data format has been a relatively recent effort between facilities and software projects.
-
-One point of note is that when committing to NeXus as your data format, you must ensure you truly implement the standard or publish the schema if the need to diverge from the standard is genuinely required.
+One point of note is that when committing to NeXus as your data format, you must ensure you truly implement the standard or publish the definition, if the need to diverge from the standard is genuinely required.
 In this case you may evaluate if your changes should form part of the standard and propose such changes.
 
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
 
-Applications may need to store configuration or process setup information that is specific to a "job" (i.e. not general application configuration information, this should be handled by your application framework, e.g. `QSettings` for Qt).
+Applications may store information relevant to it as a whole (e.g. window layout for a graphical tool), which should typically be stored using the facilities provided by the application framework (e.g. `QSettings` for Qt).
 
-This job specific configuration should ideally be in a human readable plain text format assuming it's data volume does not negate readability or performance.
+Additional configuration or process setup information should be stored in an easily accessible location.
+This configuration should ideally be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
 Popular formats for this purpose include INI, YAML and JSON, all of which have several library options for common languages and store data as plain text.
-Under no circumstances should proprietary formats be used for job configuration (either plain text or binary).
+Under no circumstances should custom formats be used for job configuration.
 
-The ability to reproduce results of data treatment is an important ability for users of your software, to allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the untreated raw data.
-Typically this means recording a history of each atomic action your software performs as well as any relevant version numbers (i.e. the version of your software, versions of plugins/dependencies, etc.).
+The ability to reproduce results of data treatment is an important ability for users of your software, to allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
+Typically this means recording a history of each atomic action your software performs as well as any relevant version numbers (i.e. such as the version of your software, versions of plugins/dependencies).
+Good examples of such history reporting are algorithm histories in Mantid (TODO citation) and Process Lists in Savu (TODO citation).
 
-Good examples of such history reporting are algorithm histories in Mantid and Process Lists in Savu.
-
-One may also choose to use a common format for job configurations and history, for example Process Lists in Savu which are stored as entries in a NeXus file.
-The advantage this gives is that the result dataset can be used as input defining a job.
+One may also choose to use a common format for job configurations and history, for example Process Lists in Savu, which are stored as entries in a NeXus file.
+The advantage this gives is that the result dataset can be used as input for a future job.
 
 ## (5) Project Management
 
 Large pieces of software will require some form of management, to ensure that the team are working effectively.
-This is sometimes referred to as a governance model.
-The scale of the governance model will depend on the size of the piece of software and could range from an advisory committee to a project management board.
-A governance model will provide a constructive mechanism for deciding the direction of the software and for ensuring it progresses.
+This is referred to as a governance model.
+The scale of the governance model will depend on the size of the project and could range from an advisory committee to a project management board.
+A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
 
-All pieces of distributed software require a license.
-An open source license such as the GNU General Public License (GPL) is advisable from both a user and development perspective.
+The software should follow the basic notion of a release cycle.
+A release is a version of the software that has been tested and the development team is confident that it is ready to be used.
+A release will occur a few times a year, this reassures users that the project is still supported.
+It is advisable to follow semantic versioning (major.minor.patch, e.g. 3.1.0) for the naming of the releases, for more details see TODO link.
+Prior to a release there will be a "code freeze", where no new code will be submitted to the main branch.
+In preparation for a release developers should test the software works as expected with no obvious bugs.
+The next stage is "beta testing" where a select group of users are chosen and they test the software and report any bugs.
+Once all of the identified bugs are fixed it is then possible to release the software with some confidence that it is ready for use.
+It is advisable to then spend some time working on maintenance tasks, these are improvements to the maintainability of the code rather than any new user facing functionality.
+
+All pieces of released software require a license.
+An open source license is advisable from both a user and development perspective, for details of the available licenses see TODO link.
 The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of your software.
-The advantage of the GPL for software development is that it allows anyone to contribute to your software (you may impose some of your own checks on the code before it goes into the master branch), this radically improves the available pool of developers.
+The advantage of an open source license is that it allows anyone to contribute to your software (this should not bypass any review process), this radically improves the available pool of developers.
 
 For research/academic software it is also beneficial to generate a Digital Object Identifier (DOI) for each release.
 This allows your software to be easily cited in publications and makes it clear which version of your software was used to generate results in a given publication.
 Another method is to use a publication that provides the idea of the software.
 
-The software should follow the basic notion of a release cycle.
-A release is a version of the software that has been tested and the development team is confident that it is ready to be used as part of the neutron experiments.
-A release will occur a few times a year, this reassures users that the project is still supported.
-It is advisable to follow semantic versioning (major.minor.patch, e.g. 3.1.0) for the naming of the releases.
-Prior to a release there will be a code freeze, where no new code will be submitted to the master branch.
-Once all of the code has been merged into a release (will be based off of master at the start of the code freeze) branch then manual testing can begin.
-It is advisable for the developers to do the first round to catch obvious bugs, which are fixed and added to the master branch.
-The next stage is beta testing where a select group of the users are chosen and they test the master branch and report any bugs.
-Once these bugs are fixed it is then possible to release the software with some confidence that it is ready for use during experiments.
-It is advisable to then spend some time working maintenance tasks, these are improvements to the maintainability of the code.
-
-Care should be taken when selecting developers for tasks to ensure that they are in fact sufficiently skilled in the requisite areas to undertake said task;
-for example, if a piece of data analysis software requires a web interface it should not automatically be assumed that the developer that worked on the data analysis part of the software should also work on the web interface.
-Using unskilled developers when there is also a time constraint results in code that is likely of poor quality and difficult to maintain in the long term.
-It is definitely worth seeking new developers for roles that cannot be adequately filled by existing members of the team, the cost in hiring new developers or formally training existing developers is likely less than fixing the poor quality code created by unskilled developers.
+When selecting developers for a given task you should consider the skills/knowledge of the developer, the time required to complete the task and the deadline for the task.
+If the deadline and time required are similar then it is better to choose a developer with the existing skills.
+If there is sufficient time between the deadline and the estimated time to complete the task then it is better to use it as an opportunity to train a developer.
 
 ## (6) Packaging and Distribution
 
