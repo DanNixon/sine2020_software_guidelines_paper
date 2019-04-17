@@ -259,64 +259,56 @@ If there is sufficient time between the deadline and the estimated time to compl
 ### Releases
 
 A good release process depends greatly on the nature of the software project.
-For instance, a small tool used by a handful of users on a unique beamline could probably be released very quickly with minimal effort or fuss given that the users are likely closely involved with the development of said tool.
-Whereas a large framework used by multiple different scientific techniques at different facilities (such as the Mantid project) requires a much more involved release process to ensure the software is suitable for use by all intended audiences.
+A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project) requires an involved release process to ensure the software is suitable for use by all intended audiences.
 
-This section will assume you have a substantial number of users which you do not directly interact with during your development process, and as such cannot simply release and hope for the best because the users you do interact with have not reported any issues.
+This section will assume you have a substantial number of users that you do not directly interact with during your development process.
 
-In order for any potential issues in your software to be found and rectified you may wish to release beta or release candidate versions of your software before the official release.
-This release is intended for "power users" who do not mind testing your software for the benefit of the wider audience of your software (a typical example is a beamline scientist who wants to ensure your software works before providing it to their visiting users).
+In order for any potential issues in your software to be found and rectified you may wish to release a beta or release candidates of your software before the official release.
+These versions are intended for "power users" who do not mind testing your software for the benefit of the wider audience of your software (a typical example is a beamline scientist who wants to ensure your software works before providing it to their visiting users).
 
-The length of the beta period is determined by your release cycle and the number of users you estimate use your software.
-There is no generic rule for this other than ensuring that all (or as close to as possible) use cases of your software have been tested by users who specialise in that area.
+The length of the beta period is determined by your release cycle and your estimated number of users.
+There is no generic rule for this, but it is recommended that you ensure all (or as close to as possible) use cases of your software have been tested by users who specialise in that area.
 
 There can be any number of release candidates before the final release version is selected.
 As the name suggests a release candidate should be generated in exactly the same manner as a release (the only difference being the version number).
 
-To ensure users approach the new version with realistic expectations it is essential to provide sufficiently detailed release notes at the start of your beta testing period.
+To ensure users approach the new version with realistic expectations it is essential to provide sufficiently detailed release notes with every version of your software (release, beta, release candidate).
 These should summarise the changes made to your software since the last release, possibly highlighting some specific new features (this is where you "sell" your new version and give a reason for users to upgrade).
 
-It is essential that all breaking changes, i.e. those that require the user to perform different steps to achieve the same outcome, are listed.
+It is essential that all changes that may break existing workflows are listed.
 This will prevent issues when users attempt to use incompatible existing workflows with your new version.
 
-If your software in in any way involved in security or safety (in terms of either data, equipment or life) fixes for identified issues compromising safety or security must be listed in your release notes.
+Any fixes for safety or security reasons must be clearly documented in the release notes.
 
-It is recommended to tag and sign the release in your SCM system, in the case of Git this involves creating a tag from the code that was used to generate your release package and signing it with either a project or maintainers PGP key.
+It is recommended to tag and sign the release in your SCM system, in the case of Git this involves creating a tag from the code that was used to generate your release package and signing it with either a project or maintainers (Pretty Good Privacy) PGP key.
 This is not an essential step, but is good practice to allow verification of historic releases.
-
-### Maintenance period
-
-After a release is the opportune time to perform invasive maintenance tasks that would otherwise be too much of a risk to carry out closer to a release.
-Such tasks may include;
-updating dependency versions, addressing code quality issues, refactoring, code restructuring, deploying new functionality that interacts with large portions of the code, etc.
 
 ### Packaging
 
 In order to reduce friction for users when they want to setup your software an intuitive packaging method is essential.
-Exactly what this involves varies depending on the nature of your project, as such this section will not go into great detail about specific options but rather the requirements of an installer and method of choosing an appropriate installation method for your software.
+Exactly what this involves varies depending on the nature of your project, as such this section will not go into great detail about specific options, but rather the requirements of an installer and process of choosing an appropriate installation method for your software.
 
-The goal of an installer to to give your users with a working copy of your software.
+The first requirement is for the installer to to give your users a working copy of your software.
 They should not have to care about any implementation specifics or having to install additional dependencies to simply make your software run.
-This is the first requirement.
 
 Once installed your software should not conflict with any other software a user may have installed on their machine.
-A common example of this is when applications, at some level, depend on the same libraries.
-In which case the latest installed software package may remove or overwrite the third party library installed by the first software package.
+A common example of this is when applications depend on the same libraries.
 
-As the technology becomes more popular it is worth looking into cross platform container based means of distribution (for example, Docker and friends).
+TODO: signing binaries
+
+As the technology becomes more popular it is worth looking into cross platform container based means of distribution (for example, Docker (TODO: link), Singularity (TODO: link) and other container based systems).
 This allows you to ship a software package in an already configured and working state being safe in the knowledge it will function in the same way on the user's computer.
 Different containerization systems have their own caveats and there is no "one size fits all" solution.
 
 ### Cross platform
 
 Unless your software specifically targets high performance computing systems such as clusters or distributed compute platforms then no assumption can realistically be made about how, and specifically on what platform, a user will expect to run your software.
-
-For this reason it is highly desirable (or even essential) that your software is designed to be run on or at least easily portable to multiple operating systems and architectures.
-
+For this reason it is highly desirable (or even essential) that your software is designed to run on multiple operating systems and architectures.
 Thanks to modern development tools, libraries and build systems this is not a complex task.
-Cross platform development tends to not add significant complexity or time cost to delivering a piece of software.
 
 It is possible to only officially support a single or narrow selection of systems, however the use of cross platform libraries and build systems should still be encouraged to allow easy deployment on additional platforms at a later stage if required and to allow collaborators and power users to build and modify your software on whatever computer they may use.
+
+TODO: support subset of versions
 
 If officially supporting multiple platforms then it is beneficial to encourage a spread of different platforms and operating systems across your development team (a good example of this is the Mantid project), this ensures that there are always multiple people capable of addressing platform specific issues when they arise.
 
