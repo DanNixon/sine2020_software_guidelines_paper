@@ -294,7 +294,9 @@ They should not have to care about any implementation specifics or having to ins
 Once installed your software should not conflict with any other software a user may have installed on their machine.
 A common example of this is when applications depend on the same libraries.
 
-TODO: signing binaries
+It recommended to sign any binaries you produce, this allows a user to verify that the copy of the software they have is in fact the version they believe it is and that it has not been modified.
+Some operating systems may also impose restrictions on running unsigned binaries.
+How binary signing is done depends on the packaging method and target operating system, it is worth researching this for your specific case.
 
 As the technology becomes more popular it is worth looking into cross platform container based means of distribution (for example, Docker (TODO: link), Singularity (TODO: link) and other container based systems).
 This allows you to ship a software package in an already configured and working state being safe in the knowledge it will function in the same way on the user's computer.
@@ -306,11 +308,13 @@ Unless your software specifically targets high performance computing systems suc
 For this reason it is highly desirable (or even essential) that your software is designed to run on multiple operating systems and architectures.
 Thanks to modern development tools, libraries and build systems this is not a complex task.
 
-It is possible to only officially support a single or narrow selection of systems, however the use of cross platform libraries and build systems should still be encouraged to allow easy deployment on additional platforms at a later stage if required and to allow collaborators and power users to build and modify your software on whatever computer they may use.
+By using cross platform libraries you also allow your software to be easily adopted by users that use an operating system or environment different yo your own.
 
-TODO: support subset of versions
+If officially supporting multiple platforms then it is beneficial to encourage a spread of different platforms and operating systems across your development team.
+Doing so ensures that there are always multiple people capable of addressing platform specific issues when they arise.
 
-If officially supporting multiple platforms then it is beneficial to encourage a spread of different platforms and operating systems across your development team (a good example of this is the Mantid project), this ensures that there are always multiple people capable of addressing platform specific issues when they arise.
+It is recommended to limit the versions of particular operating systems you support.
+Typically you should stop supporting an OS version when the publishers of the OS stop supporting it.
 
 ## (7) Support and Documentation
 
