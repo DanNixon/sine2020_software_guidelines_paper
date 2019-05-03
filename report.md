@@ -292,9 +292,9 @@ The first requirement is for the installer to to give your users a working copy 
 They should not have to care about any implementation specifics or having to install additional dependencies to simply make your software run.
 
 Once installed your software should not conflict with any other software a user may have installed on their machine.
-A common example of this is when applications depend on the same libraries.
+A common example of this is when applications depend on the same libraries, such as hdf5.
 
-It recommended to sign any binaries you produce, this allows a user to verify that the copy of the software they have is in fact the version they believe it is and that it has not been modified.
+It is recommended to sign any binaries you produce, this allows a user to verify that the copy of the software they have is in fact the version they believe it is and that it has not been modified.
 Some operating systems may also impose restrictions on running unsigned binaries.
 How binary signing is done depends on the packaging method and target operating system, it is worth researching this for your specific case.
 
@@ -307,38 +307,34 @@ Different containerization systems have their own caveats and there is no "one s
 Unless your software specifically targets high performance computing systems such as clusters or distributed compute platforms then no assumption can realistically be made about how, and specifically on what platform, a user will expect to run your software.
 For this reason it is highly desirable (or even essential) that your software is designed to run on multiple operating systems and architectures.
 Thanks to modern development tools, libraries and build systems this is not a complex task.
-
-By using cross platform libraries you also allow your software to be easily adopted by users that use an operating system or environment different yo your own.
+By using cross platform libraries you also allow your software to be easily adopted by users that use an operating system or environment different to your own.
 
 If officially supporting multiple platforms then it is beneficial to encourage a spread of different platforms and operating systems across your development team.
 Doing so ensures that there are always multiple people capable of addressing platform specific issues when they arise.
 
 It is recommended to limit the versions of particular operating systems you support.
-Typically you should stop supporting an OS version when the publishers of the OS stop supporting it.
+Typically you should stop supporting an OS version when the publisher stops supporting it.
 
 ## (7) Support and Documentation
 
-If a piece of software is intended to have a large user base then documentation becomes essential.
 Good documentation will prevent the developers having to spend time explaining how to use the software to users.
-The hallmarks of good documentation are it is concise, written in a way that is accessible to the target audience (users) and easily available.
+The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audience (users).
 
-The simplest and most common form is online documentation, for example Read the Docs or a wiki page.
-This should have a clear structure and be easy to navigate.
-An easy way to achieve this is to have a contents page and to make the pages searchable so users can easily find the relevant information.
-An easy way to achieve this is to have tags that summarise the main themes of each page.
+The simplest and most common form is online documentation, for example Read the Docs (TODO: link) or a wiki page.
+The documentation should have a clear structure and be easy to navigate.
+An easy way to achieve this is to have a contents page and to make the pages searchable so users can easily find the relevant information, by having tags that summarise the main themes of each page.
 The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
 
 Projects may benefit from having a landing page introducing the project and directing users to commonly used or important resources.
-Hugo and GitHub Pages are a common choice for this.
-
+Common choices for this are Hugo (TODO: link) and GitHub Pages (TODO: link).
 Hugo is a powerful and fast static website generator.
-It can be used for very basic less than 10 page sites up to large blogs/news sites, supports themeing and customisation and works with content defined in Markdown.
-
-GitHub Pages is a free hosting service provided by GitHub, this allows you to commit your website content to a specific branch and have it served by GitHub.
+It supports themeing and customisation and works with content defined in Markdown.
+A free hosting service provided by GitHub Pages, this allows you to commit your website content to a specific branch and have it served by GitHub.
 The large benefit here is avoiding the cost and time of maintaining the infrastructure required to host your projects website.
 
 An increasingly popular method of documentation is the video tutorial.
-These are extremely useful to users as it allows them to easily see how to use the software, however they have a large time cost to create them.
+These are extremely useful to users as it allows them to see how the software is used, however they have a large time cost to create them.
+For particularly intricate GUIs, video tutorials may be beneficial as the user sees a complete workflow and there is less chance of steps being undocumented.
 All documentation should be kept up to date, but video tutorials may require significant work if the software undergoes a large change.
 
 Face to Face communication is often the most efficient and effective way to understand a user's question/comment.
@@ -346,16 +342,16 @@ This allows for a conversation to occur with more probing questions to improve t
 As a result it is important to have some local support, where developers are preferably in close proximity to their users.
 Face to Face contact also has the benefit of increasing the user experience and users are more likely to report problems/bugs to the development team if they can easily speak to them.
 
-The documentation discussed so far has focused on the users.
-It is also valuable to have developer documentation.
-This documentation could contain information on the standards used in the code, how to set up a development version and appropriate tutorials/information.
-
 A key activity for any piece of software is the user support.
 Unlike documentation this is more interactive between developers and users.
-As a minimum email support should be provided to the users in a location that is easy for them to find.
+As a minimum email support should be provided and users made aware of it.
 The emails should be checked regularly and initial responses should be within a day or two.
-The initial response may be to ask for more details, to arrange to meet with them face to face or to say that it is being worked on.
+The initial response may be to ask for more details, to arrange a meeting or to say that it is being worked on.
 Providing effective user support will give users more confidence in the software.
+
+The documentation discussed so far has focused on the users.
+It is also valuable to have developer documentation.
+This documentation could contain information on the standards used in the code, how to set up a development environment, appropriate tutorials and relevant reference material.
 
 ## (8) SINE2020
 
@@ -365,14 +361,13 @@ TODO
 
 The implementation of software standards to a computational project has numerous benefits.
 It fundamentally allows for the software to be developed and maintained easily by a distributed team, while providing support to users.
-There is an initial cost in deciding what those standards should be and the specific recommendations from this paper may not be the best choice in ten years’ time, but choosing a standard will still benefit the project.
-To make sure the smooth running of the project a governance model should also be implemented.
-Once the development work starts it is important to follow the standards and process that have been set out and these may need updating for long life projects.
+There is an initial cost in deciding what those standards should be and chosen based on the requirements of the project.
+To ensure the smooth running of the project a governance model should also be implemented.
+It is important to follow the standards and processes that have been set out and these may need updating for long life projects.
 To ensure users have a positive experience it is important to provide support and to have a release cycle.
 
 Ultimately the main benefit of software that follows standards is that it allows development to continue even if the developers change.
-This is because the standards ensue a uniform code quality.
-With the superior code quality will come a more stable and maintainable piece of software.
+This is because the standards ensure a uniform code quality, which allows for a more stable and maintainable piece of software.
 This can allow the user base to grow and flourish.
 
 ## (10) Acknowledgements
