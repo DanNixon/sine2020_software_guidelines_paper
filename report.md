@@ -10,7 +10,7 @@ This in the worst cases can lead to people believing that the code is incorrect,
 The other potential pitfalls with this isolated approach of software development is that bugs are less likely to be found, due to less users.
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 
-The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is “a general rule, principle, or piece of advice”, for example “the organisation has issued guidelines for people working with prisoners”.
+The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
 We will use this definition throughout the remainder of this paper.
 
 The standards and guidelines presented in this paper will suggest the best practises for the current tools that are commonly available today.
