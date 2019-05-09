@@ -8,4 +8,4 @@ docker run \
   --tty \
   --volume "$HERE:/doc/" \
   thomasweise/texlive \
-  $@
+  pdflatex.sh jnr_template.tex
