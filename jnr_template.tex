@@ -6,6 +6,7 @@
 
 %%%%%%%%%%% Put your definitions here
 
+\usepackage{listings}
 
 %%%%%%%%%%% End of definitions
 
@@ -107,30 +108,32 @@ This may be by means of comments, verbose variable names, etc.
 Ideally a developer should not have to dig through documentation stored elsewhere or find the correct person to talk to to understand a piece of code.
 
 As an example of this, compare
-% ```
-% float calc_v(std::vector<float> y)
-% {
-  % float v = 0.0;
-  % for (int i = 0; i < y.size(); i++)
-  % {
-    % v += (f(y[i]) - y[i]) * s(y[i]) + y[i];
-  % }
-  % return v;
-% }
-% ```
+
+\begin{lstlisting}
+float calc_v(std::vector<float> y)
+{
+  float v = 0.0;
+  for (int i = 0; i < y.size(); i++)
+  {
+    v += (f(y[i]) - y[i]) * s(y[i]) + y[i];
+  }
+  return v;
+}
+\end{lstlisting}
 
 against,
-% ```
-% float linear_approx_pair_potentials(std::vector<float> const& pair_potential)
-% {
-  % float lapp(0.0f);
-  % for (auto const& y : pair_potential)
-  % {
-    % lapp += ((ema_potential(y) - y) * smooth_switch(y)) + y;
-  % }
-  % return lapp;
-% }
-% ```
+
+\begin{lstlisting}
+float linear_approx_pair_potentials(std::vector<float> const& pair_potential)
+{
+  float lapp(0.0f);
+  for (auto const& y : pair_potential)
+  {
+    lapp += ((ema_potential(y) - y) * smooth_switch(y)) + y;
+  }
+  return lapp;
+}
+\end{lstlisting}
 
 TODO: LAPP function needs a citation, details are https://spiral.imperial.ac.uk/handle/10044/1/29867
 
