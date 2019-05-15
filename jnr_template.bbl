@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{0}
 % BibTex style file: ios1.bst, 2019-01-11
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1} \fi
@@ -36,68 +36,5 @@
 \ifx \texttildelow  \undefined \def \texttildelow{\symbol{126}} \fi
 \def \endbibitem {}
 \ifx \bconflocation  \undefined \def \bconflocation#1{#1} \fi
-
-\bibitem{hankeknees}
-\begin{barticle}
-\bauthor{\binits{H.}~\bsnm{Hanke}} and
-\bauthor{\binits{D.}~\bsnm{Knees}},
-\batitle{A phase-field damage model based on evolving microstructure},
-\bjtitle{Asymptotic Analysis}
-\bvolume{101}
-(\byear{2017}),
-\bfpage{149}--\blpage{180}.
-\end{barticle}
-\endbibitem
-
-\bibitem{lefever}
-\begin{barticle}
-\bauthor{\binits{E.}~\bsnm{Lefever}},
-\batitle{A hybrid approach to domain-independent taxonomy learning},
-\bjtitle{Applied Ontology}
-\bvolume{11}(\bissue{3})
-(\byear{2016}),
-\bfpage{255}--\blpage{278}.
-\end{barticle}
-\endbibitem
-
-\bibitem{meltzeretal}
-\begin{bchapter}
-\bauthor{\binits{P.S.}~\bsnm{Meltzer}},
-\bauthor{\binits{A.}~\bsnm{Kallioniemi}} and
-\bauthor{\binits{J.M.}~\bsnm{Trent}},
-\bctitle{Chromosome alterations in human solid tumors},
-in: \bbtitle{The Genetic Basis of Human Cancer},
-\beditor{\binits{B.}~\bsnm{Vogelstein}} and
-\beditor{\binits{K.W.}~\bsnm{Kinzler}}, eds,
-\bpublisher{McGraw-Hill},
-\blocation{New York},
-\byear{2002},
-pp.~\bfpage{93}--\blpage{113}.
-\end{bchapter}
-\endbibitem
-
-\bibitem{murrayetal}
-\begin{bbook}
-\bauthor{\binits{P.R.}~\bsnm{Murray}},
-\bauthor{\binits{K.S.}~\bsnm{Rosenthal}},
-\bauthor{\binits{G.S.}~\bsnm{Kobayashi}} and
-\bauthor{\binits{M.A.}~\bsnm{Pfaller}},
-\bbtitle{Medical Microbiology},
-\bedition{4th} edn,
-\bpublisher{Mosby},
-\blocation{St. Louis},
-\byear{2002}.
-\end{bbook}
-\endbibitem
-
-\bibitem{wilson}
-\begin{botherref}
-\oauthor{\binits{E.}~\bsnm{Wilson}},
-Active vibration analysis of thin-walled beams,
-PhD thesis,
-University of Virginia,
-1991.
-\end{botherref}
-\endbibitem
 
 \end{thebibliography}
