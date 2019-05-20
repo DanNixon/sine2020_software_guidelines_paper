@@ -149,7 +149,7 @@ There are a plethora of linters available for almost every language.
 Clang and Pylint are two of the most common for C++ and Python respectively.
 
 A lot of tools are available as standalone packages that you simply install, run and produces a report.
-Some tools are also available as a cloud service (e.g. Coverity, TODO Python tool) that is triggered by new code being pushed to your remote repository.
+Some tools are also available as a cloud service (e.g. Coverity) that is triggered by new code being pushed to your remote repository.
 
 For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis (https://github.com/mre/awesome-static-analysis), a community curated list of static analysis tools.
 
@@ -310,7 +310,7 @@ It is advisable to then spend some time working on maintenance tasks, these are 
 Maintenance tasks are improvements to the maintainability of the code rather than any new user facing functionality.
 
 All pieces of released software require a license.
-An open source license is advisable from both a user and development perspective, for details of the available licenses see TODO link.
+An open source license is advisable from both a user and development perspective, details of available licenses are available online \cite{OSI_Licenses}.
 The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of your software.
 The advantage of an open source license is that it allows anyone to contribute to your software (this should not bypass any review process), this radically improves the available pool of developers.
 Further in research/academic communities open source is becoming increasingly compulsory in order to ensure that valuable source codes are not lost.
@@ -351,7 +351,7 @@ This will prevent issues when users attempt to use incompatible existing workflo
 
 Any fixes for safety or security reasons must be clearly documented in the release notes.
 
-It is recommended to tag and sign the release in your SCM system, in the case of Git this involves creating a tag from the code that was used to generate your release package and signing it with either a project or maintainers (Pretty Good Privacy) PGP key.
+It is recommended to tag and sign the release in your SCM system, in the case of Git this involves creating a tag from the code that was used to generate your release package and signing it with either a project or maintainers PGP (Pretty Good Privacy) key.
 This is not an essential step, but is good practice to allow verification of historic releases.
 
 \subsection{Packaging}
@@ -394,7 +394,7 @@ Typically you should stop supporting an OS version when the publisher stops supp
 Good documentation will prevent the developers having to spend time explaining how to use the software to users.
 The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audiencee (users).
 
-The simplest and most common form is online documentation, for example Read the Docs (TODO: link) or a wiki page.
+The simplest and most common form is online documentation, for example Read the Docs \cite{Read_The_Docs} or a wiki page.
 The documentation should have a clear structure and be easy to navigate.
 An easy way to achieve this is to have a contents page and to make the pages searchable so users can easily find the relevant information, by having tags that summarise the main themes of each page.
 The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
