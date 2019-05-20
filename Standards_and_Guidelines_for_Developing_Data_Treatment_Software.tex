@@ -31,15 +31,14 @@
 \author[A]{\inits{A.}\fnms{Anders} \snm{Markvardsen}\ead[label=e3]{anders.markvardsen@stfc.ac.uk}},
 \author[B]{\inits{T.}\fnms{Thomas} \snm{Holm Rod}\ead[label=e4]{Thomas.HolmRod@esss.se}},
 and
-\author[B]{\inits{T.}\fnms{Anyone else who contributes} \snm{}\ead[label=e5]{}}
+\author[B]{\inits{T.}\fnms{anyone else who contributes} \snm{}\ead[label=e5]{}}
 
 \runningauthor{D. Nixon et al.}
 \address[A]{ \orgname{Science and Technology Facilities Council},\cny{United Kingdom}\printead[presep={\\}]{e1}}
 \address[B]{ \orgname{European Spallation Source},\cny{Sweden}\printead[presep={\\}]{e1}}
 
 \begin{abstract}
-TODO
-For discussion: To what extend should EU SINE2020 be mentioned in the abstract?
+TODO: for discussion: To what extend should EU SINE2020 be mentioned in the abstract?
 \end{abstract}
 
 \begin{keyword}
@@ -62,12 +61,13 @@ The other potential pitfalls with this isolated approach of software development
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 
 The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
-A standard tends to be more specific and carry more authority and may naturally emerge from a community following guidelines in a specific context. The Oxford dictionaries list multiple definitions of standard, including "A level of quality or attainment", for example “their restaurant offers a high standard of service".
+A standard tends to be more specific and carry more authority and may naturally emerge from a community following guidelines in a specific context.
+The Oxford dictionaries list multiple definitions of standard, including "A level of quality or attainment", for example “their restaurant offers a high standard of service".
 We will use these definition throughout the remainder of this paper.
 
 The standards and guidelines presented in this paper will suggest the best practises for the current tools that are commonly available today.
 The European report [ref] is three years old, yet the advice for about how to host code has been superseded but the fundamental ideas are still correct.
-Hence, when it is appropriate the idea of the standard/guideline will be abstracted so that a new tool can be chosen in the future.
+Hence, when it is appropriate the idea of the standard/guideline will be abstracted so that an alternative can be chosen in the future.
 
 In this paper we outline some standards and guidelines for open source software development.
 Following these should reduce the risk of wasted effort, the code base becoming unmaintainable and removing duplicated effort.
@@ -100,8 +100,8 @@ For example, a library to perform Fourier transformations is not useful unless f
 \subsection{Coding standards}
 \label{Coding standards}
 
-Code should be of a high standard, the reason for this is two fold; good quality code that conforms to accepted standards is
-more likely to be well formatted, readable and contain fewer bugs thus code that is easier to maintain in the future.
+Code should be of a high standard, the reason for this is two fold; good quality code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs.
+These factors combine to create a code base that is easier to maintain in the future.
 
 Specific rules depend greatly on the language in question, as such it is better to select a set of standards based on the language your software is written in.
 A community curated list of standards organised by language is available here: https://github.com/Kristories/awesome-guidelines
@@ -140,6 +140,9 @@ float linear_approx_pair_potentials(std::vector<float> const& pair_potential)
 
 TODO: LAPP function needs a citation, details are https://spiral.imperial.ac.uk/handle/10044/1/29867
 
+For ease of collaboration filenames, identifier names, comments and documentation should be published in English.
+Translation frameworks may be used to provide your software and documentation in other languages at compile/build time.
+
 To assist in maintaining code quality one or more "linters" (also referred to as "static analysis" tools) should be employed.
 These are tools that inspect your code in one way or another to detect potential issues, such as unused variables, indentation, thread misuse, etc.
 There are a plethora of linters available for almost every language.
@@ -171,7 +174,7 @@ If more complex task workflows are needed or if your code base is distributed ac
 High level tracking, typically at project management level, should track the projects medium to long term goals and their progress.
 These goals should be defined by users of the software.
 
-Ideally both levels of tracking should be available to view freely by both users and developers.
+Ideally both levels of tracking should be available to view freely by users and developers.
 
 \subsection{Source control management}
 \label{Source control management}
@@ -228,8 +231,8 @@ The developer proposing the changes should provide a description of their change
 The tester then must ensure that the code is of good quality and coding styles, guidelines, etc. have been followed, commit history is sane and relevant documentation (including release notes) has been updated.
 CI tools can be used to perform some of these checks automatically.
 
-Larger or more critical projects may opt to have multiple review stages, in which one or more testers (that has yet to be involved in the development or testing of this proposed change) will perform the same duties as the previous testers.
-Having multiple reviewers for the same piece of work may seem inefficient but should increase the chance of potential issues being found before they are released to users.
+Larger or more critical projects may opt to have multiple review stages, in which additional testers (that has yet to be involved in the development or testing of this proposed change) will perform the same duties as the previous testers.
+Having multiple reviewers for the same piece of work may seem inefficient, but will increase the chance of potential issues being found before they are released to users.
 
 Tools for code review are often in built in hosted SCM services, an example of this is GitHub "Pull Requests", which allow code to be viewed and commented on.
 
@@ -278,10 +281,10 @@ This configuration should ideally be in a human readable plain text format, assu
 Popular formats for this purpose include INI, YAML and JSON, all of which have several library options for common languages and store data as plain text.
 Under no circumstances should custom formats be used for job configuration.
 
-The ability to reproduce results of data treatment is important for users; where data treatment of raw data commonly requires the application of many corrections, transformations etc.
+The ability to reproduce results of data treatment is an important ability for users of your software, to allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
 To allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
 Typically this means recording a history of each atomic action your software performs as well as any relevant version numbers (i.e. such as the version of your software, versions of plugins/dependencies).
-Examples of such history reporting are Algorithm Histories in Mantid (TODO citation) and Process Lists in Savu (TODO citation).
+Examples of such history reporting are algorithm histories in Mantid (TODO citation) and process lists in Savu (TODO citation).
 
 One may also choose to use a common format for job configurations and history, for example Process Lists in Savu, which are stored as entries in a NeXus file.
 The advantage this gives is that the result dataset can be used as input for a future job.
@@ -302,7 +305,8 @@ Prior to a release there will be a "code freeze", where no new code will be subm
 In preparation for a release developers should test the software works as expected with no obvious bugs.
 The next stage is "beta testing" where a select group of users are chosen and they test the software and report any bugs.
 Once all of the identified bugs are fixed it is then released with more confidence that it is ready for use.
-It is advisable to schedule maintenance tasks that can potentially affect many aspects of the code to immediately after releases to give the team the maximum time to iron out any unforeseen edge cases before the next code freeze.
+
+It is advisable to then spend some time working on maintenance tasks, these are improvements to the maintainability of the code rather than any new user facing functionality.
 Maintenance tasks are improvements to the maintainability of the code rather than any new user facing functionality.
 
 All pieces of released software require a license.
@@ -311,12 +315,12 @@ The users will be able to download and use the software free of charge, removing
 The advantage of an open source license is that it allows anyone to contribute to your software (this should not bypass any review process), this radically improves the available pool of developers.
 Further in research/academic communities open source is becoming increasingly compulsory in order to ensure that valuable source codes are not lost.
 
-For each software release it is recommended to generate a Digital Object Identifier (DOI).
+It is recommended to generate a Digital Object Identifier (DOI) for each release of a piece of data treatment software.
 This allows your software to be easily cited in publications and makes it clear which version of your software was used to generate results in a given publication.
 Another method is to use a publication that provides the idea of the software.
 
 When selecting developers for a given task you should consider the skills/knowledge of the developer, the time required to complete the task and the deadline for the task.
-If the deadline and time required are similar then it is better to choose a developer with existing relevant skills.
+If the deadline and time required are similar then it is better to choose a developer who has the relevant skills and experience.
 If there is sufficient time between the deadline and the estimated time to complete the task then this provides an opportunity to select a less experienced developer and an opportunity for training.
 
 \section{Packaging and Distribution}
@@ -333,10 +337,13 @@ This section will assume you have a substantial number of users that you do not 
 In order for any potential issues in your software to be found and rectified you may wish to create a release candidates of your software before the official release.
 These versions are intended for "power users" who do not mind testing your software for the benefit of the wider audience of your software (a typical example at a large scale research facility is a scientist responsible for an instrument and its user programme, and who wants to ensure your software works before providing it to their visiting users).
 
+The length of the beta period is determined by your release cycle and your estimated number of users.
+There is no generic rule for this, but it is recommended that you ensure all (or as close to as possible) use cases of your software have been tested by users who specialise in that area.
+
 There can be any number of release candidates.
 As the name suggests a release candidate should be generated in exactly the same manner as a release (the only difference being the version number).
 
-To ensure users approach the new version with realistic expectations it is essential to provide sufficiently detailed release notes with every version of your software.
+To ensure users approach the new version with realistic expectations it is essential to provide sufficiently detailed release notes with every version of your software (release, beta, release candidate).
 These should summarise the changes made to your software since the last release, possibly highlighting some specific new features (this is where you "sell" your new version and give a reason for users to upgrade).
 
 It is essential that all changes that may break existing workflows are listed.
@@ -363,8 +370,8 @@ It is recommended to sign binaries, this allows a user to verify that the copy o
 Some operating systems may also impose restrictions on running unsigned binaries.
 How binary signing is done depends on the packaging method and target operating system, it is worth researching this for your specific case.
 
-As the technology becomes more popular it is worth looking into cross platform container based means of distribution (for example, Docker (TODO: link) and Singularity (TODO: link)).
-This allows the shipping of software in an already configured and working state.
+As the technology becomes more popular it is worth looking into cross platform container based means of distribution (for example, Docker (TODO: link) and Singularity (TODO: link) and other container based systems).
+This allows the distribution of software in an already configured and working state being safe in the knowledge it will function in the same way on the user's computer.
 Different containerization systems have their own caveats and there is no "one size fits all" solution.
 
 \subsection{Cross platform}
@@ -384,7 +391,7 @@ Typically you should stop supporting an OS version when the publisher stops supp
 \section{Support and Documentation}
 \label{Support and Documentation}
 
-Good documentation will reduce the time spend by developers and others to explain how to use the software.
+Good documentation will prevent the developers having to spend time explaining how to use the software to users.
 The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audience.
 
 The simplest and most common form is online documentation, for example Read the Docs (TODO: link) or a wiki page.
@@ -400,15 +407,17 @@ A free hosting service provided by GitHub Pages, this allows you to commit your 
 The large benefit here is avoiding the cost and time of maintaining the infrastructure required to host the project's website.
 
 An increasingly popular method of documentation is the video tutorial.
-These are extremely useful to users as it allows them to see how the software is used. 
-For example, for intricate GUIs, video tutorials may be beneficial as the user sees a complete workflow and there is less chance of steps being undocumented.
+These are extremely useful to users as it allows them to see how the software is used.
+For example, video tutorials of intricate GUIs may be beneficial as the user gets to see a complete workflow and there is less chance of steps being undocumented.
 However video tutorials can be costly to create and keep up-to-date with software changes.
 
-Face to Face communication is often the most efficient and effective way to understand a user's question/comment.
+Face to face communication is often the most efficient and effective way to understand a user's question/comment.
 This allows for a conversation to occur with more probing questions to improve the developer's understanding and to overcome any unfamiliar terminology.
 As a result it is important to have some local support, where developers are preferably in close proximity to their users.
+Face to face contact also has the benefit of increasing the user experience and users are more likely to report problems/bugs to the development team if they can easily speak to them.
 
-A key activity for any piece of software is how users are supported.
+A key activity for any piece of software is the user support.
+Unlike documentation this is more interactive between developers and users.
 As a minimum email support should be provided and users made aware of it.
 The emails should be checked regularly and initial responses should be within a day or two.
 The initial response may be to ask for more details, to arrange a meeting or to say that it is being worked on.
@@ -417,7 +426,7 @@ Further, standards for software/IT service management exist, for example FitSM (
 
 The documentation discussed so far has focused on the users.
 It is also valuable to have developer documentation.
-This documentation should contain information on the standards used in the code and how to set up a development environment, and could contain appropriate tutorials and relevant reference material.
+This documentation should contain information on the standards used in the code and how to set up a development environment, appropriate tutorials and relevant reference material.
 
 \section{SINE2020}
 \label{SINE2020}
@@ -429,19 +438,21 @@ TODO
 
 The implementation of software standards and guidelines to a computational project has numerous benefits.
 It fundamentally allows for the software to be developed and maintained easily by a distributed team, while providing support to users.
-There is an initial cost in deciding what those should be, and chosen based on the requirements of the project.
+There is an initial cost in deciding what the standards/guidelines should be and they should be chosen to based on the requirements of the project.
 To ensure the smooth running of the project a governance model should also be implemented.
 It is important to follow the standards and processes that have been set out and these may need updating for long life projects.
 To ensure users have a positive experience it is important to provide support and to have a release cycle.
 
-Ultimately the main benefit of software that follows standards and guidelines is that it help development to continue even if the developers change.
+Ultimately the main benefit of software that follows standards and guidelines is that it helps development to continue even if the developers change.
 This is because these ensure a uniform code quality, better developer team setup and user management, which allows for a more stable and maintainable piece of software and users experiences of it.
 This will increase the likelihood of the software user base growing and flourishing.
 
 \section{Acknowledgements}
-Thanks to Catherine Jones, STFC, UK for early discussions on writing standards and guidelines.
-This work was funded by the Horizon 2020 Framework Programme of the European Union. Project number 654000.
 \label{Acknowledgements}
+
+Thanks to Catherine Jones, STFC, UK for early discussions on writing standards and guidelines.
+
+This work was funded by the Horizon 2020 Framework Programme of the European Union. Project number 654000.
 
 TODO
 
