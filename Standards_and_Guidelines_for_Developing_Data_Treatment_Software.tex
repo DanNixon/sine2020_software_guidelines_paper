@@ -274,7 +274,7 @@ In this case you may evaluate if your changes should form part of the standard a
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
 
-Applications may store information relevant to it as a whole (e.g. window layout for a graphical tool), which should typically be stored using the facilities provided by the application framework (e.g. `QSettings` for Qt).
+Applications may store information relevant to it as a whole (e.g. window layout for a graphical tool), which should typically be stored using the facilities provided by the application framework (e.g. \texttt{QSettings} for Qt).
 
 Additional configuration or process setup information should be stored in an easily accessible location.
 This configuration should ideally be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
@@ -284,7 +284,7 @@ Under no circumstances should custom formats be used for job configuration.
 The ability to reproduce results of data treatment is an important ability for users of your software, to allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
 To allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
 Typically this means recording a history of each atomic action your software performs as well as any relevant version numbers (i.e. such as the version of your software, versions of plugins/dependencies).
-Examples of such history reporting are algorithm histories in Mantid (TODO citation) and process lists in Savu (TODO citation).
+Examples of such history reporting are algorithm histories in Mantid (TODO citation) and process lists in Savu \cite{Wadeson_2016}.
 
 One may also choose to use a common format for job configurations and history, for example Process Lists in Savu, which are stored as entries in a NeXus file.
 The advantage this gives is that the result dataset can be used as input for a future job.
@@ -300,7 +300,7 @@ A governance model will provide a constructive mechanism for deciding the direct
 The software should follow the basic notion of a release cycle.
 A release is a version of the software that has been tested and the development team is confident that it is ready to be used.
 Having periodic releases can also work to reassure users that the project is still supported.
-It is advisable to follow semantic versioning (major.minor.patch, e.g. 3.1.0) for the naming of the releases, for more details see TODO link.
+It is advisable to follow semantic versioning \cite{Semantic_Versioning} (major.minor.patch, e.g. 3.1.0) for the naming of the releases.
 Prior to a release there will be a "code freeze", where no new code will be submitted to the main branch.
 In preparation for a release developers should test the software works as expected with no obvious bugs.
 The next stage is "beta testing" where a select group of users are chosen and they test the software and report any bugs.
