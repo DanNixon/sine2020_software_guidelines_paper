@@ -20,8 +20,8 @@
 \begin{frontmatter}
 
 %\pretitle{}
-\title{Standards and Guidelines for Developing Data Treatment Software}
-\runningtitle{Standards and Guidelines for Developing Data Treatment Software}
+\title{Towards development of sustainable data treatment software}
+\runningtitle{Towards development of sustainable data treatment software}
 %\subtitle{}
 
 % Two or more authors:
@@ -39,6 +39,10 @@ and
 
 \begin{abstract}
 TODO: for discussion: To what extend should EU SINE2020 be mentioned in the abstract?
+
+- How to make software outlive the people developing it
+- SINE2020
+- Preventing loss of work
 \end{abstract}
 
 \begin{keyword}
@@ -61,17 +65,16 @@ The other potential pitfalls with this isolated approach of software development
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 Inherently, these factors make it more difficult to share and for other research groups or research infrastructures to adapt the software for their own purpose.
 
+TODO (high quality/sustainable softwrae requires guidelines).
 The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
 A standard tends to be more specific and carry more authority and may naturally emerge from a community following guidelines in a specific context.
-The Oxford dictionaries list multiple definitions of standard, including "A level of quality or attainment", for example “their restaurant offers a high standard of service".
-We will use these definitions throughout the remainder of this paper.
+We will use this definition throughout the remainder of this paper.
 
 The standards and guidelines presented in this paper will suggest the best practises for the current tools that are commonly available today.
-The European report [ref] is three years old, yet the advice for about how to host code has been superseded but the fundamental ideas are still correct.
 Hence, when it is appropriate the idea of the standard/guideline will be abstracted so that an alternative can be chosen in the future.
 
 In this paper we outline some standards and guidelines for open source software development.
-Following these should reduce the risk of waster or duplicated effort, the code base becoming unmaintainable, and increase interoperability.
+Following these should reduce the risk of wasted or duplicated effort, the code base becoming unmaintainable, and increase interoperability.
 
 \section{Business as Usual}
 \label{Business as Usual}
@@ -101,7 +104,7 @@ For example, a library to perform Fourier transformations is not useful unless f
 \subsection{Coding standards}
 \label{Coding standards}
 
-Code should be of a high standard, the reason for this is two fold; good quality code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs.
+Code should be of a high quality, the reason for this is two fold; code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs.
 These factors combine to create a code base that is easier to maintain in the future.
 
 Specific rules depend greatly on the language in question, as such it is better to select a set of standards based on the language your software is written in.
@@ -241,7 +244,7 @@ Tools for code review are often in built in hosted SCM services, an example of t
 
 A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas, where a module may refer to a package, library or software plugin.
 
-Care should be taken when designating these modules, these should contain only functionality relevant to the goal of the module, where the goal itself is a very specific task (e.g. optimization).
+Care should be taken when designating these modules, these should contain only functionality relevant to the goal of the module, where the goal itself is a very specific task (e.g. minimization).
 
 Code within a module should be closely related to each other, this reduces importing unnecessary functionality and keeps modules specific to a given purpose.
 A benefit gained from making code modular is the ability to test each module in isolation using automated testing (i.e. unit testing).
@@ -391,8 +394,8 @@ Typically you should stop supporting an OS version when the publisher stops supp
 \section{Support and Documentation}
 \label{Support and Documentation}
 
-Good documentation will prevent the developers having to spend time explaining how to use the software to users.
-The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audiencee (users).
+Good documentation will prevent the developers having to spend time explaining how to use and develop the software to users.
+The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audience.
 
 The simplest and most common form is online documentation, for example Read the Docs \cite{Read_The_Docs} or a wiki page.
 The documentation should have a clear structure and be easy to navigate.
