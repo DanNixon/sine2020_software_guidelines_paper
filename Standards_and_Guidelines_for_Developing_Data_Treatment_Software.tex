@@ -120,10 +120,7 @@ As an example of this, compare the function \cite{Lim_2015}
 float calc_v(std::vector<float> y)
 {
   float v = 0.0;
-  for (int i = 0; i < y.size(); i++)
-  {
-    v += (f(y[i]) - y[i]) * s(y[i]) + y[i];
-  }
+  for (int i = 0; i < y.size(); i++) v += (f(y[i]) - y[i]) * s(y[i]) + y[i];
   return v;
 }
 \end{lstlisting}
@@ -133,7 +130,7 @@ against,
 \begin{lstlisting}
 float linear_approx_pair_potentials(std::vector<float> const& pair_potential)
 {
-  float lapp(0.0f);
+  auto lapp{0.0f};
   for (auto const& y : pair_potential)
   {
     lapp += ((ema_potential(y) - y) * smooth_switch(y)) + y;
