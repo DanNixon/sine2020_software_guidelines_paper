@@ -108,7 +108,6 @@ These factors combine to create a code base that is easier to maintain in the fu
 
 Specific rules depend greatly on the language in question, as such it is better to select a set of standards based on the language your software is written in.
 A community curated list of standards organised by language is available online \cite{Awesome_Guidelines}.
-TODO: Refs to those used for data treatment in neutron scattering / considered in SINE2020 (e.g. Mantid, SasView, BornAgain, MuhRec, etc) (do we really want this here?).
 
 An important, language agnostic rule to follow is to write human readable code.
 This may be by means of comments, verbose variable names, etc.
@@ -128,12 +127,12 @@ float calc_v(std::vector<float> y)
 against,
 
 \begin{lstlisting}
-float linear_approx_pair_potentials(std::vector<float> const& pair_potential)
+float linear_approx_of_pair_potentials(std::vector<float> const& pair_potentials)
 {
   auto lapp{0.0f};
-  for (auto const& y : pair_potential)
+  for (auto const& pp : pair_potentials)
   {
-    lapp += ((ema_potential(y) - y) * smooth_switch(y)) + y;
+    lapp += ((ema_potential(pp) - pp) * smooth_switch(pp)) + pp;
   }
   return lapp;
 }
