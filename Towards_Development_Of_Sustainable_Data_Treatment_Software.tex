@@ -268,9 +268,13 @@ Another increasingly popular option is to provide your software as a web service
 \section{Data Formats and Interoperability}
 \label{Data Formats and Interoperability}
 
-It is important for your software to use a standardised data format, which features open source definitions and documentation.
-In the neutron science community this is the NeXus format, which defines a structure on top of the HDF5 file format.
-NeXus aims to standardise the way similar data is represented by different facilities and software.
+It is important for your software to use an open and standardised data format.
+Such a data format features open source definitions and documentation, making the format easy to understand and aiding software implementations.
+
+In the neutron science community NeXus has become the default format.
+NeXus aims to standardise the way similar data is represented by different facilities and software by defining a structure on top of the HDF5 file format.
+NeXus also has the advantage of being a self describing file format, where by using the correct classes you make it easy to understand the data with no prior knowledge.
+Metadata (such as instrument configurations and data processing history) is trivial to store in NeXus.
 Whilst the format has existed for roughly two decades it's widespread use as the standard data format has been a relatively recent effort between facilities and software projects.
 One point of note is that when committing to NeXus as your data format, you must ensure you truly implement the standard or publish the definition, if the need to diverge from the standard is genuinely required.
 In this case you may evaluate if your changes should form part of the standard and propose such changes.
@@ -281,9 +285,11 @@ While there is sometimes an argument for software specific intermediate formats,
 Applications may store information relevant to it as a whole (e.g. window layout for a graphical tool), which should typically be stored using the facilities provided by the application framework (e.g. \texttt{QSettings} for Qt).
 
 Additional configuration or process setup information should be stored in an easily accessible location.
+This data may include version numbers, parameters and filenames.
 This configuration should ideally be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
-Popular formats for this purpose include INI, YAML and JSON, all of which have several library options for common languages and store data as plain text.
+Popular formats for this purpose include INI, YAML, JSON, TOML and XML, all of which have several library options for common languages and store data as plain text.
 Under no circumstances should custom formats be used for job configuration.
+There are already a number of well defined data formats for this purpose, creating a new format would be a waste of developer time.
 
 The ability to reproduce results of data treatment is an important ability for users of your software, to allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
 To allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
