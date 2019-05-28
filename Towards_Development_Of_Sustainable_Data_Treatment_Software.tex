@@ -216,7 +216,7 @@ Continuous Integration (CI) should be used, regardless of the projects size, to 
 CI is essentially a service that detects when new changes have been made to the code base (via the SCM) and runs a set of actions to determine if the code is of good quality.
 It can also be used to perform the same checks on proposed changes before they become part of the main code base.
 
-Typically the actions performed include compiling/installing the software and running automated test suites, however any number of additional tasks can be performed including; generating documentation, performing code linting, deploying installer packages, checking for software vulnerabilities, etc.
+Typically the actions performed include compiling/installing the software and running automated test suites, however any number of additional tasks can be performed including; generating documentation, performing code linting, deploying packages, checking for software vulnerabilities, etc.
 
 For small scale projects that reside in a single repository continuous integration as a hosted service is most likely sufficient.
 For example Travis CI offer time limited windows for you to run your builds and tests on Linux, Mac OS and Windows operating systems.
@@ -370,7 +370,7 @@ This is not an essential step, but is good practice to allow verification of his
 To ensure user satisfaction easy software setup is essential.
 Exactly what this involves varies depending on the nature of your project, as such this section will not go into great detail about specific options, but rather the requirements of an installer and process of choosing an appropriate installation method for your software.
 
-The first requirement is for the installer to give users a working copy of your software.
+The first requirement is for the package to give users a working copy of your software.
 They should not have to care about any implementation specifics or having to install additional dependencies to make your software run.
 
 Once installed, the software should not conflict with any other software a user may have installed on their machine.
