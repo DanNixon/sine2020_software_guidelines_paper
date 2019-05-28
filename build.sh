@@ -8,4 +8,4 @@ docker run \
   --tty \
   --volume "$HERE:/doc/" \
   thomasweise/texlive \
-  pdflatex.sh Standards_and_Guidelines_for_Developing_Data_Treatment_Software.tex
+  pdflatex.sh Towards_Development_Of_Sustainable_Data_Treatment_Software.tex
