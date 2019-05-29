@@ -302,10 +302,11 @@ There are already a number of well defined data formats for this purpose, creati
 The ability to reproduce results of data treatment is an important ability for users of your software, to allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
 To allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
 Typically this means recording a history of each atomic action your software performs as well as any relevant version numbers (i.e. such as the version of your software, versions of plugins/dependencies).
-Examples of such history reporting are algorithm histories in Mantid (TODO citation) and process lists in Savu \cite{Wadeson_2016}.
 
-One may also choose to use a common format for job configurations and history, for example Process Lists in Savu, which are stored as entries in a NeXus file.
-The advantage this gives is that the result dataset can be used as input for a future job.
+Process lists in Savu \cite{Wadeson_2016} are a good example of such operation reporting.
+These store the job configuration in a NeXus file and encode the same information in the final results (also stored in a NeXus file).
+This allows the processing history to remain with the processed data and allows the result dataset to be used as input for a future job.
+Savu also provides tooling to allow a user to export a list of citations from their result data which is populated from the process list.
 
 \section{Project Management}
 \label{Project Management}
