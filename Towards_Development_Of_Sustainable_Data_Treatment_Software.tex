@@ -70,7 +70,7 @@ The other potential pitfalls with this isolated approach of software development
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 Inherently, these factors make it more difficult to share and for other research groups or research infrastructures to adapt the software for their own purpose.
 
-TODO (high quality/sustainable softwrae requires guidelines).
+TODO (high quality/sustainable software requires guidelines).
 The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
 A standard tends to be more specific and carry more authority and may naturally emerge from a community following guidelines in a specific context.
 We will use this definition throughout the remainder of this paper.
@@ -387,7 +387,7 @@ The first requirement is for the package to give users a working copy of your so
 They should not have to care about any implementation specifics or having to install additional dependencies to make your software run.
 
 Once installed, the software should not conflict with any other software a user may have installed on their machine.
-A common example of this is when applications depend on the same libraries, such as hdf5.
+A common example of this is when applications depend on the same libraries, such as HDF5.
 
 It is recommended to sign binaries, this allows a user to verify that the copy of the software they have is in fact the version they believe it is and that it has not been modified.
 Some operating systems may also impose restrictions on running unsigned binaries.
@@ -412,6 +412,13 @@ Doing so ensures that there are always multiple people capable of addressing pla
 It is recommended to limit the versions of particular operating systems you support.
 Typically you should stop supporting an OS version when the publisher stops supporting it.
 
+\subsection{Dependency Management}
+\label{Dependency Management}
+
+Proper dependency management is important for ensuring that builds of your software are reproducible.
+
+TODO
+
 \section{Support and Documentation}
 \label{Support and Documentation}
 
@@ -424,7 +431,7 @@ An easy way to achieve this is to have a contents page and to make the pages sea
 The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
 
 Projects may benefit from having a landing page introducing the project and directing users to commonly used or important resources.
-Examples for this are Hugo (TODO: link) and GitHub Pages (TODO: link).
+Examples for this are Hugo \cite{Hugo} and GitHub Pages \cite{GitHub_Pages}.
 Hugo is a powerful and fast static website generator.
 It supports themeing and customisation and works with content defined in Markdown.
 A free hosting service provided by GitHub Pages, this allows you to commit your website content to a specific branch and have it served by GitHub.
