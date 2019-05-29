@@ -179,7 +179,7 @@ For low level task tracking simple tools such as GitHub Issues are likely suffic
 The essential functionality is providing a description of work to be undertaken and allowing it to be assigned to a developer.
 Additional features may include boards such as Scrum or Kanban boards known from e.g.\/ JIRA (TODO provide reference), task dependency and task hierarchy. (TODO: white board with stickers / cards)
 
-Most cloud hosted Git services provide their own issue tracking tool, which typically suit the needs of most software projects.
+Most cloud hosted SCM services provide their own issue tracking tool, which typically suit the needs of most software projects.
 
 If more complex task workflows are needed or if your code base is distributed across multiple locations then it may be beneficial to look into issue tracking separate from your code.
 
@@ -210,7 +210,7 @@ Developers should also ensure that they produce a clear commit history.
 Given that this is likely the longest standing documentation describing the history of your software it is important that commits are sensible, atomic and logically ordered and that commit messages are clear and describe the reasoning behind the changes made in the commit itself.
 A good guide for this can be found here: https://chris.beams.io/posts/git-commit/.
 
-Git is the most common and one of the most powerful SCM tool used in open source software today with a wide variety of training resources available.
+Git \cite{Git} is the most common and one of the most powerful SCM tool used in open source software today with a wide variety of training resources available.
 It is suitable for a project of any size and will probably last the life of your project.
 
 There are a wide range of cloud Git repository providers, all of which provide mostly similar features.
@@ -227,9 +227,9 @@ It can also be used to perform the same checks on proposed changes before they b
 Typically the actions performed include compiling/installing the software and running automated test suites, however any number of additional tasks can be performed including; generating documentation, performing code linting, deploying packages, checking for software vulnerabilities, etc.
 
 For small scale projects that reside in a single repository continuous integration as a hosted service is most likely sufficient.
-For example Travis CI offer time limited windows for you to run your builds and tests on Linux, Mac OS and Windows operating systems.
+For example Travis CI \cite{Travis_CI} offer time limited windows for you to run your builds and tests on Linux, Mac OS and Windows operating systems.
 
-Jenkins is a self hosted CI solution that runs on your own infrastructure.
+Jenkins \cite{Jenkins} is a self hosted CI solution that runs on your own infrastructure.
 The key advantage this has is removing restrictions around build time, data availability and specific build environment setup.
 
 \subsection{Code review}
@@ -246,7 +246,7 @@ CI tools can be used to perform some of these checks automatically.
 Larger or more critical projects may opt to have multiple review stages, in which additional testers (that has yet to be involved in the development or testing of this proposed change) will perform the same duties as the previous testers.
 Having multiple reviewers for the same piece of work may seem inefficient, but will increase the chance of potential issues being found before they are released to users.
 
-Tools for code review are often in built in hosted SCM services, an example of this is GitHub "Pull Requests", which allow code to be viewed and commented on.
+Tools for code review are often in built in hosted SCM services, an example of this is GitHub Pull Requests, which allow code to be viewed and commented on.
 
 \section{Architecture}
 \label{Architecture}
@@ -259,7 +259,7 @@ Code within a module should be closely related to each other, this reduces impor
 A benefit gained from making code modular is the ability to test each module in isolation using automated testing (i.e. unit testing).
 
 The code base of your software should be managed using an appropriate build system, this depends on the language (or combination of languages) used.
-A good choice for C and C++ projects is CMake.
+A good choice for C and C++ projects is CMake \cite{CMake}.
 This can handle setting up library paths and build tools automatically, allowing developers on any platform to develop your software with relative ease.
 C++ projects can also benefit from use of a dependency manager such as Conan.
 Most build systems for other languages combine a dependency manager into the build system, however this is not the case for CMake.
@@ -268,7 +268,7 @@ For Python based projects Python's setuptools is typically sufficient, for speci
 If you are making your software extensible by means of a scripting interface this should ideally be done in Python.
 Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
 
-If the application requires a graphical user interface (GUI) then a good choice of library is Qt.
+If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
 Qt is an application framework commonly used by many open source and commercial software packages.
 It allows easy development of cross platform GUIs in a variety of languages.
 Another increasingly popular option is to provide your software as a web service that is accessed via a web page.
