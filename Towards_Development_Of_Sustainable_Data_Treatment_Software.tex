@@ -133,12 +133,15 @@ float calc_v(std::vector<float> y)
 against,
 
 \begin{lstlisting}
-float linear_approx_of_pair_potentials(std::vector<float> const& pair_potentials)
+float linear_approx_of_pair_potentials(
+    std::vector<float> const& pair_potentials)
 {
   auto lapp{0.0f};
-  for (auto const& pp : pair_potentials)
+  for (auto const& pair_potential : pair_potentials)
   {
-    lapp += ((ema_potential(pp) - pp) * smooth_switch(pp)) + pp;
+    lapp += ((embedded_atom_potential(pair_potential) - pair_potential) *
+             smooth_switch(pair_potential)) +
+            pair_potential;
   }
   return lapp;
 }
