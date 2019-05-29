@@ -133,6 +133,11 @@ float calc_v(std::vector<float> y)
 against,
 
 \begin{lstlisting}
+/**
+ * Calculates the linear approximation of pair potentials.
+ * @param pair_potentails :: [input] A vector of the pair potential experienced by each atom.
+ * @returns The linear approximation of pair potentials.
+ */
 float linear_approx_of_pair_potentials(
     std::vector<float> const& pair_potentials)
 {
