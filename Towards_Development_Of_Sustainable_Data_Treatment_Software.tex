@@ -415,9 +415,16 @@ Typically you should stop supporting an OS version when the publisher stops supp
 \subsection{Dependency Management}
 \label{Dependency Management}
 
-Proper dependency management is important for ensuring that builds of your software are reproducible.
+Dependency management handles obtaining and configuring any library dependencies your software has at build/configure time.
+This serves two functions: to make the build environment easy to set up and to make builds reproducible.
+Dependency managers do this by collecting requirements for your software based on a specification file provided by the developer.
+In the case where a package manager is available (for example Conda \cite{Conda}, PyPI \cite{PyPI} or Conan \cite{Conan}) this may just be a package name and version number.
+For more general purpose tools it may involve instructions on how the dependency should be retrieved and configured (for example CMake's ExternalProject \cite{CMake_ExternalProject}).
 
-TODO
+One of the benefits of dependency management is the ability to pin dependency versions to known working versions.
+This ensures that moving to new development or runtime environments will not cause incompatibilities between your software and software it depends on.
+It is however important to keep dependencies up to date to ensure known bugs are not included in your software.
+The task of updating dependency versions and fixing any issues that arise is a good candidate for a maintenance task (see section \ref{Project Management}).
 
 \section{Support and Documentation}
 \label{Support and Documentation}
