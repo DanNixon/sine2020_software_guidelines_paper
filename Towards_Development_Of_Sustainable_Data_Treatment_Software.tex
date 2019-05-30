@@ -152,6 +152,17 @@ float linear_approx_of_pair_potentials(
 }
 \end{lstlisting}
 
+The improvements in the second code snippet include (any points that are C++ specific are noted):
+\begin{itemize}
+  \item{A Doxygen comment is present}
+  \item{Improved function name that better indicates it's functionality}
+  \item{Improved verbose variable names}
+  \item{Better use of scope constructs (\texttt{\{} and \texttt{\}}) and newlines}
+  \item{Non trivial parameters that are not modified are passed by const reference (C++)}
+  \item{Range based for loop is used (C++)}
+  \item{Use of \texttt{auto} keyword (C++)}
+\end{itemize}
+
 For ease of international collaboration filenames, identifier names, comments and documentation should be published in English.
 Translation frameworks may be used to provide your software and documentation in other languages at compile/build time.
 
