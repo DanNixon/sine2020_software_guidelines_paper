@@ -84,27 +84,25 @@ Following these should reduce the risk of wasted or duplicated effort, the code 
 \section{Business as Usual}
 \label{Business as Usual}
 
-This section aims to outline choices that impact the day to day work of developers working on your project.
-Most are choices that will be made at the start of the project and ideally last the duration of the project, however there are cases where changes will be made to accommodate new tools and standards, etc.
+This section describes the day to day work of the developers working on the software.
+Most of these choices will be made at the start of the project and ideally last its duration, however these can be updated to accommodate new tools and standards, etc.
+
+This section will discuss the typical tasks performed by developers, such as development methodologies, code review and coding standards. Another important part of the developers job is to provide documentation for users and other developers. This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work. 
 
 \subsection{Development methodology}
 \label{Development methodology}
 
-Essentially development methodology is a set of rules that govern how requirements are gathered, converted into developer tasks and the final product is delivered to the user.
+Development methodology is the set of rules that determine how requirements are gathered, converted into developer tasks and how the software is delivered to the user.
 
-Due to the nature of scientific software "agile", or some variant of that, is typically the chosen methodology.
+The two extremes of software development methodologies are called "agile" and "waterfall". In the following we will discuss these to extremes, however in reality there is a scale and mixture of the two can be used. 
 
-The general principle of agile is short development "sprints" in which small, incremental additions are made to the overall software, where the features implemented are determined by revisiting requirements in between each sprint.
+For scientific software agile, or some variant of that, is the most comman methodology. The general principle of agile are short development "sprints" in which small, incremental additions are made to the overall software. The requirements are reviewed and adjusted accordingle for each sprint. This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
 
-This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
+If there are set of fixed non-negotiable requirments then the waterfall methodolgy is better. For the waterfall methodology each task is planned in advance and carried out in a predetermined order. This ensures that the reuirments are met and at key milestones.
+However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirments. Projects that are better suited to the waterfall methodology are those where delivering an intermediate product is not viable.
+For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit could be useful.
 
-Where this can fall down is in long term planning, as agile methodologies tend to focus less on long term goals.
-
-The traditional alternative to agile is "waterfall", in this methodology each task is planned in advance and carried out in a predetermined order.
-One key disadvantage to this is the lack of flexibility when issues in implementation cause a cascading change to how the project is to be implemented.
-
-Projects that are better suited to the waterfall methodology are those where delivering an intermediate product is not viable.
-For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit may be.
+In reality a mixture of the two is usually implemented. For example consider a graphical user interface (GUI) that has a set of requirments (e.g. load data, do a fit to the data, output results). To make sure that the GUI meets the requirments a waterfall approach could be used. However, within that approach a more agile like methodology could be used. The first two sprints could focus on loading and fitting to data. The third sprint could then focus on making sure they interact with each other correctly. 
 
 \subsection{Coding standards}
 \label{Coding standards}
