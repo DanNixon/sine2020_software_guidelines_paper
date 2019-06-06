@@ -61,25 +61,29 @@ TODO:
 \section{Introduction}
 \label{Introduction}
 
+The advances in science are leading to vast amounts of data that cannot be analysed by hand. For example, the European Spallation Source (ESS) will have data rates of (TODO: numbers and ref). 
+The importance of simulations and complex analysis techniques has increased inorder to determine the underlying science. 
+The consequence of this is that the software is often complex and requires a significant investment to develop. 
+Therefore, it is benefical to develop code that is easy to maintain, extend (new functionality) and does not have duplicated effort.  
+This can be achieved by a using guidelines and all maintable high performing software will have at least some guidelines.
+
+The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
+We will use this definition throughout the remainder of this paper.
+
 Traditionally within the research community people would create and develop their own analysis software packages.
-These could be in the form of scripts or compiled code (such as Fortran or C++).
+These could be in the form of scripts (e.g. Python) or compiled code (e.g. Fortran, C++).
 This software is often unique to the research group and effectively leads to duplicated effort as other research groups develop software for the same purpose.
-The developers of the software frequently change (due to the nature of post docs) and without standards this can lead to the code being difficult to read because the style will change depending on who wrote it.
+The developers of the software frequently change (due to the nature of post docs) and without guidelines this can lead to the code being difficult to read because the style will change depending on who wrote it.
 This in the worst cases can lead to people believing that the code is incorrect, when it is correct, hence leading to wasted effort.
 The other potential pitfalls with this isolated approach of software development is that bugs are less likely to be found, due to less users.
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 Inherently, these factors make it more difficult to share and for other research groups or research infrastructures to adapt the software for their own purpose.
 
-TODO (high quality/sustainable software requires guidelines).
-The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
-A standard tends to be more specific and carry more authority and may naturally emerge from a community following guidelines in a specific context.
-We will use this definition throughout the remainder of this paper.
+Guidelines for software development ensure that the code is of a high quality and that the project progress effectively. A good set of guidlines will help the software be stable and extensible. Therefore, it will be easier to continue growing the code base to include new scientiifc analysis/techniques. Some areas have specific needs and requirments that may lead to additional/different guidlines \cite{} (TODO: add papers) that are tailored to their specific user cases. 
 
-The standards and guidelines presented in this paper will suggest the best practises for the current tools that are commonly available today.
-Hence, when it is appropriate the idea of the standard/guideline will be abstracted so that an alternative can be chosen in the future.
+The guidelines presented in this paper will suggest the best practises for the current tools that are commonly available today.
+Hence, when it is appropriate the idea of the guideline will be abstracted so that an alternative can be chosen in the future.
 
-In this paper we outline some standards and guidelines for open source software development.
-Following these should reduce the risk of wasted or duplicated effort, the code base becoming unmaintainable, and increase interoperability.
 
 \section{Business as Usual}
 \label{Business as Usual}
