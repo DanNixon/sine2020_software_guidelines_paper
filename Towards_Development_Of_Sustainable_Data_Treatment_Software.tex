@@ -332,10 +332,23 @@ Savu also provides tooling to allow a user to export a list of citations from th
 \label{Project Management}
 
 Large pieces of software will require some form of management, to ensure that the team are working effectively.
-This is referred to as a governance model.
-The scale of the governance model will depend on the size of the project and could range from an advisory committee to a project management board.
-A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
+This is referred to as a governance model. A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
+Project Management defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/ ) that will help the project be succesful. Each project will have a sponsor(s) who are ultimatley responsible for the project but will not be involved in its running. 
 
+The larger the team the more important good project managment becomes. Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project managment that would benefit projects of any size. Then section \ref{PM big} will contain advice for larger teams, but may still be useful to smaller teams.
+
+\subsection{Resource Managment}\label{rman}
+Resource management can refer to physical equipment, such as computers. However, in this context it will be used to refer to individuals who are available to work on the project. The amount of resource available to a project will probably change over time and it is therefore important to plan how best to utalise each resource.
+When selecting a resource for a given task it is improtant to consider their skills/knowledge, the time required to complete the task and the deadline for the task.
+If the deadline and time required are similar then it is better to choose a resource who has the relevant skills and experience.
+However, the draw back of always choosing the same resource to do a particular set of tasks is that they will become a single point of failure. If that resource were to leave the team then no-one else would have any knowledge of that part of the project. Therefore, it is advisable to use tasks as an oppertunity to train less experienced/skilled resources when there is sufficient time between the deadline and the expected duration of the task.
+
+\subsection{Stakeholder Engagment}\label{se}
+Stakeholders is a general term used to describe people who have some interest in your project (e.g. customers, team members and sponsors). It is upto the individual project to decide what communication method is suitable. 
+
+The customers are vital part sub group of the steakholders. An effective way to keep them engaged is imperitive to the success of the project. One method is to have a committe (this may be called an advisory committe, in the Mantid project they call it the scientific sterring comittie). This group will be comprised of the senior project team (i.e. the project manager and any sub team leaders for a larger project) and a customer from each of the main user communities. This committe would discuss the progression of tasks and what tasks should be next (priorities). 
+
+\subsection{Software Life Cycle}\label{lc}
 The software should follow the basic notion of a release cycle.
 A release is a version of the software that has been tested and the development team is confident that it is ready to be used.
 Having periodic releases can also work to reassure users that the project is still supported.
@@ -349,9 +362,11 @@ It is advisable to then spend some time working on maintenance tasks, these are 
 Maintenance tasks are improvements to the maintainability of the code rather than any new user facing functionality.
 Examples of such tasks include: moving to a new compiler version, applying fixes for compiler or linter warnings and code reorganisation/refactoring.
 
-When selecting developers for a given task you should consider the skills/knowledge of the developer, the time required to complete the task and the deadline for the task.
-If the deadline and time required are similar then it is better to choose a developer who has the relevant skills and experience.
-If there is sufficient time between the deadline and the estimated time to complete the task then this provides an opportunity to train a less experienced developer.
+\subsection{Project Managment Board and Advisory Committees}\label{PM big}
+
+It is often benefical to set up a project management board, who discuss the high level stratergy and running of the project. These will meet fairly irregularly (a few times a year), but would involve the senior team memeber of the project and the sponsor. This provides an oppertunity to discuss possible risks or opportunities and the long term plans for the project.
+
+For larger projects it maybe beneficial to have a technical advisory committee. This will usually comprise of the technical leads. Their role is to make decisions on the computational aspects of the project. For example, which version of a programming language to use and the operating systems that the software will support. Another role filled by this committee is to decide significant changes to the code base. This could happen if there is a new method (e.g. standard library algorithms in C++) that can be used throughout the code base to improve performance and/or stability. A representative from the technical advisory committee will report their decisions to the project management board, who will distribute the information down to the rest of the team.  
 
 \section{Licensing}
 \label{Licensing}
