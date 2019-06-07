@@ -44,10 +44,12 @@ and
 \address[E]{\orgname{Institut Laue-Langevin},\cny{France}\printead[presep={\\}]{e8}}
 
 \begin{abstract}
-TODO:
-- How to make software outlive the people developing it
-- SINE2020
-- Preventing loss of work
+Scientific software is an essential part of the modern researcher's tool kit, due to large data sets and complex analysis techniques. 
+As a result the software is often expensive to develop. 
+Therefore, its imperiative to ensure that the software will continue to be developed in the future, even if the current work force leaves the project. 
+Some of the requirments for sustainable software are for the code base to have a consistant quality and good documentation, to prevent a loss of knowledge. 
+In this paper a series of guidelines are presented for scientific software development and a discussion of how five SINE2020 projects have used guidelines to develop high quality software.
+
 \end{abstract}
 
 \begin{keyword}
@@ -84,6 +86,12 @@ Guidelines for software development ensure that the code is of a high quality an
 A good set of guidlines will help the software be stable and extensible.
 Therefore, it will be easier to continue growing the code base to include new scientiifc analysis/techniques.
 Some areas have specific needs and requirments that may lead to additional/different guidlines \cite{} (TODO: add papers) that are tailored to their specific user cases.
+
+Guidelines have been used for sceintific software development as part of SINE2020. 
+These include small projects such as BornAgain \cite{}, McStats \cite{} and MuhRec \cite{}. 
+The Mantid \cite{} and SasView \cite{} (TODO: add citations) codes have large teams (up to about 20 people) and need guidelines to ensure a consistant quality across the code base. 
+In the case of Mantid and SasView the need for guidelines is further increased by having a team that is distributed across the world. 
+For more information on how each of these projects uses guidelines please see \cite{} (TODO: ref report).   
 
 The guidelines presented in this paper will suggest the best practises for the current tools that are commonly available today.
 Hence, when it is appropriate the idea of the guideline will be abstracted so that an alternative can be chosen in the future.
