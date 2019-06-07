@@ -61,10 +61,11 @@ TODO:
 \section{Introduction}
 \label{Introduction}
 
-The advances in science are leading to vast amounts of data that cannot be analysed by hand. For example, the European Spallation Source (ESS) will have data rates of (TODO: numbers and ref). 
-The importance of simulations and complex analysis techniques has increased inorder to determine the underlying science. 
-The consequence of this is that the software is often complex and requires a significant investment to develop. 
-Therefore, it is benefical to develop code that is easy to maintain, extend (new functionality) and does not have duplicated effort.  
+The advances in science are leading to vast amounts of data that cannot be analysed by hand.
+For example, the European Spallation Source (ESS) will have data rates of (TODO: numbers and ref).
+The importance of simulations and complex analysis techniques has increased inorder to determine the underlying science.
+The consequence of this is that the software is often complex and requires a significant investment to develop.
+Therefore, it is benefical to develop code that is easy to maintain, extend (new functionality) and does not have duplicated effort.
 This can be achieved by a using guidelines and all maintable high performing software will have at least some guidelines.
 
 The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
@@ -79,7 +80,10 @@ The other potential pitfalls with this isolated approach of software development
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 Inherently, these factors make it more difficult to share and for other research groups or research infrastructures to adapt the software for their own purpose.
 
-Guidelines for software development ensure that the code is of a high quality and that the project progress effectively. A good set of guidlines will help the software be stable and extensible. Therefore, it will be easier to continue growing the code base to include new scientiifc analysis/techniques. Some areas have specific needs and requirments that may lead to additional/different guidlines \cite{} (TODO: add papers) that are tailored to their specific user cases. 
+Guidelines for software development ensure that the code is of a high quality and that the project progress effectively.
+A good set of guidlines will help the software be stable and extensible.
+Therefore, it will be easier to continue growing the code base to include new scientiifc analysis/techniques.
+Some areas have specific needs and requirments that may lead to additional/different guidlines \cite{} (TODO: add papers) that are tailored to their specific user cases.
 
 The guidelines presented in this paper will suggest the best practises for the current tools that are commonly available today.
 Hence, when it is appropriate the idea of the guideline will be abstracted so that an alternative can be chosen in the future.
@@ -91,22 +95,36 @@ Hence, when it is appropriate the idea of the guideline will be abstracted so th
 This section describes the day to day work of the developers working on the software.
 Most of these choices will be made at the start of the project and ideally last its duration, however these can be updated to accommodate new tools and standards, etc.
 
-This section will discuss the typical tasks performed by developers, such as development methodologies, code review and coding standards. Another important part of the developers job is to provide documentation for users and other developers. This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work. 
+This section will discuss the typical tasks performed by developers, such as development methodologies, code review and coding standards.
+Another important part of the developers job is to provide documentation for users and other developers.
+This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work.
 
 \subsection{Development methodology}
 \label{Development methodology}
 
 Development methodology is the set of rules that determine how requirements are gathered, converted into developer tasks and how the software is delivered to the user.
 
-The two extremes of software development methodologies are called "agile" and "waterfall". In the following we will discuss these to extremes, however in reality there is a scale and a mixture of these two extremes can be used. 
+The two extremes of software development methodologies are called "agile" and "waterfall".
+In the following we will discuss these to extremes, however in reality there is a scale and a mixture of these two extremes can be used.
 
-For scientific software agile, or some variant of that, is the most comman methodology. The general principle of agile are short development "sprints" in which small, incremental additions are made to the overall software. The requirements are reviewed and adjusted accordingle for each sprint. This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
+For scientific software agile, or some variant of that, is the most comman methodology.
+The general principle of agile are short development "sprints" in which small, incremental additions are made to the overall software.
+The requirements are reviewed and adjusted accordingle for each sprint.
+This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
 
-If there are set of fixed non-negotiable requirments then the waterfall methodolgy is better. For the waterfall methodology each task is planned in advance and carried out in a predetermined order. This ensures that the reuirments are met and at key milestones.
-However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirments. Projects that are better suited to the waterfall methodology are those where delivering an intermediate product is not viable.
+If there are set of fixed non-negotiable requirments then the waterfall methodolgy is better.
+For the waterfall methodology each task is planned in advance and carried out in a predetermined order.
+This ensures that the reuirments are met and at key milestones.
+However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirments.
+Projects that are better suited to the waterfall methodology are those where delivering an intermediate product is not viable.
 For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit could be useful mid way through development.
 
-In reality a mixture of the two is usually implemented. For example consider a graphical user interface (GUI) that has a set of requirments (e.g. load data, do a fit to the data, output results). To make sure that the GUI meets the requirments a waterfall approach could be used. However, within that approach a more agile like methodology could be used. The first two sprints could focus on loading and fitting to data. The third sprint could then focus on making sure they interact with each other correctly. 
+In reality a mixture of the two is usually implemented.
+For example consider a graphical user interface (GUI) that has a set of requirments (e.g. load data, do a fit to the data, output results).
+To make sure that the GUI meets the requirments a waterfall approach could be used.
+However, within that approach a more agile like methodology could be used.
+The first two sprints could focus on loading and fitting to data.
+The third sprint could then focus on making sure they interact with each other correctly.
 
 \subsection{Coding standards}
 \label{Coding standards}
@@ -332,21 +350,34 @@ Savu also provides tooling to allow a user to export a list of citations from th
 \label{Project Management}
 
 Large pieces of software will require some form of management, to ensure that the team are working effectively.
-This is referred to as a governance model. A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
-Project Management defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/ ) that will help the project be succesful. Each project will have a sponsor(s) who are ultimatley responsible for the project but will not be involved in its running. 
+This is referred to as a governance model.
+A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
+Project Management defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/ ) that will help the project be succesful.
+Each project will have a sponsor(s) who are ultimatley responsible for the project but will not be involved in its running.
 
-The larger the team the more important good project managment becomes. Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project managment that would benefit projects of any size. Then section \ref{PM big} will contain advice for larger teams, but may still be useful to smaller teams.
+The larger the team the more important good project managment becomes.
+Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project managment that would benefit projects of any size.
+Then section \ref{PM big} will contain advice for larger teams, but may still be useful to smaller teams.
 
 \subsection{Resource Managment}\label{rman}
-Resource management can refer to physical equipment, such as computers. However, in this context it will be used to refer to individuals who are available to work on the project. The amount of resource available to a project will probably change over time and it is therefore important to plan how best to utalise each resource.
+Resource management can refer to physical equipment, such as computers.
+However, in this context it will be used to refer to individuals who are available to work on the project.
+The amount of resource available to a project will probably change over time and it is therefore important to plan how best to utalise each resource.
 When selecting a resource for a given task it is improtant to consider their skills/knowledge, the time required to complete the task and the deadline for the task.
 If the deadline and time required are similar then it is better to choose a resource who has the relevant skills and experience.
-However, the draw back of always choosing the same resource to do a particular set of tasks is that they will become a single point of failure. If that resource were to leave the team then no-one else would have any knowledge of that part of the project. Therefore, it is advisable to use tasks as an oppertunity to train less experienced/skilled resources when there is sufficient time between the deadline and the expected duration of the task.
+However, the draw back of always choosing the same resource to do a particular set of tasks is that they will become a single point of failure.
+If that resource were to leave the team then no-one else would have any knowledge of that part of the project.
+Therefore, it is advisable to use tasks as an oppertunity to train less experienced/skilled resources when there is sufficient time between the deadline and the expected duration of the task.
 
 \subsection{Stakeholder Engagment}\label{se}
-Stakeholders is a general term used to describe people who have some interest in your project (e.g. customers, team members and sponsors). It is upto the individual project to decide what communication method is suitable. 
+Stakeholders is a general term used to describe people who have some interest in your project (e.g. customers, team members and sponsors).
+It is upto the individual project to decide what communication method is suitable.
 
-The customers are vital part sub group of the steakholders. An effective way to keep them engaged is imperitive to the success of the project. One method is to have a committe (this may be called an advisory committe, in the Mantid project they call it the scientific sterring comittie). This group will be comprised of the senior project team (i.e. the project manager and any sub team leaders for a larger project) and a customer from each of the main user communities. This committe would discuss the progression of tasks and what tasks should be next (priorities). 
+The customers are vital part sub group of the steakholders.
+An effective way to keep them engaged is imperitive to the success of the project.
+One method is to have a committe (this may be called an advisory committe, in the Mantid project they call it the scientific sterring comittie).
+This group will be comprised of the senior project team (i.e. the project manager and any sub team leaders for a larger project) and a customer from each of the main user communities.
+This committe would discuss the progression of tasks and what tasks should be next (priorities).
 
 \subsection{Software Life Cycle}\label{lc}
 The software should follow the basic notion of a release cycle.
@@ -364,9 +395,17 @@ Examples of such tasks include: moving to a new compiler version, applying fixes
 
 \subsection{Project Managment Board and Advisory Committees}\label{PM big}
 
-It is often benefical to set up a project management board, who discuss the high level stratergy and running of the project. These will meet fairly irregularly (a few times a year), but would involve the senior team memeber of the project and the sponsor. This provides an oppertunity to discuss possible risks or opportunities and the long term plans for the project.
+It is often benefical to set up a project management board, who discuss the high level stratergy and running of the project.
+These will meet fairly irregularly (a few times a year), but would involve the senior team memeber of the project and the sponsor.
+This provides an oppertunity to discuss possible risks or opportunities and the long term plans for the project.
 
-For larger projects it maybe beneficial to have a technical advisory committee. This will usually comprise of the technical leads. Their role is to make decisions on the computational aspects of the project. For example, which version of a programming language to use and the operating systems that the software will support. Another role filled by this committee is to decide significant changes to the code base. This could happen if there is a new method (e.g. standard library algorithms in C++) that can be used throughout the code base to improve performance and/or stability. A representative from the technical advisory committee will report their decisions to the project management board, who will distribute the information down to the rest of the team.  
+For larger projects it maybe beneficial to have a technical advisory committee.
+This will usually comprise of the technical leads.
+Their role is to make decisions on the computational aspects of the project.
+For example, which version of a programming language to use and the operating systems that the software will support.
+Another role filled by this committee is to decide significant changes to the code base.
+This could happen if there is a new method (e.g. standard library algorithms in C++) that can be used throughout the code base to improve performance and/or stability.
+A representative from the technical advisory committee will report their decisions to the project management board, who will distribute the information down to the rest of the team.
 
 \section{Licensing}
 \label{Licensing}
@@ -515,15 +554,17 @@ TODO
 \section{Conclusion}
 \label{Conclusion}
 
-Scientific software is becoming an increasingly valuable tool for research. However, the cost of implementing such software can be high and as a result it is benefical to write sustainable software. 
-The best way to acheive sustainable software is to implement guidelines. 
-This paper has outlined a series of guidelines for scientific software development. 
-The guidlines have covered a range of topics from coding standards to managment of the software and customers. 
+Scientific software is becoming an increasingly valuable tool for research.
+However, the cost of implementing such software can be high and as a result it is benefical to write sustainable software.
+The best way to acheive sustainable software is to implement guidelines.
+This paper has outlined a series of guidelines for scientific software development.
+The guidlines have covered a range of topics from coding standards to managment of the software and customers.
 
 Fundamentally guidelines allow for scientific software to be developed and maintained easily by a distributed team, while providing support to users.
 There is an initial cost in deciding the guidelines and they should be chosen to based on the requirements of the project.
-To ensure that there is a balance between new functionality and maintence it is important to manage the customers and to have a governance model. To ensure a happy user base it is important to have up to date documentation and to have regular relases. 
-The technologies available to software developement are constantly changing and for long term projects it may be necessary to update the guidelines to utalise these improvemnets. 
+To ensure that there is a balance between new functionality and maintence it is important to manage the customers and to have a governance model.
+To ensure a happy user base it is important to have up to date documentation and to have regular relases.
+The technologies available to software developement are constantly changing and for long term projects it may be necessary to update the guidelines to utalise these improvemnets.
 Good gidelines ensure a uniform code quality, a structured developer team and create a positive user experience.
 These factors will help create a stable, maintainable piece of software and the likelihood of the software's user base flourishing.
 
@@ -532,7 +573,8 @@ These factors will help create a stable, maintainable piece of software and the 
 
 Thanks to Ed Beard for initial proofreading.
 
-This work was funded by the Horizon 2020 Framework Programme of the European Union. Project number 654000.
+This work was funded by the Horizon 2020 Framework Programme of the European Union.
+Project number 654000.
 
 %%%%%%%%%%% The bibliography starts:
 
