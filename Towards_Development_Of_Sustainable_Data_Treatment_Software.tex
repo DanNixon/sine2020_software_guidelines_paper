@@ -63,12 +63,12 @@ In this paper a series of guidelines are presented for scientific software devel
 \section{Introduction}
 \label{Introduction}
 
-The advances in science are leading to vast amounts of data that cannot be analysed by hand.
+The advances in technology are leading to vast amounts of data that cannot be analysed by hand.
 For example, the European Spallation Source (ESS) will have data rates of (TODO: numbers and ref).
-The importance of simulations and complex analysis techniques has increased inorder to determine the underlying science.
+In parallel, the importance of simulations and the need for complex analysis techniques have increased in order to answer increasingly challenging science questions.
 The consequence of this is that the software is often complex and requires a significant investment to develop.
-Therefore, it is benefical to develop code that is easy to maintain, extend (new functionality) and does not have duplicated effort.
-This can be achieved by a using guidelines and all maintable high performing software will have at least some guidelines.
+Therefore, it is beneficial to develop code that is easy to maintain, extend (new functionality) and does not have duplicated effort.
+This can be achieved by using guidelines and all maintainable high performing software will have at least some guidelines.
 
 The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
 We will use this definition throughout the remainder of this paper.
@@ -76,22 +76,22 @@ We will use this definition throughout the remainder of this paper.
 Traditionally within the research community people would create and develop their own analysis software packages.
 These could be in the form of scripts (e.g. Python) or compiled code (e.g. Fortran, C++).
 This software is often unique to the research group and effectively leads to duplicated effort as other research groups develop software for the same purpose.
-The developers of the software frequently change (due to the nature of post docs) and without guidelines this can lead to the code being difficult to read because the style will change depending on who wrote it.
+The developers of the software frequently change (due to, for example, the short-term contract nature of post docs positions) and without guidelines this can lead to the code being difficult to read, for example, because the style will change depending on who wrote it.
 This in the worst cases can lead to people believing that the code is incorrect, when it is correct, hence leading to wasted effort.
 The other potential pitfalls with this isolated approach of software development is that bugs are less likely to be found, due to less users.
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 Inherently, these factors make it more difficult to share and for other research groups or research infrastructures to adapt the software for their own purpose.
 
 Guidelines for software development ensure that the code is of a high quality and that the project progress effectively.
-A good set of guidlines will help the software be stable and extensible.
-Therefore, it will be easier to continue growing the code base to include new scientiifc analysis/techniques.
-Some areas have specific needs and requirments that may lead to additional/different guidlines \cite{} (TODO: add papers) that are tailored to their specific user cases.
+A good set of guidelines will help the software be stable and extensible.
+Therefore, it will be easier to continue growing the code base to include new scientific treatment/analysis techniques.
+Some areas have specific needs and requirements that may lead to additional/different guidelines \cite{} (TODO: add papers) that are tailored to their specific user cases.
 
-Guidelines have been used for sceintific software development as part of SINE2020. 
-These include small projects such as BornAgain \cite{}, McStats \cite{} and MuhRec \cite{}. 
-The Mantid \cite{} and SasView \cite{} (TODO: add citations) codes have large teams (up to about 20 people) and need guidelines to ensure a consistant quality across the code base. 
+Guidelines have been used for scientific software development as part of SINE2020. 
+These include projects such as BornAgain \cite{}, McStats \cite{} and MuhRec \cite{}. 
+The Mantid \cite{} and SasView \cite{} (TODO: add citations) codes have large teams (up to about 20 people) and need guidelines to ensure a consistent quality across the code base. 
 In the case of Mantid and SasView the need for guidelines is further increased by having a team that is distributed across the world. 
-For more information on how each of these projects uses guidelines please see \cite{} (TODO: ref report).   
+For more information on how each of these projects uses guidelines please see \cite{} (TODO: add RAL Tech report ref).   
 
 The guidelines presented in this paper will suggest the best practises for the current tools that are commonly available today.
 Hence, when it is appropriate the idea of the guideline will be abstracted so that an alternative can be chosen in the future.
