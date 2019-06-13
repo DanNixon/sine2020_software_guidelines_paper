@@ -100,7 +100,7 @@ Hence, when it is appropriate the idea of the guideline will be abstracted so th
 \section{Business as Usual}
 \label{Business as Usual}
 
-This section describes the day to day work of the developers working on the software. 
+This section describes the day to day work of the developers working on the software.
 This section will discuss the typical tasks performed by developers, such as development methodologies, code review and coding standards.
 Another important part of the developers job is to provide documentation for users and other developers.
 This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work.
@@ -139,7 +139,8 @@ The third sprint could then focus on making sure they interact with each other c
 Code should be of a high quality, the reason for this is two fold; code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs.
 These factors combine to create a code base that is easier to maintain in the future.
 
-Coding standards should be chosen based on the programming language. If multiple languages are going to be used it is possible to have rules for each language, see Mantid as an example. 
+Coding standards should be chosen based on the programming language.
+If multiple languages are going to be used it is possible to have rules for each language, see Mantid as an example.
 A community curated list of standards organised by language is available online at \cite{Awesome_Guidelines}.
 
 An important, language agnostic rule to follow is to write human readable code.
@@ -198,11 +199,12 @@ These are tools that inspect the code base to detect potential issues, such as u
 There are linters available for almost every language.
 For example, Clang \cite{Clang} and Pylint \cite{Pylint} are two of the most common for C++ and Python respectively.
 Linters are available as part of standalone packages that produce result reports, these are typically easy to install and run.
-Some of these packages are also available as a cloud service (e.g. Coverity \cite{} (TODO:citation)), when new code is added to the remote repository the package will run and produce a result report. For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis (https://github.com/mre/awesome-static-analysis), a community curated list of static analysis tools.
+Some of these packages are also available as a cloud service (e.g. Coverity \cite{} (TODO:citation)), when new code is added to the remote repository the package will run and produce a result report.
+For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis (https://github.com/mre/awesome-static-analysis), a community curated list of static analysis tools.
 
 When writing new code care should be taken to avoid pre-emptive optimisation, where the speed up in the execution time may not be significant.
-A similar pitfall is pre-emptive generalisation, which is attempting to make the code less problem specific in the hope it can be reused later. 
-In both of these cases it is better to first determine if any additional optimisation or generalisation is going to be genuinely benefical. 
+A similar pitfall is pre-emptive generalisation, which is attempting to make the code less problem specific in the hope it can be reused later.
+In both of these cases it is better to first determine if any additional optimisation or generalisation is going to be genuinely benefical.
 Of course neither pre-emptive optimisation or generalisation have a concrete definition so it is up to the developer and code reviewers to make informed decisions based on the nature of the work and the code base.
 
 \subsection{Issues and work planning}
@@ -227,29 +229,32 @@ Ideally both levels of tracking should be available to view freely by users and 
 \subsection{Source control management (SCM)}
 \label{Source control management}
 
-SCM provides a full history of the code base, allows multiple developers to work on the project simultaneously and provides means on reviewing changes to your software. Hence, SCM is essential for software projects.
+SCM provides a full history of the code base, allows multiple developers to work on the project simultaneously and provides means on reviewing changes to your software.
+Hence, SCM is essential for software projects.
 
-To fully utilise the benefits of SCM, it is necessary to have guidelines. 
-Hence, there are ample guidelines for SCM, for more information please see https://github.com/dictcp/awesome-git\#workflow. Therefore, this section will only give an overview and highlight a few commonly overlooked points.
+To fully utilise the benefits of SCM, it is necessary to have guidelines.
+Hence, there are ample guidelines for SCM, for more information please see https://github.com/dictcp/awesome-git\#workflow.
+Therefore, this section will only give an overview and highlight a few commonly overlooked points.
 
-A workflow defines how developers interact with the SCM. 
-This includes the process for reviewing and accepting changes into the code base. 
+A workflow defines how developers interact with the SCM.
+This includes the process for reviewing and accepting changes into the code base.
 As a result it is important to define a workflow and to enforce it, to ensure code quality.
 
 It is common for less experienced developers to try and submit unused code (e.g. commented out code, functions that are never called and files that are not included) to the code base.
-It is important not to add dead code into the code base, because 
-its presence reduces the readability of the code base. 
+It is important not to add dead code into the code base, because
+its presence reduces the readability of the code base.
 Since the history of the code base is recorded as part of the SCM, removing dead code does not risk losing important information.
 
 A simple and popular option is the feature branch workflow (see https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 In this workflow a developer will work on a new feature using a new branch and that branch is then merged when the changes are accepted.
 
 Developers should also ensure that they produce a clear commit history.
-Given that this is likely the longest standing documentation, describing the history of the code base is important. 
-The commits should be sensible, atomic and logically ordered. The commit messages need to be clear and describe the reasoning behind the changes made in the commit.
+Given that this is likely the longest standing documentation, describing the history of the code base is important.
+The commits should be sensible, atomic and logically ordered.
+The commit messages need to be clear and describe the reasoning behind the changes made in the commit.
 For further reading please see https://chris.beams.io/posts/git-commit/. TODO
 
-Git \cite{Git} is the most common and one of the most powerful SCM tools used in open source software. 
+Git \cite{Git} is the most common and one of the most powerful SCM tools used in open source software.
 One advantage is that it has a wide variety of training resources available (TODO: add examples).
 Git is suitable for a project of any size and will probably last the full life of the project.
 
@@ -264,13 +269,15 @@ Continuous Integration (CI) should be used, regardless of the projects size, to 
 CI is essentially a service that detects when new changes have been made to the code base (via the SCM) and runs a set of actions to determine if the code is of an acceptable quality.
 It can also be used to perform the same checks on proposed changes before they become part of the main code base.
 
-The obvious action is to compilie/install the software and to run automated tests. However, any number of additional tasks can be performed. Including, but not limited to; generating documentation, performing code linting, deploying packages and checking for software vulnerabilities.
+The obvious action is to compilie/install the software and to run automated tests.
+However, any number of additional tasks can be performed.
+Including, but not limited to; generating documentation, performing code linting, deploying packages and checking for software vulnerabilities.
 
 For small scale projects that reside in a single repository, using a hosted service for continuous integration is probably sufficient.
 For example, Travis CI \cite{Travis_CI} offers a free service that will compile builds and run tests over a fixed time limit (available for Linux, Mac OS and Windows).
 
 Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
-As a result Jenkins can be adapted to suit the needs of a specific software project. 
+As a result Jenkins can be adapted to suit the needs of a specific software project.
 For example, it has no restrictions for build times, stores data locally and gives the developer complete control over the setup of the build environment.
 
 \subsection{Code review}
@@ -283,19 +290,21 @@ For example, it has no restrictions for build times, stores data locally and giv
     \label{Code_Review_Process}
 \end{figure}
 
-Code reviews  are the process of determining if a proposed change should be added to the code base. Typically this occurs after a developer has finished working on a feature or bug fix.
+Code reviews  are the process of determining if a proposed change should be added to the code base.
+Typically this occurs after a developer has finished working on a feature or bug fix.
 
 The depth of the review process depends on the size and purpose of the project.
 The developer proposing the changes should provide instructions on how to test if the changes are succesful and why they are necessary.
 
-The reviewer must ensure that the code is of an acceptable quality (coding styles, guidelines, etc. have been followed). 
+The reviewer must ensure that the code is of an acceptable quality (coding styles, guidelines, etc. have been followed).
 This should also include if the commit history is sensible and the relevant documentation (including release notes) has been updated.
 CI tools can be used to perform some of these checks automatically.
 
 Larger or more critical projects may opt to have multiple review stages, in which additional reviewers will perform the same duties as the previous reviewer.
 Having multiple reviewers for the same piece of work may seem inefficient, but will increase the chance of potential issues being found before they are added to the code base.
 
-Tools for code reviews are often built into hosted SCM services. For example, GitHub Pull Requests allow code changes to be viewed and commented on.
+Tools for code reviews are often built into hosted SCM services.
+For example, GitHub Pull Requests allow code changes to be viewed and commented on.
 
 \section{Architecture}
 \label{Architecture}
