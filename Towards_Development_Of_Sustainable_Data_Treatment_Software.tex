@@ -29,26 +29,27 @@
 \thanks{Corresponding author. \printead{e1}.}},
 \author[A]{\inits{A.}\fnms{Anthony} \snm{Lim}\ead[label=e2]{anthony.lim@stfc.ac.uk}},
 \author[A]{\inits{A.}\fnms{Anders} \snm{Markvardsen}\ead[label=e3]{anders.markvardsen@stfc.ac.uk}},
-\author[B]{\inits{T.}\fnms{Thomas} \snm{Holm Rod}\ead[label=e4]{Thomas.HolmRod@esss.se}},
-\author[C]{\inits{A.}\fnms{Anders} \snm{Kaestner}\ead[label=e5]{anders.kaestner@psi.ch}},
-\author[D]{\inits{J.}\fnms{Joachim} \snm{Wuttke}\ead[label=e6]{j.wuttke@fz-juelich.de}},
 \author[A]{\inits{S.}\fnms{Stephen} \snm{Cottrell}\ead[label=e7]{stephen.cottrell@stfc.ac.uk}},
+\author[B]{\inits{A.}\fnms{Anders} \snm{Kaestner}\ead[label=e5]{anders.kaestner@psi.ch}},
+\author[C]{\inits{J.}\fnms{Joachim} \snm{Wuttke}\ead[label=e6]{j.wuttke@fz-juelich.de}},
+\author[D]{\inits{M.}\fnms{Miguel} \snm{Gonzalez}\ead[label=e8]{gonzalezm@ill.fr}}
 and
-\author[E]{\inits{M.}\fnms{Miguel} \snm{Gonzalez}\ead[label=e8]{gonzalezm@ill.fr}}
+\author[E]{\inits{T. H.}\fnms{Thomas Holm} \snm{Rod}\ead[label=e4]{thomas.rod@esss.se}},
+
 
 \runningauthor{D. Nixon et al.}
 \address[A]{\orgname{Science and Technology Facilities Council},\cny{United Kingdom}\printead[presep={\\}]{e1,e2,e3,e7}}
-\address[B]{\orgname{European Spallation Source},\cny{Sweden}\printead[presep={\\}]{e4}}
-\address[C]{\orgname{Paul Scherrer Institute},\cny{Switzerland}\printead[presep={\\}]{e5}}
-\address[D]{\orgname{Forschungszentrum Jülich},\cny{Germany}\printead[presep={\\}]{e6}}
-\address[E]{\orgname{Institut Laue-Langevin},\cny{France}\printead[presep={\\}]{e8}}
+\address[B]{\orgname{Paul Scherrer Institute},\cny{Switzerland}\printead[presep={\\}]{e5}}
+\address[C]{\orgname{Forschungszentrum Jülich},\cny{Germany}\printead[presep={\\}]{e6}}
+\address[D]{\orgname{Institut Laue-Langevin},\cny{France}\printead[presep={\\}]{e8}}
+\address[E]{\orgname{European Spallation Source},\cny{Denmark}\printead[presep={\\}]{e4}}
 
 \begin{abstract}
-Scientific software is an essential part of the modern researcher's tool kit, due to large data sets and complex analysis techniques. 
-As a result the software is often expensive to develop. 
-Therefore, its imperative to ensure that the software will continue to be developed in the future, even if the current work force leaves the project. 
-Some of the requirements for sustainable software are for the code base to have a consistent quality and good documentation, to prevent a loss of knowledge. 
-In this paper a series of guidelines are presented for scientific software development and a discussion of how the EU SINE2020 work-package 10 has used guidelines to develop high quality software.
+Scientific software is an essential part of the modern researcher's tool kit due to large data sets and complex analysis techniques. 
+The software is often expensive to develop and it is therefore imperative to ensure that the software will continue to be developed and maintained in the future, even if the current work force leaves the project, that multiple developers can contribute, and that the software can be used by a large user community.
+Some of the requirements for sustainable software are for the code base to have a consistent quality and good documentation, to prevent a loss of knowledge and facilitate collaborative development. 
+In this paper a series of guidelines are presented for scientific software development. The guidelines are abstracted from a set of guidelines developed in the course of the SINE2020 project in order to facilitate collaborative development of inter-operable data treatment software among European neutron and muon sources.
+
 
 \end{abstract}
 
@@ -67,14 +68,14 @@ The advances in technology are leading to vast amounts of data that cannot be an
 For example, the European Spallation Source (ESS) will have data rates of (TODO: numbers and ref).
 In parallel, the importance of simulations and the need for complex analysis techniques have increased in order to answer increasingly challenging science questions.
 The consequence of this is that the software is often complex and requires a significant investment to develop.
-Therefore, it is beneficial to develop code that is easy to maintain, extend (new functionality) and does not have duplicated effort.
+Therefore, it is beneficial to develop code that is easy to maintain, extend (new functionality), does not have duplicated effort and where multiple developers can contribute and which is inter-operable (e.g.\ can be used to treat data from several neutron sources). 
 This can be achieved by using guidelines and all maintainable high performing software will have at least some guidelines.
 
 The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
 We will use this definition throughout the remainder of this paper.
 
 Traditionally within the research community people would create and develop their own analysis software packages.
-These could be in the form of scripts (e.g. Python) or compiled code (e.g. Fortran, C++).
+These could be in the form of scripts (e.g.\ Python) or compiled code (e.g.\ Fortran, C++).
 This software is often unique to the research group and effectively leads to duplicated effort as other research groups develop software for the same purpose.
 The developers of the software frequently change (due to, for example, the short-term contract nature of post docs positions) and without guidelines this can lead to the code being difficult to read, for example, because the style will change depending on who wrote it.
 This in the worst cases can lead to people believing that the code is incorrect, when it is correct, hence leading to wasted effort.
@@ -85,13 +86,14 @@ Inherently, these factors make it more difficult to share and for other research
 Guidelines for software development ensure that the code is of a high quality and that the project progress effectively.
 A good set of guidelines will help the software be stable and extensible.
 Therefore, it will be easier to continue growing the code base to include new scientific treatment/analysis techniques.
-Some areas have specific needs and requirements that may lead to additional/different guidelines \cite{} (TODO: add papers) that are tailored to their specific user cases.
+Some areas have specific needs and requirements that may lead to additional/different guidelines \cite{} (TODO: add papers) that are tailored to their specific user cases. Potential synergies between two code bases are much more likely to occur if the two code bases have been developed using the same set of guidelines. For example, if both the code bases are developed in Python it is rather straightforward to share modules, and the barrier to entry for a developer will be reduced if the developer is already familiar with the technologies used from another project. 
+
 
 Guidelines have been used for scientific software development as part of SINE2020. 
 These include projects such as BornAgain \cite{}, McStats \cite{} and MuhRec \cite{}. 
 The Mantid \cite{} and SasView \cite{} (TODO: add citations) codes have large teams (up to about 20 people) and need guidelines to ensure a consistent quality across the code base. 
 In the case of Mantid and SasView the need for guidelines is further increased by having a team that is distributed across the world. 
-For more information on how each of these projects uses guidelines please see \cite{} (TODO: add RAL Tech report ref).   
+For more information on how each of these projects use guidelines please see \cite{} (TODO: add RAL Tech report ref).   
 
 This paper will first present guidelines that are not specific to a given domain.
 In line with these in section () guidelines specifically put together for the development of data treatment software for the neutron and muon community is presented, which where distilled as part of the above mentioned SINE2020 project.
@@ -114,21 +116,21 @@ Development methodology is the set of rules that determine how requirements are 
 The two extremes of software development methodologies are called "agile" and "waterfall".
 In the following we will discuss these to extremes, however in reality there is a scale and a mixture of these two extremes can be used.
 
-For scientific software agile, or some variant of that, is the most comman methodology.
+For scientific software agile, or some variant of that, is the most common methodology.
 The general principle of agile are short development "sprints" in which small, incremental additions are made to the overall software.
-The requirements are reviewed and adjusted accordingle for each sprint.
+The requirements are reviewed and adjusted accordingly for each sprint.
 This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
 
-If there are set of fixed non-negotiable requirments then the waterfall methodolgy is better.
+If there are set of fixed non-negotiable requirements then the waterfall methodolgy is often judged to be better.
 For the waterfall methodology each task is planned in advance and carried out in a predetermined order.
-This ensures that the reuirments are met and at key milestones.
-However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirments.
+This ensures that the requirements are met and at key milestones.
+However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirements.
 Projects that are better suited to the waterfall methodology are those where delivering an intermediate product is not viable.
 For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit could be useful mid way through development.
 
 In reality a mixture of the two is usually implemented.
-For example consider a graphical user interface (GUI) that has a set of requirments (e.g. load data, do a fit to the data, output results).
-To make sure that the GUI meets the requirments a waterfall approach could be used.
+For example consider a graphical user interface (GUI) that has a set of requirements (e.g.\ load data, do a fit to the data, output results).
+To make sure that the GUI meets the requirements a waterfall approach could be used.
 However, within that approach a more agile like methodology could be used.
 The first two sprints could focus on loading and fitting to data.
 The third sprint could then focus on making sure they interact with each other correctly.
@@ -199,7 +201,7 @@ There are a plethora of linters available for almost every language.
 Clang \cite{Clang} and Pylint \cite{Pylint} are two of the most common for C++ and Python respectively.
 
 A lot of tools are available as standalone packages that you simply install, run and produces a report.
-Some tools are also available as a cloud service (e.g. Coverity) that is triggered by new code being pushed to your remote repository.
+Some tools are also available as a cloud service (e.g.\ Coverity) that is triggered by new code being pushed to your remote repository.
 
 For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis (https://github.com/mre/awesome-static-analysis), a community curated list of static analysis tools.
 
@@ -215,7 +217,7 @@ This is often implemented in two parts; low level tracking of implementation tas
 
 For low level task tracking simple tools such as GitHub Issues are likely sufficient, even for large projects.
 The essential functionality is providing a description of work to be undertaken and allowing it to be assigned to a developer.
-Additional features may include boards such as Scrum or Kanban boards known from e.g.\/ JIRA (TODO provide reference), task dependency and task hierarchy. (TODO: white board with stickers / cards)
+Additional features may include boards such as Scrum or Kanban boards known from e.g.\/ JIRA (URL: https://www.atlassian.com/software/jira), task dependency and task hierarchy. For local teams a Scrum or Kanban board in the form of a whiteboard with stickers is often used and can be more convenient because it enables the team to meet and discuss in front of the board. 
 
 Most cloud hosted SCM services provide their own issue tracking tool, which typically suit the needs of most software projects.
 
@@ -298,7 +300,7 @@ Tools for code review are often in built in hosted SCM services, an example of t
 
 A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas, where a module may refer to a package, library or software plugin.
 
-Care should be taken when designating these modules, these should contain only functionality relevant to the goal of the module, where the goal itself is a very specific task (e.g. minimization).
+Care should be taken when designating these modules, these should contain only functionality relevant to the goal of the module, where the goal itself is a very specific task (e.g.\ minimization).
 
 Code within a module should be closely related to each other, this reduces importing unnecessary functionality and keeps modules specific to a given purpose.
 A benefit gained from making code modular is the ability to test each module in isolation using automated testing (i.e. unit testing).
@@ -311,7 +313,7 @@ Most build systems for other languages combine a dependency manager into the bui
 For Python based projects Python's setuptools is typically sufficient, for specific cases (for example, when the software depends on tricky to package dependencies) Conda may be used as an alternative.
 
 If you are making your software extensible by means of a scripting interface this should ideally be done in Python.
-Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
+Python is becoming the de facto standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
 
 If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
 Qt is an application framework commonly used by many open source and commercial software packages.
@@ -335,7 +337,7 @@ In this case you may evaluate if your changes should form part of the standard a
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
 
-Applications may store information relevant to it as a whole (e.g. window layout for a graphical tool), which should typically be stored using the facilities provided by the application framework (e.g. \texttt{QSettings} for Qt).
+Applications may store information relevant to it as a whole (e.g.\ window layout for a graphical tool), which should typically be stored using the facilities provided by the application framework (e.g.\ \texttt{QSettings} for Qt).
 
 Additional configuration or process setup information should be stored in an easily accessible location.
 This data may include version numbers, parameters and filenames.
@@ -345,8 +347,7 @@ Under no circumstances should custom formats be used for job configuration.
 There are already a number of well defined data formats for this purpose, creating a new format would be a waste of developer time.
 
 The ability to reproduce results of data treatment is an important ability for users of your software, to allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
-To allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
-Typically this means recording a history of each atomic action your software performs as well as any relevant version numbers (i.e. such as the version of your software, versions of plugins/dependencies).
+Typically this means recording a history of each atomic action your software performs as well as any relevant version numbers (i.e.\ such as the version of your software, versions of plugins/dependencies).
 
 Process lists in Savu \cite{Wadeson_2016} are a good example of such operation reporting.
 These store the job configuration in a NeXus file and encode the same information in the final results (also stored in a NeXus file).
@@ -362,27 +363,27 @@ A governance model will provide a constructive mechanism for deciding the direct
 Project Management defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/ ) that will help the project be succesful.
 Each project will have a sponsor(s) who are ultimatley responsible for the project but will not be involved in its running.
 
-The larger the team the more important good project managment becomes.
-Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project managment that would benefit projects of any size.
+The larger the team the more important good project management becomes.
+Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project management that would benefit projects of any size.
 Then section \ref{PM big} will contain advice for larger teams, but may still be useful to smaller teams.
 
 \subsection{Resource Managment}\label{rman}
 Resource management can refer to physical equipment, such as computers.
 However, in this context it will be used to refer to individuals who are available to work on the project.
-The amount of resource available to a project will probably change over time and it is therefore important to plan how best to utalise each resource.
-When selecting a resource for a given task it is improtant to consider their skills/knowledge, the time required to complete the task and the deadline for the task.
+The amount of resource available to a project will probably change over time and it is therefore important to plan how best to utilise each resource.
+When selecting a resource for a given task it is important to consider their skills/knowledge, the time required to complete the task and the deadline for the task.
 If the deadline and time required are similar then it is better to choose a resource who has the relevant skills and experience.
 However, the draw back of always choosing the same resource to do a particular set of tasks is that they will become a single point of failure.
 If that resource were to leave the team then no-one else would have any knowledge of that part of the project.
 Therefore, it is advisable to use tasks as an oppertunity to train less experienced/skilled resources when there is sufficient time between the deadline and the expected duration of the task.
 
 \subsection{Stakeholder Engagment}\label{se}
-Stakeholders is a general term used to describe people who have some interest in your project (e.g. customers, team members and sponsors).
+Stakeholders is a general term used to describe people who have some interest in your project (e.g.\ customers, team members and sponsors).
 It is upto the individual project to decide what communication method is suitable.
 
-The customers are vital part sub group of the steakholders.
+The customers are a vital sub group of the steakholders.
 An effective way to keep them engaged is imperitive to the success of the project.
-One method is to have a committe (this may be called an advisory committe, in the Mantid project they call it the scientific sterring comittie).
+One method is to have a committee (this may be called an advisory committee, in the Mantid project they call it the scientific steering committee).
 This group will be comprised of the senior project team (i.e. the project manager and any sub team leaders for a larger project) and a customer from each of the main user communities.
 This committe would discuss the progression of tasks and what tasks should be next (priorities).
 
@@ -397,21 +398,20 @@ The next stage is "beta testing" where a select group of users are chosen and th
 Once all of the identified bugs are fixed it is then released with more confidence that it is ready for use.
 
 It is advisable to then spend some time working on maintenance tasks, these are improvements to the maintainability of the code rather than any new user facing functionality.
-Maintenance tasks are improvements to the maintainability of the code rather than any new user facing functionality.
 Examples of such tasks include: moving to a new compiler version, applying fixes for compiler or linter warnings and code reorganisation/refactoring.
 
-\subsection{Project Managment Board and Advisory Committees}\label{PM big}
+\subsection{Project Management Board and Advisory Committees}\label{PM big}
 
-It is often benefical to set up a project management board, who discuss the high level stratergy and running of the project.
+It is often benefical to set up a project management board, who discuss the high level strategy and running of the project.
 These will meet fairly irregularly (a few times a year), but would involve the senior team memeber of the project and the sponsor.
-This provides an oppertunity to discuss possible risks or opportunities and the long term plans for the project.
+This provides an oppurtunity to discuss possible risks or opportunities and the long term plans for the project.
 
-For larger projects it maybe beneficial to have a technical advisory committee.
+For larger projects it may be beneficial to have a technical advisory committee.
 This will usually comprise of the technical leads.
 Their role is to make decisions on the computational aspects of the project.
 For example, which version of a programming language to use and the operating systems that the software will support.
 Another role filled by this committee is to decide significant changes to the code base.
-This could happen if there is a new method (e.g. standard library algorithms in C++) that can be used throughout the code base to improve performance and/or stability.
+This could happen if there is a new method (e.g.\ standard library algorithms in C++) that can be used throughout the code base to improve performance and/or stability.
 A representative from the technical advisory committee will report their decisions to the project management board, who will distribute the information down to the rest of the team.
 
 \section{Licensing}
@@ -441,7 +441,7 @@ A large framework used by multiple different scientific techniques at different 
 
 This section will assume you have a substantial number of users that you do not directly interact with during your development process.
 
-In order for any potential issues in your software to be found and rectified you may wish to create a release candidates of your software before the official release.
+In order for any potential issues in your software to be found and rectified you may wish to create a release candidate of your software before the official release.
 These versions are intended for "power users" who do not mind testing your software for the benefit of the wider audience of your software (a typical example at a large scale research facility is a scientist responsible for an instrument and its user programme, and who wants to ensure your software works before providing it to their visiting users).
 
 The length of the beta period is determined by your release cycle and your estimated number of users.
@@ -565,14 +565,15 @@ Scientific software is becoming an increasingly valuable tool for research.
 However, the cost of implementing such software can be high and as a result it is benefical to write sustainable software.
 The best way to acheive sustainable software is to implement guidelines.
 This paper has outlined a series of guidelines for scientific software development.
-The guidlines have covered a range of topics from coding standards to managment of the software and customers.
+The guidelines have covered a range of topics from coding standards to managment of the software and customers.
 
 Fundamentally guidelines allow for scientific software to be developed and maintained easily by a distributed team, while providing support to users.
 There is an initial cost in deciding the guidelines and they should be chosen to based on the requirements of the project.
 To ensure that there is a balance between new functionality and maintence it is important to manage the customers and to have a governance model.
 To ensure a happy user base it is important to have up to date documentation and to have regular relases.
 The technologies available to software developement are constantly changing and for long term projects it may be necessary to update the guidelines to utalise these improvemnets.
-Good gidelines ensure a uniform code quality, a structured developer team and create a positive user experience.
+Good guidelines ensure a uniform code quality, a structured developer team and create a positive user experience. Moreover, if multiple software development projects follow the same guidelines, such as those considered in SINE2020, it becomes easier to exploit synergies between the projects.
+
 These factors will help create a stable, maintainable piece of software and the likelihood of the software's user base flourishing.
 
 \section{Acknowledgements}
@@ -580,8 +581,7 @@ These factors will help create a stable, maintainable piece of software and the 
 
 Thanks to Ed Beard for initial proofreading.
 
-This work was funded by the Horizon 2020 Framework Programme of the European Union.
-Project number 654000.
+This work was developed in the course of the SINE2020 project (www.sine2020.eu) funded by European Union’s Horizon 2020 research and innovation programme under grant agreement No 654000.
 
 %%%%%%%%%%% The bibliography starts:
 
