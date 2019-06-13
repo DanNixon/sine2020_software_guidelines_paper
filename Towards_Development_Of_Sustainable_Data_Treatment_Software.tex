@@ -33,8 +33,9 @@
 \author[C]{\inits{A.}\fnms{Anders} \snm{Kaestner}\ead[label=e5]{anders.kaestner@psi.ch}},
 \author[D]{\inits{J.}\fnms{Joachim} \snm{Wuttke}\ead[label=e6]{j.wuttke@fz-juelich.de}},
 \author[A]{\inits{S.}\fnms{Stephen} \snm{Cottrell}\ead[label=e7]{stephen.cottrell@stfc.ac.uk}},
+\author[E]{\inits{M.}\fnms{Miguel} \snm{Gonzalez}\ead[label=e8]{gonzalezm@ill.fr}},
 and
-\author[E]{\inits{M.}\fnms{Miguel} \snm{Gonzalez}\ead[label=e8]{gonzalezm@ill.fr}}
+\author[A]{\inits{A.}\fnms{Anthony} \snm{Lim}\ead[label=e2]{anthony.lim@stfc.ac.uk}}
 
 \runningauthor{D. Nixon et al.}
 \address[A]{\orgname{Science and Technology Facilities Council},\cny{United Kingdom}\printead[presep={\\}]{e1,e2,e3,e7}}
@@ -63,11 +64,11 @@ In this paper a series of guidelines are presented for scientific software devel
 \section{Introduction}
 \label{Introduction}
 
-The advances in science are leading to vast amounts of data that cannot be analysed by hand.
+Advances in science are leading to vast amounts of data that cannot be analysed by hand.
 For example, the European Spallation Source (ESS) will have data rates of (TODO: numbers and ref).
-The importance of simulations and complex analysis techniques has increased inorder to determine the underlying science.
+Therefore, the importance of simulations and complex analysis techniques has increased inorder to determine the underlying science.
 The consequence of this is that the software is often complex and requires a significant investment to develop.
-Therefore, it is benefical to develop code that is easy to maintain, extend (new functionality) and does not have duplicated effort.
+It is therefore beneficial to develop code that is easy to maintain, extend via new functionality and does not duplicate effort.
 This can be achieved by a using guidelines and all maintable high performing software will have at least some guidelines.
 
 The Oxford Dictionaries (https://en.oxforddictionaries.com/) definition of a guideline is "a general rule, principle, or piece of advice", for example “the organisation has issued guidelines for people working with prisoners”.
@@ -76,15 +77,15 @@ We will use this definition throughout the remainder of this paper.
 Traditionally within the research community people would create and develop their own analysis software packages.
 These could be in the form of scripts (e.g. Python) or compiled code (e.g. Fortran, C++).
 This software is often unique to the research group and effectively leads to duplicated effort as other research groups develop software for the same purpose.
-The developers of the software frequently change (due to the nature of post docs) and without guidelines this can lead to the code being difficult to read because the style will change depending on who wrote it.
-This in the worst cases can lead to people believing that the code is incorrect, when it is correct, hence leading to wasted effort.
+The developers of the software frequently change (due to the nature of post docs) and without guidelines this can lead to the code being difficult to read, because the style will change depending on who wrote it.
+In the worst cases this can lead to people believing that the code is incorrect, when it is correct, hence leading to wasted effort.
 The other potential pitfalls with this isolated approach of software development is that bugs are less likely to be found, due to less users.
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 Inherently, these factors make it more difficult to share and for other research groups or research infrastructures to adapt the software for their own purpose.
 
 Guidelines for software development ensure that the code is of a high quality and that the project progress effectively.
 A good set of guidlines will help the software be stable and extensible.
-Therefore, it will be easier to continue growing the code base to include new scientiifc analysis/techniques.
+Therefore, it will be easier to continue growing the code base to include new scientiifc analysis and techniques.
 Some areas have specific needs and requirments that may lead to additional/different guidlines \cite{} (TODO: add papers) that are tailored to their specific user cases.
 
 Guidelines have been used for sceintific software development as part of SINE2020.
@@ -99,12 +100,11 @@ Hence, when it is appropriate the idea of the guideline will be abstracted so th
 \section{Business as Usual}
 \label{Business as Usual}
 
-This section describes the day to day work of the developers working on the software.
-Most of these choices will be made at the start of the project and ideally last its duration, however these can be updated to accommodate new tools and standards, etc.
-
+This section describes the day to day work of the developers working on the software. 
 This section will discuss the typical tasks performed by developers, such as development methodologies, code review and coding standards.
 Another important part of the developers job is to provide documentation for users and other developers.
 This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work.
+Most of these choices will be made at the start of the project and ideally last its duration, however these can be updated to accommodate new tools and standards.
 
 \subsection{Development methodology}
 \label{Development methodology}
@@ -115,8 +115,8 @@ The two extremes of software development methodologies are called "agile" and "w
 In the following we will discuss these to extremes, however in reality there is a scale and a mixture of these two extremes can be used.
 
 For scientific software agile, or some variant of that, is the most comman methodology.
-The general principle of agile are short development "sprints" in which small, incremental additions are made to the overall software.
-The requirements are reviewed and adjusted accordingle for each sprint.
+The general principle of the agile methodology are short development "sprints" in which small, incremental additions are made to the overall software.
+The requirements are reviewed and adjusted accordingly for each sprint.
 This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
 
 If there are set of fixed non-negotiable requirments then the waterfall methodolgy is better.
@@ -127,7 +127,7 @@ Projects that are better suited to the waterfall methodology are those where del
 For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit could be useful mid way through development.
 
 In reality a mixture of the two is usually implemented.
-For example consider a graphical user interface (GUI) that has a set of requirments (e.g. load data, do a fit to the data, output results).
+For example, a graphical user interface (GUI) that has a set of requirments (e.g. load data, do a fit to the data, output results).
 To make sure that the GUI meets the requirments a waterfall approach could be used.
 However, within that approach a more agile like methodology could be used.
 The first two sprints could focus on loading and fitting to data.
@@ -139,14 +139,14 @@ The third sprint could then focus on making sure they interact with each other c
 Code should be of a high quality, the reason for this is two fold; code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs.
 These factors combine to create a code base that is easier to maintain in the future.
 
-Specific rules depend greatly on the language in question, as such it is better to select a set of standards based on the language your software is written in.
-A community curated list of standards organised by language is available online \cite{Awesome_Guidelines}.
+Coding standards should be chosen based on the programming language. If multiple languages are going to be used it is possible to have rules for each language, see Mantid as an example. 
+A community curated list of standards organised by language is available online at \cite{Awesome_Guidelines}.
 
 An important, language agnostic rule to follow is to write human readable code.
-This may be by means of comments, verbose variable names, etc.
-Ideally a developer should not have to dig through documentation stored elsewhere or find the correct person to talk to to understand a piece of code.
+For example, use comments to explain the code and descriptive variable names.
+A developer should be able to understand what the code is doing (not necessarily why) without looking at the documentation or talking to the previous author.
 
-As an example of this, compare the function \cite{Lim_2015}
+For example, compare the function \cite{Lim_2015}
 
 \begin{lstlisting}
 float calc_v(std::vector<float> y)
@@ -179,96 +179,99 @@ float linear_approx_of_pair_potentials(
 }
 \end{lstlisting}
 
-The improvements in the second code snippet include (any points that are C++ specific are noted):
+the improvements in the second code snippet include (any points that are C++ specific are noted):
 \begin{itemize}
-  \item{A Doxygen comment is present}
-  \item{Improved function name that better indicates it's functionality}
-  \item{Improved verbose variable names}
-  \item{Better use of scope constructs (\texttt{\{} and \texttt{\}}) and newlines}
-  \item{Non trivial parameters that are not modified are passed by const reference (C++)}
-  \item{Range based for loop is used (C++)}
-  \item{Use of \texttt{auto} keyword (C++)}
+  \item{A Doxygen \cite{} (TODO: add citation) comment is present.}
+  \item{A more descriptive function name, which indicates it's purpose.}
+  \item{Improved verbose variable names.}
+  \item{Better use of scope constructs (\texttt{\{} and \texttt{\}}) and newlines.}
+  \item{Non trivial parameters that are not modified are passed by const reference (C++).}
+  \item{A range based for loop (C++).}
+  \item{Use of \texttt{auto} keyword (C++).}
 \end{itemize}
 
-For ease of international collaboration filenames, identifier names, comments and documentation should be published in English.
+For ease of international collaboration filenames, identifier names, comments and documentation should be published in a single language (usually English).
 Translation frameworks may be used to provide your software and documentation in other languages at compile/build time.
 
 To assist in maintaining code quality one or more "linters" (also referred to as "static analysis" tools) should be employed.
-These are tools that inspect your code in one way or another to detect potential issues, such as unused variables, indentation, thread misuse, etc.
-There are a plethora of linters available for almost every language.
-Clang \cite{Clang} and Pylint \cite{Pylint} are two of the most common for C++ and Python respectively.
+These are tools that inspect the code base to detect potential issues, such as unused variables, indentation errors, thread misuse etc.
+There are linters available for almost every language.
+For example, Clang \cite{Clang} and Pylint \cite{Pylint} are two of the most common for C++ and Python respectively.
+Linters are available as part of standalone packages that produce result reports, these are typically easy to install and run.
+Some of these packages are also available as a cloud service (e.g. Coverity \cite{} (TODO:citation)), when new code is added to the remote repository the package will run and produce a result report. For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis (https://github.com/mre/awesome-static-analysis), a community curated list of static analysis tools.
 
-A lot of tools are available as standalone packages that you simply install, run and produces a report.
-Some tools are also available as a cloud service (e.g. Coverity) that is triggered by new code being pushed to your remote repository.
-
-For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis (https://github.com/mre/awesome-static-analysis), a community curated list of static analysis tools.
-
-Another general rule to bear in mind when writing new code is to avoid the pitfalls of pre-emptive optimisation, by attempting to reduce execution cost without determining if it is a problem to begin with.
-A similar pitfall is pre-emptive generalisation, which is attempting to make the code less problem specific in the hope it can be reused without determining if this affects code quality or if there is even a case where it could be reused.
+When writing new code care should be taken to avoid pre-emptive optimisation, where the speed up in the execution time may not be significant.
+A similar pitfall is pre-emptive generalisation, which is attempting to make the code less problem specific in the hope it can be reused later. 
+In both of these cases it is better to first determine if any additional optimisation or generalisation is going to be genuinely benefical. 
 Of course neither pre-emptive optimisation or generalisation have a concrete definition so it is up to the developer and code reviewers to make informed decisions based on the nature of the work and the code base.
 
 \subsection{Issues and work planning}
 \label{Issues and work planning}
 
-A means of tracking work to be done on a software project is essential.
+Tracking the tasks for a software project is essential.
 This is often implemented in two parts; low level tracking of implementation tasks and high level tracking of project goals.
 
-For low level task tracking simple tools such as GitHub Issues are likely sufficient, even for large projects.
-The essential functionality is providing a description of work to be undertaken and allowing it to be assigned to a developer.
-Additional features may include boards such as Scrum or Kanban boards known from e.g.\/ JIRA (TODO provide reference), task dependency and task hierarchy. (TODO: white board with stickers / cards)
+For low level task tracking, simple tools such as GitHub Issues are likely sufficient.
+The purpose of issue tracking is to provide a description of the task and to assign it to a developer.
+Additional features may include Scrum or Kanban boards, task dependency and task hierarchy.
 
-Most cloud hosted SCM services provide their own issue tracking tool, which typically suit the needs of most software projects.
+Most cloud hosted Source control management (SCM) services provide their own issue tracking tool, which typically suit the needs of most software projects.
 
-If more complex task workflows are needed or if your code base is distributed across multiple locations then it may be beneficial to look into issue tracking separate from your code.
+If more complex task workflows are needed or if your code base is distributed across multiple locations then it may be beneficial to seperate issue tracking and the code base.
 
-High level tracking, typically at project management level, should track the projects medium to long term goals and their progress.
-These goals should be defined by users of the software.
+High level tracking, typically at project management level, should monitor the project's medium to long term goals and their progress.
+These goals should be defined by users of the software, see \ref{se}.
 
 Ideally both levels of tracking should be available to view freely by users and developers.
 
-\subsection{Source control management}
+\subsection{Source control management (SCM)}
 \label{Source control management}
 
-Source control management (SCM) is an essential part of a software project.
-This provides a full history of the state of your code base as the project evolves, allows multiple developers to work on the project simultaneously and provides means on reviewing changes to your software.
+SCM provides a full history of the code base, allows multiple developers to work on the project simultaneously and provides means on reviewing changes to your software. Hence, SCM is essential for software projects.
 
-As with writing code, following a set of guidelines when working with your SCM will allow you to get the most out of it.
-As such guidelines apply to a much wider audience there is already ample documentation describing them, some of which are listed at https://github.com/dictcp/awesome-git\#workflow, therefore this section will only give an overview and highlight a few commonly overlooked points.
+To fully utilise the benefits of SCM, it is necessary to have guidelines. 
+Hence, there are ample guidelines for SCM, for more information please see https://github.com/dictcp/awesome-git\#workflow. Therefore, this section will only give an overview and highlight a few commonly overlooked points.
 
-You must adopt a workflow and enforce it.
-A workflow defines how developers interact with the SCM and the process of their changes to the code base being accepted.
+A workflow defines how developers interact with the SCM. 
+This includes the process for reviewing and accepting changes into the code base. 
+As a result it is important to define a workflow and to enforce it, to ensure code quality.
 
-When working with developers who may be using SCM for the first time it is common to see unused code (be it commented out code, functions that are never called, files that are not included, etc.) left in the code base.
-For the sake of keeping the code base clean it is important to remove such dead code, its presence in the code base only leads to increased difficulty in reading and understanding the code that is actually used and given that history is recorded in the SCM, deleting it comes with no danger.
+It is common for less experienced developers to try and submit unused code (e.g. commented out code, functions that are never called and files that are not included) to the code base.
+It is important not to add dead code into the code base, because 
+its presence reduces the readability of the code base. 
+Since the history of the code base is recorded as part of the SCM, removing dead code does not risk losing important information.
 
-A popular option, that is also one of the simplest, is the feature branch workflow (see https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
-In this workflow when a developer starts working on a new feature they do so on a new branch and that branch is then merged when the changes are to be accepted.
+A simple and popular option is the feature branch workflow (see https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
+In this workflow a developer will work on a new feature using a new branch and that branch is then merged when the changes are accepted.
 
 Developers should also ensure that they produce a clear commit history.
-Given that this is likely the longest standing documentation describing the history of your software it is important that commits are sensible, atomic and logically ordered and that commit messages are clear and describe the reasoning behind the changes made in the commit itself.
-A good guide for this can be found here: https://chris.beams.io/posts/git-commit/. TODO
+Given that this is likely the longest standing documentation, describing the history of the code base is important. 
+The commits should be sensible, atomic and logically ordered. The commit messages need to be clear and describe the reasoning behind the changes made in the commit.
+For further reading please see https://chris.beams.io/posts/git-commit/. TODO
 
-Git \cite{Git} is the most common and one of the most powerful SCM tool used in open source software today with a wide variety of training resources available.
-It is suitable for a project of any size and will probably last the life of your project.
+Git \cite{Git} is the most common and one of the most powerful SCM tools used in open source software. 
+One advantage is that it has a wide variety of training resources available (TODO: add examples).
+Git is suitable for a project of any size and will probably last the full life of the project.
 
-There are a wide range of cloud Git repository providers, all of which provide mostly similar features.
-If your team is distributed then it is recommended to use such a service (opposed to local hosting on site) to avoid network related bottlenecks.
+There are a wide range of cloud Git repository providers, all of which provide similar features.
+For a distributed team it is benefical to use a cloud Git repository (opposed to local hosting on site) to avoid network related bottlenecks.
 
-\subsection{Continuous integration}
+\subsection{Continuous integration (CI)}
 \label{Continuous integration}
 
-Continuous Integration (CI) should be used, regardless of the projects size, to ensure that your software performs as you expect it to.
+Continuous Integration (CI) should be used, regardless of the projects size, to ensure that the software performs as expected.
 
-CI is essentially a service that detects when new changes have been made to the code base (via the SCM) and runs a set of actions to determine if the code is of good quality.
+CI is essentially a service that detects when new changes have been made to the code base (via the SCM) and runs a set of actions to determine if the code is of an acceptable quality.
 It can also be used to perform the same checks on proposed changes before they become part of the main code base.
 
-Typically the actions performed include compiling/installing the software and running automated test suites, however any number of additional tasks can be performed including; generating documentation, performing code linting, deploying packages, checking for software vulnerabilities, etc.
+The obvious action is to compilie/install the software and to run automated tests. However, any number of additional tasks can be performed. Including, but not limited to; generating documentation, performing code linting, deploying packages and checking for software vulnerabilities.
 
-For small scale projects that reside in a single repository continuous integration as a hosted service is most likely sufficient.
-For example Travis CI \cite{Travis_CI} offer time limited windows for you to run your builds and tests on Linux, Mac OS and Windows operating systems.
+For small scale projects that reside in a single repository, using a hosted service for continuous integration is probably sufficient.
+For example, Travis CI \cite{Travis_CI} offers a free service that will compile builds and run tests over a fixed time limit (available for Linux, Mac OS and Windows).
 
-Jenkins \cite{Jenkins} is a self hosted CI solution that runs on your own infrastructure.
-The key advantage this has is removing restrictions around build time, data availability and specific build environment setup.
+Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
+As a result Jenkins can be adapted to suit the needs of a specific software project. 
+For example, it has no restrictions for build times, stores data locally and gives the developer complete control over the setup of the build environment.
 
 \subsection{Code review}
 \label{Code review}
@@ -280,18 +283,19 @@ The key advantage this has is removing restrictions around build time, data avai
     \label{Code_Review_Process}
 \end{figure}
 
-Code review is the process of determining if a proposed change should be made to the code base, typically after a developer has finished working on a feature or bug fix.
+Code reviews  are the process of determining if a proposed change should be added to the code base. Typically this occurs after a developer has finished working on a feature or bug fix.
 
-The depth of the review process depends a great deal on the size and purpose of the project.
-The developer proposing the changes should provide a description of their change and instructions on how the tester can demonstrate this.
+The depth of the review process depends on the size and purpose of the project.
+The developer proposing the changes should provide instructions on how to test if the changes are succesful and why they are necessary.
 
-The tester then must ensure that the code is of good quality and coding styles, guidelines, etc. have been followed, commit history is sane and relevant documentation (including release notes) has been updated.
+The reviewer must ensure that the code is of an acceptable quality (coding styles, guidelines, etc. have been followed). 
+This should also include if the commit history is sensible and the relevant documentation (including release notes) has been updated.
 CI tools can be used to perform some of these checks automatically.
 
-Larger or more critical projects may opt to have multiple review stages, in which additional testers (that has yet to be involved in the development or testing of this proposed change) will perform the same duties as the previous testers.
-Having multiple reviewers for the same piece of work may seem inefficient, but will increase the chance of potential issues being found before they are released to users.
+Larger or more critical projects may opt to have multiple review stages, in which additional reviewers will perform the same duties as the previous reviewer.
+Having multiple reviewers for the same piece of work may seem inefficient, but will increase the chance of potential issues being found before they are added to the code base.
 
-Tools for code review are often in built in hosted SCM services, an example of this is GitHub Pull Requests, which allow code to be viewed and commented on.
+Tools for code reviews are often built into hosted SCM services. For example, GitHub Pull Requests allow code changes to be viewed and commented on.
 
 \section{Architecture}
 \label{Architecture}
