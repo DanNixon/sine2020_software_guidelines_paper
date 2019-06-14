@@ -309,71 +309,77 @@ For example, GitHub Pull Requests allow code changes to be viewed and commented 
 \section{Architecture}
 \label{Architecture}
 
-A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas, where a module may refer to a package, library or software plugin.
+A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas. 
+A module may refer to a package, library or software plugin.
 
-Care should be taken when designating these modules, these should contain only functionality relevant to the goal of the module, where the goal itself is a very specific task (e.g. minimization).
+Care should be taken when designing these module. 
+Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
+Code within a module should be closely related, reducing the need to import unnecessary functionality.
+It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being intoruced into the code base.
 
-Code within a module should be closely related to each other, this reduces importing unnecessary functionality and keeps modules specific to a given purpose.
-A benefit gained from making code modular is the ability to test each module in isolation using automated testing (i.e. unit testing).
-
-The code base of your software should be managed using an appropriate build system, this depends on the language (or combination of languages) used.
+The code base of your software should be managed using an appropriate build system, which will depend on the choice of programming language(s).
 A good choice for C and C++ projects is CMake \cite{CMake}.
-This can handle setting up library paths and build tools automatically, allowing developers on any platform to develop your software with relative ease.
-C++ projects can also benefit from use of a dependency manager such as Conan.
-Most build systems for other languages combine a dependency manager into the build system, however this is not the case for CMake.
-For Python based projects Python's setuptools is typically sufficient, for specific cases (for example, when the software depends on tricky to package dependencies) Conda may be used as an alternative.
+This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
+C++ projects can also benefit from use of a dependency manager such as Conan \cite{Conan}.
+There are build systems that combine a dependency manager into the build system.
+For Python based projects Python's setuptools is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
 
-If you are making your software extensible by means of a scripting interface this should ideally be done in Python.
+It can be desirable to allow users to write scripts to further extend the functionality of the software. 
+Ideally any scripting made available to users should use the Python language. 
 Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
 
 If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
 Qt is an application framework commonly used by many open source and commercial software packages.
-It allows easy development of cross platform GUIs in a variety of languages.
-Another increasingly popular option is to provide your software as a web service that is accessed via a web page.
+It allows easy development of cross platform GUIs in a variety of languages (e.g. C++ and Python).
+Another increasingly popular option is to provide a web based interface.
 
 \section{Data Formats and Interoperability}
 \label{Data Formats and Interoperability}
 
-It is important for your software to use an open and standardised data format.
-Such a data format features open source definitions and documentation, making the format easy to understand and aiding software implementations.
+It is important to use an open and standardised data format, inorder to allow users to easily create suitable input files for the software.
+A good data format will have open source definitions and documentation, making it easy to understand and to implement file loaders for the software. 
+It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.  
+Any implementation of a standardised data format needs to either follow the standard.
+The data format should only diverge from the standard if it is absolutely necessary.
+If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
 
 In the neutron science community NeXus \cite{K_nnecke_2015} has become the default format.
-NeXus aims to standardise the way similar data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
-NeXus also has the advantage of being a self describing file format, where by using the correct classes you make it easy to understand the data with no prior knowledge.
-Metadata (such as instrument configurations and data processing history) is trivial to store in NeXus.
-Whilst the format has existed for roughly two decades it's widespread use as the standard data format has been a relatively recent effort between facilities and software projects.
-One point of note is that when committing to NeXus as your data format, you must ensure you truly implement the standard or publish the definition, if the need to diverge from the standard is genuinely required.
-In this case you may evaluate if your changes should form part of the standard and propose such changes.
+NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
+NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
+Useful metadata (such as instrument configurations and data processing history) is trivial to store in NeXus.
 
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
 
-Applications may store information relevant to it as a whole (e.g. window layout for a graphical tool), which should typically be stored using the facilities provided by the application framework (e.g. \texttt{QSettings} for Qt).
+Applications may store relevant information (e.g. window layout for a graphical tool) using the facilities provided by the application framework (e.g. \texttt{QSettings} for Qt).
 
 Additional configuration or process setup information should be stored in an easily accessible location.
 This data may include version numbers, parameters and filenames.
 This configuration should ideally be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
 Popular formats for this purpose include INI, YAML, JSON, TOML and XML, all of which have several library options for common languages and store data as plain text.
-Under no circumstances should custom formats be used for job configuration.
-There are already a number of well defined data formats for this purpose, creating a new format would be a waste of developer time.
+Under no circumstances should custom formats be used for configuration files, because there are already a number of well defined data formats for this purpose.
 
-The ability to reproduce results of data treatment is an important ability for users of your software, to allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
-To allow this you should provision a mechanism that allows the actions of your software to be "replayed" on the raw data.
-Typically this means recording a history of each atomic action your software performs as well as any relevant version numbers (i.e. such as the version of your software, versions of plugins/dependencies).
+It is vital for the results from scientific software to be reproducible.
+However, sometimes there is a need to recreate the results from data treatment, in this case it becomes valuable to be able to replay the series of operations.
+Data storage is a concern for most facilities and being able to reproduce data can be beneficial. 
+An increasingly popular method is to store the unprocessed data and instructions on how to process the data. 
+This has the advantage of allowing for multiple sets of instructions with a negligible increase in storage space. 
+This means recording a history of each atomic action the software performs along with any relevant numbers/inputs.
 
+It is essential to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
 Process lists in Savu \cite{Wadeson_2016} are a good example of such operation reporting.
-These store the job configuration in a NeXus file and encode the same information in the final results (also stored in a NeXus file).
+These store the job configuration in a NeXus file and encode the same information in the final results.
 This allows the processing history to remain with the processed data and allows the result dataset to be used as input for a future job.
-Savu also provides tooling to allow a user to export a list of citations from their result data which is populated from the process list.
+Savu also provides tooling to allow a user to export a list of citations from their result data and is generated from the process list.
 
 \section{Project Management}
 \label{Project Management}
 
 Large pieces of software will require some form of management, to ensure that the team are working effectively.
-This is referred to as a governance model.
+This is often referred to as a governance model.
 A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
-Project Management defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/ ) that will help the project be succesful.
-Each project will have a sponsor(s) who are ultimatley responsible for the project but will not be involved in its running.
+This is typically achieved by using project management, which defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/ ) that will help the project be succesful.
+Each project will typically have a sponsor(s) who are ultimately responsible for the project, but will not be involved in its running.
 
 The larger the team the more important good project managment becomes.
 Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project managment that would benefit projects of any size.
@@ -385,7 +391,7 @@ However, in this context it will be used to refer to individuals who are availab
 The amount of resource available to a project will probably change over time and it is therefore important to plan how best to utalise each resource.
 When selecting a resource for a given task it is improtant to consider their skills/knowledge, the time required to complete the task and the deadline for the task.
 If the deadline and time required are similar then it is better to choose a resource who has the relevant skills and experience.
-However, the draw back of always choosing the same resource to do a particular set of tasks is that they will become a single point of failure.
+However, the draw back of always choosing the same resource to do similar tasks is that they will become a single point of failure.
 If that resource were to leave the team then no-one else would have any knowledge of that part of the project.
 Therefore, it is advisable to use tasks as an oppertunity to train less experienced/skilled resources when there is sufficient time between the deadline and the expected duration of the task.
 
@@ -393,37 +399,37 @@ Therefore, it is advisable to use tasks as an oppertunity to train less experien
 Stakeholders is a general term used to describe people who have some interest in your project (e.g. customers, team members and sponsors).
 It is upto the individual project to decide what communication method is suitable.
 
-The customers are vital part sub group of the steakholders.
-An effective way to keep them engaged is imperitive to the success of the project.
+The customers are vital sub-group of steakholders.
+An effective way of keeping them engaged is imperitive to the success of the project.
 One method is to have a committe (this may be called an advisory committe, in the Mantid project they call it the scientific sterring comittie).
-This group will be comprised of the senior project team (i.e. the project manager and any sub team leaders for a larger project) and a customer from each of the main user communities.
+This group will be comprised of the senior project team (i.e. the project manager and any sub-team leaders for a larger project) and a customer from each of the main user communities.
 This committe would discuss the progression of tasks and what tasks should be next (priorities).
 
 \subsection{Software Life Cycle}\label{lc}
-The software should follow the basic notion of a release cycle.
+The software should follow the basic notion of a release cycle. More details about the practicalities of a release cycle are discussed in section \ref{Releases}.
+
 A release is a version of the software that has been tested and the development team is confident that it is ready to be used.
-Having periodic releases can also work to reassure users that the project is still supported.
-It is advisable to follow semantic versioning \cite{Semantic_Versioning} (major.minor.patch, e.g. 3.1.0) for the naming of the releases.
-Prior to a release there will be a "code freeze", where no new code will be submitted to the main branch.
+Having periodic releases can reassure users that the project is still supported.
+It is advisable to follow semantic versioning \cite{Semantic_Versioning} (major.minor.patch, e.g. 3.1.0) for clear naming of the releases.
+Prior to a release there will be a "code freeze", where no new functionality will be submitted to the code base.
 In preparation for a release developers should test the software works as expected with no obvious bugs.
-The next stage is "beta testing" where a select group of users are chosen and they test the software and report any bugs.
-Once all of the identified bugs are fixed it is then released with more confidence that it is ready for use.
+The next stage is "beta testing", where a select group of users are chosen and they test the software and report any bugs.
+Once all of the identified bugs are fixed it is then released with more confidence that it is ready for general use.
 
 It is advisable to then spend some time working on maintenance tasks, these are improvements to the maintainability of the code rather than any new user facing functionality.
-Maintenance tasks are improvements to the maintainability of the code rather than any new user facing functionality.
 Examples of such tasks include: moving to a new compiler version, applying fixes for compiler or linter warnings and code reorganisation/refactoring.
 
 \subsection{Project Managment Board and Advisory Committees}\label{PM big}
 
 It is often benefical to set up a project management board, who discuss the high level stratergy and running of the project.
-These will meet fairly irregularly (a few times a year), but would involve the senior team memeber of the project and the sponsor.
+These will meet fairly irregularly (a few times a year), but would involve the senior team members of the project and key stakeholders (including the sponsor).
 This provides an oppertunity to discuss possible risks or opportunities and the long term plans for the project.
 
 For larger projects it maybe beneficial to have a technical advisory committee.
-This will usually comprise of the technical leads.
+This will usually comprise of the technical leads for the project.
 Their role is to make decisions on the computational aspects of the project.
 For example, which version of a programming language to use and the operating systems that the software will support.
-Another role filled by this committee is to decide significant changes to the code base.
+Another role fulfilled by this committee is to decide significant changes to the code base.
 This could happen if there is a new method (e.g. standard library algorithms in C++) that can be used throughout the code base to improve performance and/or stability.
 A representative from the technical advisory committee will report their decisions to the project management board, who will distribute the information down to the rest of the team.
 
@@ -432,9 +438,9 @@ A representative from the technical advisory committee will report their decisio
 
 All pieces of software require a license.
 An open source license is advisable from both a user and development perspective, details of available licenses are available online \cite{OSI_Licenses}.
-The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of your software.
-The advantage of an open source license is that it allows anyone to contribute to your software (this should not bypass any review process), this radically improves the available pool of developers.
-Further in research/academic communities open source is becoming increasingly compulsory in order to ensure that valuable source codes are not lost.
+The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of the software.
+The advantage of an open source license is that it allows anyone to contribute to the code base (but must not bypass any review process) and radically improves the available pool of developers.
+Furthermore, in research/academic communities open source software is becoming increasingly compulsory in order to prevent the loss of valuable source code.
 
 \section{Packaging and Distribution}
 \label{Packaging and Distribution}
@@ -450,32 +456,29 @@ Further in research/academic communities open source is becoming increasingly co
 \end{figure}
 
 A good release process depends greatly on the nature of the software project.
-A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project) requires an involved release process to ensure the software is suitable for use by all intended audiences.
+A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project \cite{Manitd}) requires an involved release process to ensure the software is suitable for use by all intended audiences.
+This section will assume that a significant proportion of users are not consulted with during the development process.
 
-This section will assume you have a substantial number of users that you do not directly interact with during your development process.
+A release candidate is often used for user testing and for identifying potential issues prior to the main release. 
+There can be any number of release candidates and they should be generated in exactly the same manner as a release (the only difference being the version number).
+Release candidates are intended for "power users" who are happy to test the software for the benefit of the wider community (for example, at a scientist who is responsible for an instrument and its user programme, and who wants to ensure your software works before providing it to their visiting users).
 
-In order for any potential issues in your software to be found and rectified you may wish to create a release candidates of your software before the official release.
-These versions are intended for "power users" who do not mind testing your software for the benefit of the wider audience of your software (a typical example at a large scale research facility is a scientist responsible for an instrument and its user programme, and who wants to ensure your software works before providing it to their visiting users).
+The length of the beta period is determined by the release cycle and the estimated number of users.
+There is no generic rule for this, but it is recommended that all (or as close to as possible) use cases of the software have been tested by specialist users.
 
-The length of the beta period is determined by your release cycle and your estimated number of users.
-There is no generic rule for this, but it is recommended that you ensure all (or as close to as possible) use cases of your software have been tested by users who specialise in that area.
-
-There can be any number of release candidates.
-As the name suggests a release candidate should be generated in exactly the same manner as a release (the only difference being the version number).
-
-To ensure users approach the new version with realistic expectations it is essential to provide sufficiently detailed release notes with every version of your software (release, beta, release candidate).
-These should summarise the changes made to your software since the last release, possibly highlighting some specific new features (this is where you "sell" your new version and give a reason for users to upgrade).
+To ensure users approach the new version with realistic expectations it is essential to provide sufficiently detailed release notes with every version of the software (including release, beta and release candidates).
+These should summarise the changes made to the software since the last release, highlighting new features to incentivise users to upgrade.
 
 It is essential that all changes that may break existing workflows are listed.
-This will prevent issues when users attempt to use incompatible existing workflows with your new version.
+This will reduce the risk of users attempting to use workflows that are no longer compatible with the latest version.
 
 Any fixes for safety or security reasons must be clearly documented in the release notes.
 
-It is recommended to tag and sign the release in your SCM system, in the case of Git this involves creating a tag from the code that was used to generate your release package and signing it with either a project or maintainers PGP (Pretty Good Privacy) key.
+It is recommended to tag and sign the release in the SCM system. In the case of Git this involves creating a tag from the code that was used to generate the release package and signing it with either a project or maintainers PGP (Pretty Good Privacy) key.
 This is not an essential step, but is good practice to allow verification of historic releases.
 
-It is also recommended to generate a Digital Object Identifier (DOI) for each release of a piece of data treatment software.
-This allows your software to be easily cited in publications and makes it clear which version of your software was used to generate results in a given publication.
+It is also recommended to generate a Digital Object Identifier (DOI) for each release.
+This allows the software to be easily cited in publications and makes it clear which version of the software was used to generate the results in a publication.
 Another method is to use a publication that provides the idea of the software.
 
 \subsection{Packaging}
