@@ -306,13 +306,12 @@ A module may refer to a package, library or software plugin.
 Care should be taken when designing these module. 
 Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
 Code within a module should be closely related, reducing the need to import unnecessary functionality.
-However, this should not be done at the expense of creating duplicated code.
 It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being intoruced into the code base.
 
 The code base of your software should be managed using an appropriate build system, which will depend on the choice of programming language(s).
 A good choice for C and C++ projects is CMake \cite{CMake}.
 This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
-C++ projects can also benefit from use of a dependency manager such as Conan \cite{} (TODO:add ref).
+C++ projects can also benefit from use of a dependency manager such as Conan \cite{Conan}.
 There are build systems that combine a dependency manager into the build system.
 For Python based projects Python's setuptools is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
 
@@ -330,7 +329,7 @@ Another increasingly popular option is to provide a web based interface.
 
 It is important to use an open and standardised data format, inorder to allow users to easily create suitable input files for the software.
 A good data format will have open source definitions and documentation, making it easy to understand and read into to the software.
-Any implementation of a standardised data format needs to either follow the standard or publish any divergence. 
+Any implementation of a standardised data format needs to either follow the standard.
 The data format should only diverge from the standard if it is absolutely necessary.
 If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
 
@@ -338,7 +337,6 @@ In the neutron science community NeXus \cite{K_nnecke_2015} has become the defau
 NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
 NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
 Useful metadata (such as instrument configurations and data processing history) is trivial to store in NeXus.
-The format has existed for roughly two decades it's widespread use as the standard data format has been a relatively recent effort between facilities and software projects.
 
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
@@ -355,7 +353,7 @@ It is vital for the results from scientific software to be reproducible.
 However, sometimes a bug may cause the end result to be incorrect and it then becomes valuable to be able to replay the series of operations in a fixed version of the software.
 This means recording a history of each atomic action the software performs along with any relevant numbers/inputs.
 
-It is useful to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
+It is essential to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
 Process lists in Savu \cite{Wadeson_2016} are a good example of such operation reporting.
 These store the job configuration in a NeXus file and encode the same information in the final results.
 This allows the processing history to remain with the processed data and allows the result dataset to be used as input for a future job.
@@ -368,7 +366,7 @@ Large pieces of software will require some form of management, to ensure that th
 This is often referred to as a governance model.
 A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
 This is typically achieved by using project management, which defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/ ) that will help the project be succesful.
-Each project will have a sponsor(s) who are ultimatley responsible for the project, but will not be involved in its running.
+Each project will typically have a sponsor(s) who are ultimately responsible for the project, but will not be involved in its running.
 
 The larger the team the more important good project managment becomes.
 Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project managment that would benefit projects of any size.
@@ -411,7 +409,7 @@ Examples of such tasks include: moving to a new compiler version, applying fixes
 \subsection{Project Managment Board and Advisory Committees}\label{PM big}
 
 It is often benefical to set up a project management board, who discuss the high level stratergy and running of the project.
-These will meet fairly irregularly (a few times a year), but would involve the senior team memebers of the project and key steakholders (including the sponsor).
+These will meet fairly irregularly (a few times a year), but would involve the senior team members of the project and key stakeholders (including the sponsor).
 This provides an oppertunity to discuss possible risks or opportunities and the long term plans for the project.
 
 For larger projects it maybe beneficial to have a technical advisory committee.
@@ -445,8 +443,8 @@ Furthermore, in research/academic communities open source software is becoming i
 \end{figure}
 
 A good release process depends greatly on the nature of the software project.
-A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project \cite{} (TODO: addcitation)) requires an involved release process to ensure the software is suitable for use by all intended audiences.
-This section will assume that a significant proportion of users are not involved in the development process.
+A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project \cite{Manitd}) requires an involved release process to ensure the software is suitable for use by all intended audiences.
+This section will assume that a significant proportion of users are not consulted with during the development process.
 
 A release candidate is often used for user testing and for identifying potential issues prior to the main release. 
 There can be any number of release candidates and they should be generated in exactly the same manner as a release (the only difference being the version number).
