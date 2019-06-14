@@ -309,10 +309,10 @@ For example, GitHub Pull Requests allow code changes to be viewed and commented 
 \section{Architecture}
 \label{Architecture}
 
-A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas. 
+A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas.
 A module may refer to a package, library or software plugin.
 
-Care should be taken when designing these module. 
+Care should be taken when designing these module.
 Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
 Code within a module should be closely related, reducing the need to import unnecessary functionality.
 It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being intoruced into the code base.
@@ -324,8 +324,8 @@ C++ projects can also benefit from use of a dependency manager such as Conan \ci
 There are build systems that combine a dependency manager into the build system.
 For Python based projects Python's setuptools is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
 
-It can be desirable to allow users to write scripts to further extend the functionality of the software. 
-Ideally any scripting made available to users should use the Python language. 
+It can be desirable to allow users to write scripts to further extend the functionality of the software.
+Ideally any scripting made available to users should use the Python language.
 Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
 
 If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
@@ -337,8 +337,8 @@ Another increasingly popular option is to provide a web based interface.
 \label{Data Formats and Interoperability}
 
 It is important to use an open and standardised data format, inorder to allow users to easily create suitable input files for the software.
-A good data format will have open source definitions and documentation, making it easy to understand and to implement file loaders for the software. 
-It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.  
+A good data format will have open source definitions and documentation, making it easy to understand and to implement file loaders for the software.
+It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.
 Any implementation of a standardised data format needs to either follow the standard.
 The data format should only diverge from the standard if it is absolutely necessary.
 If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
@@ -361,9 +361,9 @@ Under no circumstances should custom formats be used for configuration files, be
 
 It is vital for the results from scientific software to be reproducible.
 However, sometimes there is a need to recreate the results from data treatment, in this case it becomes valuable to be able to replay the series of operations.
-Data storage is a concern for most facilities and being able to reproduce data can be beneficial. 
-An increasingly popular method is to store the unprocessed data and instructions on how to process the data. 
-This has the advantage of allowing for multiple sets of instructions with a negligible increase in storage space. 
+Data storage is a concern for most facilities and being able to reproduce data can be beneficial.
+An increasingly popular method is to store the unprocessed data and instructions on how to process the data.
+This has the advantage of allowing for multiple sets of instructions with a negligible increase in storage space.
 This means recording a history of each atomic action the software performs along with any relevant numbers/inputs.
 
 It is essential to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
@@ -459,7 +459,7 @@ A good release process depends greatly on the nature of the software project.
 A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project \cite{Manitd}) requires an involved release process to ensure the software is suitable for use by all intended audiences.
 This section will assume that a significant proportion of users are not consulted with during the development process.
 
-A release candidate is often used for user testing and for identifying potential issues prior to the main release. 
+A release candidate is often used for user testing and for identifying potential issues prior to the main release.
 There can be any number of release candidates and they should be generated in exactly the same manner as a release (the only difference being the version number).
 Release candidates are intended for "power users" who are happy to test the software for the benefit of the wider community (for example, at a scientist who is responsible for an instrument and its user programme, and who wants to ensure your software works before providing it to their visiting users).
 
