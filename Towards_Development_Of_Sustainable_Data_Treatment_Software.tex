@@ -347,7 +347,7 @@ Additional configuration or process setup information should be stored in an eas
 This data may include version numbers, parameters and filenames.
 This configuration should ideally be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
 Popular formats for this purpose include INI, YAML, JSON, TOML and XML, all of which have several library options for common languages and store data as plain text.
-Under no circumstances should custom formats be used for configuration files.
+Under no circumstances should custom formats be used for configuration files, because there are already a number of well defined data formats for this purpose.
 
 It is vital for the results from scientific software to be reproducible.
 However, sometimes a bug may cause the end result to be incorrect and it then becomes valuable to be able to replay the series of operations in a fixed version of the software.
