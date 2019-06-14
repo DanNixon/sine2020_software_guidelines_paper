@@ -351,7 +351,10 @@ Popular formats for this purpose include INI, YAML, JSON, TOML and XML, all of w
 Under no circumstances should custom formats be used for configuration files, because there are already a number of well defined data formats for this purpose.
 
 It is vital for the results from scientific software to be reproducible.
-However, sometimes a bug may cause the end result to be incorrect and it then becomes valuable to be able to replay the series of operations in a fixed version of the software.
+However, sometimes there is a need to recreate the results from data treatment, in this case it becomes valuable to be able to replay the series of operations.
+Data storage is a concern for most facilities and being able to reproduce data can be beneficial. 
+An increasingly popular method is to store the unprocessed data and instructions on how to process the data. 
+This has the advantage of allowing for multiple sets of instructions with a negligible increase in storage space. 
 This means recording a history of each atomic action the software performs along with any relevant numbers/inputs.
 
 It is essential to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
