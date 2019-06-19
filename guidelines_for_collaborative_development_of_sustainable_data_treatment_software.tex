@@ -114,21 +114,21 @@ Development methodology is the set of rules that determine how requirements are 
 The two extremes of software development methodologies are called "agile" and "waterfall".
 In the following we will discuss these to extremes, however in reality there is a scale and a mixture of these two extremes can be used.
 
-For scientific software agile, or some variant of that, is the most comman methodology.
+For scientific software agile, or some variant of that, is the most common methodology.
 The general principle of the agile methodology are short development "sprints" in which small, incremental additions are made to the overall software.
 The requirements are reviewed and adjusted accordingly for each sprint.
 This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
 
-If there are set of fixed non-negotiable requirments then the waterfall methodolgy is better.
+If there are set of fixed non-negotiable requirements then the waterfall methodology is better.
 For the waterfall methodology each task is planned in advance and carried out in a predetermined order.
-This ensures that the reuirments are met and at key milestones.
-However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirments.
+This ensures that the requirements are met and at key milestones.
+However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirements.
 Projects that are better suited to the waterfall methodology are those where delivering an intermediate product is not viable.
 For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit could be useful mid way through development.
 
 In reality a mixture of the two is usually implemented.
-For example, a graphical user interface (GUI) that has a set of requirments (e.g. load data, do a fit to the data, output results).
-To make sure that the GUI meets the requirments a waterfall approach could be used.
+For example, a graphical user interface (GUI) that has a set of requirements (e.g. load data, do a fit to the data, output results).
+To make sure that the GUI meets the requirements a waterfall approach could be used.
 However, within that approach a more agile like methodology could be used.
 The first two sprints could focus on loading and fitting to data.
 The third sprint could then focus on making sure they interact with each other correctly.
@@ -204,7 +204,7 @@ For a wider selection of the available tools it is worth looking over the select
 
 When writing new code care should be taken to avoid pre-emptive optimisation, where the speed up in the execution time may not be significant.
 A similar pitfall is pre-emptive generalisation, which is attempting to make the code less problem specific in the hope it can be reused later.
-In both of these cases it is better to first determine if any additional optimisation or generalisation is going to be genuinely benefical.
+In both of these cases it is better to first determine if any additional optimisation or generalisation is going to be genuinely beneficial.
 Of course neither pre-emptive optimisation or generalisation have a concrete definition so it is up to the developer and code reviewers to make informed decisions based on the nature of the work and the code base.
 
 \subsection{Issues and work planning}
@@ -259,7 +259,7 @@ One advantage is that it has a wide variety of training resources available (TOD
 Git is suitable for a project of any size and will probably last the full life of the project.
 
 There are a wide range of cloud Git repository providers, all of which provide similar features.
-For a distributed team it is benefical to use a cloud Git repository (opposed to local hosting on site) to avoid network related bottlenecks.
+For a distributed team it is beneficial to use a cloud Git repository (opposed to local hosting on site) to avoid network related bottlenecks.
 
 \subsection{Continuous integration (CI)}
 \label{Continuous integration}
@@ -269,7 +269,7 @@ Continuous Integration (CI) should be used, regardless of the projects size, to 
 CI is essentially a service that detects when new changes have been made to the code base (via the SCM) and runs a set of actions to determine if the code is of an acceptable quality.
 It can also be used to perform the same checks on proposed changes before they become part of the main code base.
 
-The obvious action is to compilie/install the software and to run automated tests.
+The obvious action is to compile/install the software and to run automated tests.
 However, any number of additional tasks can be performed.
 Including, but not limited to; generating documentation, performing code linting, deploying packages and checking for software vulnerabilities.
 
@@ -294,7 +294,7 @@ Code reviews  are the process of determining if a proposed change should be adde
 Typically this occurs after a developer has finished working on a feature or bug fix.
 
 The depth of the review process depends on the size and purpose of the project.
-The developer proposing the changes should provide instructions on how to test if the changes are succesful and why they are necessary.
+The developer proposing the changes should provide instructions on how to test if the changes are successful and why they are necessary.
 
 The reviewer must ensure that the code is of an acceptable quality (coding styles, guidelines, etc. have been followed).
 This should also include if the commit history is sensible and the relevant documentation (including release notes) has been updated.
@@ -315,7 +315,7 @@ A module may refer to a package, library or software plugin.
 Care should be taken when designing these module.
 Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
 Code within a module should be closely related, reducing the need to import unnecessary functionality.
-It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being intoruced into the code base.
+It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being introduced into the code base.
 
 The code base of your software should be managed using an appropriate build system, which will depend on the choice of programming language(s).
 A good choice for C and C++ projects is CMake \cite{CMake}.
@@ -336,7 +336,7 @@ Another increasingly popular option is to provide a web based interface.
 \section{Data Formats and Interoperability}
 \label{Data Formats and Interoperability}
 
-It is important to use an open and standardised data format, inorder to allow users to easily create suitable input files for the software.
+It is important to use an open and standardised data format, in order to allow users to easily create suitable input files for the software.
 A good data format will have open source definitions and documentation, making it easy to understand and to implement file loaders for the software.
 It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.
 Any implementation of a standardised data format needs to either follow the standard.
@@ -580,10 +580,10 @@ One of the first pieces of work was to develop a report on "standards and guidel
 \begin{sidewaystable}[]
   \begin{tabular}{llllll}
     Software                        & BornAgain \cite{}  & Mantid \cite{} &McStats \cite{}  &MuhRec \cite{} & SasView \cite{} \\
-    Age of project (years)          & 7 & 9 &19 & 8 & 13 \\
+    Age of project (years)          & 7 & 9 &19 & 10 & 13 \\
     Number of developers (full time)& 3 & 20 & 5 & 2 & 2-20 \\
     Developer locations             & 1 & >4 & TODO & 1 & TODO \\
-    License                         & GPL3 & GPL3 & GPL2 & None & BSD \\
+    License                         & GPLv3 & GPLv3 & GPLv2 & GPLv3 & BSD \\
     Governance model                & None & PMB \& AC  & None & AC & PMB \\
     Release cycles (per year)       & a few & 3 & 1 & 1 & 1\\
     User documentation              & Tutorials. Examples. & Manual. Tutorials. & Manual. & Manual. & Manual. Tutorials.
@@ -602,17 +602,17 @@ This is a good example of how guidelines should be adapted to match the needs of
 \label{Conclusion}
 
 Scientific software is becoming an increasingly valuable tool for research.
-However, the cost of implementing such software can be high and as a result it is benefical to write sustainable software.
-The best way to acheive sustainable software is to implement guidelines.
+However, the cost of implementing such software can be high and as a result it is beneficial to write sustainable software.
+The best way to achieve sustainable software is to implement guidelines.
 This paper has outlined a series of guidelines for scientific software development.
-The guidlines have covered a range of topics from coding standards to managment of the software and customers.
+The guidelines have covered a range of topics from coding standards to management of the software and customers.
 
 Fundamentally guidelines allow for scientific software to be developed and maintained easily by a distributed team, while providing support to users.
 There is an initial cost in deciding the guidelines and they should be chosen based on the requirements of the project.
-To ensure that there is a balance between new functionality and maintence it is important to manage the customers and to have a governance model.
-To ensure a happy user base it is important to have up to date documentation and to have regular relases.
-The technologies available to software developement are constantly changing and for long term projects it may be necessary to update the guidelines to utalise these improvemnets.
-Good gidelines ensure a uniform code quality, a structured developer team and create a positive user experience.
+To ensure that there is a balance between new functionality and maintenance it is important to manage the customers and to have a governance model.
+To ensure a happy user base it is important to have up to date documentation and to have regular releases.
+The technologies available to software development are constantly changing and for long term projects it may be necessary to update the guidelines to utalise these improvemnets.
+Good guidelines ensure a uniform code quality, a structured developer team and create a positive user experience.
 These factors will help create a stable, maintainable piece of software and increase the likelihood of the software's user base flourishing.
 
 \section{Acknowledgements}
