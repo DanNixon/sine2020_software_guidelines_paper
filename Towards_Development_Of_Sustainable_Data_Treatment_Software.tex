@@ -568,56 +568,27 @@ The primary mechanism by which this was achieved was by collecting information f
 The output of this work is described in section 2 of [RAL Tech report] entitled “Guidelines based on identifying commonality from a software questionnaire”.
 The summary for this work is shown in table below. 
 
-\begin{tabular}{l|l}
-\hline
-  \begin{minipage}[t]{0.4\textwidth}
-    Software setup, communication and support:
-    \begin{itemize}
-      \item As a project grows the advice is to apply a governance model.
+
+\begin{itemize}
       \item Use an Open Source license, such as GPL.
-      \item Provide user support, as a minimum through email support.
-      \item Provide version controlled user documentation.
-      \item Have regular releases, and aim for a minimum of once a year.
-      \item With every new release, as a minimum, email out release notes to user mailing-list.
       \item Support multiple operation systems.
-    \end{itemize}
-  \end{minipage} & 
-  \begin{minipage}[t]{0.4\textwidth}
-    Software architecture:
-    \begin{itemize}
-      \item Design software to be modular and to support plug-ins
-      \item Where software needs to support scripting, the preference is for Python scripting
-      \item Where the software uses a GUI, the advice is to use a recent version of Qt
-      \item Design software to be able to accommodate different data formats.
-      \item Support NeXus/HDF5 data formats.
-    \end{itemize}
-  \end{minipage}  \\
-  \hline
-  \begin{minipage}[t]{0.4\textwidth}
-    Software development:
-    \begin{itemize}
+	  
+      \item Design software to be modular
+	  
       \item Use the programming languages C++ and/or Python.
-      \item Factor into your project plan that you will be doing maintenance work on your code (~10-30%).
-      \item Using a development methodology is advised, such as an agile methodology.
-      \item Use Git for version control.
-      \item Use a build tool, such as CMake.
-      \item Use tool that makes user installation easy
+	  
+      \item Where the software uses a GUI, use Qt
+	  	  
+      \item Support NeXus/HDF5 data formats where relevant
+	  
+      \item Use Git for version control of source code including user and developer documentation
+	 
       \item Use an issue/ticketing system, such as Github.
-      \item Provide version controlled developer documentation.
-    \end{itemize}
-  \end{minipage} & 
-  \begin{minipage}[t]{0.4\textwidth}
-    Software quality:
-    \begin{itemize}
-      \item Use a tool for continuous integration and automated testing, such as Jenkins.
-      \item For software with a large user base, it is advised to have a user testing period prior to releases.
-      \item Do code reviews, using a tool such as GitHub.
-      \item Use static and/or dynamic analysis tools at least occasionally.
-      \item It is advised to follow a coding standard.
-    \end{itemize}
-  \end{minipage}  \\  
- \hline
-\end{tabular}
+	  
+      \item Use a tool for continuous integration and automated testing, such as Travis-CI or Jenkins.
+	  
+      \item It is advised to follow a coding standard, pep8 for python and clang format for C++.
+\end{itemize}
 
 \section{Conclusion}
 \label{Conclusion}
