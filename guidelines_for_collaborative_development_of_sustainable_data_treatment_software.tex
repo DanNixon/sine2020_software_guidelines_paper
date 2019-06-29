@@ -49,7 +49,13 @@ Scientific software is an essential part of the modern researcher's tool kit, du
 As a result the software is often expensive to develop.
 Therefore, its imperative to ensure that the software will continue to be developed in the future, even if the current work force leaves the project.
 Some of the requirements for sustainable software are for the code base to have a consistent quality and good documentation, to prevent a loss of knowledge.
-In this paper a series of guidelines are presented for scientific software development and a discussion of how five SINE2020 projects have used guidelines to develop high quality software.
+
+This paper presents a set of guidelines developed and used in the course of a 4-year international EU project
+to facilitate collaborative development of inter-operable data treatment software among European neutron and muon sources. These guidelines are
+specific, and over the course of the SINE2020 project helped to harmonize software development within this community.
+Such specific guidelines should not be uncritically applied to the development of software within another community. Hence, for this
+reason this paper also presents more generic guidelines for scientific software development from which more specific, and therefore more valuable,
+guidelines applicable to a given community can be created.
 
 \end{abstract}
 
@@ -579,31 +585,32 @@ This documentation should contain information on the standards used in the code 
 \section{SINE2020}
 \label{SINE2020}
 
-In this section some examples of how guidelines were applied to scientific software projects will be presented.
-All of these projects were part of the data treatment work package (WP 10) of Science and Innovation with Neutrons in Europe in 2020 (SINE2020).
-This was a four year project between 18 partner institutions spread across 12 different countries.
-One of the first pieces of work was to develop a report on "standards and guidelines" for neutron software development \cite{} (TODO: add cite).
+This section describes guidelines specific to the development of data treatment software for neutron and muon sources and its community.
+As such they are not meant to be transferred uncritically to other communities or domains.
 
-\begin{sidewaystable}[]
-  \begin{tabular}{llllll}
-    Software                        & BornAgain \cite{}  & Mantid \cite{} &McStats \cite{}  &MuhRec \cite{} & SasView \cite{} \\
-    Age of project (years)          & 9 & 11 & 21 & 10 & 15 \\
-    Number of developers (full time)& 3 & 20 & 5 & 2 & 2-20 \\
-    Developer locations             & 1 & >4 & TODO & 1 & TODO \\
-    License                         & GPLv3 & GPLv3 & GPLv2 & GPLv3 & BSD \\
-    Governance model                & None & PMB \& AC  & None & AC & PMB \\
-    Release cycles (per year)       & a few & 3 & 1 & 1 & 1\\
-    User documentation              & Tutorials. Examples. & Manual. Tutorials. & Manual. & Manual. & Manual. Tutorials.
-  \end{tabular}
-  \caption{A summary of how guidelines were applied to the different software projects from SINE2020 \cite{} (TODO: ref paper). The number of guidelines implemented increases with the size and scope of the project. PMB = Project Management Board. AC = Advisory Committee}
-  \label{summaryTable}
-\end{sidewaystable}
+These specific guidelines were developed as part of the data treatment work package (WP 10) of Science and Innovation with Neutrons in Europe in 2020 (SINE2020).
+This was a 4-year project between 18 partner institutions spread across 12 different countries.
+This work package’s first deliverable (D10.1) was to put together the standard and guidelines for the development of software relevant to it and its community with the purpose of facilitating collaborative development and inter-operable software.
+The primary mechanism by which this was achieved was by collecting information from existing authors of data treatment software and from this distill guidelines and agree on these.
 
-A summary of the main findings from the report \cite{} (TODO add) are presented in table \ref{summaryTable}.
-The larger projects, Mantid \cite{} and SasView \cite{} have more rigours guidelines for their projects.
-For example, they both have project management boards to decide the direction of the project.
-Whereas the smaller project do not need the overheads of a large project management structure.
-This is a good example of how guidelines should be adapted to match the needs of the project.
+The output of this work is described in section 2 of the technical report: \cite{sine2020_wp10_d10_report}.
+This report contains statistics and information about neutron and muon data treatment software including tables identifying commonality.
+Below is listed the main specific guidelines agreed and used with effect throughout the SINE2020 project to stimulate stronger collaboration,
+commonality, cohesion and move towards using better software engineering best practices for software where this was not already in use: 
+
+\begin{itemize}
+      \item Use an Open Source license, such as GPL.
+      \item Support multiple operation systems.
+      \item Design software to be modular.
+      \item Use the programming languages C++ and/or Python.
+      \item Where the software uses a GUI, use Qt.
+      \item Support loading of NeXus/HDF5 data formats where such exists.
+      \item Use Git for version control of source code including for user and developer documentation.
+      \item Use a issue/ticketing system; such as Github issues.
+      \item Use a tool for continuous integration and automated testing; such as Travis-CI and Jenkins
+      \item Follow a coding standard and use tools that enforces this; such as Pylint (Python) and ClangFormat (C++).
+\end{itemize}
+
 
 \section{Conclusion}
 \label{Conclusion}
