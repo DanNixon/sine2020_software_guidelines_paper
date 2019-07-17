@@ -49,10 +49,10 @@ Scientific software is an essential part of the modern researcher's tool kit, du
 As a result the software is often expensive to develop.
 Therefore, its imperative to ensure that the software will continue to be developed in the future, even if the current work force leaves the project.
 Some of the requirements for sustainable software are for the code base to have a consistent quality and good documentation, to prevent a loss of knowledge.
-
+This paper presents two sets of guidelines, a generic set that could be applied to a broad range of communities.
+The second set of guidelines are specific to the neutron and muon data treatment communities and were developed as part of Science and Innovation with Neutrons in Europe in 2020 (SINE2020).
 
 This paper presents a set of guidelines with the purpose of helping potential contributors to develop maintainable data treatment software of a high quality which can easily be adapted by neutron and muon sources
-The guidelines are developed and used in the course of a 4-year Pan-European project to facilitate collaborative development of inter-operable data treatment software among European neutron and muon sources
 These specific guidelines were designed to allow the harmonization of software development.
 Such specific guidelines should not be uncritically applied to the development of software within another community
 Hence, for this reason this paper also presents more generic guidelines for scientific software development from which more specific guidelines applicable to a given community can be created
@@ -80,33 +80,30 @@ European Spallation Source (ESS) are estimated to have data rates beyond [](TODO
 This can be compared to the data rates from ten years ago, where ...(TODO: Historic example).
 With increasing data rates, the demand for performing ever more complex experiments increases as well as the need for more complex analysis techniques (e.g.\ based on machine learning techniques)
 The consequence of these aspects is that users inherently will depend on software developed by other developers typically at the facilities or in the user community, which in turn add significant requirements to quality, trustability, reliability and usability compared to when a developer develops software for herself or her colleague sitting next door
- Unfortunately, no neutron or muon source is able to lift the burden of providing adequate data treatment software for data reduction and analysis on their own
-This is particularly true for data treatment software where a heterogenous user base spanning several techniques and scientific disciplines requires a rather large and extensive software suite in order to be comprehensive
-Another challenge is that the user community to a large extent depends on software, which on the one hand, has been critical for the development of the domain, but on the other hand suffers from poor documentation, maintainability, technical dept and single-point-of-failure in the sense that it depends critically on a single developer who in many cases started developing the software to solve one of their own problems rather than for the user community, and who often is a scientist by profession rather than a professional software developer
-Moreover, in many cases software has been developed by a junior scientist (PhD student or post doc) who due to the inherent nature of such positions only can maintain the software for a few years after their first usage
 
 
-To remedy this situation, a number of European neutron and muon sources have developed a set of guidelines for development of data treatment software with the intention to facilitate the development of software which is:
-\begin{itemzie}
-\item maintainable and sustainable to ensure its continuous existence
-\item sharable and inter-operable software so that it can be used or adapted by other users or providers than those who developed the software in its first place
-\item user-friendly to facilitate the uptake of the software in the user community
-\item extensible and facilitating contributions from third party developers to facilitate contributions from the user community partly to get additional resources but more importantly to nurse the incorporation of new methodologies developed in academia
 
-\end{itemize}
 
-The lack of guidelines can lead to the code being difficult to read, because the style will change depending on who wrote it
-In the worst cases this can lead to people believing that the code is incorrect, when it is correct, hence leading to wasted effort
-The other potential pitfalls with this isolated approach of software development is that bugs are less likely to be found, due to less users
+The lack of guidelines can lead to the code being difficult to read, because the style will change depending on who wrote it.
+In the worst cases this can lead to people believing that the code is incorrect, when it is correct, hence leading to wasted effort.
+The other potential pitfalls with this isolated approach of software development is that bugs are less likely to be found, due to less users.
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
 Inherently, these factors make it more difficult to share and for other research groups or research infrastructures to adapt the software for their own purpose.
 Guidelines for software development ensure that the code is of a high quality and that the project progress effectively.
-A good set of guidelines will help the software be stable, inter-operable and extensible
+A good set of guidelines will help the software be:
+\begin{itemize}
+\item reliable
+\item inter-operable
+\item extensible
+\item intuitive
+\item maintainable
+\end{itemize}
 Therefore, it will be easier to continue growing the code base to include new scientific analysis and techniques.
 It would also reduce the effort required to adapt the software for use at other facilities.
 
 
-Generic best practice guidelines exist for software development at large [] (TODO: add books probably), but guidelines for specific domains have also been suggested in the litterature [] (TODO: ) which are then tailored to their specific use cases
+Generic software development guidelines (TODO: cite) have been common practice for many years.
+Specific software guidelines have been created for several scientific communities (TODO: cites).
 
 
 The specific guidelines (TODO ref SINE2020 secion) presented in this paper were developed as part of SINE2020.
@@ -601,18 +598,17 @@ This documentation should contain information on the standards used in the code 
 \section{SINE2020}
 \label{SINE2020}
 
-This section describes guidelines specific to the development of data treatment software for neutron and muon sources and its community.
-As such they are not meant to be transferred uncritically to other communities or domains.
+This section describes guidelines specific to the development of data treatment software for the neutron and muon communities.
+The specific guidelines in this section may not be suitable for other communities.
 
 These specific guidelines were developed as part of the data treatment work package (WP 10) of Science and Innovation with Neutrons in Europe in 2020 (SINE2020).
 This was a 4-year project between 18 partner institutions spread across 12 different countries.
 The first deliverable (D10.1) was to write the standards and guidelines for software developed as part of SINE2020, with the aim of developing collaborative and interoperable software.
-The primary mechanism by which this was achieved was by collecting information from existing authors of data treatment software and from this distill guidelines and agree on these.
 
 The report \cite{sine2020_wp10_d10_report} contains the standards and guidelines that were used for WP10 of SINE2020.
 This report contains statistics and information about neutron and muon data treatment software including tables identifying commonality.
-Below is listed the main specific guidelines agreed and used with effect throughout the SINE2020 project to stimulate stronger collaboration,
-commonality, cohesion and move towards using better software engineering best practices for software where this was not already in use: 
+The guidelines are designed to be specific enough to ensure commonality between different pieces of software, but sufficiently abstract to not be restrictive.
+The main guidelines are presented below with references to the relevant section of this paper for further reading.
 
 \begin{itemize}
       \item Use an Open Source license, such as GPL.
