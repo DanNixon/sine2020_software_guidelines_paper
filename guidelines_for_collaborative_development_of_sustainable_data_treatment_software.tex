@@ -9,12 +9,39 @@
 \usepackage{listings}
 \usepackage{rotating}
 
+\definecolor{coral}{RGB}{255,55,0}
+
+\lstset{ 
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{coral},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
 %%%%%%%%%%% End of definitions
 
 \pubyear{0000}
 \volume{0}
 \firstpage{1}
 \lastpage{1}
+
 
 \begin{document}
 
@@ -63,6 +90,7 @@ Software outside of the neutron and muon data treatment communities can use the 
 \end{frontmatter}
 
 %%%%%%%%%%% The article body starts:
+\newpage
 
 \section{Introduction}
 \label{Introduction}
@@ -106,6 +134,45 @@ Hence, when it is appropriate the idea of the guideline will be abstracted so th
 Abstracting guidelines in this manner allow then to remain relevant as technology evolves.
 For instance, Python is today the de facto standard scripting language in scientific computing even though the first scientific python conference to the best of our knowledge was held as late as in 2002 with the scipy conference in Pasadena [] (TODO: ref and write something better.)
 
+\section{Data Formats and Interoperability}
+\label{Data Formats and Interoperability}
+
+It is important to use an open and standardised data format, in order to allow users to easily create suitable input files for the software.
+A good data format will have open source definitions and documentation, making it easy to understand and to implement file loaders for the software.
+It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.
+Any implementation of a standardised data format needs to either follow the standard.
+The data format should only diverge from the standard if it is absolutely necessary.
+If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
+
+In the neutron science community NeXus \cite{K_nnecke_2015} has become the default format.
+NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
+NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
+Useful metadata (such as instrument configurations and data processing history) is trivial to store in NeXus.
+
+Proprietary file formats should be avoided at all costs.
+While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
+
+Applications may store relevant information (e.g. window layout for a graphical tool) using the facilities provided by the application framework (e.g. \texttt{QSettings} for Qt).
+
+Additional configuration or process setup information should be stored in an easily accessible location.
+This data may include version numbers, parameters and filenames.
+This configuration should ideally be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
+Popular formats for this purpose include INI, YAML, JSON, TOML and XML, all of which have several library options for common languages and store data as plain text.
+Under no circumstances should custom formats be used for configuration files, because there are already a number of well defined data formats for this purpose.
+
+It is vital for the results from scientific software to be reproducible.
+However, sometimes there is a need to recreate the results from data treatment, in this case it becomes valuable to be able to replay the series of operations.
+Data storage is a concern for most facilities and being able to reproduce data can be beneficial.
+An increasingly popular method is to store the unprocessed data and instructions on how to process the data.
+This has the advantage of allowing for multiple sets of instructions with a negligible increase in storage space.
+This means recording a history of each atomic action the software performs along with any relevant numbers/inputs.
+
+It is essential to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
+Process lists in Savu \cite{Wadeson_2016} are a good example of such operation reporting.
+These store the job configuration in a NeXus file and encode the same information in the final results.
+This allows the processing history to remain with the processed data and allows the result dataset to be used as input for a future job.
+Savu also provides tooling to allow a user to export a list of citations from their result data and is generated from the process list.
+
 \section{Business as Usual}
 \label{Business as Usual}
 
@@ -115,7 +182,7 @@ Another important part of the developers job is to provide documentation for use
 This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work.
 Most of these choices will be made at the start of the project and ideally last its duration, however these can be updated to accommodate new tools and standards.
 
-\subsection{Development methodology}
+\subsection{Development Methodology}
 \label{Development methodology}
 
 Development methodology is the set of rules that determine how requirements are gathered, converted into developer tasks and how the software is delivered to the user.
@@ -142,7 +209,30 @@ However, within that approach a more agile like methodology could be used.
 The first two sprints could focus on loading and fitting to data.
 The third sprint could then focus on making sure they interact with each other correctly.
 
-\subsection{Coding standards}
+\subsection{Requirement Capture}
+\label{Requirements}
+
+\subsection{Architecture and Design}
+\label{Architecture}
+
+A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas.
+A module may refer to a package, library or software plugin.
+
+Care should be taken when designing these module.
+Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
+Code within a module should be closely related, reducing the need to import unnecessary functionality.
+It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being introduced into the code base.
+
+It can be desirable to allow users to write scripts to further extend the functionality of the software.
+Ideally any scripting made available to users should use the Python language.
+Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
+
+If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
+Qt is an application framework commonly used by many open source and commercial software packages.
+It allows easy development of cross platform GUIs in a variety of languages (e.g. C++ and Python).
+Another increasingly popular option is to provide a web based interface.
+
+\subsection{Coding Standards}
 \label{Coding standards}
 
 Code should be of a high quality, the reason for this is two fold; code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs.
@@ -158,7 +248,7 @@ A developer should be able to understand what the code is doing (not necessarily
 
 For example, compare the function \cite{Lim_2015} written in C++11
 
-\begin{lstlisting}
+\begin{lstlisting}[frame=single, language=C++]
 float calc_v(std::vector<float> y)
 {
   float v = 0.0;
@@ -166,10 +256,8 @@ float calc_v(std::vector<float> y)
   return v;
 }
 \end{lstlisting}
-
 against,
-
-\begin{lstlisting}
+\begin{lstlisting}[frame=single, language=C++]
 /**
  * Calculates the linear approximation of pair potentials.
  * @param pair_potentails :: [input] A vector of the pair potential experienced by each atom.
@@ -216,8 +304,8 @@ A similar pitfall is pre-emptive generalisation, which is attempting to make the
 In both of these cases it is better to first determine if any additional optimisation or generalisation is going to be genuinely beneficial.
 Of course neither pre-emptive optimisation or generalisation have a concrete definition so it is up to the developer and code reviewers to make informed decisions based on the nature of the work and the code base.
 
-\subsection{Issues and work planning}
-\label{Issues and work planning}
+\subsection{Issue Tracking and Work Planning}
+\label{Issue tracking and work planning}
 
 Tracking the tasks for a software project is essential.
 This is often implemented in two parts; low level tracking of implementation tasks and high level tracking of project goals.
@@ -235,7 +323,7 @@ These goals should be defined by users of the software, see \ref{se}.
 
 Ideally both levels of tracking should be available to view freely by users and developers.
 
-\subsection{Source control management (SCM)}
+\subsection{Source Control Management (SCM)}
 \label{Source control management}
 
 SCM provides a full history of the code base, allows multiple developers to work on the project simultaneously and provides means on reviewing changes to your software.
@@ -270,7 +358,63 @@ Git is suitable for a project of any size and will probably last the full life o
 There are a wide range of cloud Git repository providers, all of which provide similar features.
 For a distributed team it is beneficial to use a cloud Git repository (opposed to local hosting on site) to avoid network related bottlenecks.
 
-\subsection{Continuous integration (CI)}
+\subsection{Build Systems (BS)}
+\label{Build systems}
+
+The code base of your software should be managed using an appropriate Build System (BS), which will depend on the choice of programming language(s).
+The BS handles the dependency finding and build file generation native to the host platform.
+A good choice for C and C++ projects is CMake \cite{CMake}.
+This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
+C and C++ projects can also benefit from use of a dependency manager such as Conan \cite{Conan}.
+There are build systems that combine a dependency manager into them.
+For Python based projects Python's setuptools is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
+
+\subsection{Quality Assurance (QA)}
+\label{Quality assurance}
+
+The quality of the software is one of the most important factors influencing the long-term success of the project.
+Automated testing infrastructure is thus essential in order to provide reliable software product.
+There is a plethora of testing frameworks available nowadays; almost every modern programming language ships a unit testing framework with its standard libraries, e.g. {\sc CxxTest} for {\sc C++}, {\sc unittest} for {\sc Python}, {\sc JUnit} for {\sc Java}, etc. 
+Moreover, there are third party, more advanced testing frameworks, such as {\sc GoogleTest}, {\sc GoogleMock}, that provide extended techniques for testing, for example, mocking.
+
+In practice, it is almost impossible to achieve 100\% test coverage.
+However, even in the cases when the tests can not be fully complete, it is a good practice to add a test case each time a bug has been revealed in a certain usage scenario.
+This guarantees that the same misbehaviour will not reoccur in the future.
+
+Apart from unit tests aiming to test the functionality of small units of code in isolation, integration tests are also necessary to ensure that the different parts of the software work together as expected.
+Deployment tests on the other hand ensure that the software is properly packaged and can be installed and launched on all the supported platforms.
+
+One peculiarity of experimental data treatment software is that it is particularly hard to test.
+Given the noisiness and stochastic nature of the input data, often empirical methods and heuristics put under the processing logic make it hard to predict the expected output under all possible scenarios.
+For example, an algorithm that is supposed to find a peak may operate as expected if there is a well defined peak in the data, but fail if the statistics for a certain measurement was low.
+Therefore, having unit and integration tests with exactly calculated expected outputs is often not practically feasible.
+In such cases reproducibility tests can be used. 
+Those do not, strictly speaking, test the output of the code to be correct, but they ensure that the output remains reproducible over time.
+The purpose of these tests is to prevent unexpected changes in the behaviour of the software as a side effect of other development work.
+They exploit reference data to compare the output to and the reference itself should be updated only in the case of bug fixes.
+
+Any software that performs computationally heavy operations might need performance tests.
+Those are tests that execute a certain aspect of the software over sufficiently large datasets.
+They do not necessarily check the output, but they record the execution time.
+Monitoring the evolution of the performance tests timings, one could automatically detect when a newly suggested code change increases significantly the execution time of certain operations.
+
+When it comes to automated testing, the GUI is arguably the layer that is the hardest to test.
+From the other hand, most often bugs are likely to be found in the graphical interfaces.
+However, there are techniques and tools that allow sufficient automation of GUI testing.
+Among those is the separation of the logic into tiers, e.g. Model-View-Presenter (MVP), where the model and the presenter can be covered by unit tests with reciprocal mocking.
+Besides, there are tools available, that allow the test automation of the views themselves.
+
+While automated testing is indispensable for any software project, the manual (or unscripted) testing should not be undermined.
+Those should be done periodically by the developers or a dedicated QA team, typically before the releases or other milestones.
+These tests help detect anomalies that haven't been (or couldn't have been) covered by the automated tests.
+It is advised to have readily available recipes that the tester can follow during testing.
+
+\subsection{Benchmarking and Validation}
+\label{Benchmarking and Validation}
+
+
+
+\subsection{Continuous Integration (CI)}
 \label{Continuous integration}
 
 Continuous Integration (CI) should be used, regardless of the projects size, to ensure that the software performs as expected.
@@ -289,7 +433,7 @@ Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to pr
 As a result Jenkins can be adapted to suit the needs of a specific software project.
 For example, it has no restrictions for build times, stores data locally and gives the developer complete control over the setup of the build environment.
 
-\subsection{Code review}
+\subsection{Code Review}
 \label{Code review}
 
 \begin{figure}
@@ -315,71 +459,150 @@ Having multiple reviewers for the same piece of work may seem inefficient, but w
 Tools for code reviews are often built into hosted SCM services.
 For example, GitHub Pull Requests allow code changes to be viewed and commented on.
 
-\section{Architecture}
-\label{Architecture}
+\subsection{Documentation}
+\label{Documentation}
 
-A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas.
-A module may refer to a package, library or software plugin.
+Good documentation will prevent the developers having to spend time explaining how to use and develop the software to users.
+The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audience.
 
-Care should be taken when designing these module.
-Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
-Code within a module should be closely related, reducing the need to import unnecessary functionality.
-It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being introduced into the code base.
+The simplest and most common form is online documentation, for example Read the Docs \cite{Read_The_Docs} or a wiki page.
+The documentation should have a clear structure and be easy to navigate.
+An easy way to achieve this is to have a contents page and to make the pages searchable so users can easily find the relevant information, by having tags that summarise the main themes of each page.
+The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
 
-The code base of your software should be managed using an appropriate build system, which will depend on the choice of programming language(s).
-A good choice for C and C++ projects is CMake \cite{CMake}.
-This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
-C++ projects can also benefit from use of a dependency manager such as Conan \cite{Conan}.
-There are build systems that combine a dependency manager into the build system.
-For Python based projects Python's setuptools is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
+Projects may benefit from having a landing page introducing the project and directing users to commonly used or important resources.
+Examples for this are Hugo \cite{Hugo} and GitHub Pages \cite{GitHub_Pages}.
+Hugo is a powerful and fast static website generator.
+It supports themeing and customisation and works with content defined in Markdown.
+A free hosting service provided by GitHub Pages, this allows you to commit your website content to a specific branch and have it served by GitHub.
+The large benefit here is avoiding the cost and time of maintaining the infrastructure required to host the project's website.
 
-It can be desirable to allow users to write scripts to further extend the functionality of the software.
-Ideally any scripting made available to users should use the Python language.
-Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
+An increasingly popular method of documentation is the video tutorial.
+These are extremely useful to users as it allows them to see how the software is used.
+For example, video tutorials of intricate GUIs may be beneficial as the user gets to see a complete workflow and there is less chance of steps being undocumented.
+However video tutorials can be costly to create and keep up-to-date with software changes.
 
-If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
-Qt is an application framework commonly used by many open source and commercial software packages.
-It allows easy development of cross platform GUIs in a variety of languages (e.g. C++ and Python).
-Another increasingly popular option is to provide a web based interface.
+Face to face communication is often the most efficient and effective way to understand a user's question/comment.
+This allows for a conversation to occur with more probing questions to improve the developer's understanding and to overcome any unfamiliar terminology.
+As a result it is important to have some local support, where developers are preferably in close proximity to their users.
+Face to face contact also has the benefit of increasing the user experience and users are more likely to report problems/bugs to the development team if they can easily speak to them.
 
-\section{Data Formats and Interoperability}
-\label{Data Formats and Interoperability}
+\subsection{Refactoring vs Technical Debt}
+\label{Refactoring}
 
-It is important to use an open and standardised data format, in order to allow users to easily create suitable input files for the software.
-A good data format will have open source definitions and documentation, making it easy to understand and to implement file loaders for the software.
-It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.
-Any implementation of a standardised data format needs to either follow the standard.
-The data format should only diverge from the standard if it is absolutely necessary.
-If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
+\subsection{Support and Maintenance}
+\label{Support and Maintenance}
 
-In the neutron science community NeXus \cite{K_nnecke_2015} has become the default format.
-NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
-NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
-Useful metadata (such as instrument configurations and data processing history) is trivial to store in NeXus.
+A key activity for any piece of software is user support.
+Unlike documentation this is an interactive link between developers and users.
+As a minimum email support should be provided and users made aware of it.
+The emails should be checked regularly and initial responses should be within a day or two.
+The initial response may be to ask for more details, to arrange a meeting or to say that it is being worked on.
+Providing effective user support will give users more confidence in the software.
 
-Proprietary file formats should be avoided at all costs.
-While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
+The documentation discussed so far has focused on the users.
+It is also valuable to have developer documentation.
+This documentation should contain information on the standards used in the code and how to set up a development environment, appropriate tutorials and relevant reference material.
 
-Applications may store relevant information (e.g. window layout for a graphical tool) using the facilities provided by the application framework (e.g. \texttt{QSettings} for Qt).
+\section{Packaging and Distribution}
+\label{Packaging and Distribution}
 
-Additional configuration or process setup information should be stored in an easily accessible location.
-This data may include version numbers, parameters and filenames.
-This configuration should ideally be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
-Popular formats for this purpose include INI, YAML, JSON, TOML and XML, all of which have several library options for common languages and store data as plain text.
-Under no circumstances should custom formats be used for configuration files, because there are already a number of well defined data formats for this purpose.
+\subsection{Releases}
+\label{Releases}
 
-It is vital for the results from scientific software to be reproducible.
-However, sometimes there is a need to recreate the results from data treatment, in this case it becomes valuable to be able to replay the series of operations.
-Data storage is a concern for most facilities and being able to reproduce data can be beneficial.
-An increasingly popular method is to store the unprocessed data and instructions on how to process the data.
-This has the advantage of allowing for multiple sets of instructions with a negligible increase in storage space.
-This means recording a history of each atomic action the software performs along with any relevant numbers/inputs.
+\begin{figure}
+    \centering
+    \includegraphics[height=10cm]{release_workflow.eps}
+    \caption{This flowchart describes the release workflow for a piece of software.}
+    \label{Release_Flowchart}
+\end{figure}
 
-It is essential to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
-Process lists in Savu \cite{Wadeson_2016} are a good example of such operation reporting.
-These store the job configuration in a NeXus file and encode the same information in the final results.
-This allows the processing history to remain with the processed data and allows the result dataset to be used as input for a future job.
-Savu also provides tooling to allow a user to export a list of citations from their result data and is generated from the process list.
+A good release process depends greatly on the nature of the software project.
+A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project \cite{Manitd}) requires an involved release process to ensure the software is suitable for use by all intended audiences.
+This section will assume that a significant proportion of users are not consulted with during the development process.
+
+A release candidate is often used for user testing and for identifying potential issues prior to the main release.
+There can be any number of release candidates and they should be generated in exactly the same manner as a release (the only difference being the version number).
+Release candidates are intended for "power users" who are happy to test the software for the benefit of the wider community (for example, at a scientist who is responsible for an instrument and its user programme, and who wants to ensure your software works before providing it to their visiting users).
+
+The length of the beta period is determined by the release cycle and the estimated number of users.
+There is no generic rule for this, but it is recommended that all (or as close to as possible) use cases of the software have been tested by specialist users.
+
+To ensure users approach the new version with realistic expectations it is essential to provide sufficiently detailed release notes with every version of the software (including release, beta and release candidates).
+These should summarise the changes made to the software since the last release, highlighting new features to incentives users to upgrade.
+
+It is essential that all changes that may break existing workflows are listed.
+This will reduce the risk of users attempting to use workflows that are no longer compatible with the latest version.
+
+Any fixes for safety or security reasons must be clearly documented in the release notes.
+
+It is recommended to tag and sign the release in the SCM system. In the case of Git this involves creating a tag from the code that was used to generate the release package and signing it with either a project or maintainers PGP (Pretty Good Privacy) key.
+This is not an essential step, but is good practice to allow verification of historic releases.
+
+It is also recommended to generate a Digital Object Identifier (DOI) for each release.
+This allows the software to be easily cited in publications and makes it clear which version of the software was used to generate the results in a publication.
+Another method is to use a publication that provides the idea of the software.
+
+\subsection{Packaging}
+\label{Packaging}
+
+To ensure user satisfaction easy software setup is essential.
+Exactly what this involves varies depending on the nature of your project, as such this section will not go into great detail about specific options, but rather the requirements of an installer and process of choosing an appropriate installation method for your software.
+
+The first requirement is for the package to give users a working copy of your software.
+They should not have to care about any implementation specifics or having to install additional dependencies to make your software run.
+
+Once installed, the software should not conflict with any other software a user may have installed on their machine.
+A common example of this is when applications depend on the same libraries, such as HDF5.
+
+It is recommended to sign binaries, this allows a user to verify that the copy of the software they have is in fact the version they believe it is and that it has not been modified.
+Some operating systems may also impose restrictions on running unsigned binaries.
+How binary signing is done depends on the packaging method and target operating system, it is worth researching this for your specific case.
+
+As the technology becomes more popular it is worth looking into cross platform container based means of distribution (for example, Docker \cite{Docker}, Singularity \cite{Kurtzer_2017} and other container based systems).
+This allows the distribution of software in an already configured and working state being safe in the knowledge it will function in the same way on the user's computer.
+Different containerization systems have their own caveats and there is no "one size fits all" solution.
+For example, Singularity is better at packaging GUI software than Docker, however Docker images are likely to more universally usable due to Docker's popularity.
+
+\subsection{Cross Platform Compatibility}
+\label{Cross platform}
+
+Unless your software specifically targets high performance computing systems such as clusters or distributed compute platforms then no assumption can realistically be made about how, and specifically on what platform, a user will expect to run your software.
+For this reason it is highly desirable (or even essential) that your software is designed to run on multiple operating systems and architectures.
+Thanks to modern development tools, libraries and build systems this is not a complex task.
+By using cross platform libraries you also allow your software to be easily adopted by users that use an operating system or environment different to your own.
+
+If officially supporting multiple platforms then it is beneficial to encourage a spread of different platforms and operating systems across your development team.
+Doing so ensures that there are always multiple people capable of addressing platform specific issues when they arise.
+
+It is recommended to limit the versions of particular operating systems you support.
+Typically you should stop supporting an OS version when the publisher stops supporting it.
+
+\subsection{Dependency Management}
+\label{Dependency Management}
+
+Dependency management handles obtaining and configuring any library dependencies your software has at build/configure time.
+This serves two functions: to make the build environment easy to set up and to make builds reproducible.
+Dependency managers do this by collecting requirements for your software based on a specification file provided by the developer.
+In the case where a package manager is available (for example Conda \cite{Conda}, PyPI \cite{PyPI} or Conan \cite{Conan}) this may just be a package name and version number.
+For more general purpose tools it may involve instructions on how the dependency should be retrieved and configured (for example CMake's ExternalProject \cite{CMake_ExternalProject}).
+
+One of the benefits of dependency management is the ability to pin dependency versions to known working versions.
+This ensures that moving to new development or runtime environments will not cause incompatibilities between your software and software it depends on.
+It is however important to keep dependencies up to date to ensure known bugs are not included in your software.
+The task of updating dependency versions and fixing any issues that arise is a good candidate for a maintenance task (see section \ref{Project Management}).
+
+\subsection{Deployment and Computing Infrastructure}
+\label{Infrastructure}
+
+\subsection{Licensing}
+\label{Licensing}
+
+All pieces of software require a license.
+An open source license is advisable from both a user and development perspective, details of available licenses are available online \cite{OSI_Licenses}.
+The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of the software.
+The advantage of an open source license is that it allows anyone to contribute to the code base (but must not bypass any review process) and radically improves the available pool of developers.
+Furthermore, in research/academic communities open source software is becoming increasingly compulsory in order to prevent the loss of valuable source code.
 
 \section{Project Management}
 \label{Project Management}
@@ -448,142 +671,6 @@ For example, which version of a programming language to use and the operating sy
 Another role fulfilled by this committee is to decide significant changes to the code base.
 This could happen if there is a new method (e.g. standard library algorithms in C++) that can be used throughout the code base to improve performance and/or stability.
 A representative from the technical advisory committee will report their decisions to the project management board, who will distribute the information down to the rest of the team.
-
-\section{Licensing}
-\label{Licensing}
-
-All pieces of software require a license.
-An open source license is advisable from both a user and development perspective, details of available licenses are available online \cite{OSI_Licenses}.
-The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of the software.
-The advantage of an open source license is that it allows anyone to contribute to the code base (but must not bypass any review process) and radically improves the available pool of developers.
-Furthermore, in research/academic communities open source software is becoming increasingly compulsory in order to prevent the loss of valuable source code.
-
-\section{Packaging and Distribution}
-\label{Packaging and Distribution}
-
-\subsection{Releases}
-\label{Releases}
-
-\begin{figure}
-    \centering
-    \includegraphics[height=10cm]{release_workflow.eps}
-    \caption{This flowchart describes the release workflow for a piece of software.}
-    \label{Release_Flowchart}
-\end{figure}
-
-A good release process depends greatly on the nature of the software project.
-A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project \cite{Manitd}) requires an involved release process to ensure the software is suitable for use by all intended audiences.
-This section will assume that a significant proportion of users are not consulted with during the development process.
-
-A release candidate is often used for user testing and for identifying potential issues prior to the main release.
-There can be any number of release candidates and they should be generated in exactly the same manner as a release (the only difference being the version number).
-Release candidates are intended for "power users" who are happy to test the software for the benefit of the wider community (for example, at a scientist who is responsible for an instrument and its user programme, and who wants to ensure your software works before providing it to their visiting users).
-
-The length of the beta period is determined by the release cycle and the estimated number of users.
-There is no generic rule for this, but it is recommended that all (or as close to as possible) use cases of the software have been tested by specialist users.
-
-To ensure users approach the new version with realistic expectations it is essential to provide sufficiently detailed release notes with every version of the software (including release, beta and release candidates).
-These should summarise the changes made to the software since the last release, highlighting new features to incentives users to upgrade.
-
-It is essential that all changes that may break existing workflows are listed.
-This will reduce the risk of users attempting to use workflows that are no longer compatible with the latest version.
-
-Any fixes for safety or security reasons must be clearly documented in the release notes.
-
-It is recommended to tag and sign the release in the SCM system. In the case of Git this involves creating a tag from the code that was used to generate the release package and signing it with either a project or maintainers PGP (Pretty Good Privacy) key.
-This is not an essential step, but is good practice to allow verification of historic releases.
-
-It is also recommended to generate a Digital Object Identifier (DOI) for each release.
-This allows the software to be easily cited in publications and makes it clear which version of the software was used to generate the results in a publication.
-Another method is to use a publication that provides the idea of the software.
-
-\subsection{Packaging}
-\label{Packaging}
-
-To ensure user satisfaction easy software setup is essential.
-Exactly what this involves varies depending on the nature of your project, as such this section will not go into great detail about specific options, but rather the requirements of an installer and process of choosing an appropriate installation method for your software.
-
-The first requirement is for the package to give users a working copy of your software.
-They should not have to care about any implementation specifics or having to install additional dependencies to make your software run.
-
-Once installed, the software should not conflict with any other software a user may have installed on their machine.
-A common example of this is when applications depend on the same libraries, such as HDF5.
-
-It is recommended to sign binaries, this allows a user to verify that the copy of the software they have is in fact the version they believe it is and that it has not been modified.
-Some operating systems may also impose restrictions on running unsigned binaries.
-How binary signing is done depends on the packaging method and target operating system, it is worth researching this for your specific case.
-
-As the technology becomes more popular it is worth looking into cross platform container based means of distribution (for example, Docker \cite{Docker}, Singularity \cite{Kurtzer_2017} and other container based systems).
-This allows the distribution of software in an already configured and working state being safe in the knowledge it will function in the same way on the user's computer.
-Different containerization systems have their own caveats and there is no "one size fits all" solution.
-For example, Singularity is better at packaging GUI software than Docker, however Docker images are likely to more universally usable due to Docker's popularity.
-
-\subsection{Cross platform}
-\label{Cross platform}
-
-Unless your software specifically targets high performance computing systems such as clusters or distributed compute platforms then no assumption can realistically be made about how, and specifically on what platform, a user will expect to run your software.
-For this reason it is highly desirable (or even essential) that your software is designed to run on multiple operating systems and architectures.
-Thanks to modern development tools, libraries and build systems this is not a complex task.
-By using cross platform libraries you also allow your software to be easily adopted by users that use an operating system or environment different to your own.
-
-If officially supporting multiple platforms then it is beneficial to encourage a spread of different platforms and operating systems across your development team.
-Doing so ensures that there are always multiple people capable of addressing platform specific issues when they arise.
-
-It is recommended to limit the versions of particular operating systems you support.
-Typically you should stop supporting an OS version when the publisher stops supporting it.
-
-\subsection{Dependency Management}
-\label{Dependency Management}
-
-Dependency management handles obtaining and configuring any library dependencies your software has at build/configure time.
-This serves two functions: to make the build environment easy to set up and to make builds reproducible.
-Dependency managers do this by collecting requirements for your software based on a specification file provided by the developer.
-In the case where a package manager is available (for example Conda \cite{Conda}, PyPI \cite{PyPI} or Conan \cite{Conan}) this may just be a package name and version number.
-For more general purpose tools it may involve instructions on how the dependency should be retrieved and configured (for example CMake's ExternalProject \cite{CMake_ExternalProject}).
-
-One of the benefits of dependency management is the ability to pin dependency versions to known working versions.
-This ensures that moving to new development or runtime environments will not cause incompatibilities between your software and software it depends on.
-It is however important to keep dependencies up to date to ensure known bugs are not included in your software.
-The task of updating dependency versions and fixing any issues that arise is a good candidate for a maintenance task (see section \ref{Project Management}).
-
-\section{Support and Documentation}
-\label{Support and Documentation}
-
-Good documentation will prevent the developers having to spend time explaining how to use and develop the software to users.
-The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audience.
-
-The simplest and most common form is online documentation, for example Read the Docs \cite{Read_The_Docs} or a wiki page.
-The documentation should have a clear structure and be easy to navigate.
-An easy way to achieve this is to have a contents page and to make the pages searchable so users can easily find the relevant information, by having tags that summarise the main themes of each page.
-The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
-
-Projects may benefit from having a landing page introducing the project and directing users to commonly used or important resources.
-Examples for this are Hugo \cite{Hugo} and GitHub Pages \cite{GitHub_Pages}.
-Hugo is a powerful and fast static website generator.
-It supports themeing and customisation and works with content defined in Markdown.
-A free hosting service provided by GitHub Pages, this allows you to commit your website content to a specific branch and have it served by GitHub.
-The large benefit here is avoiding the cost and time of maintaining the infrastructure required to host the project's website.
-
-An increasingly popular method of documentation is the video tutorial.
-These are extremely useful to users as it allows them to see how the software is used.
-For example, video tutorials of intricate GUIs may be beneficial as the user gets to see a complete workflow and there is less chance of steps being undocumented.
-However video tutorials can be costly to create and keep up-to-date with software changes.
-
-Face to face communication is often the most efficient and effective way to understand a user's question/comment.
-This allows for a conversation to occur with more probing questions to improve the developer's understanding and to overcome any unfamiliar terminology.
-As a result it is important to have some local support, where developers are preferably in close proximity to their users.
-Face to face contact also has the benefit of increasing the user experience and users are more likely to report problems/bugs to the development team if they can easily speak to them.
-
-A key activity for any piece of software is user support.
-Unlike documentation this is an interactive link between developers and users.
-As a minimum email support should be provided and users made aware of it.
-The emails should be checked regularly and initial responses should be within a day or two.
-The initial response may be to ask for more details, to arrange a meeting or to say that it is being worked on.
-Providing effective user support will give users more confidence in the software.
-
-The documentation discussed so far has focused on the users.
-It is also valuable to have developer documentation.
-This documentation should contain information on the standards used in the code and how to set up a development environment, appropriate tutorials and relevant reference material.
 
 \section{SINE2020}
 \label{SINE2020}
