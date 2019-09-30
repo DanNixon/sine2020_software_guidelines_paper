@@ -62,6 +62,7 @@ Software outside of the neutron and muon disciplines can use the specific guidel
 \kwd{Software development}
 \kwd{Scientific software}
 \kwd{Sustainable software}
+\kwd{Data treatment}
 \kwd{Neutron scattering}
 \kwd{Muon spectroscopy}
 \end{keyword}
@@ -74,16 +75,17 @@ Software outside of the neutron and muon disciplines can use the specific guidel
 \label{Introduction}
 
 It has become vital for modern neutron and muon sources to ensure that adequate user software is in existence not only for data acquisition but also for data treatment, in order to ensure the production of scientific result rather than just data.
-The reason for this is at least two-fold: first, the demography of the users is changing from scientists building a career in neutron scattering or muon spectroscopy to scientists that consider neutron scattering and muon spectroscopy only as tools among a broader set of tools; they are thus often not knowledgeable about the details behind the data treatment.
+The reason for this is at least two-fold: first, the demographic of the users is changing from scientists building a career in neutron scattering or muon spectroscopy to scientists that consider them as one of many tools. 
+Hence, they are often not knowledgeable about the details behind the neutron and muon data treatment.
 Moreover, the users may not have the technical skills in how to analyse their data with programs like {\sc Matlab}, {\sc Python}, {\sc IDL}, etc. 
 The second reason is that the advances in science are demanding increasingly greater amounts of data that cannot be analysed by hand.
 For example, some instruments at the
-European Spallation Source (ESS) are estimated to have data rates beyond ...(\todo{TODO: Tobias paper}) and at modern photon sources the situation is even more severe.
-This can be compared to the data rates from ten years ago, where ...(\todo{TODO: Historic example}).
+European Spallation Source (ESS) are estimated to have data rates beyond (\todo{TODO: Tobias paper}) and at modern photon sources the situation is even more severe (\todo{TODO: Mention ESRF upgrade}).
+This can be compared to the data rates from ten years ago, where (\todo{TODO: Historic example}).
 
 The growing complexity of both data reduction and analysis means that the development of scientific software requires increasingly more resources.
 The consequence of these aspects is that users will inherently depend on software created by other developers, typically at the hosting facilities or in the user community.
-This adds significant requirements in terms of quality, trustability, reliability, reproducibility and usability compared to when a user develops software for his own use.
+This adds significant requirements in terms of quality, trustability, reliability, reproducibility and usability compared to when users develop software for their own use.
 The lack of guidelines can lead to the code being difficult to read, because the style will change depending on who wrote it.
 In the worst case this may lead to people believing that the code is incorrect, when it is correct and vica-versa.
 The other potential pitfall with this isolated approach of software development is that bugs are less likely to be found, due to less users and less developers.
@@ -91,18 +93,26 @@ Also the software may become too cumbersome to develop leading to the project ha
 These factors make it more difficult to share software and for other research groups to adapt the software for their own purpose.
 
 Guidelines for software development ensure that the code is of a high quality and that the project progresses effectively.
-A good set of guidelines will help the software be sustainable; that is, reliable, inter-operable, extensible, intuitive, maintainable.
-That way it will be easier to continue growing the code base to include new scientific analysis and techniques and add new functionality.
+A good set of guidelines will help the software be sustainable; that is, 
+\begin{itemize}
+\item{reliable}
+\item{inter-operable}
+\item{extensible}
+\item{intuitive}
+\item{maintainable.}
+\end{itemize}
+That way it will be easier to continue growing the code base to include new functionality to the current scientific analysis techniques and to expand into new areas of analysis/research.
 It would also reduce the effort required to adapt the software for use at other facilities.
 
 Generic software development guidelines (\todo{TODO: cite}) have been common practice for many years.
+% cite IEEE Software, Vol. 24 Number 1 IEEE, January 2007 or similar
 Specific software guidelines have been created for several scientific domains (\todo{TODO: cite}).
 The specific guidelines presented in Section~\ref{SINE2020} were developed as part of SINE2020.
 The software projects encompassed in the frame of SINE2020 had a broad range of team sizes: from a couple of developers working very closely on a single piece of software to wide international collaborations.
 
 Although the specific guidelines are aimed at the neutron and muon communities, the generic guidelines reflect what is common practice in software development.
 Hence, when it is appropriate the idea of the guideline will be abstracted, so that an alternative can be chosen in the future.
-For instance, {\sc Python} is today the \textit{de facto} standard scripting language in scientific computing even though the first scientific python conference to the best of our knowledge was held as late as in 2002.
+For instance, at the time of writing the \textit{de facto} standard scripting language in scientific computing is {\sc Python}, even though the first scientific python conference to the best of our knowledge was held as late as in 2002.
 Abstracting guidelines in this manner allows them to remain relevant as technology evolves.
 
 \section{Business as Usual}
