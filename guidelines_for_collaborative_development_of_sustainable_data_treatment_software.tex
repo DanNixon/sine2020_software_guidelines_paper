@@ -326,6 +326,10 @@ Each module should perform a very specific task (e.g. minimization) and should o
 Code within a module should be closely related, reducing the need to import unnecessary functionality.
 It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being introduced into the code base.
 
+A releted pattern in software development is DRY, or "don't repeat yourself" \cite{Foote_2014}.
+This pattern encourages having shared code in a common area so that it can be used in multiple different locations.
+Otherwise the code base would have multiple implementations of the same functionality, which can lead to them becoming different over time and as a result introducing bugs.
+
 The code base of your software should be managed using an appropriate build system, which will depend on the choice of programming language(s).
 A good choice for C and C++ projects is CMake \cite{CMake}.
 This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
