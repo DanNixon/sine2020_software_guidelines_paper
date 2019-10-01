@@ -536,6 +536,14 @@ Doing so ensures that there are always multiple people capable of addressing pla
 It is recommended to limit the versions of particular operating systems you support.
 Typically you should stop supporting an OS version when the publisher stops supporting it.
 
+An increasingly common method of delivering software to users is via cloud infrastructure.
+In this model the software is designed to run on dedicated compute infrastructure with an interface layer providing interaction with the user.
+This layer may be a desktop based GUI, command line or web interface.
+The advantage of this delivery method is that the environment is which the software runs is more closely controlled and specified by the developer, reducing the impact of many cross platform development issues.
+The software may also reside closer to the data, as data volume grows this is important in removing data transfer and storage bottlenecks involved in traditional software.
+A disadvantage of this method is that it add dependency on the infrastructure hosting the software.
+The European Open Science Cloud \cite{EOSC} is one example of a project dedicated to this software delivery method.
+
 \subsection{Dependency Management}
 \label{Dependency Management}
 
