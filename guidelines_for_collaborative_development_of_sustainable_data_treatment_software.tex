@@ -465,52 +465,12 @@ Having multiple reviewers for the same piece of work may seem inefficient, but w
 Tools for code reviews are often built into hosted SCM services.
 For example, GitHub Pull Requests allow code changes to be viewed and commented on.
 
-\subsection{Documentation}
+\subsection{User and Developer Documentations}
 \label{Documentation}
 
-\section{Architecture}
-\label{Architecture}
-
-A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas.
-A module may refer to a package, library or software plugin.
-
-Care should be taken when designing these module.
-Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
-Code within a module should be closely related, reducing the need to import unnecessary functionality.
-It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being introduced into the code base.
-
-A releted pattern in software development is DRY, or "don't repeat yourself" \cite{Foote_2014}.
-This pattern encourages having shared code in a common area so that it can be used in multiple different locations.
-Otherwise the code base would have multiple implementations of the same functionality, which can lead to them becoming different over time and as a result introducing bugs.
-
-The code base of your software should be managed using an appropriate build system, which will depend on the choice of programming language(s).
-A good choice for C and C++ projects is CMake \cite{CMake}.
-This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
-C++ projects can also benefit from use of a dependency manager such as Conan \cite{Conan}.
-There are build systems that combine a dependency manager into the build system.
-For Python based projects Python's setuptools is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
-
-It can be desirable to allow users to write scripts to further extend the functionality of the software.
-Ideally any scripting made available to users should use the Python language.
-Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
-
-If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
-Qt is an application framework commonly used by many open source and commercial software packages.
-It allows easy development of cross platform GUIs in a variety of languages (e.g. C++ and Python).
-Another increasingly popular option is to provide a web based interface.
-
-\section{Project Management}
-\label{Project Management}
-
-Large pieces of software will require some form of management, to ensure that the team are working effectively.
-This is often referred to as a governance model.
-A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
-This is typically achieved by using project management, which defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/) that will help the project be successful.
-Each project will typically have a sponsor(s) who are ultimately responsible for the project, but will not be involved in its running.
-
-The larger the team the more important good project management becomes.
-Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project management that would benefit projects of any size.
-Then section \ref{PM big} will contain advice for larger teams, but may still be useful to smaller teams.
+The documentation discussed so far has focused on the users.
+It is also valuable to have developer documentation.
+This documentation should contain information on the standards used in the code and how to set up a development environment, appropriate tutorials and relevant reference material.
 
 Good documentation will prevent the developers having to spend time explaining how to use and develop the software to users.
 The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audience.
@@ -532,14 +492,6 @@ These are extremely useful to users as it allows them to see how the software is
 For example, video tutorials of intricate GUIs may be beneficial as the user gets to see a complete workflow and there is less chance of steps being undocumented.
 However video tutorials can be costly to create and keep up-to-date with software changes.
 
-Face to face communication is often the most efficient and effective way to understand a user's question/comment.
-This allows for a conversation to occur with more probing questions to improve the developer's understanding and to overcome any unfamiliar terminology.
-As a result it is important to have some local support, where developers are preferably in close proximity to their users.
-Face to face contact also has the benefit of increasing the user experience and users are more likely to report problems/bugs to the development team if they can easily speak to them.
-
-\subsection{Refactoring vs Technical Debt}
-\label{Refactoring}
-
 \subsection{Support and Maintenance}
 \label{Support and Maintenance}
 
@@ -550,9 +502,13 @@ The emails should be checked regularly and initial responses should be within a 
 The initial response may be to ask for more details, to arrange a meeting or to say that it is being worked on.
 Providing effective user support will give users more confidence in the software.
 
-The documentation discussed so far has focused on the users.
-It is also valuable to have developer documentation.
-This documentation should contain information on the standards used in the code and how to set up a development environment, appropriate tutorials and relevant reference material.
+Face to face communication is often the most efficient and effective way to understand a user's question/comment.
+This allows for a conversation to occur with more probing questions to improve the developer's understanding and to overcome any unfamiliar terminology.
+As a result it is important to have some local support, where developers are preferably in close proximity to their users.
+Face to face contact also has the benefit of increasing the user experience and users are more likely to report problems/bugs to the development team if they can easily speak to them.
+
+\subsection{Refactoring vs Technical Debt}
+\label{Refactoring}
 
 \section{Packaging and Distribution}
 \label{Packaging and Distribution}
