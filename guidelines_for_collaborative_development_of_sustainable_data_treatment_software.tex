@@ -42,6 +42,7 @@
 \firstpage{1}
 \lastpage{1}
 
+\newcommand{\todo}[1]{\textbf{#1}}
 
 \begin{document}
 
@@ -72,19 +73,24 @@ and
 \address[E]{\orgname{Institut Laue-Langevin},\cny{France}\printead[presep={\\}]{e8}}
 
 \begin{abstract}
-Scientific software is an essential part of the modern researcher's tool kit, due to large data sets and complex analysis techniques.
-As a result the software is often expensive to develop.
-Therefore, its imperative to ensure that the software will continue to be developed in the future, even if the current work force leaves the project.
+Scientific software is an essential part of the modern researcher's toolkit.
+Due to the large volumes of data and the complex analysis techniques required, it is often expensive to develop and maintain scientific software.
+Therefore, it is imperative to ensure that the software will continue to be supported in the future, even if the current work force leaves the project.
 Some of the requirements for sustainable software are for the code base to have a consistent quality and good documentation, to prevent a loss of knowledge.
-This paper presents two sets of guidelines, a generic set that could be applied to a broad range of communities.
-The second set of guidelines are specific to the neutron and muon data treatment communities and were developed as part of Science and Innovation with Neutrons in Europe in 2020 (SINE2020).
-
-These specific guidelines were designed to allow the harmonization of software development.
-Software outside of the neutron and muon data treatment communities can use the specific guidelines (TODO: section ref) as inspiration of how to apply the generic guidelines presented in this paper.
+This paper presents two sets of guidelines.
+The first is a generic set that could be applied to software projects in a broad range of domains.
+The second set of guidelines are specific to the neutron scattering and muon spectroscopy data treatment communities and were developed as part of Science and Innovation with Neutrons in Europe in 2020 (SINE2020).
+These specific guidelines were designed to allow the harmonization of software development process.
+Software outside of the neutron and muon disciplines can use the specific guidelines as inspiration of how to adopt, apply and adapt the generic guidelines presented in this paper.
 \end{abstract}
 
 \begin{keyword}
-\kwd{TODO}
+\kwd{Software development}
+\kwd{Scientific software}
+\kwd{Sustainable software}
+\kwd{Data treatment}
+\kwd{Neutron scattering}
+\kwd{Muon spectroscopy}
 \end{keyword}
 
 \end{frontmatter}
@@ -95,44 +101,44 @@ Software outside of the neutron and muon data treatment communities can use the 
 \section{Introduction}
 \label{Introduction}
 
-It has become vital for modern neutron and muon sources to ensure that adequate user software is in existence not only for data acquisition but also for data treatment in order to ensure that the sources produce science rather than just data
-The reason for this is at least two-fold 1) the demography of the users is changing from scientists building a career in neutron scattering or muon spectroscopy to scientists that consider neutron scattering and muon spectroscopy as tools among a broader set of tools and are thus not sufficient knowledgeable or skilled about the deeper details behind data treatment for neutron scattering or muon spectroscopy
-Moreover, the users may simply not have the skills in how to analyse their data based on programs like MatLab, IDL, Python, or similar. 2) The advances in technology are leading to vast amounts of data that cannot be analysed by hand
+It has become vital for modern neutron and muon sources to ensure that adequate user software is in existence not only for data acquisition but also for data treatment, in order to ensure the production of scientific result rather than just data.
+The reason for this is at least two-fold: first, the demographic of the users is changing from scientists building a career in neutron scattering or muon spectroscopy to scientists that consider them as one of many tools.
+Hence, more and more users are not knowledgeable about the details behind the neutron and muon data treatment and  do not have the technical skills in how to analyse their data.
+The second reason is that the advances in science are demanding increasingly greater amounts of data that cannot be analysed by hand.
 For example, some instruments at the
-European Spallation Source (ESS) are estimated to have data rates beyond [](TODO: Tobias’ paper) and at modern photon sources the situation is even more severe
-This can be compared to the data rates from ten years ago, where ...(TODO: Historic example).
-The growing complexity of both data reduction and analysis, means that the development of scientific software requires increasingly more resource.
-The consequence of these aspects is that users inherently will depend on software developed by other developers typically at the facilities or in the user community, which in turn add significant requirements to quality, trustability, reliability and usability compared to when a developer develops software for herself or her colleague sitting next door
+European Spallation Source (ESS) are estimated to have data rates beyond (\todo{TODO: Tobias paper}).
+This can be compared to the data rates from ten years ago, where (\todo{TODO: Historic example}).
 
+The growing complexity of both data reduction and analysis means that the development of scientific software requires increasingly more resources.
+The consequence of these aspects is that users will inherently depend on software created by other developers, typically at the hosting facilities or in the user community.
+This adds significant requirements in terms of quality, trustability, reliability, reproducibility and usability compared to when users develop software for their own use.
 The lack of guidelines can lead to the code being difficult to read, because the style will change depending on who wrote it.
-In the worst cases this can lead to people believing that the code is incorrect, when it is correct, hence leading to wasted effort.
-The other potential pitfalls with this isolated approach of software development is that bugs are less likely to be found, due to less users.
+In the worst case this may lead to people believing that the code is incorrect, when it is correct and vica-versa.
+The other potential pitfall with this isolated approach of software development is that bugs are less likely to be found, due to less users.
 Also the software may become too cumbersome to develop leading to the project having to start from scratch.
-Inherently, these factors make it more difficult to share and for other research groups or research infrastructures to adapt the software for their own purpose.
-Guidelines for software development ensure that the code is of a high quality and that the project progress effectively.
-A good set of guidelines will help the software be:
-\begin{itemize}
-  \item reliable
-  \item inter-operable
-  \item extensible
-  \item intuitive
-  \item maintainable
-\end{itemize}
+These factors make it more difficult to share software and for other research groups to adapt the software for their own purpose.
 
-Therefore, it will be easier to continue growing the code base to include new scientific analysis and techniques.
+Guidelines for software development ensure that the code is of a high quality and that the project progresses effectively.
+A good set of guidelines will help the software be sustainable; that is,
+\begin{itemize}
+\item{reliable}
+\item{inter-operable}
+\item{extensible}
+\item{intuitive}
+\item{maintainable.}
+\end{itemize}
+That way it will be easier to continue growing the code base to include new functionality to the current scientific analysis techniques and to expand into new areas of analysis/research.
 It would also reduce the effort required to adapt the software for use at other facilities.
 
-Generic software development guidelines (TODO: cite) have been common practice for many years.
-Specific software guidelines have been created for several scientific communities (TODO: cites).
-
-The specific guidelines (TODO ref SINE2020 secion) presented in this paper were developed as part of SINE2020.
-The software developed as part of SINE2020 had a broad range of team sizes.
-From a couple of developers working very closely on a single piece of software to international collaborations.
+Generic software development guidelines (\todo{TODO: cite}) have been common practice for many years.
+% cite IEEE Software, Vol. 24 Number 1 IEEE, January 2007 or similar
+Specific software guidelines have been created for several scientific domains (\todo{TODO: cite}).
+The specific guidelines presented in Section~\ref{SINE2020} were developed as part of SINE2020.
+The software projects encompassed in the frame of SINE2020 had a broad range of team sizes: from a couple of developers working very closely on a single piece of software to wide international collaborations.
 
 Although the specific guidelines are aimed at the neutron and muon communities, the generic guidelines reflect what is common practice in software development.
-Hence, when it is appropriate the idea of the guideline will be abstracted so that an alternative can be chosen in the future.
-Abstracting guidelines in this manner allow then to remain relevant as technology evolves.
-For instance, Python is today the de facto standard scripting language in scientific computing even though the first scientific python conference to the best of our knowledge was held as late as in 2002 with the scipy conference in Pasadena [] (TODO: ref and write something better.)
+When it is appropriate the idea of the guideline will be abstracted, so that an alternative can be chosen in the future.
+Abstracting guidelines in this manner allows them to remain relevant as technology evolves.
 
 \section{Data Formats and Interoperability}
 \label{Data Formats and Interoperability}
@@ -462,6 +468,50 @@ For example, GitHub Pull Requests allow code changes to be viewed and commented 
 \subsection{Documentation}
 \label{Documentation}
 
+\section{Architecture}
+\label{Architecture}
+
+A well designed software package would separate its functionality into a set of individual "modules" based on common feature areas.
+A module may refer to a package, library or software plugin.
+
+Care should be taken when designing these module.
+Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
+Code within a module should be closely related, reducing the need to import unnecessary functionality.
+It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being introduced into the code base.
+
+A releted pattern in software development is DRY, or "don't repeat yourself" \cite{Foote_2014}.
+This pattern encourages having shared code in a common area so that it can be used in multiple different locations.
+Otherwise the code base would have multiple implementations of the same functionality, which can lead to them becoming different over time and as a result introducing bugs.
+
+The code base of your software should be managed using an appropriate build system, which will depend on the choice of programming language(s).
+A good choice for C and C++ projects is CMake \cite{CMake}.
+This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
+C++ projects can also benefit from use of a dependency manager such as Conan \cite{Conan}.
+There are build systems that combine a dependency manager into the build system.
+For Python based projects Python's setuptools is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
+
+It can be desirable to allow users to write scripts to further extend the functionality of the software.
+Ideally any scripting made available to users should use the Python language.
+Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
+
+If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
+Qt is an application framework commonly used by many open source and commercial software packages.
+It allows easy development of cross platform GUIs in a variety of languages (e.g. C++ and Python).
+Another increasingly popular option is to provide a web based interface.
+
+\section{Project Management}
+\label{Project Management}
+
+Large pieces of software will require some form of management, to ensure that the team are working effectively.
+This is often referred to as a governance model.
+A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
+This is typically achieved by using project management, which defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/) that will help the project be successful.
+Each project will typically have a sponsor(s) who are ultimately responsible for the project, but will not be involved in its running.
+
+The larger the team the more important good project management becomes.
+Sections \ref{rman, se} and \ref{lc} will discuss the aspects of project management that would benefit projects of any size.
+Then section \ref{PM big} will contain advice for larger teams, but may still be useful to smaller teams.
+
 Good documentation will prevent the developers having to spend time explaining how to use and develop the software to users.
 The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audience.
 
@@ -577,6 +627,16 @@ Doing so ensures that there are always multiple people capable of addressing pla
 
 It is recommended to limit the versions of particular operating systems you support.
 Typically you should stop supporting an OS version when the publisher stops supporting it.
+
+Cloud computing is becoming an increasingly common method for delivering software to users.
+Instead of the user providing the computing hardware, an interface layer (e.g. web interface, command line) is provided to a dedicated computing infrastructure.
+One of the main advantages of cloud infrastructure is that the specifications of the operating system and hardware are known by the developer.
+This makes it easier to recreate platform specific bugs and if cloud infrastructure is used exclusively it could remove the need for cross platform development.
+It is also possible to create a setup where the data is easily accessible from the cloud infrastructure.
+This removes the need for data transfer and storage bottlenecks, which will become increasingly important as data volumes grow.
+However, a disadvantage of cloud infrastructure is that it creates an additional dependency.
+If the cloud infrastructure is not maintained correctly than the software will become unusable within the cloud service.
+The European Open Science Cloud \cite{EOSC} is one example of a project dedicated to this software delivery method.
 
 \subsection{Dependency Management}
 \label{Dependency Management}
