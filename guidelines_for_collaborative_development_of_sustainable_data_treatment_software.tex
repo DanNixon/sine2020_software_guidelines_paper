@@ -405,9 +405,11 @@ The purpose of these tests is to prevent unexpected changes in the behaviour of 
 They exploit reference data to compare the output to and the reference itself should be updated only in the case of bug fixes.
 
 Any software that performs computationally heavy operations might need performance tests.
-Those are tests that execute a certain aspect of the software over sufficiently large datasets.
 They do not necessarily check the output, but they record the execution time.
 Monitoring the evolution of the timings of the performance test results, it is possible to automatically detect when a new code change causes a significant increase in the execution time.
+The performance tests can be split into two categories: micro benchmarking and integration performance tests.
+The former test the performance of small sections of code to prevent possible flaws, for example, related to caching, threading, database or network access, etc.
+The latter test certain usage scenarios over sufficiently large datasets in order to mimic the reaction time  experienced by the end users.
 
 When it comes to automated testing, the GUI is arguably the layer that is the hardest to test.
 From the other hand, most often bugs are likely to be found in the GUI.
