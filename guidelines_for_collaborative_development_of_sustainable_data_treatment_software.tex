@@ -146,8 +146,8 @@ Abstracting guidelines in this manner allows them to remain relevant as technolo
 It is important to use an open and standardised data format, in order to allow users to easily create suitable input files for the software.
 A good data format will have open source definitions and documentation, making it easy to understand and to implement file loaders for the software.
 It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.
-Any implementation of a standardised data format needs to either follow the standard.
-The data format should only diverge from the standard if it is absolutely necessary.
+Any implementation of a standardised data format needs to follow the standard and
+the data format should only diverge from the standard if it is absolutely necessary.
 If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
 
 In the neutron science community NeXus \cite{K_nnecke_2015} has become the default format.
@@ -162,7 +162,7 @@ Applications may store relevant information (e.g. window layout for a graphical 
 
 Additional configuration or process setup information should be stored in an easily accessible location.
 This data may include version numbers, parameters and filenames.
-This configuration should ideally be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
+The configuration file should be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
 Popular formats for this purpose include INI, YAML, JSON, TOML and XML, all of which have several library options for common languages and store data as plain text.
 Under no circumstances should custom formats be used for configuration files, because there are already a number of well defined data formats for this purpose.
 
@@ -170,7 +170,7 @@ It is vital for the results from scientific software to be reproducible.
 However, sometimes there is a need to recreate the results from data treatment, in this case it becomes valuable to be able to replay the series of operations.
 Data storage is a concern for most facilities and being able to reproduce data can be beneficial.
 An increasingly popular method is to store the unprocessed data and instructions on how to process the data.
-This has the advantage of allowing for multiple sets of instructions with a negligible increase in storage space.
+Therefore, it is possible to record multiple sets of instructions with a negligible increase in storage space.
 This means recording a history of each atomic action the software performs along with any relevant numbers/inputs.
 
 It is essential to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
@@ -383,39 +383,39 @@ For Python based projects Python's setuptools is typically sufficient, for speci
 \label{Quality assurance}
 
 The quality of the software is one of the most important factors influencing the long-term success of the project.
-Automated testing infrastructure is thus essential in order to provide reliable software product.
-There is a plethora of testing frameworks available nowadays; almost every modern programming language ships a unit testing framework with its standard libraries, e.g. {\sc CxxTest} for {\sc C++}, {\sc unittest} for {\sc Python}, {\sc JUnit} for {\sc Java}, etc. 
-Moreover, there are third party, more advanced testing frameworks, such as {\sc GoogleTest}, {\sc GoogleMock}, that provide extended techniques for testing, for example, mocking.
+Automated testing infrastructure is essential in order to provide reliable software product.
+There is a plethora of testing frameworks available nowadays; almost every modern programming language ships a unit testing framework with its standard libraries (e.g. {\sc CxxTest}, {\sc unittest} and {\sc JUnit} for {\sc C++}, {\sc Python}, and {\sc Java} respectively). 
+There are more advanced third party testing frameworks (e.g. {\sc GoogleTest}, {\sc GoogleMock}) that provide extended techniques for testing, such as mocking.
 
 In practice, it is almost impossible to achieve 100\% test coverage.
 However, even in the cases when the tests can not be fully complete, it is a good practice to add a test case each time a bug has been revealed in a certain usage scenario.
-This guarantees that the same misbehaviour will not reoccur in the future.
+This guarantees that the same bug will not reoccur.
 
 Apart from unit tests aiming to test the functionality of small units of code in isolation, integration tests are also necessary to ensure that the different parts of the software work together as expected.
 Deployment tests on the other hand ensure that the software is properly packaged and can be installed and launched on all the supported platforms.
 
 One peculiarity of experimental data treatment software is that it is particularly hard to test.
 Given the noisiness and stochastic nature of the input data, often empirical methods and heuristics put under the processing logic make it hard to predict the expected output under all possible scenarios.
-For example, an algorithm that is supposed to find a peak may operate as expected if there is a well defined peak in the data, but fail if the statistics for a certain measurement was low.
-Therefore, having unit and integration tests with exactly calculated expected outputs is often not practically feasible.
+For example, an algorithm that is supposed to find a peak may operate as expected if there is a well defined peak in the data, but may fail for low statistics measurements.
+Therefore, having unit and integration tests with the exact expected outputs is often not feasible.
 In such cases reproducibility tests can be used. 
-Those do not, strictly speaking, test the output of the code to be correct, but they ensure that the output remains reproducible over time.
+These tests ensure that the output remains reproducible over time, but do not test the correctness of the output of the code.
 The purpose of these tests is to prevent unexpected changes in the behaviour of the software as a side effect of other development work.
 They exploit reference data to compare the output to and the reference itself should be updated only in the case of bug fixes.
 
 Any software that performs computationally heavy operations might need performance tests.
 Those are tests that execute a certain aspect of the software over sufficiently large datasets.
 They do not necessarily check the output, but they record the execution time.
-Monitoring the evolution of the performance tests timings, one could automatically detect when a newly suggested code change increases significantly the execution time of certain operations.
+Monitoring the evolution of the timings of the performance test results, it is possible to automatically detect when a new code change causes a significant increase in the execution time.
 
 When it comes to automated testing, the GUI is arguably the layer that is the hardest to test.
-From the other hand, most often bugs are likely to be found in the graphical interfaces.
+From the other hand, most often bugs are likely to be found in the GUI.
 However, there are techniques and tools that allow sufficient automation of GUI testing.
-Among those is the separation of the logic into tiers, e.g. Model-View-Presenter (MVP), where the model and the presenter can be covered by unit tests with reciprocal mocking.
-Besides, there are tools available, that allow the test automation of the views themselves.
+Among those is the separation of the logic into tiers, e.g. Model-View-Presenter (MVP), where the model and the presenter can be covered by unit tests with mocking.
+There are tools available that allow the automated tests of the views themselves.
 
-While automated testing is indispensable for any software project, the manual (or unscripted) testing should not be undermined.
-Those should be done periodically by the developers or a dedicated QA team, typically before the releases or other milestones.
+While automated testing is indispensable for any software project, the use of manual (or unscripted) testing should not be underestimated. 
+These should be done periodically by the developers or a dedicated QA team, typically before the releases or other milestones.
 These tests help detect anomalies that haven't been (or couldn't have been) covered by the automated tests.
 It is advised to have readily available recipes that the tester can follow during testing.
 
@@ -481,7 +481,7 @@ An easy way to achieve this is to have a contents page and to make the pages sea
 The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
 
 Projects may benefit from having a landing page introducing the project and directing users to commonly used or important resources.
-Examples for this are Hugo \cite{Hugo} and GitHub Pages \cite{GitHub_Pages}.
+Hugo \cite{Hugo} and GitHub Pages \cite{GitHub_Pages} are examples of resources for creating landing pages.
 Hugo is a powerful and fast static website generator.
 It supports themeing and customisation and works with content defined in Markdown.
 A free hosting service provided by GitHub Pages, this allows you to commit your website content to a specific branch and have it served by GitHub.
@@ -490,7 +490,7 @@ The large benefit here is avoiding the cost and time of maintaining the infrastr
 An increasingly popular method of documentation is the video tutorial.
 These are extremely useful to users as it allows them to see how the software is used.
 For example, video tutorials of intricate GUIs may be beneficial as the user gets to see a complete workflow and there is less chance of steps being undocumented.
-However video tutorials can be costly to create and keep up-to-date with software changes.
+However, video tutorials can be costly to create and keep up-to-date with software changes.
 
 It is also valuable to have developer documentation.
 This documentation should contain information on the standards used in the code and how to set up a development environment, appropriate tutorials and relevant reference material.
@@ -500,7 +500,7 @@ This documentation should contain information on the standards used in the code 
 
 A key activity for any piece of software is user support.
 Unlike documentation this is an interactive link between developers and users.
-As a minimum email support should be provided and users made aware of it.
+As a minimum email support should be provided and advertised to users.
 The emails should be checked regularly and initial responses should be within a day or two.
 The initial response may be to ask for more details, to arrange a meeting or to say that it is being worked on.
 Providing effective user support will give users more confidence in the software.
