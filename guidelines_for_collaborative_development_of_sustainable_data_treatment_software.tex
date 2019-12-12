@@ -368,11 +368,11 @@ Git is suitable for a project of any size and will probably last the full life o
 There are a wide range of cloud Git repository providers, all of which provide similar features.
 For a distributed team it is beneficial to use a cloud Git repository (opposed to local hosting on site) to avoid network related bottlenecks.
 
-\subsection{Build Systems (BS)}
+\subsection{Build Systems}
 \label{Build systems}
 
-The code base of your software should be managed using an appropriate Build System (BS), which will depend on the choice of programming language(s).
-The BS handles the dependency finding and build file generation native to the host platform.
+The code base of your software should be managed using an appropriate Build System, which will depend on the choice of programming language(s).
+The build system handles the dependency finding and build file generation native to the host platform.
 A good choice for C and C++ projects is CMake \cite{CMake}.
 This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
 C and C++ projects can also benefit from use of a dependency manager such as Conan \cite{Conan}.
@@ -384,11 +384,12 @@ For Python based projects Python's setuptools is typically sufficient, for speci
 
 The quality of the software is one of the most important factors influencing the long-term success of the project.
 Automated testing infrastructure is essential in order to provide reliable software product.
-There is a plethora of testing frameworks available nowadays; almost every modern programming language ships a unit testing framework with its standard libraries (e.g. {\sc CxxTest}, {\sc unittest} and {\sc JUnit} for {\sc C++}, {\sc Python}, and {\sc Java} respectively). 
-There are more advanced third party testing frameworks (e.g. {\sc GoogleTest}, {\sc GoogleMock}) that provide extended techniques for testing, such as mocking.
+There is a plethora of testing frameworks available nowadays; almost every modern programming language ships a unit testing framework with its standard libraries (e.g. {\sc unittest} for {\sc Python}, {\sc JUnit} for {\sc Java}). 
+There are more advanced third party testing frameworks, such as {\sc GoogleTest} or {\sc GoogleMock}) that provide extended techniques for testing, for example mocking.
 
 In practice, it is almost impossible to achieve 100\% test coverage.
 However, even in the cases when the tests can not be fully complete, it is a good practice to add a test case each time a bug has been revealed in a certain usage scenario.
+In such circumstances it is advised to first write the test revealing the bug, and then fix the faulty logic in order to pass the test (Test Driven Development).
 This guarantees that the same bug will not reoccur.
 
 Apart from unit tests aiming to test the functionality of small units of code in isolation, integration tests are also necessary to ensure that the different parts of the software work together as expected.
