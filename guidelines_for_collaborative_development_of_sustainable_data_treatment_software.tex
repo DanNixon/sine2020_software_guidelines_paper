@@ -106,12 +106,18 @@ The reason for this is at least two-fold: first, the demographic of the users is
 Hence, more and more users are not knowledgeable about the details behind the neutron and muon data treatment and  do not have the technical skills in how to analyse their data.
 The second reason is that the advances in science are demanding increasingly greater amounts of data that cannot be analysed by hand.
 For example, some instruments at the
-European Spallation Source (ESS) are estimated to have data rates beyond (\todo{TODO: Tobias paper}).
-This can be compared to the data rates from ten years ago, where (\todo{TODO: Historic example}).
+European Spallation Source  ERIC (ESS) are estimated to have data rates in the order of gigabytes per second \cite{Christensen_2018}, which is significantly higher than at existing neutron sources. 
+Still, this level of data production is relatively small compared to other types of large-scale physics facilities, such as free electron lasers and the large hadron collider. 
 
 The growing complexity of both data reduction and analysis means that the development of scientific software requires increasingly more resources.
-The consequence of these aspects is that users will inherently depend on software created by other developers, typically at the hosting facilities or in the user community.
+The consequence of these aspects is that users will inherently depend on software created by other developers, typically in the user community or at the hosting facilities.
+A developer may also choose to contribute to existing software rather than develop her own from scratch.
 This adds significant requirements in terms of quality, trustability, reliability, reproducibility and usability compared to when users develop software for their own use.
+(TODO: insert \cite{computational-science-error} and articles about reproducibility)
+It also adds requirements to inter-operability if software developed by one set of developers (e.g., at a university) should be adaptable by other developers (e.g., at a facility). 
+In the case of data treatment, new methods are often developed in academia and it is therefore highly desirable if associated software can be readily adapted by facilities for the benefits of their users.
+
+
 The lack of guidelines can lead to the code being difficult to read, because the style will change depending on who wrote it.
 In the worst case this may lead to people believing that the code is incorrect, when it is correct and vica-versa.
 The other potential pitfall with this isolated approach of software development is that bugs are less likely to be found, due to less users.
@@ -129,16 +135,32 @@ A good set of guidelines will help the software be sustainable; that is,
 \end{itemize}
 That way it will be easier to continue growing the code base to include new functionality to the current scientific analysis techniques and to expand into new areas of analysis/research.
 It would also reduce the effort required to adapt the software for use at other facilities.
+There is plenty of literature discussing different aspects of software development, which these days is a scientific and engineering discipline in its own right. 
+Indeed, the question about how to ensure that software is of high quality and reliable has been discussed for the last 50 years \cite{scientific_fortran, fair_software} and these days there are initiatives like CodeRefinery \cite{coderefinery} and the Software Sustainability Institute \cite{SoftwareSustainabilityInstitute} with the aim to promote best practise for the development of academic software \cite{fair_software}. 
+A particular concern is the (lack of) reproducibility and reliability of results derived from software developed in a community with no strong tradition for best practice software development. 
+A fact, which is often enhanced by the frequent turnover of PhD students and post docs, who often are the main developers and often working for themselves .... (TODO: citations).
+Many academic groups and research infrastructures have realized this and have started to adapt best practise software development or encouraging it by publishing or proposing guidelines for aspects of software development ( e.g., for coding \cite{Green_2011}), specific programs (please see Mantid \cite{mantidguidelines} for an example), or for specific domains \cite{medical-informatics}, \cite{Silvia_2017} (TODO: add reference for archeology).
 
-Generic software development guidelines (\todo{TODO: cite}) have been common practice for many years.
-% cite IEEE Software, Vol. 24 Number 1 IEEE, January 2007 or similar
-Specific software guidelines have been created for several scientific domains (\todo{TODO: cite}).
-The specific guidelines presented in Section~\ref{SINE2020} were developed as part of SINE2020.
-The software projects encompassed in the frame of SINE2020 had a broad range of team sizes: from a couple of developers working very closely on a single piece of software to wide international collaborations.
+The authors of this article represent data treatment groups or activities at five major European neutron sources.
+It is therefore our hope that the presented guidelines can "unite" the community around a set of rules that foster the sharing and development of sustainable and maintainable user software of a high quality. 
+Indeed, the specific guidelines presented in Section~\ref{SINE2020} were developed as part of the project
+World leading
+\underline{S}cience and 
+\underline{I}nnovation with
+\underline{N}eutrons in
+\underline{E}urope in
+\underline{2020} 
+(SINE2020, \cite{sine2020}) with the aim of fostering development of high-quality user software,  collaborations, sharing of software, and contributions from third party developers (e.g., from university groups) through the development of inter-operable software. 
+If the guidelines are followed, it will be easier for (another) facility to adapt the software for their own needs and that of their user community, but also for other developers to contribute to the software. 
 
-Although the specific guidelines are aimed at the neutron and muon communities, the generic guidelines reflect what is common practice in software development.
-When it is appropriate the idea of the guideline will be abstracted, so that an alternative can be chosen in the future.
-Abstracting guidelines in this manner allows them to remain relevant as technology evolves.
+The specific guidelines for the muon and neutron community are based on an analysis of existing practice for software considered in SINE2020, namely  BornAgain \cite{bornagain}, Mantid \cite{mantid}, ImagingSuite \cite{ImagingSuite}, McStas \cite{mcstas} and SasView \cite{sasview}.
+Some of the projects have been started and maintained by a single scientist and some have been initiated and promoted by a research institute rather than an individual.
+Consequently, these software projects have a broad range of team sizes: from a couple of developers working very closely on a single piece of software to wide international collaborations (c.f., Section \ref{SINE2020}). 
+
+The commonalities are however sufficiently significant for developing a specific set of guidelines for development of data treatment software for the neutron and muon community. 
+These guidelines are presented in Section \ref{SINE2020}. 
+To put those rather specific guidelines in context we start with a presentation and discussion of some more generic guidelines along with a discussion of challenges commonly faced in software development that these guidelines address.
+
 
 \section{Data Formats and Interoperability}
 \label{Data Formats and Interoperability}
