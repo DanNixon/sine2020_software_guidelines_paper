@@ -228,17 +228,18 @@ The third sprint could then focus on making sure they interact with each other c
 A well designed software package would separate its functionality into a set of individual modules based on common feature areas.
 A module may refer to a package, library or software plugin.
 
-Care should be taken when designing these module.
+Care should be taken when designing these modules.
 Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
 Code within a module should be closely related, reducing the need to import unnecessary functionality.
 It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being introduced into the code base.
 
 It can be desirable to allow users to write scripts to further extend the functionality of the software.
 Ideally any scripting made available to users should use the Python language.
-Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it.
+Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources available for it \cite{python-nature}, with some of the most commonly used organized under the SciPy.org umbrella \cite{scipy}.
+Python also works fluently with the Jupyter electronic notebook, an increasingly popular tool in the scientific community \cite{jupyter-nature} and frequently used for tutorials.
 
 If the application requires a graphical user interface (GUI) then a good choice of library is Qt \cite{Qt}.
-Qt is an application framework commonly used by many open source and commercial software packages.
+Qt is an application framework commonly used by many open source and commercial software packages and is also a popular framework for GUI development in the neutron scattering and muon spectroscopy community (c.f., Section \ref{SINE2020}.
 It allows easy development of cross platform GUIs in a variety of languages (e.g. C++ and Python).
 Another increasingly popular option is to provide a web based interface.
 
