@@ -147,13 +147,13 @@ It is important to use an open and standardised data format, in order to allow u
 A good data format will have open source definitions and documentation, making it easy to understand and to implement file loaders for the software.
 It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.
 Any implementation of a standardised data format needs to follow the standard and
-the data format should only diverge from the standard if it is absolutely necessary.
+the data format should only diverge from it if it is absolutely necessary.
 If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
 
-In the neutron science community NeXus \cite{K_nnecke_2015} has become the default format.
+In the neutron and muon science community NeXus \cite{K_nnecke_2015} has become the default format  for raw data and in some cases also for processed data \cite{cansas}.
 NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
 NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
-Useful metadata (such as instrument configurations and data processing history) is trivial to store in NeXus.
+Useful metadata (such as instrument configurations and data processing history) is trivial to store in NeXus  and is an important aspect for making data FAIR (i.e. Findable, Accessible, Inter-operable, and Reusable) \cite{panosc}.
 
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
