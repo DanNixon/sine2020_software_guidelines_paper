@@ -698,15 +698,78 @@ A representative from the technical advisory committee will report their decisio
 
 \todo{TODO: mention scientific coordination?}
 
-\section{SINE2020}
+\section{Software development for data treatment software for the neutron scattering and muon spectroscopy}
 \label{SINE2020}
 
-This section describes guidelines specific to the development of data treatment software for the neutron and muon communities.
-The specific guidelines in this section may not be suitable for other communities.
 
-These specific guidelines were developed as part of the data treatment work package (WP 10) of Science and Innovation with Neutrons in Europe in 2020 (SINE2020).
-This was a 4-year project between 18 partner institutions spread across 12 different countries.
-The first deliverable (D10.1) was to write the standards and guidelines for software developed as part of SINE2020, with the aim of developing collaborative and interoperable software.
+These specific guidelines were developed as part of the data treatment work package (WP 10) in SINE2020.
+SINE2020 was a 4-year project between 18 partner institutions spread across 12 different countries. 
+Seven of the partners contributed to WP10 comprising six European neutron scattering and muon spectroscopy facilities (ESS, FZJ, LLB, ILL, ISIS, PSI) and University of Parma. 
+Technical University of Delft and Technical University of Munich, which both operates a research reactor as well as the HZB research reactor and Technical University of Denmark participated as observers in the work package.   
+
+The first deliverable (D10.1) was to write the standards and guidelines for software developed in SINE2020 and the community as such with the aim of fostering development of sustainable, collaborative and interoperable software. 
+To this end, the domain of scientific computing was considered in addition to an analysis of five programs considered in SINE2020. 
+A brief description of those programs are given below followed by a discussion of specific guidelines for the neutron scattering and muon spectroscopy domain. 
+
+\subsection{Analysed data treatment software for neutron scattering and muon spectroscopy}
+The guidelines for data treatment software for the neutron scattering and muon spectroscopy communities are based on a questionnaire that five existing software projects have completed. Here we give a brief description of those software projects:
+\begin{description}
+\item[BornAgain, www.bornagainproject.org] BornAgain started out as a reimplementation of the software XXX for simulation of a specific scattering technique grazing incidence Small Angle Scattering.
+In the course of SINE2020 it has been extended to other reflectometry techniques.
+The project started nine years ago and have around three dedicated full time developers. 
+The software is primarily developed in C++ with a scripting interface in Python and a GUI based on Qt. The software is hosted on GitHub. 
+
+\item[Mantid, www.mantidproject.org] Mantid is a project initiated by ISIS eleven years ago and since then joined by SNS, ESS, and ILL, with the purpose of providing data reduction software for all their instruments. Besides these facilities Mantid is also being used for specific instruments at other neutron (and muon) sources such as SINQ, FRM-II, and ANSTO. Mantid is developed in C++ and Python with a GUI based on Qt. 
+The software is hosted on GitHub under the GPL3 license and the project has about 20 full time developers across all facilities involved.
+It is by far the largest software project specific for data treatment at neutron and muon sources and has annual developer and user meetings, a XXX. 
+
+\item[KipTool \& MuhRec, www.neutronimaging.ch] KipTool and MuhRec are analysis software for the neutron imaging technique, where KipTool is used for quantitative analysis and MuhRec for computed tomography and has started as a spare time project for an instrument scientist who spent his time coding when commuting to and from work on the train. 
+Since then at most two full-time developers have been dedicated to the project at any given time.
+Both software programs are originally implemented in C++ with the only user interface being in the form of a GUI based on Qt.
+In the course of the SINE2020 project, the software has been migrated to GitHub under the GPL3 license. 
+
+\item[McStas, www.mcstas.org] McStas is per se not a data treatment software but used for performing instrument simulations.
+In was included in the analysis due to its widespread usage in the neutron scattering community. 
+It is also the longest living among those analyzed with more than 20 years of effort behind it but only has one dedicated full-time developer associated to it. 
+McStas is developed primarily in C and has recently been migrated to GitHub.
+It is licensed under the GPL2 licence. 
+
+\item[SasView, www.sasview.org] SasView has only had dedicated full time developers when externally funded and has otherwise depended on the good will of scientists putting time into the project.
+SasView has had at most two full time developers dedicated to it but has contributions from around fifteen developers from both photon and neutron sources, universities and other research institutions world wide. 
+These developers often contribute during code camps held once or twice per year. 
+To govern the project, SasView has a management team composed of an instrument scientist from each of the four neutron (and muon) sources: ESS, ISIS, NIST, and SNS. 
+The software is developed in Python with some C and hosted on GitHub under the BSD license. 
+Prior to SINE2020, SasView had a GUI based on WX and no Python interface.
+In the course of SINE2020, it has been equipped with a Python interface as well as a GUI based on Qt (from version 5). 
+
+\end{description}
+
+
+
+\begin{sidewaystable}
+ \begin{tabular}{llllll}
+ Software                        & BornAgain \cite{bornagain}  & Mantid \cite{mantid} & McStas \cite{mcstas}  & ImagingSuite \cite{ImagingSuite} & SasView \cite{sasview} \\
+ Age of project (years)          & 9 & 11 & 21 & 10 & 15 \\
+ Number of full time developers in 2018 & 3 & 20 & 1 & $\le$2 & $\le$2 \\
+ Current number of contributors  &  & 85  & 9 & 6 & 16 \\
+ Total number of contributors    &  & 194 & 47 & 11 & 69 \\
+ Developer locations             & 1 & >4 & >3 & 1 & 9 \\
+ $1000\times \mathrm{Number}$ of lines of code (kLOC) &  & 2450 & 2968 & 777 & 242 \\
+ License                         & GPL3 & GPL3 & GPL2 & GPL3 & BSD \\
+ Governance model                & None & PMB \& AC  & None & AC & PMB \\
+ Release cycles (per year)       & a few & 3 & 1 & 1 & 1\\
+ User documentation              & Tutorials. Examples. & Manual. Tutorials. & Manual. & Manual. Video tutorial & Manual. Tutorials. \\
+ Hosting         & GitHub & GitHub & GitHub & GitHub & GitHub \\
+ Issue tracker   & Redmine & GitHub & GitHub & GitHub & JIRA \& GitHub \\
+ Python interface & Yes & Yes & No & No & Yes \\
+ GUI framework    & Qt & Qt & None & Qt & Qt \\  
+ \end{tabular}
+ \caption{Key parameters for the different software projects analyzed in SINE2020 at the end. PMB = Project Management Board. AC = Advisory Committee}
+\label{summaryTable}
+\end{sidewaystable}
+
+
+\subsection{Guidelines}
 
 The report \cite{sine2020_wp10_d10_report} contains the standards and guidelines that were used for WP10 of SINE2020.
 This report contains statistics and information about neutron and muon data treatment software including tables identifying commonality.
@@ -725,25 +788,10 @@ The main guidelines are presented below with references to the relevant section 
       \item Use a tool for continuous integration and automated testing; such as Travis-CI and Jenkins
       \item Follow a coding standard and use tools that enforces this; such as Pylint (Python) and ClangFormat (C++).
 \end{itemize}
-\begin{sidewaystable}[]
- \begin{tabular}{llllll}
- Software                        & BornAgain \cite{}  & Mantid \cite{} &McStats \cite{}  &MuhRec \cite{} & SasView \cite{} \\
- Age of project (years)          & 9 & 11 & 21 & 10 & 15 \\
- Number of developers (full time)& 3 & 20 & 5 & 2 & 2-20 \\
- Developer locations             & 1 & >4 & TODO & 1 & TODO \\
- License                         & GPLv3 & GPLv3 & GPLv2 & GPLv3 & BSD \\
- Governance model                & None & PMB \& AC  & None & AC & PMB \\
- Release cycles (per year)       & a few & 3 & 1 & 1 & 1\\
- User documentation              & Tutorials. Examples. & Manual. Tutorials. & Manual. & Manual. & Manual. Tutorials.
- \end{tabular}
- \caption{An updated summary of how guidelines were applied to the different software projects from SINE200 \cite{} (TODO: ref paper). The number of guidelines implemented increases with the size
-and scope of the project. PMB = Project Management Board. AC = Advisory Committee}
-\label{summaryTable}
-\end{sidewaystable}
 
 The statistics of how guidelines could be applied to software projects are presented in table \ref{summaryTable}.
 Some of the projects have a large numbers of developers and/or based at multiple locations.
-As a result the management overheads (e.g. project management boards) are greater to ensure a uniform standard across the project.
+As a result the management overheads (e.g., project management boards) are greater to ensure a uniform standard across the project.
 The projects with less developers tend to have less management overheads as it is easier to make decisions across the whole team.
 This is a good example of how guidelines should be adapted to match the needs of the project.
 
