@@ -328,7 +328,7 @@ For low level task tracking, simple tools such as GitHub Issues are likely suffi
 The purpose of issue tracking is to provide a description of the task and to assign it to a developer.
 Additional features may include task boards specifically for the methodology employed (e.g.Scrum or Kanban boards), task dependency and task hierarchy.
 
-Most cloud hosted Source control management (SCM) services (e.g., GitHub and GitLab) provide their own issue tracking tool, which typically suit the needs of most software projects.
+Most cloud hosted Source control management (SCM) services provide their own issue tracking tool, which typically suit the needs of most software projects.
 
 If more complex task workflows are needed or if your code base is distributed across multiple locations then it may be beneficial to separate issue tracking and the code base.
 
@@ -344,19 +344,19 @@ SCM provides a full history of the code base, allows multiple developers to work
 Hence, SCM is essential for software projects.
 
 To fully utilise the benefits of SCM, it is necessary to have guidelines.
-Hence, there are ample guidelines for SCM, for more information please see  Ref.\ \cite{awesome-git} for a list of existing ones.
+Hence, there are ample guidelines for SCM, for more information please see  Ref.\ \cite{awesome-git}.
 Therefore, this section will only give an overview and highlight a few commonly overlooked points.
 
 A workflow defines how developers interact with the SCM.
 This includes the process for reviewing and accepting changes into the code base.
-As a result it is important to define a workflow and to enforce it to ensure code quality.
+As a result it is important to define a workflow and enforce it to ensure code quality.
 
 It is common for less experienced developers to try and submit unused code (e.g. commented out code, functions that are never called and files that are not included) to the code base.
 It is important not to add dead code into the code base, because
 its presence reduces the readability of the code base.
 Since the history of the code base is recorded as part of the SCM, removing dead code does not risk losing important information.
 
-A simple and popular option is the feature branch workflow ( Ref. \cite{feature-branch})).
+A simple and popular option is the feature branch workflow \cite{feature-branch}.
 In this workflow a developer will work on a new feature using a new branch (also called fork) and that branch is then merged when the changes are accepted.
 There is some empirical evidence that  software projects supporting branching generally are sustained for longer compared to projects where branching is not used \cite{Alhozaimy2017}.
  
