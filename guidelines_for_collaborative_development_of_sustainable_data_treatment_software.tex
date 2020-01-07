@@ -247,14 +247,12 @@ Another increasingly popular option is to provide a web based interface.
 \subsection{Coding Standards}
 \label{Coding standards}
 
-Code should be of a high quality, the reason for this is two fold; code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs \cite{Green_2011}..
+Code should be of a high quality, the reason for this is three fold; code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs.
 These factors combine to create a code base that is easier to maintain in the future.
 
 Coding standards should be chosen based on the programming language.
-If multiple languages are going to be used it is possible to have rules for each language, see Mantid as an example \cite{mantidguidelines}.
+If multiple languages are going to be used it is possible to have rules for each language.
 A community curated list of standards organised by language is available online at \cite{Awesome_Guidelines}.
-Although not commonly used in the community represented by the authors, we note that there exist more advanced analysis tools that give hints about the sustainability and maintainability of the software. 
-For instance the Black Duck Open Hub \cite{BlackDuck} and Wily for Python programs \cite{AnthonyShaw}.
 
 An important, language agnostic rule to follow is to write human readable code.
 For example, use comments to explain the code and descriptive variable names.
@@ -293,7 +291,7 @@ float linear_approx_of_pair_potentials(
 
 the improvements in the second code snippet include (any points that are C++ specific are noted):
 \begin{itemize}
-  \item{A Doxygen \cite{doxygen} (TODO: add citation) comment is present.}
+  \item{A Doxygen \cite{doxygen} comment is present.}
   \item{A more descriptive function name, which indicates it's purpose.}
   \item{Improved verbose variable names.}
   \item{Better use of scope constructs (\texttt{\{} and \texttt{\}}) and newlines.}
@@ -308,14 +306,14 @@ Translation frameworks may be used to provide your software and documentation in
 To assist in maintaining code quality one or more "linters" (also referred to as "static analysis" tools) should be employed.
 These are tools that inspect the code base to detect potential issues, such as unused variables, indentation errors, thread misuse etc.
 There are linters available for almost every language.
-For example, Clang \cite{Clang} and Pylint \cite{Pylint} are two of the most common for C++ and Python, respectively.
+For example, Clang format \cite{Clang} and Pylint \cite{Pylint} are two of the most common for C++ and Python respectively.
 Linters are available as part of standalone packages that produce result reports, these are typically easy to install and run.
 Some of these packages are also available as a cloud service (e.g. Coverity Scan \cite{coverity}), when new code is added to the remote repository the package will run and produce a result report.
 For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis (\cite{awesome_static_analysis}, a community curated list of static analysis tools.
 
 When writing new code care should be taken to avoid pre-emptive optimisation, where the speed up in the execution time may not be significant.
 A similar pitfall is pre-emptive generalisation, which is attempting to make the code less problem specific in the hope it can be reused later.
-In both of these cases it is better to first determine if any additional optimisation or generalisation is guaranteered to become genuinely beneficial.
+In both of these cases it is better to first determine if any additional optimisation or generalisation is genuinely beneficial.
 Of course neither pre-emptive optimisation or generalisation have a concrete definition so it is up to the developer and code reviewers to make informed decisions based on the nature of the work and the code base.
 
 \subsection{Issue Tracking and Work Planning}
@@ -326,7 +324,7 @@ This is often implemented in two parts; low level tracking of implementation tas
 
 For low level task tracking, simple tools such as GitHub Issues are likely sufficient.
 The purpose of issue tracking is to provide a description of the task and to assign it to a developer.
-Additional features may include task boards specifically for the methodology employed (e.g.Scrum or Kanban boards), task dependency and task hierarchy.
+Additional features may include task boards (e.g.Scrum or Kanban boards), task dependency and task hierarchy.
 
 Most cloud hosted Source control management (SCM) services provide their own issue tracking tool, which typically suit the needs of most software projects.
 
@@ -371,8 +369,6 @@ Git is suitable for a project of any size and will probably last the full life o
 
 There are a wide range of cloud Git repository providers, all of which provide similar features.
 For a distributed team it is beneficial to use a cloud Git repository (as opposed to local hosting on site) to avoid network related bottlenecks.
-The software considered in Section \ref{SINE2020} are all hosted on GitHub \cite{github}. 
-Some of the other software considered in SINE2020, but not part of the analysis for guidelines, are hosted on GitLab \cite{gitlab}. 
 
 \subsection{Build Systems}
 \label{Build systems}
@@ -451,7 +447,6 @@ For example, Travis CI \cite{Travis_CI} offers a free service that will compile 
 Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
 As a result Jenkins can be adapted to suit the needs of a specific software project.
 For example, it has no restrictions for build times, stores data locally and gives the developer complete control over the setup of the build environment.
- Jenkins is used unanimously by the software projects presented in Section \ref{SINE2020}.
  
 \subsection{Code Review}
 \label{Code review}
@@ -470,7 +465,7 @@ The depth of the review process depends on the size and purpose of the project.
 The developer proposing the changes should provide instructions on how to test if the changes are successful and why they are necessary.
 
 The reviewer must ensure that the code is of an acceptable quality (coding styles, guidelines, etc. have been followed).
-This should also include if the commit history is sensible and the relevant documentation (including release notes and user documentation) has been updated.
+This should also include if the commit history is sensible and the relevant documentation (including release notes) has been updated.
 CI tools can be used to perform some of these checks automatically.
 
 Larger or more critical projects may opt to have multiple review stages, in which additional reviewers will perform the same duties as the previous reviewer.
