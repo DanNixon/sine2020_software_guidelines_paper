@@ -11,7 +11,7 @@
 
 \definecolor{coral}{RGB}{255,55,0}
 
-\lstset{ 
+\lstset{
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
   basicstyle=\footnotesize,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
@@ -106,9 +106,9 @@ The reason for this is at least two-fold: first, the demographic of the users is
 Hence, more and more users are not knowledgeable about the details behind the neutron and muon data treatment and  do not have the technical skills in how to analyse their data.
 The second reason is that the advances in science are demanding increasingly greater amounts of data that cannot be analysed by hand.
 For example, some instruments at the
-European Spallation Source ESS) are estimated to have data rates in the order of gigabytes per second \cite{Christensen_2018}, which is significantly higher than at existing neutron sources. 
+European Spallation Source ESS) are estimated to have data rates in the order of gigabytes per second \cite{Christensen_2018}, which is significantly higher than at existing neutron sources.
 This can be compared to the data rates from ten years ago, where (\todo{TODO: Historic example}).
-In some fields of scientific research the level of data production is far greater, for example free electron lasers and the Large Hadron Collider. 
+In some fields of scientific research the level of data production is far greater, for example free electron lasers and the Large Hadron Collider.
 It is not unreasonable to assume that with advancing technology that neutron and muon facilities will produce similarly vast quantities of data.
 
 The growing complexity of both data reduction and analysis means that the development of scientific software requires increasingly more resources.
@@ -116,10 +116,9 @@ The consequence of these aspects is that users will inherently depend on softwar
 A developer may also choose to contribute to existing software rather than develop their own from scratch.
 This adds significant requirements in terms of quality, trustability, reliability, reproducibility and usability compared to when users develop software for their own use.
 (TODO: insert \cite{computational-science-error} and articles about reproducibility)
-It also adds the requirement of interoperability to the software developed by one set of developers (e.g. at a university) so that it can be used by users and developers (e.g. at a facility). 
-New methods for data treatment are often developed in academia. 
+It also adds the requirement of interoperability to the software developed by one set of developers (e.g. at a university) so that it can be used by users and developers (e.g. at a facility).
+New methods for data treatment are often developed in academia.
 Therefore, it would be beneficial to the broader community if the new methods could be easily incorporated into facilities' software.
-
 
 The lack of guidelines can lead to the code being difficult to read, because the style will change depending on who wrote it.
 In the worst case this may lead to people believing that the code is incorrect, when it is correct and vica-versa.
@@ -140,27 +139,27 @@ That way it will be easier to continue growing the code base to include new func
 It would also reduce the effort required to adapt the software for use at other facilities.
 
 There is plenty of literature discussing different aspects of software development, spanning the last 50 years \cite{ scientific_fortran, fair_software}.
-Initiatives such as  CodeRefinery \cite{coderefinery} and the Software Sustainability Institute \cite{SoftwareSustainabilityInstitute} promote best practises for the development of academic software \cite{fair_software}.  
+Initiatives such as  CodeRefinery \cite{coderefinery} and the Software Sustainability Institute \cite{SoftwareSustainabilityInstitute} promote best practises for the development of academic software \cite{fair_software}.
 With the move towards FAIR data, concerns about the reproducibility and reliability of data has become even more important to scientists.
-These concerns are in part rooted in the rapid replacement of developers, in the form of PhD students and post-docs.  
+These concerns are in part rooted in the rapid replacement of developers, in the form of PhD students and post-docs.
 These developers often work in isolated conditions with limited knowledge of previous developments and the reasoning for them.
-Many academic groups and research infrastructures are now starting to follow guidelines when writing software. 
+Many academic groups and research infrastructures are now starting to follow guidelines when writing software.
 
 The aim of this paper is to allow scientific software communities to benefit from good software practices.
-Each individual community may use different guidelines, some of which may already exist and others can be specific to a particular project. 
+Each individual community may use different guidelines, some of which may already exist and others can be specific to a particular project.
 In Section~\ref{SINE2020}, guidelines are presented that were developed as part of
-\underline{S}cience and 
+\underline{S}cience and
 \underline{I}nnovation with
 \underline{N}eutrons in
 \underline{E}urope in
-\underline{2020} 
+\underline{2020}
 (SINE2020, \cite{sine2020}).
-The aim of these guidelines was to foster development of high-quality user software,  collaborations and contributions from third party developers (e.g. from university groups) through the development of inter-operable software. 
-If the guidelines are followed, it will be easier for (another) facility to adapt the software for their own needs and that of their user community, but also for other developers to contribute to the software. 
+The aim of these guidelines was to foster development of high-quality user software,  collaborations and contributions from third party developers (e.g. from university groups) through the development of inter-operable software.
+If the guidelines are followed, it will be easier for (another) facility to adapt the software for their own needs and that of their user community, but also for other developers to contribute to the software.
 
 The specific guidelines for the muon and neutron community are based on an analysis of existing practice for software considered in SINE2020, namely  BornAgain \cite{bornagain}, Mantid \cite{mantid}, ImagingSuite \cite{ImagingSuite}, McStas \cite{mcstas} and SasView \cite{sasview}.
-These projects have a wide range of backgrounds. 
-For example, some are maintained by an individual and others by large international teams (see Section \ref{SINE2020}). 
+These projects have a wide range of backgrounds.
+For example, some are maintained by an individual and others by large international teams (see Section \ref{SINE2020}).
 
 To put those rather specific guidelines in context we start with a presentation and discussion of some more generic guidelines along with a discussion of challenges commonly faced in software development that these guidelines address.
 
@@ -180,14 +179,14 @@ the data format should only diverge from it if it is absolutely necessary.
 If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
 
 In the neutron and some muon science communities NeXus \cite{K_nnecke_2015} has become the default format for raw data and processed data.
-If a particular scientific community already has an accepted standard that should be used. 
+If a particular scientific community already has an accepted standard that should be used.
 NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
 NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
 Useful metadata is trivial to store in NeXus and is an important aspect for making data FAIR (i.e. Findable, Accessible, Inter-operable, and Reusable) \cite{panosc}.
-Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue (e.g. icat \cite{icat}, scicat \cite{scicat} or Google Dataset Search engine \cite{google_dataset_search}). 
+Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue (e.g. icat \cite{icat}, scicat \cite{scicat} or Google Dataset Search engine \cite{google_dataset_search}).
 Well documented metadata improves the reproducibility and reusability of the data.
-Standardized metadata will improve how easy it is to identify key information.  
-Examples of metadata are instrument configurations, data processing history, sample environment setting, sample description, experiment proposal etc. 
+Standardized metadata will improve how easy it is to identify key information.
+Examples of metadata are instrument configurations, data processing history, sample environment setting, sample description, experiment proposal etc.
 
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
@@ -231,7 +230,7 @@ In the following we will discuss these two  extremes, however aspects of these t
 
 For scientific software agile, or some variant of that, is the most common methodology.
 The general principle of the agile methodology are short development "sprints" in which small, incremental additions are made to the overall software.
-If the sprint has a predetermined duration (usually a few weeks) then it is referred to as SCRUM. 
+If the sprint has a predetermined duration (usually a few weeks) then it is referred to as SCRUM.
 The requirements are reviewed and adjusted accordingly for each sprint.
 This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
 
@@ -244,7 +243,7 @@ Projects that are better suited to the waterfall methodology are those where del
 For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit could be useful mid way through development.
 
 In reality a mixture of the two is usually implemented.
-One potential way to do this is to have agile development linked to a long term plans with high-level requirements and milestones. 
+One potential way to do this is to have agile development linked to a long term plans with high-level requirements and milestones.
 For example, a graphical user interface (GUI) that has a set of high level requirements (e.g. load data, do a fit to the data, output results).
 To make sure that the GUI meets the high level requirements a waterfall approach could be used.
 However, within that approach a more agile like methodology could be used.
@@ -392,7 +391,7 @@ Since the history of the code base is recorded as part of the SCM, removing dead
 
 A simple and popular option is the feature branch workflow \cite{feature-branch}.
 In this workflow a developer will work on a new feature using a new branch and that branch is then merged when the changes are accepted.
- 
+
 Developers should also ensure that they produce a clear commit history.
 Given that this is likely the longest standing documentation, describing the history of the code base is important.
 The commits should be sensible, atomic and logically ordered.
@@ -422,7 +421,7 @@ For Python based projects Python's setuptools is typically sufficient, for speci
 
 The quality of the software is one of the most important factors influencing the long-term success of the project.
 Automated testing infrastructure is essential in order to provide reliable software product.
-There is a plethora of testing frameworks available nowadays; almost every modern programming language ships a unit testing framework with its standard libraries (e.g. {\sc unittest} for {\sc Python}, {\sc JUnit} for {\sc Java}). 
+There is a plethora of testing frameworks available nowadays; almost every modern programming language ships a unit testing framework with its standard libraries (e.g. {\sc unittest} for {\sc Python}, {\sc JUnit} for {\sc Java}).
 There are more advanced third party testing frameworks, such as {\sc Pytest}, {\sc GoogleTest} or {\sc GoogleMock}) that provide extended techniques for testing, for example mocking.
 
 In practice, it is almost impossible to achieve 100\% test coverage.
@@ -437,7 +436,7 @@ One peculiarity of experimental data treatment software is that it is particular
 Given the noisiness and stochastic nature of the input data, often empirical methods and heuristics put under the processing logic make it hard to predict the expected output under all possible scenarios.
 For example, an algorithm that is supposed to find a peak may operate as expected if there is a well defined peak in the data, but may fail for low statistics measurements.
 Therefore, having unit and integration tests with the exact expected outputs is often not feasible.
-In such cases reproducibility tests can be used. 
+In such cases reproducibility tests can be used.
 These tests ensure that the output remains reproducible over time, but do not test the correctness of the output of the code.
 The purpose of these tests is to prevent unexpected changes in the behaviour of the software as a side effect of other development work.
 They exploit reference data to compare the output to and the reference itself should be updated only in the case of bug fixes.
@@ -455,7 +454,7 @@ However, there are techniques and tools that allow sufficient automation of GUI 
 Among those is the separation of the logic into tiers, e.g. Model-View-Presenter (MVP), where the model and the presenter can be covered by unit tests with mocking.
 There are tools available that allow the automated tests of the views themselves.
 
-While automated testing is indispensable for any software project, the use of manual (or unscripted) testing should not be underestimated. 
+While automated testing is indispensable for any software project, the use of manual (or unscripted) testing should not be underestimated.
 These should be done periodically by the developers or a dedicated QA team, typically before the releases or other milestones.
 These tests help detect anomalies that haven't been (or couldn't have been) covered by the automated tests.
 It is advised to have readily available recipes that the tester can follow during testing.
@@ -483,7 +482,7 @@ For example, Travis CI \cite{Travis_CI} offers a free service that will compile 
 Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
 As a result Jenkins can be adapted to suit the needs of a specific software project.
 For example, it has no restrictions for build times, stores data locally and gives the developer complete control over the setup of the build environment.
- 
+
 \subsection{Code Review}
 \label{Code review}
 
@@ -524,8 +523,8 @@ The online documentation should be version controlled so it is possible to rever
 Projects may benefit from having a landing page introducing the project and directing users to commonly used or important resources.
 Hugo \cite{Hugo} and Jekyll \cite{Jekyll} are examples of popular and powerful tools for creating static web sites.
 They support themes and customisation and works with content defined in Markdown.
-Many of the cloud based hosting providers have associated free hosting services, which allow you to commit your website content to a specific branch and have it served by the hosting provider. 
-Popular examples are GitHub Pages \cite{GitHub_Pages} and GitLab Pages \cite{GitLab_Pages}. 
+Many of the cloud based hosting providers have associated free hosting services, which allow you to commit your website content to a specific branch and have it served by the hosting provider.
+Popular examples are GitHub Pages \cite{GitHub_Pages} and GitLab Pages \cite{GitLab_Pages}.
 The large benefit here is avoiding the cost and time of maintaining the infrastructure required to host the project's website.
 
 An increasingly popular method of documentation is the video tutorial.
@@ -665,7 +664,7 @@ An open source license is advisable from both a user and development perspective
 The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of the software.
 The advantage of an open source license is that it allows anyone to contribute to the code base (but must not bypass any review process) and radically improves the available pool of developers.
 Furthermore, in research/academic communities open source software is becoming increasingly compulsory in order to prevent the loss of valuable source code.
-The European Commission's push for open science \cite{EOSC} includes both FAIR data and open source software.  
+The European Commission's push for open science \cite{EOSC} includes both FAIR data and open source software.
 
 \section{Project Governance}
 \label{Project Governance}
@@ -696,7 +695,7 @@ Therefore, it is advisable to use tasks as an opportunity to train less experien
 \subsection{Stakeholder Engagement}
 \label{se}
 
-For a software project the users are often considered to be the customers. 
+For a software project the users are often considered to be the customers.
 Stakeholders is a general term used to describe people who have some interest in your project (e.g. customers, team members and sponsor).
 It is up to the individual project to decide what communication method is suitable.
 
@@ -706,7 +705,6 @@ One method is to have a committee (this may be called an advisory committee, in 
 This group will be comprised of the senior project team (i.e. the project manager and any sub-team leaders for a larger project) and a customer from each of the main user communities.
 This committee would discuss the progression of tasks and what tasks should be next (priorities).
 The level of stakeholder engagement will depend on the development methodology for the project, see Section \ref{Development methodology}.
-
 
 \subsection{Software Life Cycle}
 \label{lc}
@@ -748,9 +746,9 @@ This section describes guidelines specific to the development of data treatment 
 The specific guidelines in this section may not be suitable for other communities.
 
 These specific guidelines were developed as part of the data treatment work package (WP 10) in SINE2020.
-SINE2020 was a 4-year project between 18 partner institutions spread across 12 different countries. 
-Seven of the partners contributed to WP10 comprising of the university or Parma and six European neutron scattering and muon spectroscopy facilities (ESS, FZJ, LLB, ILL, ISIS, and PSI). 
-Observers of the work package included the Technical University of Delft, the Technical University of Munich and the Technical University of Denmark.   
+SINE2020 was a 4-year project between 18 partner institutions spread across 12 different countries.
+Seven of the partners contributed to WP10 comprising of the university or Parma and six European neutron scattering and muon spectroscopy facilities (ESS, FZJ, LLB, ILL, ISIS, and PSI).
+Observers of the work package included the Technical University of Delft, the Technical University of Munich and the Technical University of Denmark.
 
 The first deliverable (D10.1) was to write a report on standards and guidelines for software development for SINE2020.
 These guidelines were then used by the community to develop sustainable, collaborative and interoperable software.
@@ -762,13 +760,13 @@ The original SINE2020 guidelines for data treatment software were based on a que
 \item[BornAgain, www.bornagainproject.org] BornAgain provides a framework for calculating the scattering process from a multilayer sample, which may have a rough or smooth interface and can include the effect of nanoparticles.
 It is a more generic version of GISAXS by R. Lazzari [J. Appl. Cryst. 35, 406–421 (2002)].
 In the course of SINE2020 it has been extended to other reflectometry techniques.
-The project started nine years ago and is supported by three full time developers. 
-The software is primarily developed in C++ with a scripting interface in Python and a GUI based on Qt. The software is hosted on GitHub. 
+The project started nine years ago and is supported by three full time developers.
+The software is primarily developed in C++ with a scripting interface in Python and a GUI based on Qt. The software is hosted on GitHub.
 
-\item[Mantid, www.mantidproject.org] Mantid is a project initiated by ISIS eleven years ago and now has contributions from the SNS, ESS, and ILL. 
+\item[Mantid, www.mantidproject.org] Mantid is a project initiated by ISIS eleven years ago and now has contributions from the SNS, ESS, and ILL.
 The purpose of Mantid is to provide a single data reduction software for all of the instruments at each of the facilities.
-Besides these facilities Mantid is also being used for specific instruments at other neutron (and muon) sources such as SINQ, FRM-II, and ANSTO. 
-Mantid is developed using C++ and Python with a Qt based GUI. 
+Besides these facilities Mantid is also being used for specific instruments at other neutron (and muon) sources such as SINQ, FRM-II, and ANSTO.
+Mantid is developed using C++ and Python with a Qt based GUI.
 The Mantid software is hosted on GitHub under the GPL3 license.
 The project has about 20 full time developers spread across each of the partner facilities.
 As one of the largest software projects for data treatment at neutron and muon sources, regular feedback is important.
@@ -778,29 +776,27 @@ Therefore, Mantid has annual user and developer meetings.
 KipTool is used for quantitative analysis of imaging data and MuhRec is used for computed tomography.
 Since then at most two full-time developers have been dedicated to the project at any given time.
 Both software programs are originally implemented in C++ with the only user interface being in the form of a GUI based on Qt.
-In the course of the SINE2020 project, the software has been migrated to GitHub under the GPL3 license. 
+In the course of the SINE2020 project, the software has been migrated to GitHub under the GPL3 license.
 
 \item[McStas, www.mcstas.org] McStas is not a data treatment software, but it is used for performing instrument simulations.
-These simulations can provide crucial insight into experiments when coupled with data treatment software. 
-Hence, it has been included in this analysis as an important tool to the neutron scattering community. 
-McStats started more than 20 years ago and has continued to see new functionality being added. 
-However, it only has one dedicated full-time developer. 
+These simulations can provide crucial insight into experiments when coupled with data treatment software.
+Hence, it has been included in this analysis as an important tool to the neutron scattering community.
+McStats started more than 20 years ago and has continued to see new functionality being added.
+However, it only has one dedicated full-time developer.
 McStas is developed primarily in C and has recently been migrated to GitHub.
-It is licensed under the GPL2 licence. 
+It is licensed under the GPL2 licence.
 
-\item[SasView, www.sasview.org] SasView has been developed to be a simple and effective set of tools for the analysis of small angle neutron scattering data. 
-SasView has had developers from both photon and neutron sources, with around fifteen contributors. 
+\item[SasView, www.sasview.org] SasView has been developed to be a simple and effective set of tools for the analysis of small angle neutron scattering data.
+SasView has had developers from both photon and neutron sources, with around fifteen contributors.
 Typically SasView has two full time developers, which is supplemented by additional developers at code camps (held once or twice a year).
 
-had at most two full time developers dedicated to it but has contributions from around fifteen , universities and other research institutions world wide. 
-To govern the project, SasView has a management team composed of an instrument scientist from each of the four neutron (and muon) sources (ESS, ISIS, NIST and SNS). 
-The software is developed in Python with some C and hosted on GitHub under the BSD license. 
+had at most two full time developers dedicated to it but has contributions from around fifteen , universities and other research institutions world wide.
+To govern the project, SasView has a management team composed of an instrument scientist from each of the four neutron (and muon) sources (ESS, ISIS, NIST and SNS).
+The software is developed in Python with some C and hosted on GitHub under the BSD license.
 Prior to SINE2020, SasView had a GUI was based on WX and did not have a Python scripting API.
-In the course of SINE2020, it has been equipped with a Python API as well as a GUI based on Qt. 
+In the course of SINE2020, it has been equipped with a Python API as well as a GUI based on Qt.
 
 \end{description}
-
-
 
 \begin{sidewaystable}
  \begin{tabular}{llllll}
@@ -818,12 +814,11 @@ In the course of SINE2020, it has been equipped with a Python API as well as a G
  Hosting         & GitHub & GitHub & GitHub & GitHub & GitHub \\
  Issue tracker   & Redmine & GitHub & GitHub & GitHub & JIRA \& GitHub \\
  Python interface & Yes & Yes & No & No & Yes \\
- GUI framework    & Qt & Qt & None & Qt & Qt \\  
+ GUI framework    & Qt & Qt & None & Qt & Qt \\
  \end{tabular}
  \caption{Key parameters for the different software projects analyzed in SINE2020 at the end. PMB = Project Management Board. AC = Advisory Committee}
 \label{summaryTable}
 \end{sidewaystable}
-
 
 \subsection{Guidelines}
 
