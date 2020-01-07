@@ -154,7 +154,11 @@ In the neutron and some muon science communities NeXus \cite{K_nnecke_2015} has 
 If a particular scientific community already has an accepted standard that should be used. 
 NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
 NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
-Useful metadata (such as instrument configurations and data processing history) is trivial to store in NeXus  and is an important aspect for making data FAIR (i.e. Findable, Accessible, Inter-operable, and Reusable) \cite{panosc}.
+Useful metadata is trivial to store in NeXus and is an important aspect for making data FAIR (i.e. Findable, Accessible, Inter-operable, and Reusable) \cite{panosc}.
+Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue (e.g. icat \cite{icat}, scicat \cite{scicat} or Google Dataset Search engine \cite{google_dataset_search}). 
+Well documented metadata improves the reproducibility and reusability of the data.
+Standardized metadata will improve how easy it is to identify key information.  
+Examples of metadata are instrument configurations, data processing history, sample environment setting, sample description, experiment proposal etc. 
 
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
