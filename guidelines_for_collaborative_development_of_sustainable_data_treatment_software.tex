@@ -706,43 +706,54 @@ The specific guidelines in this section may not be suitable for other communitie
 
 These specific guidelines were developed as part of the data treatment work package (WP 10) in SINE2020.
 SINE2020 was a 4-year project between 18 partner institutions spread across 12 different countries. 
-Seven of the partners contributed to WP10 comprising six European neutron scattering and muon spectroscopy facilities (ESS, FZJ, LLB, ILL, ISIS, PSI) and University of Parma. 
-Technical University of Delft and Technical University of Munich, which both operates a research reactor as well as the HZB research reactor and Technical University of Denmark participated as observers in the work package.   
+Seven of the partners contributed to WP10 comprising of the university or Parma and six European neutron scattering and muon spectroscopy facilities (ESS, FZJ, LLB, ILL, ISIS, and PSI). 
+Observers of the work package included the Technical University of Delft, the Technical University of Munich and the Technical University of Denmark.   
 
 The first deliverable (D10.1) was to write a report on standards and guidelines for software development for SINE2020.
 These guidelines were then used by the community to develop sustainable, collaborative and interoperable software.
 A brief description of the software programs are given below along with a discussion of specific guidelines for the neutron scattering and muon spectroscopy communities.
 
 \subsection{Analysed data treatment software for neutron scattering and muon spectroscopy}
-The guidelines for data treatment software for the neutron scattering and muon spectroscopy communities are based on a questionnaire that five existing software projects have completed. Here we give a brief description of those software projects:
+The original SINE2020 guidelines for data treatment software were based on a questionnaire, that was completed by five existing software projects.
 \begin{description}
-\item[BornAgain, www.bornagainproject.org] BornAgain started out as a reimplementation of the software XXX for simulation of a specific scattering technique grazing incidence Small Angle Scattering.
+\item[BornAgain, www.bornagainproject.org] BornAgain provides a framework for calculating the scattering process from a multilayer sample, which may have a rough or smooth interface and can include the effect of nanoparticles.
+It is a more generic version of GISAXS by R. Lazzari [J. Appl. Cryst. 35, 406–421 (2002)].
 In the course of SINE2020 it has been extended to other reflectometry techniques.
-The project started nine years ago and have around three dedicated full time developers. 
+The project started nine years ago and is supported by three full time developers. 
 The software is primarily developed in C++ with a scripting interface in Python and a GUI based on Qt. The software is hosted on GitHub. 
 
-\item[Mantid, www.mantidproject.org] Mantid is a project initiated by ISIS eleven years ago and since then joined by SNS, ESS, and ILL, with the purpose of providing data reduction software for all their instruments. Besides these facilities Mantid is also being used for specific instruments at other neutron (and muon) sources such as SINQ, FRM-II, and ANSTO. Mantid is developed in C++ and Python with a GUI based on Qt. 
-The software is hosted on GitHub under the GPL3 license and the project has about 20 full time developers across all facilities involved.
-It is by far the largest software project specific for data treatment at neutron and muon sources and has annual developer and user meetings, a XXX. 
+\item[Mantid, www.mantidproject.org] Mantid is a project initiated by ISIS eleven years ago and now has contributions from the SNS, ESS, and ILL. 
+The purpose of Mantid is to provide a single data reduction software for all of the instruments at each of the facilities.
+Besides these facilities Mantid is also being used for specific instruments at other neutron (and muon) sources such as SINQ, FRM-II, and ANSTO. 
+Mantid is developed using C++ and Python with a Qt based GUI. 
+The Mantid software is hosted on GitHub under the GPL3 license.
+The project has about 20 full time developers spread across each of the partner facilities.
+As one of the largest software projects for data treatment at neutron and muon sources, regular feedback is important.
+Therefore, Mantid has annual user and developer meetings.
 
-\item[KipTool \& MuhRec, www.neutronimaging.ch] KipTool and MuhRec are analysis software for the neutron imaging technique, where KipTool is used for quantitative analysis and MuhRec for computed tomography and has started as a spare time project for an instrument scientist who spent his time coding when commuting to and from work on the train. 
+\item[KipTool \& MuhRec, www.neutronimaging.ch] KipTool and MuhRec are analysis software for the neutron imaging technique.
+KipTool is used for quantitative analysis of imaging data and MuhRec is used for computed tomography.
 Since then at most two full-time developers have been dedicated to the project at any given time.
 Both software programs are originally implemented in C++ with the only user interface being in the form of a GUI based on Qt.
 In the course of the SINE2020 project, the software has been migrated to GitHub under the GPL3 license. 
 
-\item[McStas, www.mcstas.org] McStas is per se not a data treatment software but used for performing instrument simulations.
-In was included in the analysis due to its widespread usage in the neutron scattering community. 
-It is also the longest living among those analyzed with more than 20 years of effort behind it but only has one dedicated full-time developer associated to it. 
+\item[McStas, www.mcstas.org] McStas is not a data treatment software, but it is used for performing instrument simulations.
+These simulations can provide crucial insight into experiments when coupled with data treatment software. 
+Hence, it has been included in this analysis as an important tool to the neutron scattering community. 
+McStats started more than 20 years ago and has continued to see new functionality being added. 
+However, it only has one dedicated full-time developer. 
 McStas is developed primarily in C and has recently been migrated to GitHub.
 It is licensed under the GPL2 licence. 
 
-\item[SasView, www.sasview.org] SasView has only had dedicated full time developers when externally funded and has otherwise depended on the good will of scientists putting time into the project.
-SasView has had at most two full time developers dedicated to it but has contributions from around fifteen developers from both photon and neutron sources, universities and other research institutions world wide. 
-These developers often contribute during code camps held once or twice per year. 
-To govern the project, SasView has a management team composed of an instrument scientist from each of the four neutron (and muon) sources: ESS, ISIS, NIST, and SNS. 
+\item[SasView, www.sasview.org] SasView has been developed to be a simple and effective set of tools for the analysis of small angle neutron scattering data. 
+SasView has had developers from both photon and neutron sources, with around fifteen contributors. 
+Typically SasView has two full time developers, which is supplemented by additional developers at code camps (held once or twice a year).
+
+had at most two full time developers dedicated to it but has contributions from around fifteen , universities and other research institutions world wide. 
+To govern the project, SasView has a management team composed of an instrument scientist from each of the four neutron (and muon) sources (ESS, ISIS, NIST and SNS). 
 The software is developed in Python with some C and hosted on GitHub under the BSD license. 
 Prior to SINE2020, SasView had a GUI was based on WX and did not have a Python scripting API.
-In the course of SINE2020, it has been equipped with a Python interface as well as a GUI based on Qt (from version 5). 
+In the course of SINE2020, it has been equipped with a Python API as well as a GUI based on Qt. 
 
 \end{description}
 
@@ -793,7 +804,7 @@ The main guidelines are presented below with references to the relevant section 
 
 The statistics of how guidelines could be applied to software projects are presented in table \ref{summaryTable}.
 Some of the projects have a large numbers of developers and/or based at multiple locations.
-As a result the management overheads (e.g., project management boards) are greater to ensure a uniform standard across the project.
+As a result the management overheads (e.g. project management boards) are greater to ensure a uniform standard across the project.
 The projects with less developers tend to have less management overheads as it is easier to make decisions across the whole team.
 This is a good example of how guidelines should be adapted to match the needs of the project.
 
