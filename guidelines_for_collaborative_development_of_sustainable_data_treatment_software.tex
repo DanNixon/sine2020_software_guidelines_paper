@@ -182,8 +182,7 @@ Savu also provides tooling to allow a user to export a list of citations from th
 \section{The daily development work}
 \label{Business as Usual}
 
-This section discusses factors and guidelines that affect the day-to-day work of software developers.
-Such as development methodologies, code review and coding standards.
+This section discusses the day-to-day work of software developers (i.e. development methodologies, code review and coding standards).
 Another important part of the developers' job is to provide documentation for users and other developers (see Section \ref{Documentation}).
 This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work.
 Most of these choices will be made at the start of the project and ideally last its duration, however these can be updated to accommodate new tools and standards.
@@ -193,20 +192,25 @@ Most of these choices will be made at the start of the project and ideally last 
 
 Development methodology is the set of rules that determine how requirements are gathered, converted into developer tasks and how the software is delivered to the user.
 
-Two extremes of software development methodologies are called "agile" and "waterfall".
-In the following we will discuss these two extremes.
+The two extremes of software development methodologies are called "agile" and "waterfall".
+In the following we will discuss these two  extremes, however aspects of these two methodologies can be used simultaneously.
 
 For scientific software agile, or some variant of that, is the most common methodology.
 The general principle of the agile methodology are short development "sprints" in which small, incremental additions are made to the overall software.
+If the sprint has a predetermined duration (usually a few weeks) then it is referred to as SCRUM. 
 The requirements are reviewed and adjusted accordingly for each sprint.
 This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
-SCRUM is a popular agile methodology where a sprint has a pre-determined length, typically of a few weeks.
 
-In contrast to this, each step in the development cycle (i.e., requirements, specifications, design, implementation, testing in that order) are fully completed for the project before moving on to the next task.
-This potentially means that a mistake in, for instance, the design first is discovered towards the very end of the project, making it costly to fix. 
-The water fall approach, or at least the part considering gathering of requirements and specifications, has for instance been used at neutron and muon sources when the actual implementation is outsourced and a fixed price is desired from the provider.
+If there are set of fixed non-negotiable requirements then the waterfall methodology is better.
+For the waterfall methodology each task is planned in advance and carried out in a predetermined order.
+This ensures that the requirements are met and at key milestones.
+However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirements.
+This potentially means that correcting a mistake in the design, later on in the project can be costly to fix.
+Projects that are better suited to the waterfall methodology are those where delivering an intermediate product is not viable.
+For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit could be useful mid way through development.
 
-In reality agile development is often linked to a long term plan with high-level requirements, milestones, etc. 
+In reality a mixture of the two is usually implemented.
+One potential way to do this is to have agile development linked to a long term plans with high-level requirements and milestones. 
 For example, a graphical user interface (GUI) that has a set of high level requirements (e.g. load data, do a fit to the data, output results).
 To make sure that the GUI meets the high level requirements a waterfall approach could be used.
 However, within that approach a more agile like methodology could be used.
