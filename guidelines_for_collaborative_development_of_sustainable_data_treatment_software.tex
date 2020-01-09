@@ -754,19 +754,18 @@ The main guidelines are presented below with references to the relevant section 
       \item Follow a coding standard and use tools that enforces this; such as Pylint (Python) and ClangFormat (C++).
 \end{itemize}
 
-We consider the guidelines to be both realistic and pragmatic because they are based on existing practise in the aforementioned five software projects, which are rather diverse, but also have enough commonalities to form the basis for the guidelines. 
-We note that many newer software projects for data treatment software and, in more general terms for data science software, in practise follows these guidelines to a large extent. 
-For instance cctbx and F.O.X. for crystallography and scikit-learn or matplotlib for machine learning and plotting, respectively. 
+These guidelines contain recommendations for the technologies that should be used (e.g., C++ and Python for programming languages), based on what is currently available.
+Hence, the guidelines should be reviewed and updated regularly to ensure that the best available technological solutions are used.
+Sharing the technology allows code to be developed that can easily be shared amongst collaborating projects.
 
-Unlike the generic guidelines, these guidelines contain recommendations for technology choices (e.g., for programming language) and they therefore also reflect the time in which they have been developed. 
-As technology evolves these guidelines will have to be updated and they should therefore be reviewed on a regular basis. 
-Use of the same technology are particularly important for facilitating inter-operability, collaboration, and sharing of code, because it obviously makes it easier for other to adapt software if they already are familiar with the technologies employed. 
-
-The diversity and commonalities of the analyzed software projects can be realised from Table \ref{summaryTable} that lists a number of key parameters for the projects as of December 2019. 
+The guidelines that have been developed for WP10 of SINE2020 have been used by a wide variety of software projects, see Table \ref{summaryTable} for more details.
+However, the guidelines were developed from an analysis of the participating projects and significant commonalities were identified.
+This was despite the variations in the size, scope and applications of the participating projects. 
 
 \begin{sidewaystable}
  \begin{tabular}{llllll}
  Software                        & BornAgain \cite{bornagain}  & Mantid \cite{mantid} & McStas \cite{mcstas}  & ImagingSuite \cite{ImagingSuite} & SasView \cite{sasview} \\
+ Application                     & multilayer scaterring calculation & Data reduction and some analysis & Instrument simulations & Neutron imaging software & Analysis of SANS data \\
  Age of project (years)          & 9 & 11 & 21 & 10 & 15 \\
  Number of full time developers in 2018 & 3 & 20 & 1 & $\le$2 & $\le$2 \\
  Current number of contributors  &  & 85  & 9 & 6 & 16 \\
@@ -784,26 +783,29 @@ The diversity and commonalities of the analyzed software projects can be realise
  GUI framework    & Qt & Qt & None & Qt & Qt \\  
  Plotting module & MatPlotLib & MatPlotLib & ?? & QtChart & MatPlotLib \\ 
  \end{tabular}
- \caption{Key parameters for the different software projects analyzed in SINE2020 at the end. 
+ \caption{Key parameters and analysis for the different software projects participating at the end of WP10 SINE2020. 
  Current and total number of contributors and lines of codes (LOC) are obtained from the Black Duck Open Hub service \cite{BlackDuck}.
 PMB = Project Management Board. 
 AC = Advisory Committee.
 kLOC = lines of code in thousands.
-U.D. = Under Development}
+U.D. = Under Development.}
 \label{summaryTable}
 \end{sidewaystable}
-
-
-The question about which plotting module to use was not addressed in SINE2020.
-We have included it here because this is a choice most software projects in the domain will have to make and it can have ample consequences for the future use and inter-operability of the software. 
-As can be seen from Table \ref{summaryTable} MatPlotLib is a common choice and it also has a large developer community supporting it, facilitating its long term sustainability. 
-MatPlotLib has the advantage that it works seamlessly with Qt and also can be used seamlessly from a Jupyter notebook or a Python prompt in a terminal and it therefore seems to be a sensible choice for software with both a Python scripting interface and a GUI. 
-
 
 Some of the projects have a large numbers of developers and/or are based at multiple locations.
 As a result the management overheads (e.g., project management boards) are greater to ensure a uniform standard across the project.
 The projects with less developers tend to have less management overheads as it is easier to make decisions across the whole team.
 This is a good example of how guidelines should be adapted to match the needs of the project.
+
+Table \ref{summaryTable} contains some details about how plotting is utilised in the projects, which was not considered in the above guidelines.
+It is vital for data treatment software to provide a visual representation of the data to the user.
+Hence, it is worth adding a recommended plotting module to the guidelines.
+As can be seen from Table \ref{summaryTable} MatPlotLib is a common choice.
+This is in part due to a large active developer community, which facilitates its long term sustainability. 
+MatPlotLib also has good integration with Qt, Python prompt and Jupyter notebook making it a natural choice given previous recommendations. 
+Increasing numbers of new data treatment software projects are using guidelines to ensure a high quality and positive user experience.
+For example, crystallography software (cctbx \cite{} and F.O.X \cite{}) and machine learning software (scikit-learn \cite{}).
+
 
 \section{Conclusion}
 \label{Conclusion}
