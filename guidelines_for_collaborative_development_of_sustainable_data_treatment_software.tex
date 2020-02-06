@@ -74,11 +74,11 @@ and
 
 \begin{abstract}
 Scientific software is an essential part of the modern researcher's toolkit.
-Due to the large volumes of data and the complex analysis techniques required, it is often expensive to develop and maintain scientific software.
-Therefore, it is imperative to ensure that the software will continue to be supported in the future, even if the current work force leaves the project.
+Due to the complex analysis techniques required, it is often expensive to develop and maintain scientific software.
+Therefore, it is imperative to ensure that the software will continue to be supported in the future, even if key staff leave the project.
 Some of the requirements for sustainable software are for the code base to have a consistent quality and good documentation, to prevent a loss of knowledge.
 This paper presents two sets of guidelines.
-The first is a generic set that could be applied to software projects in a broad range of domains.
+The first is a generic set that could be applied to software projects across a broad range of domains.
 The second set of guidelines are specific to the neutron scattering and muon spectroscopy data treatment communities and were developed as part of Science and Innovation with Neutrons in Europe in 2020 (SINE2020).
 These specific guidelines were designed to allow the harmonization of software development process.
 Software outside of the neutron and muon disciplines can use the specific guidelines as inspiration of how to adopt, apply and adapt the generic guidelines presented in this paper.
@@ -101,30 +101,27 @@ Software outside of the neutron and muon disciplines can use the specific guidel
 \section{Introduction}
 \label{Introduction}
 
-It has become vital for modern neutron and muon sources to ensure that adequate user software is in existence not only for data acquisition but also for data treatment, in order to ensure the production of scientific result rather than just data.
-The reason for this is at least two-fold: first, the demographic of the users is changing from scientists building a career in neutron scattering or muon spectroscopy to scientists that consider them as one of many tools.
-Hence, more and more users are not knowledgeable about the details behind the neutron and muon data treatment and  do not have the technical skills in how to analyse their data.
-The second reason is that the advances in science are demanding increasingly greater amounts of data that cannot be analysed by hand.
-For example, some instruments at the
-European Spallation Source ESS) are estimated to have data rates in the order of gigabytes per second \cite{Christensen_2018}, which is significantly higher than at existing neutron sources.
-This can be compared to the data rates from ten years ago, where (\todo{TODO: Historic example}).
-In some fields of scientific research the level of data production is far greater, for example free electron lasers and the Large Hadron Collider.
-It is not unreasonable to assume that with advancing technology that neutron and muon facilities will produce similarly vast quantities of data.
+It has become vital for modern neutron and muon sources to ensure that excellent software is available for the user community.
+In order to ensure efficient production of scientific results and publications from experiments it is important for facility software to be of a high standard.
+The reason for this is two-fold: first, the demographic of the users is changing to scientists increasingly using neutron scattering or muon spectroscopy as one of many tools in addressing their scientific problem rather than specialising in the scientific techniques themselves..
+Hence, an increasing number of users are not knowledgeable about the details behind the neutron and muon data treatment and  do not have the technical skills in how to treat and analyse their data.
+The second reason is that the advances in science are generating increasingly large datasets that cannot be processed by hand.
+For example, some instruments at the European Spallation Source ESS) are estimated to have data rates in the order of gigabytes per second \cite{Christensen_2018}, which is significantly higher than at existing neutron sources.
 
-The growing complexity of both data reduction and analysis means that the development of scientific software requires increasingly more resources.
-The consequence of these aspects is that users will inherently depend on software created by other developers, typically in the user community or at the hosting facilities.
-A developer may also choose to contribute to existing software rather than develop their own from scratch.
+The growing complexity of data treatment means that the development of scientific software requires ever greater resourcing.
+The consequence of these changes is that users will inherently depend on software created by other developers, typically in the user community or at the hosting facilities.
+A person may also choose to contribute to existing software rather than develop their own from scratch.
 This adds significant requirements in terms of quality, trustability, reliability, reproducibility and usability compared to when users develop software for their own use.
 (TODO: insert \cite{computational-science-error} and articles about reproducibility)
-It also adds the requirement of interoperability to the software developed by one set of developers (e.g. at a university) so that it can be used by users and developers (e.g. at a facility).
-New methods for data treatment are often developed in academia.
+It also adds a requirement of interoperability to the software developed by one group (e.g. at a university) so that it can be used by users and developers (e.g. at a facility).
+New methods for data treatment are often developed in collaboration with academia.
 Therefore, it would be beneficial to the broader community if the new methods could be easily incorporated into facilities' software.
+A potential pitfall with this isolated approach of software development is that bugs are less likely to be found, due to fewer users.
+Also the software may become too cumbersome to develop leading to the project having to start from scratch.
+These factors make it more difficult to share software and for other research groups to adapt the software for their own purpose.
 
 The lack of guidelines can lead to the code being difficult to read, because the style will change depending on who wrote it.
 In the worst case this may lead to people believing that the code is incorrect, when it is correct and vica-versa.
-The other potential pitfall with this isolated approach of software development is that bugs are less likely to be found, due to less users.
-Also the software may become too cumbersome to develop leading to the project having to start from scratch.
-These factors make it more difficult to share software and for other research groups to adapt the software for their own purpose.
 
 Guidelines for software development ensure that the code is of a high quality and that the project progresses effectively.
 A good set of guidelines will help the software be sustainable; that is,
@@ -135,23 +132,24 @@ A good set of guidelines will help the software be sustainable; that is,
 \item{intuitive}
 \item{maintainable.}
 \end{itemize}
-That way it will be easier to continue growing the code base to include new functionality to the current scientific analysis techniques and to expand into new areas of analysis/research.
+
+With these in place it will be easier to continue growing the code base to include new functionality to the current scientific analysis techniques and to expand the software to serve new areas of analysis/research.
 It would also reduce the effort required to adapt the software for use at other facilities.
 
-There is plenty of literature discussing different aspects of software development, spanning the last 50 years \cite{scientific_fortran, fair_software}.
-Initiatives such as  CodeRefinery \cite{coderefinery} and the Software Sustainability Institute \cite{SoftwareSustainabilityInstitute} promote best practises for the development of academic software \cite{fair_software}.
-With the move towards FAIR data, concerns about the reproducibility and reliability of data has become even more important to scientists.
+There is plenty of literature discussing different aspects of software development.
+Initiatives such as CodeRefinery \cite{coderefinery} and the Software Sustainability Institute \cite{SoftwareSustainabilityInstitute} promote best practises for the development of academic software \cite{fair_software}.
+With the move towards FAIR (Findable, Accessible, Inter-operable and Reusable) \cite{panosc} data, concerns about the reproducibility and reliability of data has become even more important to scientists.
 These concerns are in part rooted in the rapid replacement of developers, in the form of PhD students and post-docs.
-These developers often work in isolated conditions with limited knowledge of previous developments and the reasoning for them.
-Many academic groups and research infrastructures are now starting to follow guidelines when writing software.
+These developers may work in isolated conditions with limited knowledge of previous developments and the reasoning for them.
+However, some academic groups and research infrastructures are now starting to follow guidelines when writing software.
 
-The aim of this paper is to allow scientific software communities to benefit from good software practices.
+The aim of this paper is to define good software practices and evidence how these can benefit the scientific software community.
 Each individual community may use different guidelines, some of which may already exist and others can be specific to a particular project.
 In section \ref{SINE2020}, guidelines are presented that were developed as part of \underline{S}cience and \underline{I}nnovation with \underline{N}eutrons in \underline{E}urope in \underline{2020} (SINE2020, \cite{sine2020}).
-The aim of these guidelines was to foster development of high-quality user software,  collaborations and contributions from third party developers (e.g. from university groups) through the development of inter-operable software.
+The aim of these guidelines was to foster development of high-quality software, collaborations and contributions from third party developers (e.g. from university groups) through the development of inter-operable software.
 If the guidelines are followed, it will be easier for (another) facility to adapt the software for their own needs and that of their user community, but also for other developers to contribute to the software.
 
-The specific guidelines for the muon and neutron community are based on an analysis of existing practice for software considered in SINE2020, namely  BornAgain \cite{bornagain}, Mantid \cite{mantid}, ImagingSuite \cite{ImagingSuite}, McStas \cite{mcstas} and SasView \cite{sasview}.
+The specific guidelines for the neutron and muon communities are based on an analysis of existing practice for software considered in SINE2020, namely  BornAgain \cite{bornagain}, Mantid \cite{mantid}, ImagingSuite \cite{ImagingSuite}, McStas \cite{mcstas} and SasView \cite{sasview}.
 These projects have a wide range of backgrounds.
 For example, some are maintained by an individual and others by large international teams (see Section \ref{SINE2020}).
 
@@ -176,14 +174,14 @@ In the neutron and some muon science communities NeXus \cite{K_nnecke_2015} has 
 If a particular scientific community already has an accepted standard that should be used.
 NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
 NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
-Useful metadata is trivial to store in NeXus and is an important aspect for making data FAIR (i.e. Findable, Accessible, Inter-operable, and Reusable) \cite{panosc}.
-Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue (e.g. icat \cite{icat}, scicat \cite{scicat} or Google Dataset Search engine \cite{google_dataset_search}).
+Useful metadata is trivial to store in NeXus and is an important aspect for making data FAIR.
+Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue.
 Well documented metadata improves the reproducibility and reusability of the data.
 Standardized metadata will improve how easy it is to identify key information.
 Examples of metadata are instrument configurations, data processing history, sample environment setting, sample description, experiment proposal etc.
 
 Proprietary file formats should be avoided at all costs.
-While there is sometimes an argument for software specific intermediate formats, they should remain intermediate and NeXus should be the preferred interchange format.
+While there is sometimes an argument for software specific intermediate formats, they should remain intermediate.
 
 Applications may store relevant information (e.g. window layout for a graphical tool) using the facilities provided by the application framework (e.g. \texttt{QSettings} for Qt).
 
@@ -196,7 +194,7 @@ Under no circumstances should custom formats be used for configuration files, be
 It is vital for the results from scientific software to be reproducible.
 However, sometimes there is a need to recreate the results from data treatment, in this case it becomes valuable to be able to replay the series of operations.
 Data storage is a concern for most facilities and being able to reproduce data can be beneficial.
-An increasingly popular method is to store the unprocessed data and instructions on how to process the data.
+For particularly large datasets an alternative method is to store the unprocessed data and instructions on how to process the data.
 This means recording a history of each atomic action the software performs along with any relevant numbers/inputs.
 Therefore, it is possible to record multiple sets of instructions with a negligible increase in storage space.
 
@@ -212,7 +210,7 @@ Savu also provides tooling to allow a user to export a list of citations from th
 This section discusses the day-to-day work of software developers (i.e. development methodologies, code review and coding standards).
 Another important part of the developers' job is to provide documentation for users and other developers (see Section \ref{Documentation}).
 This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work.
-Most of these choices will be made at the start of the project and ideally last its duration, however these can be updated to accommodate new tools and standards.
+Most of these choices will be made at the start of the project and ideally last its duration; however, these can be updated to accommodate new tools and standards.
 
 \subsection{Development Methodology}
 \label{Development methodology}
@@ -220,25 +218,24 @@ Most of these choices will be made at the start of the project and ideally last 
 Development methodology is the set of rules that determine how requirements are gathered, converted into developer tasks and how the software is delivered to the user.
 
 The two extremes of software development methodologies are called "agile" and "waterfall".
-In the following we will discuss these two  extremes, however aspects of these two methodologies can be used simultaneously.
+In the following we will discuss these two extremes; however, aspects of these two methodologies can be used simultaneously. \todo{add ref}
 
 For scientific software agile, or some variant of that, is the most common methodology.
 The general principle of the agile methodology are short development "sprints" in which small, incremental additions are made to the overall software.
-If the sprint has a predetermined duration (usually a few weeks) then it is referred to as SCRUM.
+If the sprint has a predetermined duration (usually a few weeks) then it is referred to as Scrum.
 The requirements are reviewed and adjusted accordingly for each sprint.
-This allows requirements to change quickly, reducing the delay in obtaining feedback from users and developers to be more responsive to the users' needs.
+This allows requirements to change quickly, reducing the delay in obtaining feedback from users, allowing the development cycle to be more responsive to the users' needs.
 
 If there are set of fixed non-negotiable requirements then the waterfall methodology is better.
 For the waterfall methodology each task is planned in advance and carried out in a predetermined order.
 This ensures that the requirements are met and at key milestones.
 However, the waterfall method lacks flexibility, making it difficult to respond to a change in requirements.
-This potentially means that correcting a mistake in the design, later on in the project can be costly to fix.
+This potentially means that correcting a mistake in the design, later on in the project can be costly.
 Projects that are better suited to the waterfall methodology are those where delivering an intermediate product is not viable.
 For example, a library to perform Fourier transformations is not useful unless fully implemented whereas a graphical data processing toolkit could be useful mid way through development.
 
 In reality a mixture of the two is usually implemented.
-One potential way to do this is to have agile development linked to a long term plans with high-level requirements and milestones.
-For example, a graphical user interface (GUI) that has a set of high level requirements (e.g. load data, do a fit to the data, output results).
+One potential way to do this is to have agile development linked to a long term plans with high-level requirements and milestones, e.g. a graphical user interface (GUI) that has a set of high level requirements (e.g. load data, do a fit to the data, output results).
 To make sure that the GUI meets the high level requirements a waterfall approach could be used.
 However, within that approach a more agile like methodology could be used.
 The first two sprints could focus on loading and fitting to data.
@@ -260,7 +257,7 @@ A module may refer to a package, library or software plugin.
 Care should be taken when designing these modules.
 Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
 Code within a module should be closely related, reducing the need to import unnecessary functionality.
-It is possible to test each module in isolation using automated testing (i.e. unit testing), reducing the risk of bugs being introduced into the code base.
+It should be possible to test each module in isolation using automated testing, reducing the risk of bugs being introduced into the code base.
 
 It can be desirable to allow users to write scripts to further extend the functionality of the software.
 Ideally any scripting made available to users should use the Python language.
@@ -276,16 +273,16 @@ Another increasingly popular option is to provide a web based interface.
 \subsection{Coding Standards}
 \label{Coding standards}
 
-Code should be of a high quality, the reason for this is three fold; code that conforms to accepted standards is more likely to be well formatted, readable and contain fewer bugs.
-These factors combine to create a code base that is easier to maintain in the future.
+To create a code base that is maintainable into the future code should be of a high standard and conform to accepted standards.
+Such code is more likely to be well formatted, readable and contain fewer bugs.
 
-Coding standards should be chosen based on the programming language.
+Coding standards should be chosen according to the programming language(s) being used.
 If multiple languages are going to be used it is possible to have rules for each language.
 A community curated list of standards organised by language is available online at \cite{Awesome_Guidelines}.
 
 An important, language agnostic rule to follow is to write human readable code.
 For example, use comments to explain the code and descriptive variable names.
-A developer should be able to understand what the code is doing (not necessarily why) without looking at the documentation or talking to the previous author.
+A developer should be able to understand what the code is doing (but not necessarily why) without looking at the documentation or talking to the previous author.
 
 For example, compare the function \cite{Lim_2015} written in C++11
 
@@ -338,7 +335,7 @@ There are linters available for almost every language.
 For example, Clang format \cite{Clang} and Pylint \cite{Pylint} are two of the most common for C++ and Python respectively.
 Linters are available as part of standalone packages that produce result reports, these are typically easy to install and run.
 Some of these packages are also available as a cloud service (e.g. Coverity Scan \cite{coverity}), when new code is added to the remote repository the package will run and produce a result report.
-For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis (\cite{awesome_static_analysis}, a community curated list of static analysis tools.
+For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis \cite{awesome_static_analysis}, a community curated list of static analysis tools.
 
 When writing new code care should be taken to avoid pre-emptive optimisation, where the speed up in the execution time may not be significant.
 A similar pitfall is pre-emptive generalisation, which is attempting to make the code less problem specific in the hope it can be reused later.
@@ -353,11 +350,11 @@ This is often implemented in two parts; low level tracking of implementation tas
 
 For low level task tracking, simple tools such as GitHub Issues are likely sufficient.
 The purpose of issue tracking is to provide a description of the task and to assign it to a developer.
-Additional features may include task boards (e.g. Scrum or Kanban boards), task dependency and task hierarchy.
+Additional features may include task boards (e.g. Scrum or Kanban boards), task dependency and task hierarchy, which can also be used for high level tracking.
 
-Most cloud hosted Source control management (SCM) services provide their own issue tracking tool, which typically suit the needs of most software projects.
+Most cloud hosted Source Control Management (SCM) services provide their own issue tracking tool, which typically suit the needs of most software projects.
 
-If more complex task workflows are needed or if your code base is distributed across multiple locations then it may be beneficial to separate issue tracking and the code base.
+If more complex task workflows are needed, or if your code base is distributed across multiple locations, then it may be beneficial to separate issue tracking and the code base.
 
 High level tracking, typically at project management level, should monitor the project's medium to long term goals and their progress.
 In the case of functional requirements, these goals should be defined by users of the software, see Section \ref{se}.
