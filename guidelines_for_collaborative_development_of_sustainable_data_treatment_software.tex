@@ -160,6 +160,9 @@ When it is appropriate the idea of the guideline will be abstracted, so that an 
 
 Abstracting guidelines in this manner allows them to remain relevant as technology evolves.
 
+\todo{find me a home, and make me make sense}
+Guidelines have been developed within other communities to the benefit of the project.
+
 \section{Data Formats and Interoperability}
 \label{Data Formats and Interoperability}
 
@@ -366,9 +369,8 @@ Ideally both levels of tracking should be available to view freely by users and 
 
 SCM provides a full history of the code base, allows multiple developers to work on the project simultaneously and provides means on reviewing changes to your software.
 Hence, SCM is essential for software projects.
-
-To fully utilise the benefits of SCM, it is necessary to have guidelines.
-Hence, there are ample guidelines for SCM, for more information please see Ref. \cite{awesome-git}.
+However, to fully utilise the benefits of SCM, it is necessary to have well defined guidelines.
+In fact, there are ample guidelines for SCM, for more information please see Ref. \cite{awesome-git}.
 Therefore, this section will only give an overview and highlight a few commonly overlooked points.
 
 A workflow defines how developers interact with the SCM.
@@ -376,15 +378,14 @@ This includes the process for reviewing and accepting changes into the code base
 As a result it is important to define a workflow and enforce it to ensure code quality.
 
 It is common for less experienced developers to try and submit unused code (e.g. commented out code, functions that are never called and files that are not included) to the code base.
-It is important not to add dead code into the code base, because
-its presence reduces the readability of the code base.
+It is important not to add dead code into the code base, because its presence reduces readability.
 Since the history of the code base is recorded as part of the SCM, removing dead code does not risk losing important information.
 
 A simple and popular option is the feature branch workflow \cite{feature-branch}.
 In this workflow a developer will work on a new feature using a new branch and that branch is then merged when the changes are accepted.
 
 Developers should also ensure that they produce a clear commit history.
-Given that this is likely the longest standing documentation, describing the history of the code base is important.
+Given that this is likely to be the longest standing documentation, describing the history of the code base is important.
 The commits should be sensible, atomic and logically ordered.
 The commit messages need to be clear and describe the reasoning behind the changes made in the commit.
 For further reading please see Ref. \cite{git-commit}.
@@ -399,30 +400,47 @@ For a distributed team it is beneficial to use a cloud Git repository (as oppose
 \subsection{Build Systems}
 \label{Build systems}
 
-The code base of your software should be managed using an appropriate Build System, which will depend on the choice of programming language(s).
-The build system handles the dependency finding and build file generation native to the host platform.
+The build and packaging of your software should be facilitated by an appropriate build system, which will depend on the choice of programming language(s).
 A good choice for C and C++ projects is CMake \cite{CMake}.
-This can handle setting up library paths and build tools automatically, allowing developers on any platform to build the software locally.
 C and C++ projects can also benefit from use of a dependency manager such as Conan \cite{Conan}.
-There are build systems that combine a dependency manager into them.
-For Python based projects Python's setuptools is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
+There are some build systems that combine a dependency manager into them.
+For Python based projects Python's {\it setuptools} is typically sufficient, for specific cases (e.g. complex package dependencies) Conda may be used as an alternative.
+Most languages will either be shipped with a build system or have a recommended set of tools.
 
 \subsection{Quality Assurance (QA)}
 \label{Quality assurance}
 
 The quality of the software is one of the most important factors influencing the long-term success of the project.
-Automated testing infrastructure is essential in order to provide reliable software product.
-There is a plethora of testing frameworks available nowadays; almost every modern programming language ships a unit testing framework with its standard libraries (e.g. {\sc unittest} for {\sc Python}, {\sc JUnit} for {\sc Java}).
-There are more advanced third party testing frameworks, such as {\sc Pytest}, {\sc GoogleTest} or {\sc GoogleMock}) that provide extended techniques for testing, for example mocking.
-
-In practice, it is almost impossible to achieve 100\% test coverage.
-However, even in the cases when the tests can not be fully complete, it is a good practice to add a test case each time a bug has been revealed in a certain usage scenario.
-In such circumstances it is advised to first write the test revealing the bug, and then fix the faulty logic in order to pass the test (Test Driven Development).
-This guarantees that the same bug will not reoccur.
 
 Apart from unit tests aiming to test the functionality of small units of code in isolation, integration tests are also necessary to ensure that the different parts of the software work together as expected.
-Deployment tests on the other hand ensure that the software is properly packaged and can be installed and launched on all the supported platforms.
+Deployment tests ensure that the software is properly packaged and can be installed and launched on all the supported platforms.
 
+It is a good practice to add a test case each time a bug has been revealed in a certain usage scenario.
+In such circumstances it is advised to first write the test revealing the bug, and then fix the faulty logic in order to pass the test (Test Driven Development \todo{cite plz}).
+This guarantees that the same bug will not reoccur.
+
+Any software that performs computationally heavy operations might need performance tests.
+They do not necessarily check the output, but they record the execution time.
+By monitoring the evolution of the timings of the performance test results, it is possible to automatically detect when a new code change causes a significant increase in the execution time.
+The performance tests can be split into two categories: micro benchmarking and integration performance tests.
+The former test the performance of small sections of code to prevent possible flaws, for example, related to caching, threading, database or network access, etc.
+The latter test certain usage scenarios over sufficiently large datasets in order to mimic the reaction time  experienced by the end users.
+
+When it comes to automated testing, the GUI is arguably the layer that is the hardest to test.
+However, there are techniques and tools that allow sufficient automation of GUI testing.
+Among those is the separation of the logic into tiers, e.g. Model-View-Presenter (MVP), where the model and the presenter can be covered by unit tests with mocking.
+There are tools available that allow automated tests of the views themselves (\todo{example}).
+
+Automated testing infrastructure is essential in order to provide a reliable software product.
+There is a plethora of testing frameworks available nowadays; almost every modern programming language provides a unit testing framework (e.g. {\it unittest} for {\it Python}, {\it JUnit} for {\it Java}).
+However, there are more advanced third party testing frameworks (such as {\it Pytest}, {\it GoogleTest} or {\it GoogleMock}) that provide extended techniques for testing, for example mocking.
+
+While automated testing is indispensable for any software project, the importance of manual (both scripted and unscripted) testing should not be underestimated.
+This should be done periodically by the developers or a dedicated QA team, typically before the releases or other milestones.
+These tests help detect anomalies that haven't been (or couldn't have been) covered by the automated tests.
+It is advised to have readily available recipes that the tester can follow during testing.
+
+\todo{move and rewrite?}
 One peculiarity of experimental data treatment software is that it is particularly hard to test.
 Given the noisiness and stochastic nature of the input data, often empirical methods and heuristics put under the processing logic make it hard to predict the expected output under all possible scenarios.
 For example, an algorithm that is supposed to find a peak may operate as expected if there is a well defined peak in the data, but may fail for low statistics measurements.
@@ -432,64 +450,36 @@ These tests ensure that the output remains reproducible over time, but do not te
 The purpose of these tests is to prevent unexpected changes in the behaviour of the software as a side effect of other development work.
 They exploit reference data to compare the output to and the reference itself should be updated only in the case of bug fixes.
 
-Any software that performs computationally heavy operations might need performance tests.
-They do not necessarily check the output, but they record the execution time.
-Monitoring the evolution of the timings of the performance test results, it is possible to automatically detect when a new code change causes a significant increase in the execution time.
-The performance tests can be split into two categories: micro benchmarking and integration performance tests.
-The former test the performance of small sections of code to prevent possible flaws, for example, related to caching, threading, database or network access, etc.
-The latter test certain usage scenarios over sufficiently large datasets in order to mimic the reaction time  experienced by the end users.
-
-When it comes to automated testing, the GUI is arguably the layer that is the hardest to test.
-From the other hand, most often bugs are likely to be found in the GUI.
-However, there are techniques and tools that allow sufficient automation of GUI testing.
-Among those is the separation of the logic into tiers, e.g. Model-View-Presenter (MVP), where the model and the presenter can be covered by unit tests with mocking.
-There are tools available that allow the automated tests of the views themselves.
-
-While automated testing is indispensable for any software project, the use of manual (or unscripted) testing should not be underestimated.
-These should be done periodically by the developers or a dedicated QA team, typically before the releases or other milestones.
-These tests help detect anomalies that haven't been (or couldn't have been) covered by the automated tests.
-It is advised to have readily available recipes that the tester can follow during testing.
-
-\subsection{Benchmarking and Validation}
-\label{Benchmarking and Validation}
+\subsection{Validation}
+\label{Validation}
 
 \todo{TODO}
 
 \subsection{Continuous Integration (CI)}
 \label{Continuous integration}
 
-Continuous Integration (CI) should be used, regardless of the projects size, to ensure that the software performs as expected.
+Continuous Integration (CI) should be used, regardless of the project's size, to ensure that the software performs as expected.
 
 CI is essentially a service that detects when new changes have been made to the code base (via the SCM) and runs a set of actions to determine if the code is of an acceptable quality.
 It can also be used to perform the same checks on proposed changes before they become part of the main code base.
 
 The obvious action is to compile/install the software and to run automated tests.
-However, any number of additional tasks can be performed.
-Including, but not limited to; generating documentation, performing code linting, deploying packages and checking for software vulnerabilities.
+However, any number of additional tasks can be performed, including generating documentation, performing code linting, deploying packages and checking for software vulnerabilities.
 
-For small scale projects that reside in a single repository, using a hosted service for continuous integration is probably sufficient.
-For example, Travis CI \cite{Travis_CI} offers a free service that will compile builds and run tests over a fixed time limit (available for Linux, Mac OS and Windows).
+For most projects, using a hosted service for continuous integration is probably sufficient.
+For example, Microsoft Azure DevOps \todo{cite} offers a free service that will compile builds and run tests over a fixed time limit (available for Linux, Mac OS and Windows).
 
-Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
-As a result Jenkins can be adapted to suit the needs of a specific software project.
-For example, it has no restrictions for build times, stores data locally and gives the developer complete control over the setup of the build environment.
+For projects with specific CI requirements (such as large build times, the need for specialist hardware or access to data) an entirely self hosted solution should be considered.
+For example, Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
+As a result Jenkins can be adapted to suit the specific requirements of the software project.
 
 \subsection{Code Review}
 \label{Code review}
 
-\begin{figure}
-    \centering
-    \includegraphics[height=10cm]{code_review_process.eps}
-    \caption{This flowchart gives an example of a code review process that may be used in a collaborative project.}
-    \label{Code_Review_Process}
-\end{figure}
-
-Code reviews  are the process of determining if a proposed change should be added to the code base.
+Code reviews are the process of determining if a proposed change should be added to the code base.
 Typically this occurs after a developer has finished working on a feature or bug fix.
-
 The depth of the review process depends on the size and purpose of the project.
 The developer proposing the changes should provide instructions on how to test if the changes are successful and why they are necessary.
-
 The reviewer must ensure that the code is of an acceptable quality (coding styles, guidelines, etc. have been followed).
 This should also include if the commit history is sensible and the relevant documentation (including release notes) has been updated.
 CI tools can be used to perform some of these checks automatically.
@@ -500,10 +490,20 @@ Having multiple reviewers for the same piece of work may seem inefficient, but w
 Tools for code reviews are often built into hosted SCM services.
 For example, GitHub Pull Requests allow code changes to be viewed and commented on.
 
+\begin{figure}
+    \centering
+    \includegraphics[height=10cm]{code_review_process.eps}
+    \caption{This flowchart gives an example of a code review process that may be used in a collaborative project.}
+    \label{Code_Review_Process}
+\end{figure}
+
 \subsection{User and Developer Documentations}
 \label{Documentation}
 
-Good documentation will prevent the developers having to spend time explaining how to use and develop the software to users.
+\todo{mention different audiences for documentation}
+
+Good documentation will minimize the time developers spend explaining the software.
+Ideal documentation will reduce this time is zero.
 The hallmarks of good documentation are that it is easily available, concise and written in a way that is accessible to the target audience.
 
 The simplest and most common form is online documentation, for example Read the Docs \cite{Read_The_Docs} or a wiki page.
@@ -518,11 +518,6 @@ Many of the cloud based hosting providers have associated free hosting services,
 Popular examples are GitHub Pages \cite{GitHub_Pages} and GitLab Pages \cite{GitLab_Pages}.
 The large benefit here is avoiding the cost and time of maintaining the infrastructure required to host the project's website.
 
-An increasingly popular method of documentation is the video tutorial.
-These are extremely useful to users as it allows them to see how the software is used.
-For example, video tutorials of intricate GUIs may be beneficial as the user gets to see a complete workflow and there is less chance of steps being undocumented.
-However, video tutorials can be costly to create and keep up-to-date with software changes.
-
 It is also valuable to have developer documentation.
 This documentation should contain information on the standards used in the code and how to set up a development environment, appropriate tutorials and relevant reference material.
 
@@ -532,14 +527,16 @@ This documentation should contain information on the standards used in the code 
 A key activity for any piece of software is user support.
 Unlike documentation this is an interactive link between developers and users.
 As a minimum email support should be provided and advertised to users.
-The emails should be checked regularly and initial responses should be within a day or two.
+The emails should be checked regularly and initial responses should be within a reasonable timeframe.
 The initial response may be to ask for more details, to arrange a meeting or to say that it is being worked on.
 Providing effective user support will give users more confidence in the software.
 
-Face to face communication is often the most efficient and effective way to understand a user's question/comment.
-This allows for a conversation to occur with more probing questions to improve the developer's understanding and to overcome any unfamiliar terminology.
-As a result it is important to have some local support, where developers are preferably in close proximity to their users.
-Face to face contact also has the benefit of increasing the user experience and users are more likely to report problems/bugs to the development team if they can easily speak to them.
+Face-to-face communication is often the most efficient and effective way to understand a user's question or comment.
+This allows for a conversation to develop with probing questions improving the developer's understanding, while overcoming terminology unfamiliar to either party.
+As a result it is important to put local support in place, where developers are preferably in close proximity to users.
+Face-to-face contact also has the benefit of enhancing the user experience and users are more likely to report problems/bugs to the development team if they can easily hold direct discussions with them.
+
+\todo{mention forums}
 
 \subsection{Refactoring vs Technical Debt}
 \label{Refactoring}
@@ -560,12 +557,11 @@ Face to face contact also has the benefit of increasing the user experience and 
 \end{figure}
 
 A good release process depends greatly on the nature of the software project.
-A large framework used by multiple different scientific techniques at different facilities (such as the Mantid project \cite{mantid}) requires an involved release process to ensure the software is suitable for use by all intended audiences.
-This section will assume that a significant proportion of users are not consulted with during the development process.
+\todo{examples from non-scientific software}
 
 A release candidate is often used for user testing and for identifying potential issues prior to the main release.
 There can be any number of release candidates and they should be generated in exactly the same manner as a release (the only difference being the version number).
-Release candidates are intended for "power users" who are happy to test the software for the benefit of the wider community (for example, a scientist who is responsible for an instrument and its user programme, and who wants to ensure your software works before providing it to their visiting users).
+Release candidates are intended for "power users" who are happy to test the software for the benefit of the wider community (for example, a scientist who is responsible for an instrument and its user programme, and who wants to ensure the software works well before providing it to their users).
 
 The length of the beta period is determined by the release cycle and the estimated number of users.
 There is no generic rule for this, but it is recommended that all (or as close to as possible) use cases of the software have been tested by specialist users.
@@ -578,38 +574,42 @@ This will reduce the risk of users attempting to use workflows that are no longe
 
 Any fixes for safety or security reasons must be clearly documented in the release notes.
 
-It is recommended to tag and sign the release in the SCM system. In the case of Git this involves creating a tag from the code that was used to generate the release package and signing it with either a project or maintainers PGP (Pretty Good Privacy) key.
+It is recommended to tag and sign the release in the SCM system.
+In the case of Git this involves creating a tag from the code that was used to generate the release package and signing the tag with either a project or maintainers PGP (Pretty Good Privacy) key.
 This is not an essential step, but is good practice to allow verification of historic releases.
 
-It is also recommended to generate a Digital Object Identifier (DOI) for each release.
+It is also recommended to generate a Digital Object Identifier (DOI) \todo{cite} for each release.
 This allows the software to be easily cited in publications and makes it clear which version of the software was used to generate the results in a publication.
-Another method is to use a publication that provides the idea of the software.
+
+\todo{tidy me plz}
+Prior to a release there will be a "code freeze", where no new functionality will be submitted to the code base.
+In preparation for a release developers should test the software works as expected with no obvious bugs.
+Once all of the identified bugs are fixed it is then released with more confidence that it is ready for general use.
+It is advisable to then spend some time working on maintenance tasks, these are improvements to the maintainability of the code rather than any new user facing functionality.
+Examples of such tasks include: moving to a new compiler version, applying fixes for compiler or linter warnings and code reorganisation/refactoring.
 
 \subsection{Packaging}
 \label{Packaging}
 
-To ensure user satisfaction easy software setup is essential.
-Exactly what this involves varies depending on the nature of your project, as such this section will not go into great detail about specific options, but rather the requirements of an installer and process of choosing an appropriate installation method for your software.
+To ensure user satisfaction easy software setup is essential, but exactly what this involves varies depending on the nature of the project.
+As such, this section will not go into detail about specific options, but rather set out the requirements of an installer and process of choosing an appropriate installation method for your software.
 
 The first requirement is for the package to give users a working copy of your software.
 They should not have to care about any implementation specifics or having to install additional dependencies to make your software run.
-
-Once installed, the software should not conflict with any other software a user may have installed on their machine.
-A common example of this is when applications depend on the same libraries, such as HDF5.
+Once installed, the software should not conflict with any other software a user may have already installed on their machine.
 
 It is recommended to sign binaries, this allows a user to verify that the copy of the software they have is in fact the version they believe it is and that it has not been modified.
 Some operating systems may also impose restrictions on running unsigned binaries.
 How binary signing is done depends on the packaging method and target operating system, it is worth researching this for your specific case.
 
-As the technology becomes more popular it is worth looking into cross platform container based means of distribution (for example, Docker \cite{Docker}, Singularity \cite{Kurtzer_2017} and other container based systems).
-This allows the distribution of software in an already configured and working state being safe in the knowledge it will function in the same way on the user's computer.
+As container technology becomes more popular it is worth considering as a means of distribution (for example Singularity \cite{Kurtzer_2017}).
+This allows the distribution of software in an already configured and working state, which is more likely to function in a reproducible way on the user's computer irrespective of configuration or operating system.
 Different containerization systems have their own caveats and there is no "one size fits all" solution.
-For example, Singularity is better at packaging GUI software than Docker, however Docker images are likely to more universally usable due to Docker's popularity.
 
 \subsection{Cross Platform Compatibility}
 \label{Cross platform}
 
-Unless your software specifically targets high performance computing systems such as clusters or distributed compute platforms then no assumption can realistically be made about how, and specifically on what platform, a user will expect to run your software.
+No assumption can realistically be made on the configuration, operating system or architecture under which the software will need to run.
 For this reason it is highly desirable (or even essential) that your software is designed to run on multiple operating systems and architectures.
 Thanks to modern development tools, libraries and build systems this is not a complex task.
 By using cross platform libraries you also allow your software to be easily adopted by users that use an operating system or environment different to your own.
@@ -617,14 +617,14 @@ By using cross platform libraries you also allow your software to be easily adop
 If officially supporting multiple platforms then it is beneficial to encourage a spread of different platforms and operating systems across the development team.
 Doing so ensures that there are always multiple people capable of addressing platform specific issues when they arise.
 
-It is recommended to limit the versions of particular operating systems you support.
+It is recommended to limit the number of versions of particular operating systems you support.
 Typically you should stop supporting an OS version when the publisher stops supporting it.
 
 \subsection{Dependency Management}
 \label{Dependency Management}
 
 Dependency management handles obtaining and configuring any library dependencies your software has at build/configure time.
-This serves two functions: to make the build environment easy to set up and to make builds reproducible.
+This serves two functions: firstly, to make the build environment easy to set up and secondly, to make builds reproducible.
 Dependency managers do this by collecting requirements for your software based on a specification file provided by the developer.
 In the case where a package manager is available (for example Conda \cite{Conda}, PyPI \cite{PyPI} or Conan \cite{Conan}) this may just be a package name and version number.
 For more general purpose tools it may involve instructions on how the dependency should be retrieved and configured (for example CMake's ExternalProject \cite{CMake_ExternalProject}).
@@ -638,11 +638,11 @@ The task of updating dependency versions and fixing any issues that arise is a g
 \label{Infrastructure}
 
 Cloud computing is becoming an increasingly common method for delivering software to users.
-Instead of the user providing the computing hardware, an interface layer (e.g. web interface, command line) is provided to a dedicated computing infrastructure.
+Instead of the user providing the computing hardware, an interface layer (e.g. web interface or command line) is provided to a dedicated computing infrastructure.
 One of the main advantages of cloud infrastructure is that the specifications of the operating system and hardware are known by the developer.
-This makes it easier to recreate platform specific bugs and if cloud infrastructure is used exclusively it could remove the need for cross platform development.
-It is also possible to create a setup where the data is easily accessible from the cloud infrastructure.
-This removes the need for data transfer and storage bottlenecks, which will become increasingly important as data volumes grow.
+This makes it easier to recreate and fix platform specific bugs and if cloud infrastructure is used exclusively it could remove the need for cross platform development.
+It is also possible to create an environment where the data is easily accessible to the software.
+This removes the need for data transfer and avoids storage bottlenecks, both of which likely to become an increasing issue as data volumes grow.
 However, a disadvantage of cloud infrastructure is that it creates an additional dependency.
 If the cloud infrastructure is not maintained correctly then the software will become unusable within the cloud service.
 The European Open Science Cloud \cite{EOSC} is one example of a project dedicated to this software delivery method.
@@ -650,10 +650,8 @@ The European Open Science Cloud \cite{EOSC} is one example of a project dedicate
 \subsection{Licensing}
 \label{Licensing}
 
-All pieces of software require a license.
-An open source license is advisable from both a user and development perspective, details of available licenses are available online \cite{OSI_Licenses}.
-The users will be able to download and use the software free of charge, removing a potential barrier in the uptake of the software.
-The advantage of an open source license is that it allows anyone to contribute to the code base (but must not bypass any review process) and radically improves the available pool of developers.
+All software requires a license.
+An OSI approved \cite{OSI_Licenses} open source license is advisable from both a user and development perspective allowing users to download and use the software free of charge, removing a potential barrier in the uptake of the software.
 Furthermore, in research/academic communities open source software is becoming increasingly compulsory in order to prevent the loss of valuable source code.
 The European Commission's push for open science \cite{EOSC} includes both FAIR data and open source software.
 
@@ -662,9 +660,10 @@ The European Commission's push for open science \cite{EOSC} includes both FAIR d
 
 Large projects with many people involved will require some form of management, to ensure that the team are working effectively.
 This is often referred to as a governance model.
-A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses.
-This is typically achieved by using project management, which defines a set of guidelines (TODO: cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/) that will help the project be successful.
-Each project will typically have a sponsor who are ultimately responsible for the project, but will not be involved in its running.
+A governance model will provide a constructive mechanism for deciding the direction of the project and for ensuring it progresses against objectives.
+This is typically achieved by using a form of project management (e.g. the APM framework \todo{cite PFQ https://www.apm.org.uk/book-shop/apm-project-fundamentals-qualification-study-guide/}), which defines a set of guidelines that will help the project be successful.
+Within the APM framework, each project will have a sponsor who is ultimately responsible for the project, but will not be involved in its running.
+The sponsor may take advice from several other parties.
 
 The larger the team the more important good project management becomes.
 Sections \ref{rman}, \ref{se} and \ref{lc} will discuss the aspects of project management that would benefit projects of any size.
@@ -673,45 +672,34 @@ Then section \ref{PM big} will contain advice for larger teams, but may still be
 \subsection{Resource Management}
 \label{rman}
 
-Resource management can refer to physical equipment, such as computers.
-However, in this context it will be used to refer to individuals who are available to work on the project.
-The amount of resource available to a project will probably change over time and it is therefore important to plan how best to utilise each resource.
 When selecting a resource for a given task it is important to consider their skills/knowledge, the time required to complete the task and the deadline for the task.
-If the deadline and time required are similar then it is better to choose a resource who has the relevant skills and experience.
+If there is a tight deadline then it is better to choose a resource who has the relevant skills and experience.
 However, the draw back of always choosing the same resource to do similar tasks is that they will become a single point of failure.
 If that resource were to leave the team then no-one else would have any knowledge of that part of the project.
-This is a common  issue in academia, due to the relatively short employment of PhD students and post-docs.
+This is a common issue in academia, due to the relatively short employment of PhD students and post-docs.
 Therefore, it is advisable to use tasks as an opportunity to train less experienced/skilled resources when there is sufficient time between the deadline and the expected duration of the task.
 
 \subsection{Stakeholder Engagement}
 \label{se}
 
-For a software project the users are often considered to be the customers.
 Stakeholders is a general term used to describe people who have some interest in your project (e.g. customers, team members and sponsor).
-It is up to the individual project to decide what communication method is suitable.
-
-The users are vital sub-group of stakeholders.
-An effective way of keeping them engaged is imperative to the success of the project.
-One method is to have a committee (this may be called an advisory committee, in the Mantid project it is called the scientific steering committee).
+It is up to the individual project to decide which communication methods are suitable.
+One method is to have an advisory committee (in the Mantid project it is called the scientific steering committee).
 This group will be comprised of the senior project team (i.e. the project manager and any sub-team leaders for a larger project) and a customer from each of the main user communities.
 This committee would discuss the progression of tasks and what tasks should be next (priorities).
 The level of stakeholder engagement will depend on the development methodology for the project, see Section \ref{Development methodology}.
+\todo{TSC}
 
-\subsection{Software Life Cycle}
+\subsection{Project Life Cycle}
 \label{lc}
 
 The software should follow the basic notion of a release cycle. More details about the practicalities of a release cycle are discussed in section \ref{Releases}.
 
 A release is a version of the software that has been tested and the development team is confident that it is ready to be used.
 Having periodic releases can reassure users that the project is still supported.
-It is advisable to follow semantic versioning \cite{Semantic_Versioning} (major.minor.patch, e.g. 3.1.0) for clear naming of the releases.
-Prior to a release there will be a "code freeze", where no new functionality will be submitted to the code base.
-In preparation for a release developers should test the software works as expected with no obvious bugs.
-The next stage is "beta testing", where a select group of users are chosen and they test the software and report any bugs.
-Once all of the identified bugs are fixed it is then released with more confidence that it is ready for general use.
 
-It is advisable to then spend some time working on maintenance tasks, these are improvements to the maintainability of the code rather than any new user facing functionality.
-Examples of such tasks include: moving to a new compiler version, applying fixes for compiler or linter warnings and code reorganisation/refactoring.
+\todo{find me a home}
+It is advisable to follow semantic versioning \cite{Semantic_Versioning} (major.minor.patch, e.g. 3.1.0) for clear naming of the releases.
 
 \subsection{Project Management Board and Advisory Committees}
 \label{PM big}
@@ -722,8 +710,7 @@ This provides an opportunity to discuss possible risks or opportunities and the 
 
 For larger projects it maybe beneficial to have a technical advisory committee.
 This will usually comprise of the technical leads for the project.
-Their role is to make decisions on the computational aspects of the project.
-For example, which version of a programming language to use and the operating systems that the software will support.
+Their role is to make decisions on the computational aspects of the project, such as which version of a programming language to use and the operating systems that the software will support.
 Another role fulfilled by this committee is to decide significant changes to the code base.
 This could happen if there is a new method (e.g. standard library algorithms in C++) that can be used throughout the code base to improve performance and/or stability.
 A representative from the technical advisory committee will report their decisions to the project management board, who will distribute the information down to the rest of the team.
@@ -737,10 +724,9 @@ This section describes guidelines specific to the development of data treatment 
 The specific guidelines in this section may not be suitable for other communities.
 
 For Work Package 10 (WP10) of SINE2020, a report was written on the standards and guidelines for the participating software \cite{sine2020_wp10_d10_report}.
-The software that participated in WP10 of SINE2020 are BornAgain \cite{bornagain}, Mantid \cite{mantid}, McStas \cite{mcstats}, MuhRec / KipTool \cite{ImagingSuite}, and SasView \cite{sasview}.
-The report contains the questionnaires, statistics and information collected from these pieces of software.
-For example, the report includes a summery of the commonalities between the participating software.
-The below list presents a summery of the main guidelines from the report.
+The software that participated in WP10 of SINE2020 are BornAgain \cite{bornagain}, Mantid \cite{mantid}, McStas \cite{mcstats}, ImagingSuite (MuhRec and KipTool) \cite{ImagingSuite}, and SasView \cite{sasview}.
+The report contains the questionnaires, statistics and information collected of the software and includes a summary of the commonalities between the participating projects.
+The list below presents a summary of the main guidelines from the report.
 
 \begin{itemize}
       \item Use an Open Source license approved by the Open Source Initiative, such as GPL.
@@ -748,15 +734,15 @@ The below list presents a summery of the main guidelines from the report.
       \item Design software to be modular.
       \item Use the programming languages C++ and/or Python.
       \item Where the software uses a GUI, use Qt.
-      \item Support community standards for data format where such exists, specifically loading of NeXus/HDF5 data formats where relevant.
+      \item Support community standards for data formats where such exists, specifically loading of NeXus/HDF5 data formats where relevant.
       \item Use Git for source code management, including user and developer documentation.
       \item Use a issue/ticketing system, such as Github issues.
       \item Use a tool for continuous integration and automated testing, such as Travis-CI and Jenkins.
       \item Follow a coding standard and use tools that enforces this, such as Pylint (Python) and ClangFormat (C++).
 \end{itemize}
 
-These guidelines contain recommendations for the technologies that should be used (e.g. C++ and Python for programming languages), based on what is currently available.
-Hence, the guidelines should be reviewed and updated regularly to ensure that the best available technological solutions are used.
+These guidelines contain specific recommendations for the technologies that should be used (e.g. C++ and Python for programming languages), based on what is currently available.
+Hence, these guidelines should be reviewed and updated regularly to ensure that the best available technological solutions are used.
 Sharing the technology allows code to be developed that can easily be shared amongst collaborating projects.
 
 The guidelines that have been developed for WP10 of SINE2020 have been used by a wide variety of software projects, see Table \ref{summaryTable} for more details.
@@ -790,9 +776,9 @@ U.D. = Under Development.}
 \label{summaryTable}
 \end{sidewaystable}
 
-Some of the projects have a large numbers of developers and/or are based at multiple locations.
-As a result the management overheads (e.g., project management boards) are greater to ensure a uniform standard across the project.
-The projects with less developers tend to have less management overheads as it is easier to make decisions across the whole team.
+Some of the projects have a large number of developers and/or are based at multiple locations.
+As a result the management overheads (e.g. project management boards) are greater to ensure a uniform standard across the project.
+In contrast projects with fewer developers tend to have less management overhead, as it is easier to make decisions across the whole team.
 This is a good example of how guidelines should be adapted to match the needs of the project.
 
 Table \ref{summaryTable} contains some details about how plotting is used in the projects, which was not considered in the above guidelines.
@@ -801,10 +787,6 @@ Hence, it is worth adding a recommended plotting module to the guidelines.
 As can be seen from Table \ref{summaryTable} Matplotlib is a common choice.
 This is in part due to a large active developer community, which facilitates its long term sustainability.
 Matplotlib also has good integration with Qt, Python prompt and Jupyter notebook making it a natural choice given previous recommendations.
-
-New data treatment software projects have developed their own guidelines to ensure a high quality and positive user experience.
-For example, crystallography software (cctbx \cite{} and F.O.X \cite{}) and machine learning software (scikit-learn \cite{}).
-
 
 \section{Conclusion}
 \label{Conclusion}
@@ -817,7 +799,7 @@ The guidelines have covered a range of topics from coding standards to managemen
 
 Fundamentally guidelines allow for scientific software to be developed and maintained easily by a distributed team, while providing support to users.
 There is an initial cost in deciding the guidelines and they should be chosen based on the requirements of the project.
-To ensure that there is a balance between new functionality and maintenance it is important to manage the customers and to have a governance model.
+To ensure that there is a balance between new functionality and maintenance it is important to manage the customer's expectations.
 To ensure a happy user base it is important to have up to date documentation and to have regular releases.
 The technologies available to software development are constantly changing and for long term projects it may be necessary to update the guidelines to utilise these improvements.
 Good guidelines ensure a uniform code quality, a structured developer team and create a positive user experience.
