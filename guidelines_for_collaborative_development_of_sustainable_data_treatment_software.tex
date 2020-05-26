@@ -149,7 +149,7 @@ In section \ref{SINE2020}, guidelines are presented that were developed as part 
 The aim of these guidelines was to foster development of high-quality software, collaborations and contributions from third party developers (e.g. from university groups) through the development of inter-operable software.
 If the guidelines are followed, it will be easier for (another) facility to adapt the software for their own needs and that of their user community, but also for other developers to contribute to the software.
 
-The specific guidelines for the neutron and muon communities are based on an analysis of existing practice for software considered in SINE2020, namely  \it BornAgain \cite{bornagain}, \it Mantid \cite{mantid}, \it ImagingSuite \cite{ImagingSuite}, \it McStas \cite{mcstas} and \it SasView \cite{sasview}.
+The specific guidelines for the neutron and muon communities are based on an analysis of existing practice for software considered in SINE2020, namely {\it BornAgain} \cite{bornagain}, {\it Mantid} \cite{mantid}, {\it ImagingSuite} \cite{ImagingSuite}, {\it McStas} \cite{mcstas} and {\it SasView} \cite{sasview}.
 These projects have a wide range of backgrounds.
 For example, some are maintained by an individual and others by large international teams (see Section \ref{SINE2020}).
 
@@ -173,10 +173,10 @@ Any implementation of a standardised data format needs to follow the standard an
 the data format should only diverge from it if it is absolutely necessary.
 If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
 
-In the neutron and (some) muon communities \it NeXus \cite{K_nnecke_2015} has become the default format for raw data and processed data.
+In the neutron and (some) muon communities {\it NeXus} \cite{K_nnecke_2015} has become the default format for raw data and processed data.
 If a particular scientific community already has an accepted standard that should be used.
-\it NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
-\it NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
+{\it NeXus} aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
+{\it NeXus} is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
 Useful metadata is trivial to store in NeXus and is an important aspect for making data FAIR.
 Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue.
 Well documented metadata improves the reproducibility and reusability of the data.
@@ -202,7 +202,7 @@ This means recording a history of each atomic action the software performs along
 Therefore, it is possible to record multiple sets of instructions with a negligible increase in storage space.
 
 It is essential to be able to extract the exact conditions of the software (i.e. the version number of the software, versions of plugins/dependencies).
-Process lists in \it Savu \cite{Wadeson_2016} are a good example of such operation reporting.
+Process lists in {\it Savu} \cite{Wadeson_2016} are a good example of such operation reporting.
 These store the job configuration in a NeXus file and encode the same information in the final results.
 This allows the processing history to remain with the processed data and allows the result dataset to be used as input for a future job.
 Savu also provides tooling to allow a user to export a list of citations from their result data and is generated from the process list.
@@ -263,14 +263,14 @@ Code within a module should be closely related, reducing the need to import unne
 It should be possible to test each module in isolation using automated testing, reducing the risk of bugs being introduced into the code base.
 
 It can be desirable to allow users to write scripts to further extend the functionality of the software.
-Ideally any scripting made available to users should use the \it Python language.
+Ideally any scripting made available to users should use the {\it Python} language.
 Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources are available for it \cite{python-nature}.
 Some of the most commonly used libraries are linked from SciPy.org \cite{scipy}.
-Python also works fluently with the \it{Jupyter notebook}, an increasingly popular tool in the scientific community \cite{jupyter-nature}.
+Python also works fluently with the {\it Jupyter notebook}, an increasingly popular tool in the scientific community \cite{jupyter-nature}.
 
-If the application requires a GUI then a good choice of library is \it{Qt} \cite{Qt}.
-\it Qt is an application framework commonly used by many open source and commercial software packages.
-It allows easy development of cross platform GUIs in a variety of languages (e.g. \it C++ and \it Python).
+If the application requires a GUI then a good choice of library is {\it Qt} \cite{Qt}.
+{\it Qt} is an application framework commonly used by many open source and commercial software packages.
+It allows easy development of cross platform GUIs in a variety of languages (e.g. {\it C++} and {\it Python}).
 Another increasingly popular option is to provide a web based interface.
 
 \subsection{Coding Standards}
@@ -287,7 +287,7 @@ An important, language agnostic rule to follow is to write human readable code.
 For example, use comments to explain the code and descriptive variable names.
 A developer should be able to understand what the code is doing (but not necessarily why) without looking at the documentation or talking to the previous author.
 
-For example, compare the function \cite{Lim_2015} written in \it{C++11}
+For example, compare the function \cite{Lim_2015} written in {\it C++11}
 
 \begin{lstlisting}[frame=single, language=C++]
 float calc_v(std::vector<float> y)
@@ -318,15 +318,15 @@ float linear_approx_of_pair_potentials(
 }
 \end{lstlisting}
 
-the improvements in the second code snippet include (any points that are \it{C++} specific are noted):
+the improvements in the second code snippet include (any points that are {\it C++} specific are noted):
 \begin{itemize}
-  \item{A \it Doxygen \cite{doxygen} comment is present.}
+  \item{A {\it Doxygen} \cite{doxygen} comment is present.}
   \item{A more descriptive function name, which indicates it's purpose.}
   \item{Improved verbose variable names.}
   \item{Better use of scope constructs (\texttt{\{} and \texttt{\}}) and newlines.}
-  \item{Non trivial parameters that are not modified are passed by const reference (\it C++).}
-  \item{A range based for loop (\it C++).}
-  \item{Use of \texttt{auto} keyword (\it C++).}
+  \item{Non trivial parameters that are not modified are passed by const reference (\{it C++}).
+  \item{A range based for loop ({\it C++}).}
+  \item{Use of \texttt{auto} keyword ({\it C++}).}
 \end{itemize}
 
 For ease of international collaboration filenames, identifier names, comments and documentation should be published in a single language (usually English).
@@ -335,7 +335,7 @@ Translation frameworks may be used to provide your software and documentation in
 To assist in maintaining code quality one or more "linters" (also referred to as "static analysis" tools) should be employed.
 These are tools that inspect the code base to detect potential issues, such as unused variables, indentation errors, thread misuse etc.
 There are linters available for almost every language.
-For example, \it{clang-format} \cite{Clang} and \it Pylint \cite{Pylint} are two of the most common for \it C++ and \it Python respectively.
+For example, {\it clang-format} \cite{Clang} and {\it Pylint} \cite{Pylint} are two of the most common for {\it C++} and {\it Python} respectively.
 Linters are available as part of standalone packages that produce result reports, these are typically easy to install and run.
 Some of these packages are also available as a cloud service (e.g. Coverity Scan \cite{coverity}), when new code is added to the remote repository the package will run and produce a result report.
 For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis \cite{awesome_static_analysis}, a community curated list of static analysis tools.
@@ -390,21 +390,21 @@ The commits should be sensible, atomic and logically ordered.
 The commit messages need to be clear and describe the reasoning behind the changes made in the commit.
 For further reading please see Ref. \cite{git-commit}.
 
-\it Git \cite{Git} is the most common and one of the most powerful SCM tools used in open source software.
+{\it Git} \cite{Git} is the most common and one of the most powerful SCM tools used in open source software.
 One advantage is that it has a wide variety of training resources available (see e.g. Refs. \cite{github-git, atlassian-git, codecademy-git}).
-\it Git is suitable for a project of any size and will probably last the full life of the project.
+{\it Git} is suitable for a project of any size and will probably last the full life of the project.
 
 There are a wide range of cloud Git repository providers, all of which provide similar features.
-For a distributed team it is beneficial to use a cloud \it Git repository (as opposed to local hosting on site) to avoid network related bottlenecks.
+For a distributed team it is beneficial to use a cloud {\it Git} repository (as opposed to local hosting on site) to avoid network related bottlenecks.
 
 \subsection{Build Systems}
 \label{Build systems}
 
 The build and packaging of your software should be facilitated by an appropriate build system, which will depend on the choice of programming language(s).
-A good choice for \it C and \it C++ projects is \it CMake \cite{CMake}.
-\it C and \it C++ projects can also benefit from use of a dependency manager such as \it Conan \cite{Conan}.
+A good choice for {\it C} and {\it C++} projects is {\it CMake} \cite{CMake}.
+{\it C} and {\it C++} projects can also benefit from use of a dependency manager such as {\it Conan} \cite{Conan}.
 There are some build systems that combine a dependency manager into them.
-For \it Python based projects \it Python's {\it setuptools} is typically sufficient, for specific cases (e.g. complex package dependencies) \it Conda may be used as an alternative.
+For {\it Python} based projects {\it Python's} {\it setuptools} is typically sufficient, for specific cases (e.g. complex package dependencies) {\it Conda} may be used as an alternative.
 Most languages will either be shipped with a build system or have a recommended set of tools.
 
 \subsection{Quality Assurance (QA)}
@@ -467,11 +467,11 @@ The obvious action is to compile/install the software and to run automated tests
 However, any number of additional tasks can be performed, including generating documentation, performing code linting, deploying packages and checking for software vulnerabilities.
 
 For most projects, using a hosted service for continuous integration is probably sufficient.
-For example, Microsoft Azure DevOps \todo{cite} offers a free service that will compile builds and run tests over a fixed time limit (available for \it Linux, \it{Mac OS} and \it Windows).
+For example, Microsoft Azure DevOps \todo{cite} offers a free service that will compile builds and run tests over a fixed time limit (available for {\it Linux}, {\it Mac OS} and {\it Windows}).
 
 For projects with specific CI requirements (such as large build times, the need for specialist hardware or access to data) an entirely self hosted solution should be considered.
-For example, \it Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
-As a result \it Jenkins can be adapted to suit the specific requirements of the software project.
+For example, {\it Jenkins} \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
+As a result {\it Jenkins} can be adapted to suit the specific requirements of the software project.
 
 \subsection{Code Review}
 \label{Code review}
@@ -512,7 +512,7 @@ An easy way to achieve this is to have a contents page and to make the pages sea
 The online documentation should be version controlled so it is possible to revert changes and to follow its evolution.
 
 Projects may benefit from having a landing page introducing the project and directing users to commonly used or important resources.
-\it Hugo \cite{Hugo} and \it Jekyll \cite{Jekyll} are examples of popular and powerful tools for creating static web sites.
+{\it Hugo} \cite{Hugo} and {\it Jekyll} \cite{Jekyll} are examples of popular and powerful tools for creating static web sites.
 They support themes and customisation and works with content defined in Markdown.
 Many of the cloud based hosting providers have associated free hosting services, which allow you to commit your website content to a specific branch and have it served by the hosting provider.
 Popular examples are GitHub Pages \cite{GitHub_Pages} and GitLab Pages \cite{GitLab_Pages}.
@@ -638,8 +638,8 @@ Typically you should stop supporting an OS version when the publisher stops supp
 Dependency management handles obtaining and configuring any library dependencies your software has at build/configure time.
 This serves two functions: firstly, to make the build environment easy to set up and secondly, to make builds reproducible.
 Dependency managers do this by collecting requirements for your software based on a specification file provided by the developer.
-In the case where a package manager is available (for example \it Conda \cite{Conda}, \it PyPI \cite{PyPI} or \it Conan \cite{Conan}) this may just be a package name and version number.
-For more general purpose tools it may involve instructions on how the dependency should be retrieved and configured (for example \it CMake's ExternalProject \cite{CMake_ExternalProject}).
+In the case where a package manager is available (for example {\it Conda} \cite{Conda}, {\it PyPI} \cite{PyPI} or {\it Conan} \cite{Conan}) this may just be a package name and version number.
+For more general purpose tools it may involve instructions on how the dependency should be retrieved and configured (for example {\it CMake's} ExternalProject \cite{CMake_ExternalProject}).
 
 One of the benefits of dependency management is the ability to pin dependency versions to known working versions.
 This ensures that moving to new development or runtime environments will not cause incompatibilities between your software and software it depends on.
@@ -736,7 +736,7 @@ This section describes guidelines specific to the development of data treatment 
 The specific guidelines in this section may not be suitable for other communities.
 
 For Work Package 10 (WP10) of SINE2020, a report was written on the standards and guidelines for the participating software \cite{sine2020_wp10_d10_report}.
-The software that participated in WP10 of SINE2020 are \it BornAgain \cite{bornagain}, \it Mantid \cite{mantid}, \it McStas \cite{mcstats}, \it ImagingSuite (\it MuhRec and \it KipTool) \cite{ImagingSuite}, and \it SasView \cite{sasview}.
+The software that participated in WP10 of SINE2020 are {\it BornAgain} \cite{bornagain}, {\it Mantid} \cite{mantid}, {\it McStas} \cite{mcstats}, {\it ImagingSuite} \cite{ImagingSuite}, and {\it SasView} \cite{sasview}.
 The report contains the questionnaires, statistics and information collected of the software and includes a summary of the commonalities between the participating projects.
 The list below presents a summary of the main guidelines from the report.
 
@@ -744,16 +744,16 @@ The list below presents a summary of the main guidelines from the report.
       \item Use an Open Source license approved by the Open Source Initiative, such as GPL.
       \item Support multiple operating systems.
       \item Design software to be modular.
-      \item Use the programming languages \it C++ and/or \it Python.
-      \item Where the software uses a GUI, use \it Qt.
-      \item Support community standards for data formats where such exists, specifically loading of \it NeXus/\it HDF5 data formats where relevant.
-      \item Use \it Git for source code management, including user and developer documentation.
-      \item Use a issue/ticketing system, such as \it Github issues.
-      \item Use a tool for continuous integration and automated testing, such as \it Travis-CI and \it Jenkins.
-      \item Follow a coding standard and use tools that enforces this, such as \it Pylint (\it Python) and \it ClangFormat (\it C++).
+      \item Use the programming languages {\it C++} and/or {\it Python}.
+      \item Where the software uses a GUI, use {\it Qt}.
+      \item Support community standards for data formats where such exists, specifically loading of {\it NeXus}/{\it HDF5} data formats where relevant.
+      \item Use {\it Git} for source code management, including user and developer documentation.
+      \item Use a issue/ticketing system, such as {\it GitHub} issues.
+      \item Use a tool for continuous integration and automated testing, such as {\it Travis-CI} and {\it Jenkins}.
+      \item Follow a coding standard and use tools that enforces this, such as {\it Pylint} ({\it Python}) and {\it clang-format} ({\it C++}).
 \end{itemize}
 
-These guidelines contain specific recommendations for the technologies that should be used (e.g. \it C++ and \it Python for programming languages), based on what is currently available.
+These guidelines contain specific recommendations for the technologies that should be used (e.g. {\it C++} and {\it Python} for programming languages), based on what is currently available.
 Hence, these guidelines should be reviewed and updated regularly to ensure that the best available technological solutions are used.
 Sharing the technology allows code to be developed that can easily be shared amongst collaborating projects.
 
@@ -763,23 +763,23 @@ This was despite the variations in the size, scope and applications of the parti
 
 \begin{sidewaystable}
  \begin{tabular}{llllll}
- Software                        & \it BornAgain \cite{bornagain}  & \it Mantid \cite{mantid} &\it McStas \cite{mcstas}  & \it ImagingSuite \cite{ImagingSuite} &\it  SasView \cite{sasview} \\
- Application                     & Multilayer scattering calculation & Data reduction and some analysis & Instrument simulations & Neutron imaging & Analysis of SANS data \\
- Age of project (years)          & 9 & 11 & 21 & 10 & 15 \\
+ Software                               & {\it BornAgain} \cite{bornagain}  & {\it Mantid} \cite{mantid} &{\it McStas} \cite{mcstas}  & {\it ImagingSuite} \cite{ImagingSuite} &{\it SasView} \cite{sasview} \\
+ Application                            & Multilayer scattering calculation & Data reduction and some analysis & Instrument simulations & Neutron imaging & Analysis of SANS data \\
+ Age of project (years)                 & 9 & 11 & 21 & 10 & 15 \\
  Number of full time developers in 2018 & 3 & 20 & 1 & $\le$2 & $\le$2 \\
- Current number of contributors  &  & 85  & 9 & 6 & 16 \\
- Total number of contributors    &  & 194 & 47 & 11 & 69 \\
- Developer locations             & 1 & >4 & >3 & 1 & 9 \\
- License                         & GPL3 & GPL3 & GPL2 & GPL3 & BSD \\
- Governance model                & None & PMB \& AC  & None & AC & PMB \\
- Release cycles (per year)       & a few & 3 & 1 & 1 & 1\\
- User documentation              & Tutorials. Examples. & Manual. Tutorials. & Manual. & Manual. Video tutorial & Manual. Tutorials. \\
- Hosting         & \it GitHub & \it GitHub & \it GitHub & \it GitHub & \it GitHub \\
- Issue tracker   & \it Redmine & \it GitHub & \it GitHub & \it GitHub & \it JIRA \& \it GitHub \\
- Python interface & Yes & Yes & U.D. & U.D. & Yes \\
- Primary programming language & \it C++ & \it Python / \it C++ & \it C & \it C++ & \it Python \\
- GUI framework    & \it Qt & \it Qt & None & \it Qt & \it Qt \\
- Plotting library & \it Matplotlib & \it Matplotlib & ?? & \it QtChart & \it Matplotlib \\
+ Current number of contributors         &  & 85  & 9 & 6 & 16 \\
+ Total number of contributors           &  & 194 & 47 & 11 & 69 \\
+ Developer locations                    & 1 & >4 & >3 & 1 & 9 \\
+ License                                & GPL3 & GPL3 & GPL2 & GPL3 & BSD \\
+ Governance model                       & None & PMB \& AC  & None & AC & PMB \\
+ Release cycles (per year)              & a few & 3 & 1 & 1 & 1\\
+ User documentation                     & Tutorials. Examples. & Manual. Tutorials. & Manual. & Manual. Video tutorial & Manual. Tutorials. \\
+ Hosting                                & {\it GitHub} & {\it GitHub} & {\it GitHub} & {\it GitHub} & {\it GitHub} \\
+ Issue tracker                          & {\it Redmine} & {\it GitHub} & {\it GitHub} & {\it GitHub} & {\it JIRA} \& {\it GitHub} \\
+ Python interface                       & Yes & Yes & U.D. & U.D. & Yes \\
+ Primary programming language           & {\it C++} & {\it Python} / {\it C++} & {\it C} & {\it C++} & {\it Python} \\
+ GUI framework                          & {\it Qt} & {\it Qt} & None & {\it Qt} & {\it Qt} \\
+ Plotting library                       & {\it Matplotlib} & {\it Matplotlib} & ?? & {\it QtChart} & {\it Matplotlib} \\
  \end{tabular}
  \caption{Key parameters and analysis for the different software projects participating at the end of WP10 SINE2020.
 PMB = Project Management Board.
@@ -796,9 +796,9 @@ This is a good example of how guidelines should be adapted to match the needs of
 Table \ref{summaryTable} contains some details about how plotting is used in the projects, which was not considered in the above guidelines.
 It is vital for data treatment software to provide a visual representation of the data to the user.
 Hence, it is worth adding a recommended plotting module to the guidelines.
-As can be seen from Table \ref{summaryTable} \it Matplotlib is a common choice.
+As can be seen from Table \ref{summaryTable} {\it Matplotlib} is a common choice.
 This is in part due to a large active developer community, which facilitates its long term sustainability.
-Matplotlib also has good integration with \it Qt, \it Python prompt and \it{Jupyter notebook} making it a natural choice given previous recommendations.
+Matplotlib also has good integration with {\it Qt}, {\it Python} prompt and {\it Jupyter notebook} making it a natural choice given previous recommendations.
 
 \section{Conclusion}
 \label{Conclusion}
