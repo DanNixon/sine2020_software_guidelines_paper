@@ -175,7 +175,7 @@ If the divergence from the standard is required and has a clear benefit, then th
 
 In the neutron and (some) muon communities \it NeXus \cite{K_nnecke_2015} has become the default format for raw data and processed data.
 If a particular scientific community already has an accepted standard that should be used.
-\it NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the \it HDF5 file format \cite{HDF5}.
+\it NeXus aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
 \it NeXus is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
 Useful metadata is trivial to store in NeXus and is an important aspect for making data FAIR.
 Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue.
@@ -191,7 +191,7 @@ Applications may store relevant information (e.g. window layout for a graphical 
 Additional configuration or process setup information should be stored in an easily accessible location.
 This data may include version numbers, parameters and filenames.
 The configuration file should be in a human readable plain text format, assuming it's data volume does not negate readability or performance.
-Popular formats for this purpose include \it INI, \it YAML, \it JSON, \it TOML and \it XML, all of which have several library options for common languages and store data as plain text.
+Popular formats for this purpose include INI, YAML, JSON, TOML and XML, all of which have several library options for common languages and store data as plain text.
 Under no circumstances should custom formats be used for configuration files, because there are already a number of well defined data formats for this purpose.
 
 It is vital for the results from scientific software to be reproducible.
@@ -265,7 +265,7 @@ It should be possible to test each module in isolation using automated testing, 
 It can be desirable to allow users to write scripts to further extend the functionality of the software.
 Ideally any scripting made available to users should use the \it Python language.
 Python is becoming the standard language for data science and as such has a wide range of libraries, documentation and resources are available for it \cite{python-nature}.
-Some of the most commonly used libraries are linked from \it SciPy.org \cite{scipy}.
+Some of the most commonly used libraries are linked from SciPy.org \cite{scipy}.
 Python also works fluently with the \it{Jupyter notebook}, an increasingly popular tool in the scientific community \cite{jupyter-nature}.
 
 If the application requires a GUI then a good choice of library is \it{Qt} \cite{Qt}.
@@ -332,12 +332,12 @@ the improvements in the second code snippet include (any points that are \it{C++
 For ease of international collaboration filenames, identifier names, comments and documentation should be published in a single language (usually English).
 Translation frameworks may be used to provide your software and documentation in other languages at compile/build time.
 
-To assist in maintaining code quality one or more \it{"linters"} (also referred to as "static analysis" tools) should be employed.
+To assist in maintaining code quality one or more "linters" (also referred to as "static analysis" tools) should be employed.
 These are tools that inspect the code base to detect potential issues, such as unused variables, indentation errors, thread misuse etc.
 There are linters available for almost every language.
-For example, \it Clang format \cite{Clang} and \it Pylint \cite{Pylint} are two of the most common for \it C++ and \it Python respectively.
+For example, \it{clang-format} \cite{Clang} and \it Pylint \cite{Pylint} are two of the most common for \it C++ and \it Python respectively.
 Linters are available as part of standalone packages that produce result reports, these are typically easy to install and run.
-Some of these packages are also available as a cloud service (e.g. \it{Coverity Scan} \cite{coverity}), when new code is added to the remote repository the package will run and produce a result report.
+Some of these packages are also available as a cloud service (e.g. Coverity Scan \cite{coverity}), when new code is added to the remote repository the package will run and produce a result report.
 For a wider selection of the available tools it is worth looking over the selection on Awesome Static Analysis \cite{awesome_static_analysis}, a community curated list of static analysis tools.
 
 When writing new code care should be taken to avoid pre-emptive optimisation, where the speed up in the execution time may not be significant.
@@ -467,7 +467,7 @@ The obvious action is to compile/install the software and to run automated tests
 However, any number of additional tasks can be performed, including generating documentation, performing code linting, deploying packages and checking for software vulnerabilities.
 
 For most projects, using a hosted service for continuous integration is probably sufficient.
-For example, Microsoft \it{Azure DevOps} \todo{cite} offers a free service that will compile builds and run tests over a fixed time limit (available for \it Linux, \it{Mac OS} and \it Windows).
+For example, Microsoft Azure DevOps \todo{cite} offers a free service that will compile builds and run tests over a fixed time limit (available for \it Linux, \it{Mac OS} and \it Windows).
 
 For projects with specific CI requirements (such as large build times, the need for specialist hardware or access to data) an entirely self hosted solution should be considered.
 For example, \it Jenkins \cite{Jenkins} is a self hosted CI solution that requires the user to provide the infrastructure.
@@ -488,7 +488,7 @@ Larger or more critical projects may opt to have multiple review stages, in whic
 Having multiple reviewers for the same piece of work may seem inefficient, but will increase the chance of potential issues being found before they are added to the code base.
 
 Tools for code reviews are often built into hosted SCM services.
-For example, \it GitHub Pull Requests allow code changes to be viewed and commented on.
+For example, GitHub Pull Requests allow code changes to be viewed and commented on.
 
 \begin{figure}
     \centering
@@ -515,7 +515,7 @@ Projects may benefit from having a landing page introducing the project and dire
 \it Hugo \cite{Hugo} and \it Jekyll \cite{Jekyll} are examples of popular and powerful tools for creating static web sites.
 They support themes and customisation and works with content defined in Markdown.
 Many of the cloud based hosting providers have associated free hosting services, which allow you to commit your website content to a specific branch and have it served by the hosting provider.
-Popular examples are \it GitHub Pages \cite{GitHub_Pages} and \it GitLab Pages \cite{GitLab_Pages}.
+Popular examples are GitHub Pages \cite{GitHub_Pages} and GitLab Pages \cite{GitLab_Pages}.
 The large benefit here is avoiding the cost and time of maintaining the infrastructure required to host the project's website.
 
 It is also valuable to have developer documentation.
