@@ -260,7 +260,7 @@ A module may refer to a package, library or software plugin.
 Care should be taken when designing these modules.
 Each module should perform a very specific task (e.g. minimization) and should only contain the relevant functionality.
 Code within a module should be closely related, reducing the need to import unnecessary functionality.
-It should be possible to test each module in isolation using automated testing, reducing the risk of bugs being introduced into the code base.
+It should be possible to test each module in isolation using automated testing (see section \ref{Quality assurance}), reducing the risk of bugs being introduced into the code base.
 
 It can be desirable to allow users to write scripts to further extend the functionality of the software.
 Ideally any scripting made available to users should use the {\it Python} language.
@@ -411,7 +411,7 @@ Most languages will either be shipped with a build system or have a recommended 
 \label{Quality assurance}
 
 The quality of the software is one of the most important factors influencing the long-term success of the project.
-
+Where possible this should be provided through automated testing, i.e. tests which are defined in code and are able to give a pass or fail result without any human interaction.
 Apart from unit tests aiming to test the functionality of small units of code in isolation, integration tests are also necessary to ensure that the different parts of the software work together as expected.
 Deployment tests ensure that the software is properly packaged and can be installed and launched on all the supported platforms.
 
@@ -429,6 +429,9 @@ The latter test certain usage scenarios over sufficiently large datasets in orde
 When it comes to automated testing, the GUI is arguably the layer that is the hardest to test.
 However, there are techniques and tools that allow sufficient automation of GUI testing.
 Among those is the separation of the logic into tiers, e.g. Model-View-Presenter (MVP), where the model and the presenter can be covered by unit tests with mocking.
+Mocking is a technique in which a specific part of a codebase is tested by replacing components with which it interacts with "mock" components.
+This removes the dependency on other parts of the software and allows components of a complex system to be tested in isolation.
+A common place this is done is the presenter layer of an MVP GUI.
 There are tools available that allow automated tests of the views themselves (\todo{example}).
 
 Automated testing infrastructure is essential in order to provide a reliable software product.
