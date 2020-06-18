@@ -109,16 +109,21 @@ The second reason is that the advances in science are generating increasingly la
 For example, some instruments at the European Spallation Source ESS) are estimated to have data rates in the order of gigabytes per second \cite{Christensen_2018}, which is significantly higher than at existing neutron sources.
 
 The growing complexity of data treatment means that the development of scientific software requires ever greater resourcing.
-The consequence of these changes is that users will inherently depend on software created by other developers, typically in the user community or at the hosting facilities.
+There is plenty of literature discussing different aspects of software development.
+Initiatives such as CodeRefinery \cite{coderefinery} and the Software Sustainability Institute \cite{SoftwareSustainabilityInstitute} promote best practises for the development of academic software \cite{fair_software}.
+With the move towards FAIR (Findable, Accessible, Inter-operable and Reusable) \cite{panosc} data, concerns about the reproducibility and reliability of data has become even more important to scientists.
+These concerns are in part rooted in the rapid replacement of developers, in the form of PhD students and post-docs.
+These developers may work in isolated conditions with limited knowledge of previous changes and the reasoning for them.
+A potential pitfall with this isolated approach of software development is that bugs are less likely to be found, due to fewer users.
+Also the software may become too cumbersome to develop leading to the project having to start from scratch.
+These factors make it more difficult to share software and for other research groups to adapt the software for their own purpose.
+However, some academic groups and research infrastructures are now starting to follow guidelines when writing software.
 A person may also choose to contribute to existing software rather than develop their own from scratch.
 This adds significant requirements in terms of quality, trustability, reliability, reproducibility and usability compared to when users develop software for their own use.
 (TODO: insert \cite{computational-science-error} and articles about reproducibility)
 It also adds a requirement of interoperability to the software developed by one group (e.g. at a university) so that it can be used by users and developers (e.g. at a facility).
 New methods for data treatment are often developed in collaboration with academia.
 Therefore, it would be beneficial to the broader community if the new methods could be easily incorporated into facilities' software.
-A potential pitfall with this isolated approach of software development is that bugs are less likely to be found, due to fewer users.
-Also the software may become too cumbersome to develop leading to the project having to start from scratch.
-These factors make it more difficult to share software and for other research groups to adapt the software for their own purpose.
 
 The lack of guidelines can lead to the code being difficult to read, because the style will change depending on who wrote it.
 In the worst case this may lead to people believing that the code is incorrect, when it is correct and vica-versa.
@@ -135,13 +140,6 @@ A good set of guidelines will help the software be sustainable; that is,
 
 With these in place it will be easier to continue growing the code base to include new functionality to the current scientific analysis techniques and to expand the software to serve new areas of analysis/research.
 It would also reduce the effort required to adapt the software for use at other facilities.
-
-There is plenty of literature discussing different aspects of software development.
-Initiatives such as CodeRefinery \cite{coderefinery} and the Software Sustainability Institute \cite{SoftwareSustainabilityInstitute} promote best practises for the development of academic software \cite{fair_software}.
-With the move towards FAIR (Findable, Accessible, Inter-operable and Reusable) \cite{panosc} data, concerns about the reproducibility and reliability of data has become even more important to scientists.
-These concerns are in part rooted in the rapid replacement of developers, in the form of PhD students and post-docs.
-These developers may work in isolated conditions with limited knowledge of previous developments and the reasoning for them.
-However, some academic groups and research infrastructures are now starting to follow guidelines when writing software.
 
 The aim of this paper is to define good software practices and evidence how these can benefit the scientific software community.
 Each individual community may use different guidelines, some of which may already exist and others can be specific to a particular project.
