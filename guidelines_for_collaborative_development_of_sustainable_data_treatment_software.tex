@@ -146,22 +146,29 @@ Each individual community may use different guidelines, some of which may alread
 In section \ref{SINE2020}, guidelines are presented that were developed as part of \underline{S}cience and \underline{I}nnovation with \underline{N}eutrons in \underline{E}urope in \underline{2020} (SINE2020, \cite{sine2020}).
 The aim of these guidelines was to foster development of high-quality software, collaborations and contributions from third party developers (e.g. from university groups) through the development of inter-operable software.
 If the guidelines are followed, it will be easier for (another) facility to adapt the software for their own needs and that of their user community, but also for other developers to contribute to the software.
-
 The specific guidelines for the neutron and muon communities are based on an analysis of existing practice for software considered in SINE2020, namely {\it BornAgain} \cite{bornagain}, {\it Mantid} \cite{mantid}, {\it ImagingSuite} \cite{ImagingSuite}, {\it McStas} \cite{mcstas} and {\it SasView} \cite{sasview}.
 These projects have a wide range of backgrounds.
 For example, some are maintained by an individual and others by large international teams (see Section \ref{SINE2020}).
 
 To put those rather specific guidelines in context we start with a presentation and discussion of some more generic guidelines along with a discussion of challenges commonly faced in software development that these guidelines address.
-
 Although the specific guidelines are aimed at the neutron and muon communities, the generic guidelines reflect what is common practice in software development.
 When it is appropriate the idea of the guideline will be abstracted, so that an alternative can be chosen in the future.
-
 Abstracting guidelines in this manner allows them to remain relevant as technology evolves.
 
-\todo{find me a home, and make me make sense}
-Guidelines have been developed within other communities to the benefit of the project.
 
-\section{Data Formats and Interoperability}
+\section{General Guidelines}\label{general)
+
+This section will cover a variety of topics that are relevant to scientific software development. 
+This part of the paper will use generic discussion to allow the reader to understand the basic principles and language of software development.
+In section \ref{SINE2020} these generic guidelines will be applied to the neutron and muon communities.
+
+It is important to define the day-to-day work of software developers (i.e. development methodologies, code review and coding standards) inorder for a project to be successful.
+Another important part of the developers' job is to provide documentation for users and other developers (see Section \ref{Documentation}).
+This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work.
+Most of these choices will be made at the start of the project and ideally last its duration; however, these can be updated to accommodate new tools and standards.
+
+
+\subsection{Data Formats and Interoperability}
 \label{Data Formats and Interoperability}
 
 It is important to use an open and standardised data format, in order to allow users to easily create suitable input files for the software.
@@ -169,17 +176,6 @@ A good data format will have open source definitions and documentation, making i
 It is likely that a library will already exist for loading standardised file formats and should be used whenever possible.
 Any implementation of a standardised data format needs to follow the standard and
 the data format should only diverge from it if it is absolutely necessary.
-If the divergence from the standard is required and has a clear benefit, then these changes should be suggested to be added to the standard.
-
-In the neutron and (some) muon communities {\it NeXus} \cite{K_nnecke_2015} has become the default format for raw data and processed data.
-If a particular scientific community already has an accepted standard that should be used.
-{\it NeXus} aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
-{\it NeXus} is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
-Useful metadata is trivial to store in NeXus and is an important aspect for making data FAIR.
-Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue.
-Well documented metadata improves the reproducibility and reusability of the data.
-Standardized metadata will improve how easy it is to identify key information.
-Examples of metadata are instrument configurations, data processing history, sample environment setting, sample description, experiment proposal etc.
 
 Proprietary file formats should be avoided at all costs.
 While there is sometimes an argument for software specific intermediate formats, they should remain intermediate.
@@ -205,13 +201,6 @@ These store the job configuration in a NeXus file and encode the same informatio
 This allows the processing history to remain with the processed data and allows the result dataset to be used as input for a future job.
 Savu also provides tooling to allow a user to export a list of citations from their result data and is generated from the process list.
 
-\section{The daily development work}
-\label{Business as Usual}
-
-This section discusses the day-to-day work of software developers (i.e. development methodologies, code review and coding standards).
-Another important part of the developers' job is to provide documentation for users and other developers (see Section \ref{Documentation}).
-This reduces the risk of having single points of failure, because another developer can read the documentation and then continue the work.
-Most of these choices will be made at the start of the project and ideally last its duration; however, these can be updated to accommodate new tools and standards.
 
 \subsection{Development Methodology}
 \label{Development methodology}
@@ -800,6 +789,41 @@ Hence, it is worth adding a recommended plotting module to the guidelines.
 As can be seen from Table \ref{summaryTable} {\it Matplotlib} is a common choice.
 This is in part due to a large active developer community, which facilitates its long term sustainability.
 Matplotlib also has good integration with {\it Qt}, {\it Python} prompt and {\it Jupyter notebook} making it a natural choice given previous recommendations.
+
+
+\section{Data Formats and Interoperability}
+\label{Data Formats and Interoperability}
+
+In the neutron and (some) muon communities {\it NeXus} \cite{K_nnecke_2015} has become the default format for raw data and processed data.
+If a particular scientific community already has an accepted standard that should be used.
+{\it NeXus} aims to standardise the way data is represented by different facilities and software by defining a structure on top of the HDF5 file format \cite{HDF5}.
+{\it NeXus} is a self describing file format where classes can be used to make it easy to understand the data, with no prior knowledge.
+Useful metadata is trivial to store in NeXus and is an important aspect for making data FAIR.
+Correctly labeled metadata significantly improves the ability to use a search query in a data catalogue.
+Well documented metadata improves the reproducibility and reusability of the data.
+Standardized metadata will improve how easy it is to identify key information.
+Examples of metadata are instrument configurations, data processing history, sample environment setting, sample description, experiment proposal etc.
+
+
+
+\subsection{Development Methodology}
+\label{Development methodology2}
+
+The neutron and muon communities are a good example of where there is a mixture of fixed and evolving requirments.
+There will be some fixed requirments (e.g. data loading, performance targets and reduction) and some requirments will be added as new experiments are developed.
+The fixed requirments would suit the waterfall development methodology. 
+However, that would not allow for the addition of new requirments in response to new scientific research.
+Therefore, within the waterfall milestones it is benefical to use an agile methodology. 
+This will allow flexibility on prioritizing new requirments on the understanding this will delay some other work. 
+
+\subsection{Requirement Capture}
+\label{Requirements2}
+
+\todo{TODO}
+
+\subsection{Architecture and Design}
+\label{Architecture2}
+
 
 \section{Conclusion}
 \label{Conclusion}
